@@ -1,0 +1,45 @@
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2023
+Contains Synopsys proprietary information.
+Compiler version V-2023.12-SP2-1_Full64; Runtime version V-2023.12-SP2-1_Full64;  Oct 12 18:20 2024
+Input array
+	          0,(         36+j(       -127))
+	          1,(          9+j(         99))
+	          2,(         13+j(       -115))
+	          3,(        101+j(         18))
+	          4,(          1+j(         13))
+	          5,(        118+j(         61))
+	          6,(        -19+j(       -116))
+	          7,(         -7+j(        -58))
+	          8,(        -59+j(        -86))
+	          9,(        -27+j(        119))
+	         10,(         18+j(       -113))
+	         11,(        -14+j(        -50))
+	         12,(        -24+j(        -59))
+	         13,(         92+j(        -67))
+	         14,(         45+j(        101))
+	         15,(         99+j(         10))
+Output array
+	 0,(         36+j(       -127))
+	 8,(        -59+j(        -86))
+	 4,(          1+j(         13))
+	12,(        -24+j(        -59))
+	 2,(         13+j(       -115))
+	10,(         18+j(       -113))
+	 6,(        -19+j(       -116))
+	14,(         45+j(        101))
+	 1,(          9+j(         99))
+	 9,(        -27+j(        119))
+	 5,(        118+j(         61))
+	13,(         92+j(        -67))
+	 3,(        101+j(         18))
+	11,(        -14+j(        -50))
+	 7,(         -7+j(        -58))
+	15,(         99+j(         10))
+$finish called from file "test/input_reorder_tb.sv", line 60.
+$finish at simulation time                20000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 20000 ps
+CPU Time:      0.290 seconds;       Data structure size:   0.0Mb
+Sat Oct 12 18:20:22 2024

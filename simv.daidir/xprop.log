@@ -1,0 +1,6 @@
+verilog/input_reorder.sv:32 YES
+==================================================
+X P R O P   S T A T I S T I C S
+instrumentable assignments:    21
+instrumented assignments:      21
+instrumentation success rate:  100%
