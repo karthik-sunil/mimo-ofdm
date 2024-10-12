@@ -26,6 +26,10 @@ module input_reorder #(
         for(int i = 0; i < N; i = i + 1) begin
             input_reordered[i] = input_array[reversed_index[i]];
         end
+
+        // Now that we have reordered the input, we can use it for further FFT Computations
+        // This module can be extended to include the FFT computations as well
+        
     end
 
 
