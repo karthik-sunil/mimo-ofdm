@@ -1,6 +1,6 @@
 parameter COEFF_WIDTH = 16;
 parameter  COMPLEX_WIDTH = 8;
-parameter  COMPLEX_PRODUCT_WIDTH = 40;
+parameter  COMPLEX_PRODUCT_WIDTH = 16;
 
 // Number of input samples 
 parameter N=4;
