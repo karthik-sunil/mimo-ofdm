@@ -1,0 +1,50 @@
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+Parsing design file 'test/delay_by_d_tb.sv'
+Parsing design file 'verilog/delay_by_d.sv'
+Top Level Modules:
+       delay_by_d_tb
+No TimeScale specified
+Starting vcs inline pass...
+1 module and 0 UDP read.
+recompiling module delay_by_d_tb
+make[1]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+make[1]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+make[1]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../dve ]; then chmod a-x ../dve; fi
+g++  -o ../dve      -rdynamic  -Wl,-rpath='$ORIGIN'/dve.daidir -Wl,-rpath=./dve.daidir -Wl,-rpath=/usr/caen/vcs-2023.12-SP2-1/linux64/lib -L/usr/caen/vcs-2023.12-SP2-1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _1473315_archive_1.so _prev_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative -lreversedebug /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+../dve up to date
+make[1]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+logDir = /tmp/vcs_20241029190851_1472791/verdi_10_29_2024_ksnl_1473492
+
+
+                                   Verdi (R)
+
+              Version V-2023.12-SP2-1 for linux64 - Jul 15, 2024 
+
+                    Copyright (c) 1999 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+rcfile = /usr/caen/verdi-2023.12-SP2-1/etc/novas.rc
+invalidDisplay::xtInitialize::XtToolkitError::Can't open display: 
+Note: Execution of dve exited with code 1
+Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)

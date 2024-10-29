@@ -9,7 +9,7 @@ UUM=FALSE
 KDB=TRUE
 USE_NOVAS_HOME=FALSE
 COSIM=FALSE
-TOP=input_reorder_tb 
+TOP=delay_tb 
 OPTION=-ssv -ssy 
 ELAB_OPTION=-ssv -ssy 
 OTHER_OPTION=-xprop=tmerge 

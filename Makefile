@@ -28,8 +28,8 @@ all:	simv
 #####
 
 HEADERS = verilog/headers.svh
-TESTBENCH = test/input_reorder_tb.sv
-SIMFILES = verilog/input_reorder.sv
+TESTBENCH = test/delay_tb.sv
+SIMFILES = verilog/delay.sv
 SYNFILES = cmul.vg
 
 
@@ -62,3 +62,12 @@ clean:
 
 nuke:	clean
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/
+
+run_all:
+	clear
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Simulating..."
+	@$(MAKE) simv
+	@echo "Running simulation..."
+	./simv | tee program.out

@@ -1,3 +1,2 @@
-/home/ksnl/eecs598/final-project/mimo-ofdm/test/input_reorder_tb.sv
-/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/headers.svh
-/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/input_reorder.sv
+/home/ksnl/eecs598/final-project/mimo-ofdm/test/delay_tb.sv
+/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/delay.sv

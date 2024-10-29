@@ -1,11 +1,13 @@
-verilog/input_reorder.sv:32 YES:SyncFF
+test/delay_tb.sv:35 YES:SyncFF
+verilog/delay.sv:17 YES:SyncFF
+verilog/delay.sv:31 YES:SyncFF
 ==================================================
 Unified Inference Statistics
-Number of always_ff:                   1
+Number of always_ff:                   2
 Number of always_latch:                0
 Number of always @*:                   0
-Number of always_comb :                1
-Number of always :                     1
-Number of flip-flop candidates:        1
-Number of synchronous flops inferred:  1
+Number of always_comb :                0
+Number of always :                     2
+Number of flip-flop candidates:        3
+Number of synchronous flops inferred:  3
 Number of Asynchronous flops inferred: 0
