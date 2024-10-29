@@ -1,8 +1,0 @@
-test/delay_tb.sv:35 YES
-verilog/delay.sv:17 YES
-verilog/delay.sv:31 YES
-==================================================
-X P R O P   S T A T I S T I C S
-instrumentable assignments:    12
-instrumented assignments:      12
-instrumentation success rate:  100%
