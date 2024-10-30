@@ -35,15 +35,15 @@ module delay #(
         end
         else begin
             switch_counter <= (out_valid) ? switch_counter + 1 : 0;
-            if (delay_counter == DELAY+1) begin
-                delay_counter <= DELAY+1;
+            if (delay_counter == DELAY) begin
+                delay_counter <= DELAY;
             end
             else delay_counter <= delay_counter + 1;
         end
     end
 
     assign out = delay_reg[DELAY-1];
-    assign out_valid = (delay_counter == DELAY+1);
-    assign switch_enable = (switch_counter[$clog2(DELAY)]);
+    assign out_valid = (delay_counter == DELAY);
+    assign switch_enable = out_valid & (~switch_counter[$clog2(DELAY)]);
 
 endmodule

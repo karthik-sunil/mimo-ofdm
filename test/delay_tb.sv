@@ -1,7 +1,7 @@
 `timescale 1ps/1ps
 module delay_tb();
     // must be power of 2
-    parameter DELAY = 64;
+    parameter DELAY = 2;
     parameter DATA_WIDTH = 16;
     parameter CLOCK_PERIOD = 10;
 
@@ -34,10 +34,10 @@ module delay_tb();
 
     always @(negedge clk) begin
         if($isunknown(out)) begin
-            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-2, in, 0, out_valid, switch_enable);
+            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in, 0, out_valid, switch_enable);
         end
         else begin
-            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-2, in, out, out_valid, switch_enable);
+            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in, out, out_valid, switch_enable);
         end
     end
 
@@ -46,15 +46,14 @@ module delay_tb();
         reset = 1; 
         @(negedge clk);
         reset = 0;
-        @(negedge clk);
 
         f_out = $fopen("out/delay_tb_output.txt", "w");
 
         $display("Simulation Starts");
         $fdisplay(f_out,"Cycle | In  | Out | Valid | Switch |");
 
-        for(int i=0; i<DELAY*16; i++) begin
-            in = i;
+        for(int i=0; i<4; i++) begin
+            in = i+4;
             @(negedge clk);
         end
 

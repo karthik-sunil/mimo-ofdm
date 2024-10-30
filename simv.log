@@ -4,20 +4,23 @@ Warning-[LCA_FEATURES_ENABLED] Usage warning
   information regarding list of LCA features please refer to Chapter "LCA 
   features" in the VCS Release Notes
 
-Parsing design file 'test/delay_tb.sv'
+Parsing design file 'test/delay_commutator_tb.sv'
+Parsing design file 'verilog/delay_commutator.sv'
 Parsing design file 'verilog/delay.sv'
 Top Level Modules:
-       delay_tb
-TimeScale is 1 ps / 1 ps
+       delay_commutator_tb
+No TimeScale specified
 Starting vcs inline pass...
-1 module and 0 UDP read.
-recompiling module delay_tb
+2 modules and 0 UDP read.
+recompiling module delay_commutator_tb
+recompiling module delay
+Both modules done.
 make[2]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
 make[2]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
 make[2]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
-g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/usr/caen/vcs-2023.12-SP2-1/linux64/lib -L/usr/caen/vcs-2023.12-SP2-1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _1570218_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative -lreversedebug /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/usr/caen/vcs-2023.12-SP2-1/linux64/lib -L/usr/caen/vcs-2023.12-SP2-1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _1991805_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative -lreversedebug /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
 make[2]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
 Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
