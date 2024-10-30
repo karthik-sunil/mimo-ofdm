@@ -4,6 +4,7 @@ module delay #(
 )(
     input logic clk,
     input logic reset,
+    input logic enable,
     input logic [DATA_WIDTH-1:0] in,
     output logic [DATA_WIDTH-1:0] out,
     output logic out_valid,
@@ -15,7 +16,7 @@ module delay #(
 
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             for (int i=0; i<DELAY; i++) begin
                 delay_reg[i] <= 0;
             end
@@ -29,7 +30,7 @@ module delay #(
     end
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             delay_counter <= 0;
             switch_counter <= 0;
         end

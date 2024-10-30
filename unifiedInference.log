@@ -1,15 +1,19 @@
-test/delay_commutator_tb.sv:36 YES:SyncFF
-verilog/delay_commutator.sv:35 YES:SyncFF
-verilog/delay_commutator.sv:68 YES:SyncFF
-verilog/delay.sv:17 YES:SyncFF
-verilog/delay.sv:31 YES:SyncFF
+test/dc_chain_tb.sv:33 YES:SyncFF
+verilog/delay_commutator.sv:38 YES:SyncFF
+verilog/delay_commutator.sv:72 YES:SyncFF
+verilog/delay.sv:18 YES:SyncFF
+verilog/delay.sv:32 YES:SyncFF
+verilog/delay_commutator.sv:38 YES:SyncFF
+verilog/delay_commutator.sv:72 YES:SyncFF
+verilog/delay.sv:18 YES:SyncFF
+verilog/delay.sv:32 YES:SyncFF
 ==================================================
 Unified Inference Statistics
-Number of always_ff:                   5
+Number of always_ff:                   9
 Number of always_latch:                0
 Number of always @*:                   0
 Number of always_comb :                0
 Number of always :                     1
-Number of flip-flop candidates:        5
-Number of synchronous flops inferred:  5
+Number of flip-flop candidates:        9
+Number of synchronous flops inferred:  9
 Number of Asynchronous flops inferred: 0

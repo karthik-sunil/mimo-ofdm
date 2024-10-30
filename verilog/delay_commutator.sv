@@ -5,6 +5,7 @@ module delay_commutator #(
 )(
     input logic clk,
     input logic reset,
+    input logic enable,
     input logic [DATA_WIDTH-1:0] x0,
     input logic [DATA_WIDTH-1:0] x1,
     output logic [DATA_WIDTH-1:0] y0,
@@ -26,14 +27,16 @@ module delay_commutator #(
     ) delay_x1 (
         .clk(clk),
         .reset(reset),
+        .enable(enable),
         .in(x1),
         .out(x1_delayed),
         .out_valid(out_valid),
         .switch_enable(switch_enable)
     );    
 
+    // Synchronize x0 and x1_delayed 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             x0_ff <= 0;
             x1_ff <= 0;
             switch_enable_ff <= 0;
@@ -59,6 +62,7 @@ module delay_commutator #(
     ) delay_y0 (
         .clk(clk),
         .reset(reset),
+        .enable(enable),
         .in(y0_comb),
         .out(y0_delayed),
         .out_valid(commutator_out_valid_comb),
@@ -66,13 +70,14 @@ module delay_commutator #(
     );
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             commutator_out_valid_ff <= 0;
         end
         else begin
         commutator_out_valid_ff <= commutator_out_valid_comb;
     end
     end
+
     assign y0 = y0_delayed;
     assign y1 = y1_comb;
     assign commutator_out_valid = commutator_out_valid_ff;

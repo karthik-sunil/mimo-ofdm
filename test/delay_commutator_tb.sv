@@ -6,6 +6,8 @@ module delay_commutator_tb();
 
     logic clk;
     logic reset;
+    logic enable;
+
     logic [DATA_WIDTH-1:0] x0;
     logic [DATA_WIDTH-1:0] x1;
 
@@ -21,6 +23,7 @@ module delay_commutator_tb();
     ) dut (
         .clk(clk),
         .reset(reset),
+        .enable(enable),
         .x0(x0),
         .x1(x1),
         .y0(y0),
@@ -35,7 +38,8 @@ module delay_commutator_tb();
 
     always_ff @(negedge clk) begin
         // $display("%d,%d",x1,dut.x1_delayed);
-        if(commutator_out_valid) begin
+        if(1) begin
+            // $display("%d,%d,%d,%d,[%b]", x0, x1, x0, dut.x1_delayed,dut.switch_enable);
             $display("%d,%d,%d,%d,%d", x0, x1, y0, y1, commutator_out_valid);
         end
         // $display("%d,%d,%d,%d", x1,dut.x1_delayed, dut.delay_x1.delay_counter, dut.delay_x1.out_valid);
@@ -44,9 +48,12 @@ module delay_commutator_tb();
     initial begin
         clk = 0;
         reset = 1;
+        enable = 0;
+
         @(negedge clk);
         reset = 0;
-        // @(negedge clk);
+        enable = 1;
+        
         for(int i=0; i<2*DELAY; i++) begin
             x0 = i;
             x1 = i+2*DELAY;

@@ -7,6 +7,7 @@ module delay_tb();
 
     logic clk;
     logic reset; 
+    logic enable;
 
     logic [DATA_WIDTH-1:0] in;
     logic [DATA_WIDTH-1:0] out;
@@ -21,6 +22,7 @@ module delay_tb();
     ) dut(
         .clk(clk),
         .reset(reset),
+        .enable(enable),
         .in(in),
         .out(out),
         .out_valid(out_valid),
@@ -44,8 +46,10 @@ module delay_tb();
     initial begin
         clk = 0;
         reset = 1; 
+        enable = 0;
         @(negedge clk);
         reset = 0;
+        enable = 1;
 
         f_out = $fopen("out/delay_tb_output.txt", "w");
 
