@@ -1,6 +1,6 @@
 module delay_commutator_tb();
 
-    parameter DELAY = 2;
+    parameter DELAY = 4;
     parameter DATA_WIDTH = 16;
     parameter CLOCK_PERIOD = 10;
 
@@ -34,9 +34,10 @@ module delay_commutator_tb();
     end
 
     always_ff @(negedge clk) begin
-
         // $display("%d,%d",x1,dut.x1_delayed);
-        $display("%d,%d,%d,%d,%d", x0, x1, y0, y1, commutator_out_valid);
+        if(commutator_out_valid) begin
+            $display("%d,%d,%d,%d,%d", x0, x1, y0, y1, commutator_out_valid);
+        end
         // $display("%d,%d,%d,%d", x1,dut.x1_delayed, dut.delay_x1.delay_counter, dut.delay_x1.out_valid);
     end
 
@@ -46,9 +47,9 @@ module delay_commutator_tb();
         @(negedge clk);
         reset = 0;
         // @(negedge clk);
-        for(int i=0; i<4; i++) begin
+        for(int i=0; i<2*DELAY; i++) begin
             x0 = i;
-            x1 = i+4;
+            x1 = i+2*DELAY;
             @(negedge clk);
         end
 
