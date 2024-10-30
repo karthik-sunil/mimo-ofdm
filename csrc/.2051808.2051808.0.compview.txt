@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1730318749.449368677, "rt":1.58, "ut":0.23, "st":0.26}}
-{"vcselab":{"timestamp_begin":1730318751.099596579, "rt":1.11, "ut":0.22, "st":0.12}}
-{"link":{"timestamp_begin":1730318752.264760814, "rt":0.81, "ut":0.14, "st":0.13}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1730318748.835249852}
-{"VCS_COMP_START_TIME": 1730318748.835249852}
-{"VCS_COMP_END_TIME": 1730318754.253748366}
-{"VCS_USER_OPTIONS": "-sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca -debug_access+all+reverse +define+ test/dc_chain_tb.sv verilog/dc_chain.sv verilog/delay_commutator.sv verilog/delay.sv -o simv"}
-{"vcs1": {"peak_mem": 556736}}
-{"vcselab": {"peak_mem": 260716}}

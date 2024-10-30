@@ -1,4 +1,4 @@
-/home/ksnl/eecs598/final-project/mimo-ofdm/test/dc_chain_tb.sv
-/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/dc_chain.sv
-/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/delay.sv
-/home/ksnl/eecs598/final-project/mimo-ofdm/verilog/delay_commutator.sv
+/home/hitheshp/finalproj_eecs598/test/dc_chain_tb.sv
+/home/hitheshp/finalproj_eecs598/verilog/dc_chain.sv
+/home/hitheshp/finalproj_eecs598/verilog/delay.sv
+/home/hitheshp/finalproj_eecs598/verilog/delay_commutator.sv

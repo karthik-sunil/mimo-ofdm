@@ -1,6 +1,6 @@
 psSimBaseName                      	simv
 psLogFileName                      	NULL
-psDaiDir                           	/home/ksnl/eecs598/final-project/mimo-ofdm/simv.daidir
+psDaiDir                           	/home/hitheshp/finalproj_eecs598/simv.daidir
 destPath                           	csrc/
 fSharedMasterElab                  	0
 fHsimPCSharedLibSpecified          	0

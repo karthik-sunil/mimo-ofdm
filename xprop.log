@@ -9,6 +9,6 @@ verilog/delay.sv:18 YES
 verilog/delay.sv:32 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    40
-instrumented assignments:      40
+instrumentable assignments:    80
+instrumented assignments:      80
 instrumentation success rate:  100%

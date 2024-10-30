@@ -44,26 +44,27 @@ test/dc_chain_tb.sv
 verilog/dc_chain.sv
 verilog/delay_commutator.sv
 verilog/delay.sv
-83
+86
 which_declare=declare -f
-__LMOD_REF_COUNT_PATH=/usr/caen/vcs-2023.12-SP2-1/bin:1;/usr/caen/verdi-2023.12-SP2-1/bin:1;/home/ksnl/OpenLLMASIC/google-cloud-sdk/bin:1;/home/ksnl/.vscode-server/cli/servers/Stable-912bb683695358a54ae0c670461738984cbb5b95/server/bin/remote-cli:1;/home/ksnl/eecs583/llvm-project/build/bin:2;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/usr/um/bin:1;/usr/caen/bin:1
-__LMOD_REF_COUNT_MODULEPATH=/etc/scl/modulefiles:2;/etc/modulefiles:1;/usr/share/modulefiles:1;/usr/caen/misc/modules:2;/usr/caen/misc/class/modules:2;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1
+__LMOD_REF_COUNT_PATH=/usr/caen/vcs-2023.12-SP2-1/bin:1;/usr/caen/verdi-2023.12-SP2-1/bin:1;/usr/local/bin:1;/usr/local/sbin:1;/usr/bin:1;/usr/sbin:1;/usr/um/bin:1;/usr/caen/bin:1
+__LMOD_REF_COUNT_MODULEPATH=/etc/scl/modulefiles:1;/etc/modulefiles:1;/usr/share/modulefiles:1;/usr/caen/misc/modules:1;/usr/caen/misc/class/modules:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1
 __LMOD_REF_COUNT_LM_LICENSE_FILE=license.dat:1;/usr/caen/FLEXlm/data/license.dat.synopsys:1
 __GL_SHADER_DISK_CACHE=0
-_ModuleTable_Sz_=4
-_ModuleTable004_=dWxlZmlsZXMvQ29yZTovdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi91c3IvY2Flbi9taXNjL21vZHVsZXM6L3Vzci9jYWVuL21pc2MvY2xhc3MvbW9kdWxlcyIsCn0K
-_ModuleTable003_=bWlzYy9jbGFzcy9tb2R1bGVzIiwgIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXgiCiwgIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsICIvdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlIgosICIvdXNyL2NhZW4vbWlzYy9tb2R1bGVzIiwgIi91c3IvY2Flbi9taXNjL2NsYXNzL21vZHVsZXMiLAp9LApzeXN0ZW1CYXNlTVBBVEggPSAiL2V0Yy9zY2wvbW9kdWxlZmlsZXM6L2V0Yy9zY2wvbW9kdWxlZmlsZXM6L2V0Yy9tb2R1bGVmaWxlczovdXNyL3NoYXJlL21vZHVsZWZpbGVzOi91c3IvY2Flbi9taXNjL21vZHVsZXM6L3Vzci9jYWVuL21pc2MvY2xhc3MvbW9kdWxlczovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4Oi91c3Ivc2hhcmUvbW9k
-_ModuleTable002_=L3Vzci9jYWVuL21pc2MvbW9kdWxlcy92ZXJkaS8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZlcmRpLzIwMjMuMTItU1AyLTEiLApsb2FkT3JkZXIgPSAxLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMCwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gInZlcmRpIiwKd1YgPSAiXjAwMDAyMDIzLjAwMDAwMDAxMi4qc3AuMDAwMDAwMDAyLip6ZmluYWwtLjAwMDAwMDAwMS4qemZpbmFsIiwKfSwKfSwKbXBhdGhBID0gewoiL2V0Yy9zY2wvbW9kdWxlZmlsZXMiLCAiL2V0Yy9zY2wvbW9kdWxlZmlsZXMiLCAiL2V0Yy9tb2R1bGVmaWxlcyIKLCAiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcyIsICIvdXNyL2NhZW4vbWlzYy9tb2R1bGVzIgosICIvdXNyL2NhZW4v
-_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IDcyMDAuMCwKY19zaG9ydFRpbWUgPSAwLjAxMTE2NzA0OTQwNzk1OSwKZGVwdGhUID0ge30sCmZhbWlseSA9IHt9LAptVCA9IHsKdmNzID0gewpmbiA9ICIvdXNyL2NhZW4vbWlzYy9tb2R1bGVzL3Zjcy8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZjcy8yMDIzLjEyLVNQMi0xIiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJ2Y3MiLAp3ViA9ICJeMDAwMDIwMjMuMDAwMDAwMDEyLipzcC4wMDAwMDAwMDIuKnpmaW5hbC0uMDAwMDAwMDAxLip6ZmluYWwiLAp9LAp2ZXJkaSA9IHsKZm4gPSAi
+_ModuleTable_Sz_=3
+_ModuleTable003_=L3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwgIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvQ29yZSIsICIvdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlIiwKfSwKc3lzdGVtQmFzZU1QQVRIID0gIi9ldGMvc2NsL21vZHVsZWZpbGVzOi9ldGMvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlczovdXNyL2NhZW4vbWlzYy9tb2R1bGVzOi91c3IvY2Flbi9taXNjL2NsYXNzL21vZHVsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsCn0K
+_ModuleTable002_=L3Vzci9jYWVuL21pc2MvbW9kdWxlcy92ZXJkaS8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZlcmRpLzIwMjMuMTItU1AyLTEiLApsb2FkT3JkZXIgPSAxLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMCwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gInZlcmRpIiwKd1YgPSAiXjAwMDAyMDIzLjAwMDAwMDAxMi4qc3AuMDAwMDAwMDAyLip6ZmluYWwtLjAwMDAwMDAwMS4qemZpbmFsIiwKfSwKfSwKbXBhdGhBID0gewoiL2V0Yy9zY2wvbW9kdWxlZmlsZXMiLCAiL2V0Yy9tb2R1bGVmaWxlcyIsICIvdXNyL3NoYXJlL21vZHVsZWZpbGVzIiwgIi91c3IvY2Flbi9taXNjL21vZHVsZXMiLCAiL3Vzci9jYWVuL21pc2MvY2xhc3MvbW9kdWxlcyIsICIvdXNy
+_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IDcyMDAuMCwKY19zaG9ydFRpbWUgPSAwLjAyNTE2NDg0MjYwNTU5MSwKZGVwdGhUID0ge30sCmZhbWlseSA9IHt9LAptVCA9IHsKdmNzID0gewpmbiA9ICIvdXNyL2NhZW4vbWlzYy9tb2R1bGVzL3Zjcy8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZjcy8yMDIzLjEyLVNQMi0xIiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJ2Y3MiLAp3ViA9ICJeMDAwMDIwMjMuMDAwMDAwMDEyLipzcC4wMDAwMDAwMDIuKnpmaW5hbC0uMDAwMDAwMDAxLip6ZmluYWwiLAp9LAp2ZXJkaSA9IHsKZm4gPSAi
 _LMFILES_=/usr/caen/misc/modules/verdi/2023.12-SP2-1.lua:/usr/caen/misc/modules/vcs/2023.12-SP2-1.lua
-XDG_SESSION_ID=9235
-XDG_RUNTIME_DIR=/run/user/114358882
-XDG_DATA_DIRS=/home/ksnl/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-VSCODE_IPC_HOOK_CLI=/run/user/114358882/vscode-ipc-b7ebbad0-343d-4db9-b0fb-7c28e87bb08e.sock
-VSCODE_GIT_IPC_HANDLE=/run/user/114358882/vscode-git-cee7dbdb8b.sock
-VSCODE_GIT_ASKPASS_NODE=/home/ksnl/.vscode-server/cli/servers/Stable-912bb683695358a54ae0c670461738984cbb5b95/server/node
-VSCODE_GIT_ASKPASS_MAIN=/home/ksnl/.vscode-server/cli/servers/Stable-912bb683695358a54ae0c670461738984cbb5b95/server/extensions/git/dist/askpass-main.js
-VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+XMODIFIERS=@im=ibus
+XDG_SESSION_TYPE=x11
+XDG_SESSION_ID=8846
+XDG_SESSION_DESKTOP=gnome
+XDG_RUNTIME_DIR=/run/user/114356225
+XDG_MENU_PREFIX=gnome-
+XDG_DATA_DIRS=/home/hitheshp/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/share:/usr/local/share:/usr/caen/misc/menus
+XDG_CURRENT_DESKTOP=GNOME
+XAUTHORITY=/run/gdm/auth-for-hitheshp-B33PW2/database
+VTE_VERSION=5204
 VMR_MODE_FLAG=64
 VERDI_HOME=/usr/caen/verdi-2023.12-SP2-1
 VCS_TARGET_ARCH=linux64
@@ -77,32 +78,26 @@ VCS_EXEC_DONE=1
 VCS_DEPTH=0
 VCS_ARG_ADDED_FOR_TMP=1
 VCS_ARCH=linux64
+USERNAME=hitheshp
 UNAME=/bin/uname
 TOOL_HOME=/usr/caen/vcs-2023.12-SP2-1/linux64
-TERM_PROGRAM_VERSION=1.95.0
-TERM_PROGRAM=vscode
 SW_VCS=2020.12-SP2-1
-SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
-SSL_CERT_DIR=/etc/pki/tls/certs
-SSH_CONNECTION=35.3.133.41 36106 141.211.232.118 22
-SSH_CLIENT=35.3.133.41 36106 22
 SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
 SNPS_VCS_PYTHON3=/usr/caen/vcs-2023.12-SP2-1/linux64/bin/Python-3.6.1/bin/python3
 SNPS_VCS_CLANG_PATH=/usr/caen/vcs-2023.12-SP2-1/linux64/clang
 SNPS_INTERNAL_VCS_LINUX_OS=linux
-SELINUX_USE_CURRENT_RANGE=
-SELINUX_ROLE_REQUESTED=
-SELINUX_LEVEL_REQUESTED=
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3339786,unix/unix:/tmp/.ICE-unix/3339786
 SCRNAME=vcs
 SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
 OVA_UUM=0
 MSI2LMP_LIBRARY=/usr/share/lammps/frc_files
-MODULESHOME=/usr/share/Modules
+MODULESHOME=/usr/share/lmod/lmod
 MODULEPATH_ROOT=/usr/share/modulefiles
 MODULEPATH=/etc/scl/modulefiles:/etc/modulefiles:/usr/share/modulefiles:/usr/caen/misc/modules:/usr/caen/misc/class/modules:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
 MFLAGS=-w
-MAKE_TERMOUT=/dev/pts/8
-MAKE_TERMERR=/dev/pts/8
+MAKE_TERMOUT=/dev/pts/7
+MAKE_TERMERR=/dev/pts/7
 MAKELEVEL=2
 MAKEFLAGS=w
 LOADEDMODULES=verdi/2023.12-SP2-1:vcs/2023.12-SP2-1
@@ -117,11 +112,19 @@ LMOD_CACHED_LOADS=yes
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
 LAMMPS_POTENTIALS=/usr/share/lammps/potentials
-KRB5CCNAME=KEYRING:persistent:114358882
+KRB5CCNAME=KEYRING:persistent:114356225
 HISTCONTROL=ignoredups
-GIT_ASKPASS=/home/ksnl/.vscode-server/cli/servers/Stable-912bb683695358a54ae0c670461738984cbb5b95/server/extensions/git/dist/askpass.sh
+GNOME_TERMINAL_SERVICE=:1.72
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/e7bcd76a_6202_4059_9391_d85416203070
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GJS_DEBUG_OUTPUT=stderr
+GDM_LANG=en_US.UTF-8
+GDMSESSION=gnome
+GDK_BACKEND=x11
 FPATH=/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.5.1/functions:/usr/share/lmod/lmod/init/ksh_funcs
-DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/114358882/bus
+DESKTOP_SESSION=gnome
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-rziVOPxLIR,guid=38c1382bda055cf6a881ad3267227bf7
 COLORTERM=truecolor
 BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
 BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
@@ -131,10 +134,10 @@ BASH_ENV=/usr/share/lmod/lmod/init/bash
 0
 0
 6
-1730318242 verilog/delay.sv
-1730318166 verilog/delay_commutator.sv
-1730318400 verilog/dc_chain.sv
-1730318746 test/dc_chain_tb.sv
+1730319139 verilog/delay.sv
+1730319139 verilog/delay_commutator.sv
+1730325443 verilog/dc_chain.sv
+1730325541 test/dc_chain_tb.sv
 1721037471 /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/verdi.tab
 1721617572 /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcsdp_lite.tab
 4
@@ -142,5 +145,5 @@ BASH_ENV=/usr/share/lmod/lmod/init/bash
 1721618558 /usr/caen/vcs-2023.12-SP2-1/linux64/lib/liberrorinf.so
 1721618482 /usr/caen/vcs-2023.12-SP2-1/linux64/lib/libsnpsmalloc.so
 1721618554 /usr/caen/vcs-2023.12-SP2-1/linux64/lib/libvfs.so
-1730318754 simv.daidir
+1730326127 simv.daidir
 -1 partitionlib

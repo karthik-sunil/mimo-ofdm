@@ -43,13 +43,13 @@ module dc_chain_tb();
         @(negedge clk);
         reset = 0;
 
-        for(int i=0; i<2*2; i++) begin
+        for(int i=0; i<2*8; i++) begin
             x0 = i;
-            x1 = i+2*2;
+            x1 = i+2*8;
             @(negedge clk);
         end
 
-        repeat(10) begin
+        repeat(20) begin
             x0 = 0;
             x1 = 0;
             @(negedge clk);

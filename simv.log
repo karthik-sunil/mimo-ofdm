@@ -13,10 +13,10 @@ Top Level Modules:
 No TimeScale specified
 
 Warning-[PCWM-W] Port connection width mismatch
-verilog/dc_chain.sv, 21
-"delay_commutator #(2, DATA_WIDTH) dc2( .clk (clk),  .reset (reset),  .enable (1),  .x0 (x0),  .x1 (x1),  .y0 (x0_dc2),  .y1 (x1_dc2),  .commutator_out_valid (dc2_out_valid));"
+verilog/dc_chain.sv, 74
+"delay_commutator #(8, DATA_WIDTH) dc8( .clk (clk),  .reset (reset),  .enable (1),  .x0 (x0),  .x1 (x1),  .y0 (x0_dc8),  .y1 (x1_dc8),  .commutator_out_valid (dc8_out_valid));"
   The following 32-bit expression is connected to 1-bit port "enable" of 
-  module "delay_commutator", instance "dc2".
+  module "delay_commutator", instance "dc8".
   Expression: 1
   Instantiated module defined at: "verilog/delay_commutator.sv", 2
   Use +lint=PCWM for more details.
@@ -26,12 +26,12 @@ Starting vcs inline pass...
 recompiling module dc_chain_tb
 recompiling module delay
 Both modules done.
-make[2]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
-make[2]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
-make[2]: Entering directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+make[2]: Entering directory '/home/hitheshp/finalproj_eecs598/csrc'
+make[2]: Leaving directory '/home/hitheshp/finalproj_eecs598/csrc'
+make[2]: Entering directory '/home/hitheshp/finalproj_eecs598/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
-g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/usr/caen/vcs-2023.12-SP2-1/linux64/lib -L/usr/caen/vcs-2023.12-SP2-1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _2052242_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative -lreversedebug /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/usr/caen/vcs-2023.12-SP2-1/linux64/lib -L/usr/caen/vcs-2023.12-SP2-1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _3523520_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative -lreversedebug /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory '/home/ksnl/eecs598/final-project/mimo-ofdm/csrc'
+make[2]: Leaving directory '/home/hitheshp/finalproj_eecs598/csrc'
 Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
