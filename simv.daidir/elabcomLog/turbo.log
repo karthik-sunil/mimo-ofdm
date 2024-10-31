@@ -1,3 +1,0 @@
-Command Line: /usr/caen/vcs-2023.12-SP2-1/linux64/bin/elabcom -logdir /home/hitheshp/finalproj_eecs598/simv.daidir/elabcomLog -simvdaidir /home/hitheshp/finalproj_eecs598/simv.daidir -lib /home/hitheshp/finalproj_eecs598/simv.daidir/work -saveLevel -elab /home/hitheshp/finalproj_eecs598/simv.daidir/kdb -simflow -simdir /home/hitheshp/finalproj_eecs598/simv.daidir/kdb_libs -topfile /home/hitheshp/finalproj_eecs598/simv.daidir/.elabcomTopFile -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
-uname(Linux caen-vnc-mi06.engin.umich.edu 4.18.0-553.16.1.el8_10.x86_64 #1 SMP Thu Aug 1 04:16:12 EDT 2024 x86_64)
-au time 0.895115 0.018362 0.046761 delta 87396352 87396352 total 354119680 354119680

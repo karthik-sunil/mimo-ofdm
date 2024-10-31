@@ -1,4 +1,4 @@
-test/dc_chain_tb.sv:33 YES
+test/dc_top_tb.sv:40 YES
 verilog/delay_commutator.sv:38 YES
 verilog/delay_commutator.sv:72 YES
 verilog/delay.sv:18 YES
@@ -9,6 +9,6 @@ verilog/delay.sv:18 YES
 verilog/delay.sv:32 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    80
-instrumented assignments:      80
+instrumentable assignments:    40
+instrumented assignments:      40
 instrumentation success rate:  100%
