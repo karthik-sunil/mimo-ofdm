@@ -27,6 +27,8 @@ generate
     else begin
         assign idataA = $shortrealtobits(idataA_f);
         assign idataB = $shortrealtobits(idataB_f);
+        // assign idataA = 32'h4e02b6ca;
+        // assign idataB = 32'h4cac997e;
         assign odata_expecected = $shortrealtobits(odata_expecected_f);
     end
 endgenerate
@@ -95,22 +97,6 @@ always begin
     #(CLOCK_PERIOD/2);
 end
 
-// always @(negedge clk) begin
-//     if(DEBUG_MODE) begin
-//         if(out_valid) begin
-//             int count = 0;
-//             if(count % 4 ==1) begin
-//                 $display("idataA = %h, idataB = %h, odata = %32b, odata_expected = %32b", idataA, idataB, odata, odata_expecected);
-//             end
-//             count++;
-//         end
-//     end
-
-//     else begin
-//         $display("%h,%h,%h, %h", idataA, idataB, odata, odata_expecected);
-//     end
-// end
-
 initial begin
     clk = 1'b0;
     reset = 1'b1;
@@ -122,7 +108,8 @@ initial begin
     for(int i=0; i<32; i++) begin
         idataA_f = $urandom;
         idataB_f = $urandom;
-        @(negedge clk);
+        repeat(3) @(negedge clk);
+
         $display("idataA = %h, idataB = %h, odata = %h, odata_expected = %h", idataA, idataB, odata, odata_expecected);
     end
 

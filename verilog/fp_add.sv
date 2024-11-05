@@ -11,11 +11,21 @@ module fp_add #(
     input       [I_DATA-1:0]  idataB,
     output      [I_DATA-1:0]  odata
 );
+    // Pass Through
+    logic [I_DATA-1:0]      idataA_ff_stage_1, idataB_ff_stage_1;
+    logic [I_DATA-1:0]      idataA_ff_stage_2, idataB_ff_stage_2;
+    logic [I_DATA-1:0]      idataA_ff_stage_3, idataB_ff_stage_3;
+
+    // ===================================== Stage 1 ===================================== //
 
     // Extract Exponent and Mantissa Field of Input A and B
     logic                   idataA_sig, idataB_sig;
     logic     [I_EXP-1:0]   idataA_exp, idataB_exp;
     logic     [I_MNT:0]     idataA_mat, idataB_mat;
+
+    logic                   idataA_sig_ff, idataB_sig_ff;
+    logic     [I_EXP-1:0]   idataA_exp_ff, idataB_exp_ff;
+    logic     [I_MNT:0]     idataA_mat_ff, idataB_mat_ff;
 
     assign idataA_sig = idataA[I_DATA-1];
     assign idataA_exp = idataA[I_MNT+:I_EXP];
@@ -27,28 +37,73 @@ module fp_add #(
     // Merge InputA and InputB's Mantissas for Output
     // 1. Determine the Larger Input
     logic   idataA_larger;
+    logic   idataA_larger_ff;
     assign  idataA_larger = (idataA_exp > idataB_exp) ? 1'b1 :
                             ((idataA_exp == idataB_exp) && (idataA_mat > idataB_mat)) ? 1'b1 : 1'b0;
 
     // 2. Determine EXP difference
     logic    [I_EXP-1:0]   exp_diff;
+    logic    [I_EXP-1:0]   exp_diff_ff;
     assign  exp_diff = idataA_larger ? idataA_exp - idataB_exp : idataB_exp - idataA_exp;
+
+    // Insert Pipeline Register Here
+    always_ff @(posedge clk) begin
+        if (reset) begin
+           exp_diff_ff <= 'd0; 
+           idataA_larger_ff <= 1'b0;
+           
+           idataA_sig_ff <= 1'b0;
+           idataA_exp_ff <= 'd0;
+           idataA_mat_ff <= 'd0;
+
+           idataB_sig_ff <= 1'b0;
+           idataB_exp_ff <= 'd0;
+           idataB_mat_ff <= 'd0; 
+
+           idataA_ff_stage_1 <= 'd0;
+           idataB_ff_stage_1 <= 'd0;
+        end
+        else begin
+            exp_diff_ff <= exp_diff;
+            idataA_larger_ff <= idataA_larger;  
+
+            idataA_sig_ff <= idataA_sig;
+            idataA_exp_ff <= idataA_exp;
+            idataA_mat_ff <= idataA_mat;
+
+            idataB_sig_ff <= idataB_sig;
+            idataB_exp_ff <= idataB_exp;
+            idataB_mat_ff <= idataB_mat;
+
+            idataA_ff_stage_1 <= idataA;
+            idataB_ff_stage_1 <= idataB;
+        end
+    end
+
+    // ===================================== Stage 2 ===================================== // 
 
     // 3. Shift the Mantissa of Smaller Input
     logic    [I_MNT*2+1:0] idataA_mat_shift;
     logic    [I_MNT*2+1:0] idataB_mat_shift;
 
-    assign  idataA_mat_shift = idataA_larger              ? {1'b0, idataA_mat, {(I_MNT){1'b0}}} :
-                               (exp_diff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataA_mat, {(I_MNT){1'b0}}} >> exp_diff;
-    assign  idataB_mat_shift = ~idataA_larger             ? {1'b0, idataB_mat, {(I_MNT){1'b0}}} :
-                               (exp_diff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataB_mat, {(I_MNT){1'b0}}} >> exp_diff;
+    assign  idataA_mat_shift = idataA_larger_ff              ? {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} :
+                               (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
+                               {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
+    assign  idataB_mat_shift = ~idataA_larger_ff             ? {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} :
+                               (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
+                               {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
 
     // 4. Add or Substract InputA and InputB's Mantissas accoring to Sign Bit
     logic                  pre_sign;
     logic    [I_EXP-1:0]   pre_exp;
     logic    [I_MNT*2+1:0] pre_mat;
+
+    logic                  pre_sig_ff_stage_2;
+    logic    [I_EXP-1:0]   pre_exp_ff;
+    logic    [I_MNT*2+1:0] pre_mat_ff;
+    logic                  idataA_zero_ff_stage_2, idataB_zero_ff_stage_2;
+    logic                  idataA_zero_ff_stage_3, idataB_zero_ff_stage_3;
+
 
     assign  pre_sign = idataA_larger ? idataA_sig : idataB_sig;
     assign  pre_exp  = idataA_larger ? idataA_exp : idataB_exp;
@@ -56,34 +111,32 @@ module fp_add #(
                        ((idataA_sig^idataB_sig) && ~idataA_larger) ? idataB_mat_shift - idataA_mat_shift :
                        idataA_mat_shift + idataB_mat_shift;
 
-    // Enable Pipeline
-    logic                   pre_sig_reg;
-    logic     [I_EXP-1:0]   pre_exp_reg;
-    logic     [I_MNT*2+1:0] pre_mat_reg;
-    logic     [I_DATA-1:0]  idataA_reg;
-    logic     [I_DATA-1:0]  idataB_reg;
-    logic                   idataA_zero_reg, idataB_zero_reg;
-
     always_ff @(posedge clk) begin
         if (reset) begin
-            pre_sig_reg <= 1'b0;
-            pre_exp_reg <= 'd0;
-            pre_mat_reg <= 'd0;
-            idataA_reg  <= 'd0;
-            idataB_reg  <= 'd0;
-            idataA_zero_reg <= 1'b0;
-            idataB_zero_reg <= 1'b0;
+            pre_sig_ff_stage_2 <= 1'b0;
+            pre_exp_ff <= 'd0;
+            pre_mat_ff <= 'd0;
+
+            idataA_ff_stage_2  <= 'd0;
+            idataB_ff_stage_2  <= 'd0;
+            
+            idataA_zero_ff_stage_2 <= 1'b0;
+            idataB_zero_ff_stage_2 <= 1'b0;
         end
         else begin
-            pre_sig_reg <= pre_sign;
-            pre_exp_reg <= pre_exp;
-            pre_mat_reg <= pre_mat;
-            idataA_reg  <= idataA;
-            idataB_reg  <= idataB;
-            idataA_zero_reg <= idataA_exp == 'd0;
-            idataB_zero_reg <= idataB_exp == 'd0;
+            pre_sig_ff_stage_2 <= pre_sign;
+            pre_exp_ff <= pre_exp;
+            pre_mat_ff <= pre_mat;
+
+            idataA_ff_stage_2  <= idataA_ff_stage_1;
+            idataB_ff_stage_2  <= idataB_ff_stage_1;
+            
+            idataA_zero_ff_stage_2 <= idataA_exp_ff == 'd0;
+            idataB_zero_ff_stage_2 <= idataB_exp_ff == 'd0;
         end
     end
+
+    // ===================================== Stage 3 ===================================== // 
 
     // Normalize Pre-Result for Output
     // 1. Left Shift Mantissa to Meet Bit-1 in MSB
@@ -91,21 +144,51 @@ module fp_add #(
     logic    [I_MNT*2+1:0] pre_mat_shift;
     logic    [I_MNT-1:0]   shift_cnt_temp, shift_cnt;
 
+    logic                  pre_sig_ff_stage_3;
+    logic    [I_EXP-1:0]   pre_exp_shift_ff;
+    logic    [I_MNT*2+1:0] pre_mat_shift_ff;
+
     lead_one #(.IDATA_BIT(I_MNT*2+2), .ODATA_BIT(I_MNT)) lo_inst (
-        .idata              (pre_mat_reg),
+        .idata              (pre_mat_ff),
         .odata              (shift_cnt_temp)
     );  
 
     assign shift_cnt = (2*I_MNT + 2) - shift_cnt_temp;
     
-    assign  pre_exp_shift = pre_exp_reg - shift_cnt + 2;
-    assign  pre_mat_shift = pre_mat_reg << ((I_MNT*2+2) - shift_cnt_temp);
+    assign  pre_exp_shift = pre_exp_ff - shift_cnt + 2;
+    assign  pre_mat_shift = pre_mat_ff << ((I_MNT*2+2) - shift_cnt_temp);
+
+
+    always_ff @(posedge clk) begin
+        if (reset) begin
+            pre_sig_ff_stage_3 <= 1'b0;
+            pre_exp_shift_ff <= 'd0;
+            pre_mat_shift_ff <= 'd0;
+
+            idataA_ff_stage_3  <= 'd0;
+            idataB_ff_stage_3  <= 'd0;
+
+            idataA_zero_ff_stage_3 <= 1'b0;
+            idataB_zero_ff_stage_3 <= 1'b0;
+        end
+        else begin
+            pre_sig_ff_stage_3 <= pre_sig_ff_stage_2;
+            pre_exp_shift_ff <= pre_exp_shift;
+            pre_mat_shift_ff <= pre_mat_shift;
+
+            idataA_ff_stage_3  <= idataA_ff_stage_2;
+            idataB_ff_stage_3  <= idataB_ff_stage_2;
+
+            idataA_zero_ff_stage_3 <= idataA_zero_ff_stage_2;
+            idataB_zero_ff_stage_3 <= idataB_zero_ff_stage_2;
+        end
+    end
 
     // 3. Output
-    assign  odata = (idataA_zero_reg && idataB_zero_reg) ? 'd0 :
-                     idataA_zero_reg                     ? idataB_reg :
-                     idataB_zero_reg                     ? idataA_reg :
-                    {pre_sig_reg, pre_exp_shift, pre_mat_shift[(I_MNT*2+1)-:I_MNT]};
+    assign  odata = (idataA_zero_ff_stage_3 && idataB_zero_ff_stage_3) ? 'd0 :
+                     idataA_zero_ff_stage_3                     ? idataB_ff_stage_3 :
+                     idataB_zero_ff_stage_3                     ? idataA_ff_stage_3 :
+                    {pre_sig_ff_stage_3, pre_exp_shift_ff, pre_mat_shift_ff[(I_MNT*2+1)-:I_MNT]};
 
 endmodule
 
