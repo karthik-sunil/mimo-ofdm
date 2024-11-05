@@ -1,4 +1,4 @@
-// Floating Point Adder - Not fully pipelined
+// Floating Point Adder - Attempt at Full Pipeline - Please Check
 module fp_add #(
     parameter   I_EXP = 8,
     parameter   I_MNT = 23,
