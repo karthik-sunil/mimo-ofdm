@@ -14,26 +14,27 @@ logic [I_DATA-1:0] idataB;
 logic [I_DATA-1:0] odata, odata_expecected;
 logic out_valid;
 
-shortreal idataA_f;
-shortreal idataB_f;
-shortreal odata_expecected_f;
+integer f_out;
+// shortreal idataA_f;
+// shortreal idataB_f;
+// shortreal odata_expecected_f;
 
-generate
-    if(I_DATA == 16) begin
-        assign idataA = shortreal_to_fp16(idataA_f);
-        assign idataB = shortreal_to_fp16(idataB_f);
-        assign odata_expecected = shortreal_to_fp16(odata_expecected_f);
-    end
-    else begin
-        assign idataA = $shortrealtobits(idataA_f);
-        assign idataB = $shortrealtobits(idataB_f);
-        // assign idataA = 32'h4e02b6ca;
-        // assign idataB = 32'h4cac997e;
-        assign odata_expecected = $shortrealtobits(odata_expecected_f);
-    end
-endgenerate
+// generate
+//     if(I_DATA == 16) begin
+//         assign idataA = shortreal_to_fp16(idataA_f);
+//         assign idataB = shortreal_to_fp16(idataB_f);
+//         assign odata_expecected = shortreal_to_fp16(odata_expecected_f);
+//     end
+//     else begin
+//         assign idataA = $shortrealtobits(idataA_f);
+//         assign idataB = $shortrealtobits(idataB_f);
+//         // assign idataA = 32'h4e02b6ca;
+//         // assign idataB = 32'h4cac997e;
+//         assign odata_expecected = $shortrealtobits(odata_expecected_f);
+//     end
+// endgenerate
 
-assign odata_expecected_f = idataA_f + idataB_f;
+// assign odata_expecected_f = idataA_f + idataB_f;
 
 
 function logic [I_DATA-1:0] shortreal_to_fp16(shortreal value);
@@ -104,15 +105,23 @@ initial begin
     @(negedge clk);
 
     reset = 1'b0;
+    f_out = $fopen("out/fp_add_out.csv", "w");
 
-    for(int i=0; i<32; i++) begin
-        idataA_f = $urandom;
-        idataB_f = $urandom;
+    for(int i=0; i<65535; i++) begin
+        if (i >= 0) begin
+            idataA = $urandom(); 
+            idataB = $urandom();
+        end
+        else begin
+            idataA = 32'h3F800000;
+            idataB = 32'h3F800000;
+        end
         repeat(3) @(negedge clk);
+        $fdisplay(f_out,"%h,%h,%h", idataA, idataB,odata);        
 
-        $display("idataA = %h, idataB = %h, odata = %h, odata_expected = %h", idataA, idataB, odata, odata_expecected);
     end
 
+    $fclose(f_out);
 
 $finish;
 end

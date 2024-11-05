@@ -40,7 +40,7 @@ all:	simv
 HEADERS = verilog/headers.svh
 TESTBENCH = test/fp_add_tb.sv
 SIMFILES = verilog/fp_add.sv
-SYNFILES = cmul.vg
+SYNFILES = fp_add.vg
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/delay_tb.sv

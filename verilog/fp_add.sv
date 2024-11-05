@@ -1,4 +1,4 @@
-// Floating Point Adder - Attempt at Full Pipeline - Please Check
+// Fully pipelined Floating Point Adder
 module fp_add #(
     parameter   I_EXP = 8,
     parameter   I_MNT = 23,
@@ -46,7 +46,6 @@ module fp_add #(
     logic    [I_EXP-1:0]   exp_diff_ff;
     assign  exp_diff = idataA_larger ? idataA_exp - idataB_exp : idataB_exp - idataA_exp;
 
-    // Insert Pipeline Register Here
     always_ff @(posedge clk) begin
         if (reset) begin
            exp_diff_ff <= 'd0; 
@@ -88,10 +87,10 @@ module fp_add #(
 
     assign  idataA_mat_shift = idataA_larger_ff              ? {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} :
                                (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
+                               {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} >>> exp_diff_ff;
     assign  idataB_mat_shift = ~idataA_larger_ff             ? {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} :
                                (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
+                               {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} >>> exp_diff_ff;
 
     // 4. Add or Substract InputA and InputB's Mantissas accoring to Sign Bit
     logic                  pre_sign;
@@ -105,10 +104,10 @@ module fp_add #(
     logic                  idataA_zero_ff_stage_3, idataB_zero_ff_stage_3;
 
 
-    assign  pre_sign = idataA_larger ? idataA_sig : idataB_sig;
-    assign  pre_exp  = idataA_larger ? idataA_exp : idataB_exp;
-    assign  pre_mat  = ((idataA_sig^idataB_sig) &&  idataA_larger) ? idataA_mat_shift - idataB_mat_shift :
-                       ((idataA_sig^idataB_sig) && ~idataA_larger) ? idataB_mat_shift - idataA_mat_shift :
+    assign  pre_sign = idataA_larger_ff ? idataA_sig_ff : idataB_sig_ff;
+    assign  pre_exp  = idataA_larger_ff ? idataA_exp_ff : idataB_exp_ff;
+    assign  pre_mat  = ((idataA_sig_ff^idataB_sig_ff) &&  idataA_larger_ff) ? idataA_mat_shift - idataB_mat_shift :
+                       ((idataA_sig_ff^idataB_sig_ff) && ~idataA_larger_ff) ? idataB_mat_shift - idataA_mat_shift :
                        idataA_mat_shift + idataB_mat_shift;
 
     always_ff @(posedge clk) begin
