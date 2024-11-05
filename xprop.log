@@ -1,14 +1,9 @@
-test/dc_top_tb.sv:40 YES
-verilog/delay_commutator.sv:38 YES
-verilog/delay_commutator.sv:72 YES
-verilog/delay.sv:18 YES
-verilog/delay.sv:32 YES
-verilog/delay_commutator.sv:38 YES
-verilog/delay_commutator.sv:72 YES
-verilog/delay.sv:18 YES
-verilog/delay.sv:32 YES
+test/fp_add_tb.sv:47 NO "a disabled 'break', 'continue', or 'return' statement" (47)
+test/fp_add_tb.sv:66 NO "a disabled 'break', 'continue', or 'return' statement" (67)
+test/fp_add_tb.sv:69 NO "a disabled 'break', 'continue', or 'return' statement" (70)
+verilog/fp_add.sv:70 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    40
-instrumented assignments:      40
+instrumentable assignments:    14
+instrumented assignments:      14
 instrumentation success rate:  100%

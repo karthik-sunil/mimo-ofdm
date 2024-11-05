@@ -32,9 +32,14 @@ all:	simv
 # SIMFILES = verilog/delay_commutator.sv verilog/delay.sv
 # SYNFILES = cmul.vg
 
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/dc_top_tb.sv
+# SIMFILES = verilog/dc_top.sv verilog/delay_commutator.sv verilog/delay.sv
+# SYNFILES = cmul.vg
+
 HEADERS = verilog/headers.svh
-TESTBENCH = test/dc_top_tb.sv
-SIMFILES = verilog/dc_top.sv verilog/delay_commutator.sv verilog/delay.sv
+TESTBENCH = test/fp_add_tb.sv
+SIMFILES = verilog/fp_add.sv
 SYNFILES = cmul.vg
 
 # HEADERS = verilog/headers.svh
