@@ -1,9 +1,0 @@
-test/fp_add_tb.sv:47 NO "a disabled 'break', 'continue', or 'return' statement" (47)
-test/fp_add_tb.sv:66 NO "a disabled 'break', 'continue', or 'return' statement" (67)
-test/fp_add_tb.sv:69 NO "a disabled 'break', 'continue', or 'return' statement" (70)
-verilog/fp_add.sv:70 YES
-==================================================
-X P R O P   S T A T I S T I C S
-instrumentable assignments:    14
-instrumented assignments:      14
-instrumentation success rate:  100%
