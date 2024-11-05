@@ -85,12 +85,14 @@ module fp_add #(
     logic    [I_MNT*2+1:0] idataA_mat_shift;
     logic    [I_MNT*2+1:0] idataB_mat_shift;
 
+    // This logic forces small number + large number additions to default to the large number. 
+    // Won't work in the F_Inv_Sqrt -> need to change this
     assign  idataA_mat_shift = idataA_larger_ff              ? {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} :
                                (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} >>> exp_diff_ff;
+                               {1'b0, idataA_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
     assign  idataB_mat_shift = ~idataA_larger_ff             ? {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} :
                                (exp_diff_ff > (I_MNT*2-1)) ? 'd0 :
-                               {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} >>> exp_diff_ff;
+                               {1'b0, idataB_mat_ff, {(I_MNT){1'b0}}} >> exp_diff_ff;
 
     // 4. Add or Substract InputA and InputB's Mantissas accoring to Sign Bit
     logic                  pre_sign;
