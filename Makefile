@@ -37,10 +37,20 @@ all:	simv
 # SIMFILES = verilog/dc_top.sv verilog/delay_commutator.sv verilog/delay.sv
 # SYNFILES = cmul.vg
 
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fp_mul_tb.sv
+# SIMFILES = verilog/fp_mul.sv
+# SYNFILES = fp_add.vg
+
 HEADERS = verilog/headers.svh
-TESTBENCH = test/fp_mul_tb.sv
-SIMFILES = verilog/fp_mul.sv
+TESTBENCH = test/inv_sqrt_tb.sv
+SIMFILES = verilog/inv_sqrt.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
 SYNFILES = fp_add.vg
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fp_add_tb.sv
+# SIMFILES = verilog/fp_add.sv
+# SYNFILES = fp_add.vg
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/delay_tb.sv
