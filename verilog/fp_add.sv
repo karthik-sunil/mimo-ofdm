@@ -9,12 +9,16 @@ module fp_add #(
 
     input       [I_DATA-1:0]  idataA,
     input       [I_DATA-1:0]  idataB,
-    output      [I_DATA-1:0]  odata
+    output      [I_DATA-1:0]  odata,
+    output                    out_valid
 );
     // Pass Through
     logic [I_DATA-1:0]      idataA_ff_stage_1, idataB_ff_stage_1;
     logic [I_DATA-1:0]      idataA_ff_stage_2, idataB_ff_stage_2;
     logic [I_DATA-1:0]      idataA_ff_stage_3, idataB_ff_stage_3;
+
+    // Out_valid
+    logic                   out_valid_stage_1, out_valid_stage_2, out_valid_stage_3;
 
     // ===================================== Stage 1 ===================================== //
 
@@ -61,6 +65,8 @@ module fp_add #(
 
            idataA_ff_stage_1 <= 'd0;
            idataB_ff_stage_1 <= 'd0;
+
+           out_valid_stage_1 <= 1'b0;
         end
         else begin
             exp_diff_ff <= exp_diff;
@@ -76,6 +82,8 @@ module fp_add #(
 
             idataA_ff_stage_1 <= idataA;
             idataB_ff_stage_1 <= idataB;
+
+            out_valid_stage_1 <= 1'b1;
         end
     end
 
@@ -123,6 +131,8 @@ module fp_add #(
             
             idataA_zero_ff_stage_2 <= 1'b0;
             idataB_zero_ff_stage_2 <= 1'b0;
+
+            out_valid_stage_2 <= 1'b0;
         end
         else begin
             pre_sig_ff_stage_2 <= pre_sign;
@@ -134,6 +144,8 @@ module fp_add #(
             
             idataA_zero_ff_stage_2 <= idataA_exp_ff == 'd0;
             idataB_zero_ff_stage_2 <= idataB_exp_ff == 'd0;
+
+            out_valid_stage_2 <= out_valid_stage_1;
         end
     end
 
@@ -171,6 +183,8 @@ module fp_add #(
 
             idataA_zero_ff_stage_3 <= 1'b0;
             idataB_zero_ff_stage_3 <= 1'b0;
+
+            out_valid_stage_3 <= 1'b0;
         end
         else begin
             pre_sig_ff_stage_3 <= pre_sig_ff_stage_2;
@@ -182,6 +196,8 @@ module fp_add #(
 
             idataA_zero_ff_stage_3 <= idataA_zero_ff_stage_2;
             idataB_zero_ff_stage_3 <= idataB_zero_ff_stage_2;
+
+            out_valid_stage_3 <= out_valid_stage_2;
         end
     end
 
@@ -190,6 +206,8 @@ module fp_add #(
                      idataA_zero_ff_stage_3                     ? idataB_ff_stage_3 :
                      idataB_zero_ff_stage_3                     ? idataA_ff_stage_3 :
                     {pre_sig_ff_stage_3, pre_exp_shift_ff, pre_mat_shift_ff[(I_MNT*2+1)-:I_MNT]};
+
+    assign  out_valid = out_valid_stage_3;
 
 endmodule
 

@@ -90,7 +90,8 @@ fp_add #(
     .reset(reset),
     .idataA(idataA),
     .idataB(idataB),
-    .odata(odata)
+    .odata(odata),
+    .out_valid(out_valid)
 );
 
 always begin
@@ -109,15 +110,15 @@ initial begin
 
     for(int i=0; i<65535; i++) begin
         if (i >= 0) begin
-            idataA = $urandom(); 
+            idataA = 32'h5F3759DF; 
             idataB = $urandom();
         end
         else begin
             idataA = 32'h3F800000;
             idataB = 32'h3F800000;
         end
-        repeat(3) @(negedge clk);
-        $fdisplay(f_out,"%h,%h,%h", idataA, idataB,odata);        
+        repeat(1) @(negedge clk);
+        $fdisplay(f_out,"%h,%h,%h,%d", idataA, idataB,odata, out_valid);        
 
     end
 
