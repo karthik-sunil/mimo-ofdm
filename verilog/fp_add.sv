@@ -6,6 +6,7 @@ module fp_add #(
 )(
     input                       clk,
     input                       reset,
+    input                       enable,
 
     input       [I_DATA-1:0]  idataA,
     input       [I_DATA-1:0]  idataB,
@@ -51,7 +52,7 @@ module fp_add #(
     assign  exp_diff = idataA_larger ? idataA_exp - idataB_exp : idataB_exp - idataA_exp;
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
            exp_diff_ff <= 'd0; 
            idataA_larger_ff <= 1'b0;
            
@@ -121,7 +122,7 @@ module fp_add #(
                        idataA_mat_shift + idataB_mat_shift;
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             pre_sig_ff_stage_2 <= 1'b0;
             pre_exp_ff <= 'd0;
             pre_mat_ff <= 'd0;
@@ -173,7 +174,7 @@ module fp_add #(
 
 
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             pre_sig_ff_stage_3 <= 1'b0;
             pre_exp_shift_ff <= 'd0;
             pre_mat_shift_ff <= 'd0;

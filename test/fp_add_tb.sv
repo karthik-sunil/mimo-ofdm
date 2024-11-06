@@ -9,6 +9,7 @@ parameter DEBUG_MODE = 0;
 
 logic clk;
 logic reset;
+logic enable;
 logic [I_DATA-1:0] idataA;
 logic [I_DATA-1:0] idataB;
 logic [I_DATA-1:0] odata, odata_expecected;
@@ -88,6 +89,7 @@ fp_add #(
 ) dut (
     .clk(clk),
     .reset(reset),
+    .enable(enable),
     .idataA(idataA),
     .idataB(idataB),
     .odata(odata),
@@ -102,10 +104,12 @@ end
 initial begin
     clk = 1'b0;
     reset = 1'b1;
+    enable = 1'b0;
 
     @(negedge clk);
 
     reset = 1'b0;
+    enable = 1'b1;
     f_out = $fopen("out/fp_add_out.csv", "w");
 
     for(int i=0; i<65535; i++) begin

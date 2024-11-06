@@ -5,7 +5,7 @@ parameter I_EXP = 8;
 parameter I_MNT = 23;
 parameter I_DATA = I_EXP + I_MNT + 1;
 
-parameter DEBUG_MODE = 1;
+parameter DEBUG_MODE = 0;
 
 logic clk;
 logic reset;
@@ -13,6 +13,7 @@ logic [I_DATA-1:0] idataA;
 logic [I_DATA-1:0] idataB;
 logic [I_DATA-1:0] odata;
 logic out_valid;
+logic enable;
 
 shortreal idataA_f;
 shortreal idataB_f;
@@ -85,6 +86,7 @@ fp_mul #(
 ) dut (
     .clk(clk),
     .reset(reset),
+    .enable(enable),
     .idataA(idataA),
     .idataB(idataB),
     .odata(odata),
@@ -115,10 +117,12 @@ end
 initial begin
     clk = 1'b0;
     reset = 1'b1;
+    enable = 1'b0;
 
     @(negedge clk);
 
     reset = 1'b0;
+    enable = 1'b1;
 
     for(int i=0; i<32; i++) begin
         idataA_f = $urandom;

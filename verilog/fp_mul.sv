@@ -5,6 +5,7 @@ module fp_mul #(
 )(  
     input logic clk,
     input logic reset,
+    input logic enable,
     input logic [I_DATA-1:0] idataA,
     input logic [I_DATA-1:0] idataB, 
     output logic [I_DATA-1:0] odata,
@@ -42,7 +43,7 @@ module fp_mul #(
 
     // Pipeline Register 1 - Capture Input fields
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             idataA_sig_ff <= 1'b0;
             idataA_exp_ff <= 'd0;
             idataA_mat_ff <= 'd0;
@@ -68,7 +69,7 @@ module fp_mul #(
 
     // Pipeline Register 2 - Capture Product fields
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             product_sig_ff <= 1'b0;
             product_exp_ff <= 'd0;
             product_mat_ff <= 'd0;
@@ -88,7 +89,7 @@ module fp_mul #(
 
     // Pipeline Register 3 - Capture Normalized Output fields
     always_ff @(posedge clk) begin
-        if (reset) begin
+        if (reset | ~enable) begin
             odata_sig_ff <= 1'b0;
             odata_exp_ff <= 'd0;
             odata_mat_ff <= 'd0;

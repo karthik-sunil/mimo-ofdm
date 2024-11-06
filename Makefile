@@ -38,8 +38,8 @@ all:	simv
 # SYNFILES = cmul.vg
 
 HEADERS = verilog/headers.svh
-TESTBENCH = test/fp_add_tb.sv
-SIMFILES = verilog/fp_add.sv
+TESTBENCH = test/fp_mul_tb.sv
+SIMFILES = verilog/fp_mul.sv
 SYNFILES = fp_add.vg
 
 # HEADERS = verilog/headers.svh
