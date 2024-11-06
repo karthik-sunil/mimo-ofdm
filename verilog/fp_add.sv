@@ -2,7 +2,8 @@
 module fp_add #(
     parameter   I_EXP = 8,
     parameter   I_MNT = 23,
-    parameter   I_DATA = I_EXP + I_MNT + 1
+    parameter   I_DATA = I_EXP + I_MNT + 1,
+    parameter   ADD_SUB = 0
 )(
     input                       clk,
     input                       reset,
@@ -35,7 +36,8 @@ module fp_add #(
     assign idataA_sig = idataA[I_DATA-1];
     assign idataA_exp = idataA[I_MNT+:I_EXP];
     assign idataA_mat = {1'b1, idataA[I_MNT-1:0]};
-    assign idataB_sig = idataB[I_DATA-1];
+
+    assign idataB_sig = (ADD_SUB) ? ~idataB[I_DATA-1] : idataB[I_DATA-1];
     assign idataB_exp = idataB[I_MNT+:I_EXP];
     assign idataB_mat = {1'b1, idataB[I_MNT-1:0]};
 

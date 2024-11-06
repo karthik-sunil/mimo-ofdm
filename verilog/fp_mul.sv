@@ -1,6 +1,6 @@
 module fp_mul #(
-    parameter   I_EXP = 5,
-    parameter   I_MNT = 10,
+    parameter   I_EXP = 8,
+    parameter   I_MNT = 23,
     parameter   I_DATA = I_EXP + I_MNT + 1
 )(  
     input logic clk,
