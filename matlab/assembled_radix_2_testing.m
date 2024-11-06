@@ -148,7 +148,43 @@ function fft_reorder(N)
     disp(format_row(final_top_row));
     disp("Bottom Row:");
     disp(format_row(final_bottom_row));
+
+    % Bit reversal part to show correct output in the x[0], x[1], x[2],
+    % x[3] ... format
+    log2N = log2(N);
+    reordered_output = zeros(1, N); % to hold the final output
+
+    %interleaving the outputs - as final_top_row[0], final_bottom_row[0], 
+    % final_top_row[1], final_bottom_row[1], final_top_row[2], final_bottom_row[2], ...
+    combined_output = zeros(1, N);
+    for i = 1:(N/2)
+        combined_output(2*i - 1) = final_top_row(i);
+        combined_output(2*i) = final_bottom_row(i);
+    end
+
+    % bit reversal
+    for i = 0:(N-1)
+        % bit-reversed function called
+        bit_reversed_index = bit_reverse(i, log2N);
+        % place it in the correct place based on the bit-reversed index
+        reordered_output(bit_reversed_index + 1) = combined_output(i + 1);
+    end
+
+    disp('Reordered FFT Output (x[0] to x[N-1]):');
+    disp(reordered_output);
+
+    % bit-reversed index calc
+    function reversed = bit_reverse(index, num_bits)
+        reversed = 0;
+        for j = 0:(num_bits - 1)
+            if bitand(index, bitshift(1, j))
+                reversed = bitor(reversed, bitshift(1, num_bits - 1 - j));
+            end
+        end
+    end
+
 end
+
 
 % testing the function
 fft_reorder(8);
