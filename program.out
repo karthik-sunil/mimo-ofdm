@@ -1,0 +1,35 @@
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2023
+Contains Synopsys proprietary information.
+Compiler version V-2023.12-SP2-1_Full64; Runtime version V-2023.12-SP2-1_Full64;  Nov  6 18:48 2024
+idata = xxxxxxxx, odata = xxxxxxxx, out_valid = x
+idata = 40000000, odata = 00000000, out_valid = 0
+idata = 3e200000, odata = 00000000, out_valid = 0
+idata = 40b66666, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 00000000, out_valid = 0
+idata = 40a00000, odata = 40800000, out_valid = 0
+idata = 40a00000, odata = 3f34f95e, out_valid = 1
+idata = 40a00000, odata = 4021a191, out_valid = 1
+idata = 40a00000, odata = 3ed6395f, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+idata = 40a00000, odata = 3ee4efab, out_valid = 1
+$finish called from file "test/inv_sqrt_tb.sv", line 67.
+$finish at simulation time                  240
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 240
+CPU Time:      0.240 seconds;       Data structure size:   0.0Mb
+Wed Nov  6 18:48:04 2024

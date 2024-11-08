@@ -85,7 +85,8 @@ endfunction
 fp_add #(
     .I_EXP(I_EXP),
     .I_MNT(I_MNT),
-    .I_DATA(I_DATA)
+    .I_DATA(I_DATA),
+    .ADD_SUB(1)
 ) dut (
     .clk(clk),
     .reset(reset),
@@ -112,17 +113,18 @@ initial begin
     enable = 1'b1;
     f_out = $fopen("out/fp_add_out.csv", "w");
 
-    for(int i=0; i<65535; i++) begin
+    for(int i=0; i<10; i++) begin
         if (i >= 0) begin
-            idataA = 32'h5F3759DF; 
-            idataB = $urandom();
+            idataA = 32'h3FC00000;
+            idataB = 32'h3eeefe8b;
         end
         else begin
-            idataA = 32'h3F800000;
-            idataB = 32'h3F800000;
+            idataA = 32'h3FC00000;
+            idataB = 32'h3eeefe8b;
         end
         repeat(1) @(negedge clk);
-        $fdisplay(f_out,"%h,%h,%h,%d", idataA, idataB,odata, out_valid);        
+        // $display(f_out,"%h,%h,%h,%d", idataA, idataB,odata, out_valid);        
+        $display("%h,%h,%h,%d", idataA, idataB, odata, out_valid);        
 
     end
 

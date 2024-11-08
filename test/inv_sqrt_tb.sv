@@ -60,6 +60,8 @@ initial begin
     idata = 32'h3E200000;
     @(negedge clk);
     idata = 32'h40B66666;
+    @(negedge clk);
+    idata = 32'h40A00000;
     repeat(20) @(negedge clk);
     // @(negedge clk);
     $finish;
