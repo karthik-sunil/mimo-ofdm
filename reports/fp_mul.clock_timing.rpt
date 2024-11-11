@@ -1,0 +1,39 @@
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : fp_mul
+Version: T-2022.03-SP3
+Date   : Sun Nov 10 21:35:05 2024
+****************************************
+
+  Clock: core_clk
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      idataA_sig_ff_reg/CLK                                  0.20      wr-+
+
+  Minimum setup capture latency:
+      idataA_sig_ff_reg/CLK                                  0.20      wr-+
+
+  Minimum hold launch latency:
+      idataA_sig_ff_reg/CLK                                  0.20      br-+
+
+  Maximum hold capture latency:
+      idataA_sig_ff_reg/CLK                                  0.20      br-+
+
+  Maximum active transition:
+      idataA_sig_ff_reg/CLK                                  0.08      wr-+
+
+  Minimum active transition:
+      idataA_sig_ff_reg/CLK                                  0.08      wr-+
+
+  Maximum setup skew:
+      idataA_exp_ff_reg_0_/CLK                                         wr-+
+      product_exp_ff_reg_0_/CLK                              0.00      wr-+
+
+  Maximum hold skew:
+      idataA_exp_ff_reg_0_/CLK                                         br-+
+      product_exp_ff_reg_0_/CLK                              0.00      br-+
+----------------------------------------------------------------------------
+
+1

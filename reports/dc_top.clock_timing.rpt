@@ -1,0 +1,12 @@
+Warning: Design 'dc_top' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : dc_top
+Version: T-2022.03-SP3
+Date   : Sun Nov 10 21:12:50 2024
+****************************************
+
+Error: No clock pins of 'launching' sequential devices found. (UITE-406)
+0

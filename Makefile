@@ -1,3 +1,4 @@
+export MK_COURSE_NAME = EECS598-002
 # make          <- runs simv (after compiling simv if needed)
 # make simv     <- compiles simv without running
 # make dve      <- runs GUI debugger (after compiling it if needed)
@@ -14,6 +15,16 @@
 
 # this is a global clock period variable used in the tcl script and referenced in testbenches
 # export CLOCK_PERIOD = 5.0
+
+# your top-level module name
+export MK_DESIGN_NAME = fp_mul
+
+# CPU core usage, capped at 6
+export MK_USE_NUM_CORES = 4
+
+# memory library selection
+export MK_MEM_SUFFIX = typ_1d05_25
+
 
 # the Verilog Compiler command and arguments
 VCS = SW_VCS=2020.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca \
@@ -45,7 +56,8 @@ all:	simv
 HEADERS = verilog/headers.svh
 TESTBENCH = test/inv_sqrt_tb.sv
 SIMFILES = verilog/inv_sqrt.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
-SYNFILES = fp_add.vg
+
+SYN_TARGET = syn
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/fp_add_tb.sv
@@ -76,8 +88,19 @@ two_bit_pred.vg: tut_mod2.v tut_synth.tcl
 syn_simv:	$(SYNFILES) ${SIMFILES} $(TESTBENCH) ${HEADERS}
 	$(VCS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv | tee syn_simv.log
 
-syn:	syn_simv
-	./syn_simv | tee syn_program.out | tee syn.log
+syn: 
+	-mkdir -p logs
+	dc_shell -f scripts/synth.tcl | tee logs/synth.log
+	-mkdir -p temp_files
+	-mv alib-52 temp_files/
+	-mv *_dclib temp_files/
+	-mv command.log temp_files/
+	-mv default.svf temp_files/
+	-mkdir -p export
+	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
+
+memgen:
+	cd memory; ./memgen.sh
 
 clean:
 	rm -rvf simv *.daidir csrc vcs.key program.out \
@@ -86,6 +109,14 @@ clean:
         inter.fsdb novas* verdiLog	
 
 nuke:	clean
+	-rm -rvf temp_files
+	-rm -rvf alib-52 temp_files/
+	-rm -rvf *_dclib temp_files/
+	-rm -rvf command.log temp_files/
+	-rm -rvf default.svf temp_files/
+	-rm -rvf filenames*log 
+	-rm -rvf temp_files
+	-rm -rvf syn
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/
 
 run_all:
@@ -96,3 +127,14 @@ run_all:
 	@$(MAKE) simv
 	@echo "Running simulation..."
 	./simv | tee program.out
+
+# TODO: Fix this
+gate_sim:
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Synthesizing..."
+	@$(MAKE) syn
+	@echo "Simulating..."
+	@$(MAKE) syn_simv
+	@echo "Running simulation..."
+	./syn_simv | tee syn_program.out

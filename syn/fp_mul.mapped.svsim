@@ -1,0 +1,29 @@
+`ifndef SYNTHESIS
+
+//
+// This is an automatically generated file from 
+// dc_shell Version T-2022.03-SP3 -- Jul 12, 2022
+//
+
+// For simulation only. Do not modify.
+
+module fp_mul_svsim #(
+    parameter   I_EXP = 8,
+    parameter   I_MNT = 23,
+    parameter   I_DATA = I_EXP + I_MNT + 1
+)(  
+    input logic clk,
+    input logic reset,
+    input logic enable,
+    input logic [I_DATA-1:0] idataA,
+    input logic [I_DATA-1:0] idataB, 
+    output logic [I_DATA-1:0] odata,
+    output logic out_valid  
+);
+
+    
+
+  fp_mul fp_mul( {>>{ clk }}, {>>{ reset }}, {>>{ enable }}, {>>{ idataA }}, 
+        {>>{ idataB }}, {>>{ odata }}, {>>{ out_valid }} );
+endmodule
+`endif

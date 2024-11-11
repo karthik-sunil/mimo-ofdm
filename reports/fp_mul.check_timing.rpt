@@ -1,0 +1,205 @@
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Changed wire load model for 'alt1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'apparch' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_8_1_8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_8_7_8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_8_7_8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_UNS_OP_24_24_48' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width9' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_8_8_9' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_cmp2_width9' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*LT_UNS_OP_9_7_1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Updating design information... (UID-85)
+Warning: Design 'fp_mul' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+reset
+enable
+idataA[31]
+idataA[30]
+idataA[29]
+idataA[28]
+idataA[27]
+idataA[26]
+idataA[25]
+idataA[24]
+idataA[23]
+idataA[22]
+idataA[21]
+idataA[20]
+idataA[19]
+idataA[18]
+idataA[17]
+idataA[16]
+idataA[15]
+idataA[14]
+idataA[13]
+idataA[12]
+idataA[11]
+idataA[10]
+idataA[9]
+idataA[8]
+idataA[7]
+idataA[6]
+idataA[5]
+idataA[4]
+idataA[3]
+idataA[2]
+idataA[1]
+idataA[0]
+idataB[31]
+idataB[30]
+idataB[29]
+idataB[28]
+idataB[27]
+idataB[26]
+idataB[25]
+idataB[24]
+idataB[23]
+idataB[22]
+idataB[21]
+idataB[20]
+idataB[19]
+idataB[18]
+idataB[17]
+idataB[16]
+idataB[15]
+idataB[14]
+idataB[13]
+idataB[12]
+idataB[11]
+idataB[10]
+idataB[9]
+idataB[8]
+idataB[7]
+idataB[6]
+idataB[5]
+idataB[4]
+idataB[3]
+idataB[2]
+idataB[1]
+idataB[0]
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+idataA_exp_ff_reg[0]/next_state
+idataA_exp_ff_reg[1]/next_state
+idataA_exp_ff_reg[2]/next_state
+idataA_exp_ff_reg[3]/next_state
+idataA_exp_ff_reg[4]/next_state
+idataA_exp_ff_reg[5]/next_state
+idataA_exp_ff_reg[6]/next_state
+idataA_exp_ff_reg[7]/next_state
+idataA_mat_ff_reg[0]/next_state
+idataA_mat_ff_reg[1]/next_state
+idataA_mat_ff_reg[2]/next_state
+idataA_mat_ff_reg[3]/next_state
+idataA_mat_ff_reg[4]/next_state
+idataA_mat_ff_reg[5]/next_state
+idataA_mat_ff_reg[6]/next_state
+idataA_mat_ff_reg[7]/next_state
+idataA_mat_ff_reg[8]/next_state
+idataA_mat_ff_reg[9]/next_state
+idataA_mat_ff_reg[10]/next_state
+idataA_mat_ff_reg[11]/next_state
+idataA_mat_ff_reg[12]/next_state
+idataA_mat_ff_reg[13]/next_state
+idataA_mat_ff_reg[14]/next_state
+idataA_mat_ff_reg[15]/next_state
+idataA_mat_ff_reg[16]/next_state
+idataA_mat_ff_reg[17]/next_state
+idataA_mat_ff_reg[18]/next_state
+idataA_mat_ff_reg[19]/next_state
+idataA_mat_ff_reg[20]/next_state
+idataA_mat_ff_reg[21]/next_state
+idataA_mat_ff_reg[22]/next_state
+idataA_mat_ff_reg[23]/next_state
+idataA_sig_ff_reg/next_state
+idataB_exp_ff_reg[0]/next_state
+idataB_exp_ff_reg[1]/next_state
+idataB_exp_ff_reg[2]/next_state
+idataB_exp_ff_reg[3]/next_state
+idataB_exp_ff_reg[4]/next_state
+idataB_exp_ff_reg[5]/next_state
+idataB_exp_ff_reg[6]/next_state
+idataB_exp_ff_reg[7]/next_state
+idataB_mat_ff_reg[0]/next_state
+idataB_mat_ff_reg[1]/next_state
+idataB_mat_ff_reg[2]/next_state
+idataB_mat_ff_reg[3]/next_state
+idataB_mat_ff_reg[4]/next_state
+idataB_mat_ff_reg[5]/next_state
+idataB_mat_ff_reg[6]/next_state
+idataB_mat_ff_reg[7]/next_state
+idataB_mat_ff_reg[8]/next_state
+idataB_mat_ff_reg[9]/next_state
+idataB_mat_ff_reg[10]/next_state
+idataB_mat_ff_reg[11]/next_state
+idataB_mat_ff_reg[12]/next_state
+idataB_mat_ff_reg[13]/next_state
+idataB_mat_ff_reg[14]/next_state
+idataB_mat_ff_reg[15]/next_state
+idataB_mat_ff_reg[16]/next_state
+idataB_mat_ff_reg[17]/next_state
+idataB_mat_ff_reg[18]/next_state
+idataB_mat_ff_reg[19]/next_state
+idataB_mat_ff_reg[20]/next_state
+idataB_mat_ff_reg[21]/next_state
+idataB_mat_ff_reg[22]/next_state
+idataB_mat_ff_reg[23]/next_state
+idataB_sig_ff_reg/next_state
+odata[0]
+odata[1]
+odata[2]
+odata[3]
+odata[4]
+odata[5]
+odata[6]
+odata[7]
+odata[8]
+odata[9]
+odata[10]
+odata[11]
+odata[12]
+odata[13]
+odata[14]
+odata[15]
+odata[16]
+odata[17]
+odata[18]
+odata[19]
+odata[20]
+odata[21]
+odata[22]
+odata[23]
+odata[24]
+odata[25]
+odata[26]
+odata[27]
+odata[28]
+odata[29]
+odata[30]
+odata[31]
+out_valid
+out_valid_stage_1_reg/next_state
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1

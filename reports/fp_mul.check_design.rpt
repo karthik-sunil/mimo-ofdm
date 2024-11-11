@@ -1,0 +1,42 @@
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Sun Nov 10 21:33:19 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               2
+    Cells do not drive (LINT-1)                                     2
+
+Nets                                                               23
+    Unloaded nets (LINT-2)                                         23
+--------------------------------------------------------------------------------
+
+Warning: In design 'fp_mul', cell 'B_3' does not drive any nets. (LINT-1)
+Warning: In design 'fp_mul', cell 'B_4' does not drive any nets. (LINT-1)
+Warning: In design 'fp_mul', net 'net39' driven by pin 'mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net38' driven by pin 'mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net37' driven by pin 'mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net36' driven by pin 'mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net35' driven by pin 'mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net34' driven by pin 'mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net33' driven by pin 'mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net32' driven by pin 'mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net31' driven by pin 'mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net30' driven by pin 'mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net29' driven by pin 'mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net28' driven by pin 'mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net27' driven by pin 'mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net26' driven by pin 'mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net25' driven by pin 'mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net24' driven by pin 'mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net23' driven by pin 'mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net22' driven by pin 'mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net21' driven by pin 'mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net20' driven by pin 'mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net19' driven by pin 'mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net18' driven by pin 'mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'fp_mul', net 'net17' driven by pin 'mult_68/Z_22' has no loads. (LINT-2)
+1
