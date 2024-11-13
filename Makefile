@@ -28,8 +28,8 @@ export MK_MEM_SUFFIX = typ_1d05_25
 
 # the Verilog Compiler command and arguments
 VCS = SW_VCS=2020.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca \
-      -debug_access+all+reverse $(VCS_BAD_WARNINGS) +define+
-LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
+      -debug_access+all+reverse $(VCS_BAD_WARNINGS) +define+ -timescale=1ns/1ps 
+LIB = /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/verilog/saed32nm.v
 
 all:	simv
 	./simv | tee program.out
@@ -59,9 +59,9 @@ all:	simv
 # SYNFILES = fp_add.vg
 
 HEADERS = verilog/headers.svh
-TESTBENCH = test/top_radix2_tb.sv
-SIMFILES = verilog/top_radix2.sv verilog/delay_commutator.sv verilog/delay.sv verilog/butterfly.sv
-# SIMFILES = syn/fp_mul.mapped.v
+TESTBENCH = test/fp_mul_tb.sv
+# SIMFILES = verilog/top_radix2.sv verilog/delay_commutator.sv verilog/delay.sv verilog/butterfly.sv
+SIMFILES = syn/fp_mul.mapped.v
 
 SYN_TARGET = syn
 
@@ -84,7 +84,7 @@ SYN_TARGET = syn
 # 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
 
 simv:	$(SIMFILES) $(TESTBENCH) 
-	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
+	$(VCS) $(TESTBENCH) $(SIMFILES) $(LIB) -o simv | tee simv.log
 
 dve:	$(SIMFILES) $(TESTBENCH) 
 	$(VCS) $(TESTBENCH) $(SIMFILES) -o dve -R -gui -debug_acccess+all -kdb | tee dve.log
