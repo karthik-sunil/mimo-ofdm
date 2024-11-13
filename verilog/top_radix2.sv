@@ -5,6 +5,8 @@ module top_all #(
 )(
     input logic clk,
     input logic reset,
+    input logic enable,
+
     input complex_t x [N-1:0],          
     output complex_product_t y [N-1:0], 
     output logic dc_chain_out_valid
@@ -30,17 +32,34 @@ module top_all #(
     ) first_butterfly (
         .clk(clk),
         .reset(reset),
+        .enable(enable),
         .A(x[0]),    // for first stage we take x[0] in DIF
         .B(x[N/2]),  //for the first stage we take x[4] in DIF
         .X(butterfly_out0[0]),
-        .Y(butterfly_out1[0])
+        .Y(butterfly_out1[0]),
+        .out_valid(butterfly_valid[0])
     );
 
-    assign butterfly_valid[0] = 1; // set valid for first butterfly
+    // assign butterfly_valid[0] = 1; // set valid for first butterfly
     
     genvar i;
     generate
-        for(i=1; i<NUM_STAGES; i++) begin
+        for(i=0; i<NUM_STAGES-1; i++) begin
+
+            butterfly #(
+            .W_R(-1),
+            .W_I(0)
+            ) b0 (
+                .clk(clk),
+                .reset(reset),
+                .enable((i == 0) ? enable : ),
+                .A(x[i]),    // for first stage we take x[0] in DIF
+                .B(x[i+N/2]),  //for the first stage we take x[4] in DIF
+                .X(butterfly_out0[0]),
+                .Y(butterfly_out1[0]),
+                .out_valid(butterfly_valid[0])
+            );
+            
         
             delay_commutator #(
                 .DELAY(N >> (i + 1)),   // Delay = N/4, N/8, N/16, ... 1
@@ -62,14 +81,16 @@ module top_all #(
             ) b0 (
                 .clk(clk),
                 .reset(reset),
+                .enable(dc_out_valid[i-1]),
                 .A(dc_out0[i-1]), 
                 .B(dc_out1[i-1]), 
                 .X(butterfly_out0[i]),
-                .Y(butterfly_out1[i])
+                .Y(butterfly_out1[i]),
+                .out_valid(butterfly_valid[i])
             );
 
             // connecting the butterfly valid signals to the dc_out for each stage i
-            assign butterfly_valid[i] = dc_out_valid[i-1];
+            // assign butterfly_valid[i] = dc_out_valid[i-1];
 
         end
     endgenerate

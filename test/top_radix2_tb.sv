@@ -33,14 +33,14 @@ module top_all_tb;
         reset = 1;
 
         // intitial values we want to test for once cycle
-        x[0].r = 1; x[0].i = 0;
+        x[0].r = 0; x[0].i = 0;
         x[1].r = 1; x[1].i = 0;
-        x[2].r = 1; x[2].i = 0;
-        x[3].r = 1; x[3].i = 0;
-        x[4].r = 0; x[4].i = 0;
-        x[5].r = 0; x[5].i = 0;
-        x[6].r = 0; x[6].i = 0;
-        x[7].r = 0; x[7].i = 0;
+        x[2].r = 2; x[2].i = 0;
+        x[3].r = 3; x[3].i = 0;
+        x[4].r = 4; x[4].i = 0;
+        x[5].r = 5; x[5].i = 0;
+        x[6].r = 6; x[6].i = 0;
+        x[7].r = 7; x[7].i = 0;
 
         @(negedge clk);
         reset = 0;

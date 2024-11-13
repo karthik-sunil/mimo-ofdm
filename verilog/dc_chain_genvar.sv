@@ -1,3 +1,4 @@
+// Not using this
 module dc_chain #(
     parameter DATA_WIDTH = 16,
     parameter N = 8

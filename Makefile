@@ -49,13 +49,18 @@ all:	simv
 # SYNFILES = cmul.vg
 
 # HEADERS = verilog/headers.svh
+# TESTBENCH = test/butterfly_tb.sv
+# SIMFILES = verilog/butterfly.sv 
+# SYNFILES = cmul.vg
+
+# HEADERS = verilog/headers.svh
 # TESTBENCH = test/fp_mul_tb.sv
 # SIMFILES = verilog/fp_mul.sv
 # SYNFILES = fp_add.vg
 
-# HEADERS = verilog/headers.svh
-TESTBENCH = test/butterfly_fp_tb.sv
-SIMFILES = verilog/butterfly_fp.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
+HEADERS = verilog/headers.svh
+TESTBENCH = test/top_radix2_tb.sv
+SIMFILES = verilog/top_radix2.sv verilog/delay_commutator.sv verilog/delay.sv verilog/butterfly.sv
 # SIMFILES = syn/fp_mul.mapped.v
 
 SYN_TARGET = syn
