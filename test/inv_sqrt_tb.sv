@@ -36,7 +36,7 @@ task file_test;
             r1 = $fgets(line_f1,f1);
             if (r1 >0) begin
                 $sscanf(line_f1,"%h", idata);
-                $display("idata = %h", idata);
+                // $display("idata = %h", idata);
                 @(negedge clk);
                 end
             

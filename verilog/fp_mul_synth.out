@@ -31,19 +31,19 @@ Please use '-no_save' simv switch to avoid this.
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
-Current time:       Tue Nov 12 13:34:57 2024
-Hostname:           caen-vnc-mi15.engin.umich.edu
+Current time:       Mon Nov 11 16:30:50 2024
+Hostname:           caen-vnc-mi12.engin.umich.edu
 CPU Model:          Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz
 CPU Details:        Cores = 9 : Sockets = 17 : Cache Size = 49152 KB : Freq = 2.59 GHz
 OS:                 Linux 4.18.0-553.16.1.el8_10.x86_64
-RAM:                 17 GB (Free   7 GB)
-Swap:                 8 GB (Free   8 GB)
+RAM:                 17 GB (Free   1 GB)
+Swap:                 8 GB (Free   7 GB)
 Work Filesystem:    /home/ksnl mounted to //engin-labs.m.storage.umich.edu/engin-labs-linux/ksnl/dotfiles
 Tmp Filesystem:     /tmp mounted to /dev/mapper/vg1-lv_tmp
-Work Disk:          71250 GB (Free 12479 GB)
-Tmp Disk:            29 GB (Free  28 GB)
+Work Disk:          71250 GB (Free 12641 GB)
+Tmp Disk:            29 GB (Free  29 GB)
 
-CPU Load: 10%, Ram Free: 7 GB, Swap Free: 8 GB, Work Disk Free: 12479 GB, Tmp Disk Free: 28 GB
+CPU Load: 21%, Ram Free: 1 GB, Swap Free: 7 GB, Work Disk Free: 12641 GB, Tmp Disk Free: 29 GB
 ###############################
 #                             #
 # Create By Yufan Yue 2023.10 #
@@ -75,10 +75,12 @@ set RESULTS_DIR "${DESIGN_PATH}/syn"
 set CONSTRAINTS_FILE "${DESIGN_PATH}/scripts/constraints.tcl"
 /home/ksnl/eecs598/final-project/mimo-ofdm/scripts/constraints.tcl
 set USE_NUM_CORES $::env(MK_USE_NUM_CORES)
-4
+Error: can't read "::env(MK_USE_NUM_CORES)": no such variable
+	Use error_info for more info. (CMD-013)
 set ADDITIONAL_SEARCH_PATH ""
 set MEM_SUFFIX $::env(MK_MEM_SUFFIX)
-typ_1d05_25
+Error: can't read "::env(MK_MEM_SUFFIX)": no such variable
+	Use error_info for more info. (CMD-013)
 ##########################################################################################
 # Library Setup Variables
 ##########################################################################################
@@ -95,15 +97,16 @@ Error: can't read "TYP_LIBRARY_SET": no such variable
 	Use error_info for more info. (CMD-013)
 set ADDITIONAL_LINK_LIB_FILES   "[glob -nocomplain ${DESIGN_PATH}/memory/db/*_${MEM_SUFFIX}_ccs.db]
                                    [glob -nocomplain ${DESIGN_PATH}/blocks/*/export/*.db]"
-
-                                   
+Error: can't read "MEM_SUFFIX": no such variable
+	Use error_info for more info. (CMD-013)
 set_app_var sh_new_variable_message false
 false
 #################################################################################
 # Design Compiler Setup Variables
 #################################################################################
 set_host_options -max_cores [expr min(6, ${USE_NUM_CORES})]
-1
+Error: can't read "USE_NUM_CORES": no such variable
+	Use error_info for more info. (CMD-013)
 if { ! [file exists $REPORTS_DIR] } { file mkdir ${REPORTS_DIR} }
 if { ! [file exists $RESULTS_DIR] } { file mkdir ${RESULTS_DIR} }
 #################################################################################
@@ -125,8 +128,8 @@ Error: can't read "TARGET_LIBRARY_FILES": no such variable
 set_app_var synthetic_library dw_foundation.sldb
 dw_foundation.sldb
 set_app_var link_library "* $target_library $ADDITIONAL_LINK_LIB_FILES $synthetic_library"
-* your_library.db 
-                                    dw_foundation.sldb
+Error: can't read "ADDITIONAL_LINK_LIB_FILES": no such variable
+	Use error_info for more info. (CMD-013)
 check_library > ${REPORTS_DIR}/${DESIGN_NAME}.check_library.rpt
 #################################################################################
 # Read in the RTL Design
@@ -144,7 +147,6 @@ Compiling source file ./src/fp_mul.sv
 Compiling source file ./src/delay.sv
 Presto compilation completed successfully.
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
-Loading db file '/usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/dw_foundation.sldb'
 elaborate ${DESIGN_NAME}
 Loading db file '/usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/gtech.db'
 Loading db file '/usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/standard.sldb'
@@ -191,6 +193,7 @@ Inferred memory devices in process
 |   odata_mat_ff_reg    | Flip-flop |  23   |  Y  | N  | N  | N  | N  | N  | N  |
 =================================================================================
 Presto compilation completed successfully. (fp_mul)
+Loading db file '/usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/dw_foundation.sldb'
 Elaborated 1 design.
 Current design is now 'fp_mul'.
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
@@ -200,7 +203,7 @@ check_design -multiple_designs
 ****************************************
 check_design summary:
 Version:     V-2023.12-SP5
-Date:        Tue Nov 12 13:34:58 2024
+Date:        Mon Nov 11 16:30:50 2024
 ****************************************
 
                    Name                                            Total
@@ -222,8 +225,6 @@ Warning: Can't read link_library file 'your_library.db'. (UID-3)
   Using the following designs and libraries:
   --------------------------------------------------------------------------
   fp_mul                      /home/ksnl/eecs598/final-project/mimo-ofdm/fp_mul.db
-  dw_foundation.sldb (library)
-                              /usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/dw_foundation.sldb
 
 1
 puts "\[$COURSE_NAME\] Sourcing script file [which ${CONSTRAINTS_FILE}]\n"
@@ -287,6 +288,9 @@ Error: Value for list '-from' must have 1 elements. (CMD-036)
 0
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.check_timing.rpt {check_timing}
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Warning: The following synthetic libraries should be added to 
+	the list of link libraries: 
+	'dw_foundation.sldb'. (UISN-26)
 Error: Could not read the following target libraries:
 your_library.db 
  (UIO-3)
@@ -522,7 +526,7 @@ check_design -summary
 ****************************************
 check_design summary:
 Version:     V-2023.12-SP5
-Date:        Tue Nov 12 13:34:58 2024
+Date:        Mon Nov 11 16:30:51 2024
 ****************************************
 
                    Name                                            Total
@@ -549,8 +553,11 @@ Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
 # compile_ultra $compile_ultra_options
 compile_ultra
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Warning: The following synthetic libraries should be added to 
+	the list of link libraries: 
+	'dw_foundation.sldb'. (UISN-26)
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 10%, Ram Free: 7 GB, Swap Free: 8 GB, Work Disk Free: 12479 GB, Tmp Disk Free: 28 GB
+CPU Load: 21%, Ram Free: 1 GB, Swap Free: 7 GB, Work Disk Free: 12641 GB, Tmp Disk Free: 29 GB
 Error: Could not read the following target libraries:
 your_library.db 
  (UIO-3)
@@ -561,8 +568,11 @@ Error: No target library found. (OPT-1312)
 0
 optimize_netlist -area
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Warning: The following synthetic libraries should be added to 
+	the list of link libraries: 
+	'dw_foundation.sldb'. (UISN-26)
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 10%, Ram Free: 7 GB, Swap Free: 8 GB, Work Disk Free: 12479 GB, Tmp Disk Free: 28 GB
+CPU Load: 21%, Ram Free: 1 GB, Swap Free: 7 GB, Work Disk Free: 12641 GB, Tmp Disk Free: 29 GB
 Error: Could not read the following target libraries:
 your_library.db 
  (UIO-3)
@@ -616,7 +626,6 @@ Information: Writing parasitics to file '/home/ksnl/eecs598/final-project/mimo-o
 1
 write_sdf ${RESULTS_DIR}/${DESIGN_NAME}.mapped.sdf
 Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
-Warning: Using 'user-specified' sdf time scale of '1.000000 ns'. (WT-9)
 Information: Writing timing information to file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fp_mul.mapped.sdf'. (WT-3)
 Information: Updating design information... (UID-85)
 Warning: Design 'fp_mul' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
@@ -637,17 +646,17 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.units.rpt {report_units}
 Report : units
 Design : fp_mul
 Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Date   : Mon Nov 11 16:30:51 2024
 
 ************************************
 Units
 ------------------------------------
-Time_unit            : 1.0e-09 Second(ns)
-Capacitive_load_unit : 1.000000e-16 Farad
-Resistance_unit      : 1.000000e+07 Ohm
-Voltage_unit         : 1 Volt
+Time_unit            : N/A
+Capacitive_load_unit : N/A
+Resistance_unit      : N/A
+Voltage_unit         : N/A
 Power_unit           : N/A
-Current_unit         : 1.0e-06 Amp(uA)
+Current_unit         : N/A
 1
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.fanout.rpt {report_net_fanout -high_fanout}
 Information: Updating graph... (UID-83)
@@ -658,11 +667,11 @@ Report : net fanout
         -high_fanout
 Design : fp_mul
 Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Date   : Mon Nov 11 16:30:51 2024
 ****************************************
 
 
-Operating Conditions: nom_pvt   Library: dw_foundation.sldb
+Operating Conditions: nom_pvt   Library: gtech
 Wire Load Model Mode: top
 
 
@@ -678,7 +687,7 @@ Attributes:
 
 Net                 Fanout   Attributes   Capacitance   Driver
 --------------------------------------------------------------------------------
-n_Logic0_             1181   dr, h         1001.00      U2/**logic_0**
+n_Logic0_             1181   dr, h        10010000.00   U2/**logic_0**
 1
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
  
@@ -686,7 +695,7 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
 Report : qor
 Design : fp_mul
 Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Date   : Mon Nov 11 16:30:51 2024
 ****************************************
 
 
@@ -742,7 +751,7 @@ Date   : Tue Nov 12 13:34:59 2024
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi15.engin.umich.edu
+  Hostname: caen-vnc-mi12.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -778,6 +787,6 @@ exit
 Memory usage for this session 113 Mbytes.
 Memory usage for this session including child processes 113 Mbytes.
 CPU usage for this session 3 seconds ( 0.00 hours ).
-Elapsed time for this session 6 seconds ( 0.00 hours ).
+Elapsed time for this session 7 seconds ( 0.00 hours ).
 
 Thank you...

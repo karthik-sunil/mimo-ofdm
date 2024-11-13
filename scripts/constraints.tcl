@@ -2,10 +2,10 @@ set_max_transition 0.150 ${DESIGN_NAME}
 set_input_transition 0.080 [all_inputs]
 set_max_transition 0.080 [all_outputs]
 
-set clock_period 2
+set clock_period 9.8
 set clock_uncertainty [expr $clock_period * 0.10]
 set clock_transition 0.080
-set clock_latency 0.2
+set clock_latency 0.1
 
 create_clock -name core_clk -period $clock_period [get_ports clk]
 set_clock_uncertainty $clock_uncertainty [get_clocks core_clk]

@@ -7,23 +7,21 @@ Report : timing
         -max_paths 1
         -transition_time
 Design : fp_mul
-Version: T-2022.03-SP3
-Date   : Sun Nov 10 21:35:05 2024
+Version: V-2023.12-SP5
+Date   : Tue Nov 12 13:34:59 2024
 ****************************************
 
-Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
-Wire Load Model Mode: enclosed
+ # A fanout number of 1000 was used for high fanout net computations.
 
-  Startpoint: idataA_mat_ff_reg_2_
+Operating Conditions: nom_pvt   Library: dw_foundation.sldb
+Wire Load Model Mode: top
+
+  Startpoint: product_exp_ff_reg_0_
               (rising edge-triggered flip-flop clocked by core_clk)
-  Endpoint: product_mat_ff_reg_41_
+  Endpoint: odata_exp_ff_reg_0_
             (rising edge-triggered flip-flop clocked by core_clk)
   Path Group: core_clk
   Path Type: max
-
-  Des/Clust/Port     Wire Load Model       Library
-  ------------------------------------------------
-  fp_mul             8000                  saed32rvt_tt1p05v25c
 
 Attributes:
     d - dont_touch
@@ -33,61 +31,40 @@ Attributes:
     i - ideal_net or ideal_network
   inf - infeasible path
 
-  Point                                       Fanout     Trans      Incr       Path      Attributes
-  ---------------------------------------------------------------------------------------------------------
-  clock core_clk (rise edge)                                        0.00       0.00
-  clock network delay (ideal)                                       0.20       0.20
-  idataA_mat_ff_reg_2_/CLK (DFFX1_RVT)                    0.08      0.00       0.20 r
-  idataA_mat_ff_reg_2_/Q (DFFX1_RVT)                      0.02      0.12       0.32 f
-  n4700 (net)                                   1                   0.00       0.32 f
-  U456/Y (XOR2X1_RVT)                                     0.01      0.17       0.49 r
-  n4600 (net)                                   2                   0.00       0.49 r
-  U457/Y (IBUFFX16_RVT)                                   0.04      0.09       0.57 f
-  n5600 (net)                                  28                   0.00       0.57 f
-  U772/Y (NAND2X4_RVT)                                    0.01      0.30       0.88 r
-  n176 (net)                                   11                   0.00       0.88 r
-  U647/Y (OAI22X2_RVT)                                    0.02      0.08       0.96 f
-  n1026 (net)                                   1                   0.00       0.96 f
-  U504/CO (FADDX2_RVT)                                    0.02      0.24       1.20 f
-  n10101 (net)                                  1                   0.00       1.20 f
-  U503/S (FADDX2_RVT)                                     0.02      0.20       1.40 f
-  n1059 (net)                                   1                   0.00       1.40 f
-  U374/CO (FADDX2_RVT)                                    0.02      0.25       1.65 f
-  n1117 (net)                                   1                   0.00       1.65 f
-  U466/S (FADDX2_RVT)                                     0.02      0.20       1.85 f
-  n1124 (net)                                   1                   0.00       1.85 f
-  U1596/S (FADDX1_RVT)                                    0.01      0.25       2.10 r
-  n1621 (net)                                   2                   0.00       2.10 r
-  U537/Y (NOR2X2_RVT)                                     0.01      0.06       2.17 f
-  n1731 (net)                                   2                   0.00       2.17 f
-  U390/Y (NOR2X0_RVT)                                     0.01      0.11       2.28 r
-  n1625 (net)                                   2                   0.00       2.28 r
-  U632/Y (NAND2X4_RVT)                                    0.01      0.06       2.34 f
-  n1739 (net)                                   3                   0.00       2.34 f
-  U510/Y (NOR2X0_RVT)                                     0.01      0.13       2.46 r
-  n1639 (net)                                   2                   0.00       2.46 r
-  U1395/Y (AOI21X2_RVT)                                   0.02      0.08       2.55 f
-  n1711 (net)                                   5                   0.00       2.55 f
-  U424/Y (OAI21X2_RVT)                                    0.01      0.14       2.69 r
-  n1775 (net)                                   2                   0.00       2.69 r
-  U469/Y (AOI21X2_RVT)                                    0.01      0.07       2.76 f
-  n1710 (net)                                   1                   0.00       2.76 f
-  U1440/Y (XOR2X1_RVT)                                    0.02      0.15       2.91 f
-  product_mat[41] (net)                         1                   0.00       2.91 f
-  product_mat_ff_reg_41_/RSTB (DFFSSRX1_RVT)              0.02      0.07       2.98 f
-  data arrival time                                                            2.98
+  Point                                  Fanout     Trans      Incr       Path      Attributes
+  ----------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                                  0.10       0.10
+  product_exp_ff_reg_0_/clocked_on (**SEQGEN**)      0.08      0.00       0.10 r
+  product_exp_ff_reg_0_/Q (**SEQGEN**)               0.00      0.00       0.10 f
+  product_exp_ff[0] (net)                  4                   0.00       0.10 f
+  sub_87_2/A_0 (*SUB_UNS_OP_8_7_8)                             0.00       0.10 f
+  sub_87_2/net1079 (net)                                       0.00       0.10 f
+  sub_87_2/*cell*34/A[0] (DW01_sub_width8)                     0.00       0.10 f
+  sub_87_2/*cell*34/A[0] (net)                                 0.00       0.10 f
+  ...
+  sub_87_2/*cell*34/DIFF[0] (DW01_sub_width8)                  0.00       0.10 r
+  sub_87_2/net1089 (net)                                       0.00       0.10 r
+  sub_87_2/Z_0 (*SUB_UNS_OP_8_7_8)                             0.00       0.10 r
+  N123 (net)                                                   0.00       0.10 r
+  C301/Z_0 (*SELECT_OP_2.8_2.1_8)                    0.00      0.00       0.10 r
+  odata_exp[0] (net)                       1                   0.00       0.10 r
+  C304/Z_0 (*SELECT_OP_2.8_2.1_8)                    0.00      0.00       0.10 r
+  N132 (net)                               1                   0.00       0.10 r
+  odata_exp_ff_reg_0_/next_state (**SEQGEN**)        0.00      0.00       0.10 r
+  data arrival time                                                       0.10
 
-  clock core_clk (rise edge)                                        2.00       2.00
-  clock network delay (ideal)                                       0.20       2.20
-  clock uncertainty                                                -0.20       2.00
-  product_mat_ff_reg_41_/CLK (DFFSSRX1_RVT)                         0.00       2.00 r
-  library setup time                                               -0.04       1.96
-  data required time                                                           1.96
-  ---------------------------------------------------------------------------------------------------------
-  data required time                                                           1.96
-  data arrival time                                                           -2.98
-  ---------------------------------------------------------------------------------------------------------
-  slack (VIOLATED)                                                            -1.02
+  clock core_clk (rise edge)                                   9.80       9.80
+  clock network delay (ideal)                                  0.10       9.90
+  clock uncertainty                                           -0.98       8.92
+  odata_exp_ff_reg_0_/clocked_on (**SEQGEN**)                  0.00       8.92 r
+  library setup time                                           0.00       8.92
+  data required time                                                      8.92
+  ----------------------------------------------------------------------------------------------------
+  data required time                                                      8.92
+  data arrival time                                                      -0.10
+  ----------------------------------------------------------------------------------------------------
+  slack (MET)                                                             8.82
 
 
 1

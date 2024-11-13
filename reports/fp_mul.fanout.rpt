@@ -1,19 +1,17 @@
+Information: Updating graph... (UID-83)
+Warning: Design 'fp_mul' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
  
 ****************************************
 Report : net fanout
         -high_fanout
 Design : fp_mul
-Version: T-2022.03-SP3
-Date   : Sun Nov 10 21:35:05 2024
+Version: V-2023.12-SP5
+Date   : Tue Nov 12 13:34:59 2024
 ****************************************
 
 
-Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
-Wire Load Model Mode: enclosed
-
-Design        Wire Load Model            Library
-------------------------------------------------
-fp_mul                 8000              saed32rvt_tt1p05v25c
+Operating Conditions: nom_pvt   Library: dw_foundation.sldb
+Wire Load Model Mode: top
 
 
 Attributes:
@@ -28,4 +26,5 @@ Attributes:
 
 Net                 Fanout   Attributes   Capacitance   Driver
 --------------------------------------------------------------------------------
+n_Logic0_             1181   dr, h         1001.00      U2/**logic_0**
 1

@@ -1,15 +1,15 @@
 ************************************
 Report : units
 Design : fp_mul
-Version: T-2022.03-SP3
-Date   : Sun Nov 10 21:35:05 2024
+Version: V-2023.12-SP5
+Date   : Tue Nov 12 13:34:59 2024
 
 ************************************
 Units
 ------------------------------------
 Time_unit            : 1.0e-09 Second(ns)
-Capacitive_load_unit : 1.0e-15 Farad(fF)
-Resistance_unit      : 1.0e+6 Ohm(MOhm)
+Capacitive_load_unit : 1.000000e-16 Farad
+Resistance_unit      : 1.000000e+07 Ohm
 Voltage_unit         : 1 Volt
 Power_unit           : N/A
 Current_unit         : 1.0e-06 Amp(uA)

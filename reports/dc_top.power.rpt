@@ -7,7 +7,7 @@ Report : power
         -analysis_effort low
 Design : dc_top
 Version: T-2022.03-SP3
-Date   : Sun Nov 10 21:12:50 2024
+Date   : Mon Nov 11 14:10:13 2024
 ****************************************
 
 
@@ -39,9 +39,9 @@ i - Including register clock pin internal power
 
 
   Cell Internal Power  =   0.0000 uW    (0%)
-  Net Switching Power  =   1.6813 uW  (100%)
+  Net Switching Power  = 343.1162 nW  (100%)
                          ---------
-Total Dynamic Power    =   1.6813 uW  (100%)
+Total Dynamic Power    = 343.1162 nW  (100%)
 
 Cell Leakage Power     =   0.0000 pW
 
@@ -52,10 +52,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network      0.0000            1.6813            0.0000            1.6813  ( 100.00%)  i
+clock_network      0.0000            0.3431            0.0000            0.3431  ( 100.00%)  i
 register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
 combinational      0.0000            0.0000            0.0000            0.0000  (   0.00%)
 --------------------------------------------------------------------------------------------------
-Total              0.0000 uW         1.6813 uW         0.0000 pW         1.6813 uW
+Total              0.0000 uW         0.3431 uW         0.0000 pW         0.3431 uW
 1

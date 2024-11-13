@@ -1,0 +1,48 @@
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+Parsing design file 'test/butterfly_fp_tb.sv'
+
+Error-[UTOPN] Unknown type or port name
+  The type name 'complex_fp_t' is unknown, or the identifier 'A' has not been 
+  listed as a port, or the declaration might represent an instance missing 
+  parentheses.
+  "test/butterfly_fp_tb.sv", 6
+  Source info: complex_fp_t A, B;
+
+
+Error-[UTOPN] Unknown type or port name
+  The type name 'complex_fp_t' is unknown, or the identifier 'B' has not been 
+  listed as a port, or the declaration might represent an instance missing 
+  parentheses.
+  "test/butterfly_fp_tb.sv", 6
+  Source info: complex_fp_t A, B;
+
+
+Error-[UTOPN] Unknown type or port name
+  The type name 'complex_fp_t' is unknown, or the identifier 'X' has not been 
+  listed as a port, or the declaration might represent an instance missing 
+  parentheses.
+  "test/butterfly_fp_tb.sv", 7
+  Source info: complex_fp_t X, Y;
+
+
+Error-[UTOPN] Unknown type or port name
+  The type name 'complex_fp_t' is unknown, or the identifier 'Y' has not been 
+  listed as a port, or the declaration might represent an instance missing 
+  parentheses.
+  "test/butterfly_fp_tb.sv", 7
+  Source info: complex_fp_t X, Y;
+
+
+Error-[SE] Syntax error
+  Following verilog source has syntax error :
+  "test/butterfly_fp_tb.sv", 27: token is 'begin'
+  intial begin
+              ^
+
+1 warning
+5 errors

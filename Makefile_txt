@@ -17,7 +17,7 @@ export MK_COURSE_NAME = EECS598-002
 # export CLOCK_PERIOD = 5.0
 
 # your top-level module name
-export MK_DESIGN_NAME = fp_mul
+export MK_DESIGN_NAME = dc_top
 
 # CPU core usage, capped at 6
 export MK_USE_NUM_CORES = 4
@@ -29,6 +29,11 @@ export MK_MEM_SUFFIX = typ_1d05_25
 # the Verilog Compiler command and arguments
 VCS = SW_VCS=2020.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca \
       -debug_access+all+reverse $(VCS_BAD_WARNINGS) +define+
+
+# remove certain warnings that generate MB of text but can be safely ignored
+VCS_BAD_WARNINGS = +warn=noTFIPC +warn=noDEBUG_DEP +warn=noENUMASSIGN
+
+
 LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 
 all:	simv
@@ -54,9 +59,9 @@ all:	simv
 # SYNFILES = fp_add.vg
 
 HEADERS = verilog/headers.svh
-TESTBENCH = test/butterfly_fp_tb.sv
-SIMFILES = verilog/butterfly_fp.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
-# SIMFILES = syn/fp_mul.mapped.v
+TESTBENCH = test/inv_sqrt_tb.sv
+SIMFILES = verilog/inv_sqrt.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
+SYNFILES = syn/fp_mul.mapped.v
 
 SYN_TARGET = syn
 
@@ -86,8 +91,8 @@ dve:	$(SIMFILES) $(TESTBENCH)
 two_bit_pred.vg: tut_mod2.v tut_synth.tcl
 	dc_shell-t -f tut_synth.tcl | tee synth.out
 
-syn_simv:	$(SYNFILES) ${SIMFILES} $(TESTBENCH) ${HEADERS}
-	$(VCS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv | tee syn_simv.log
+# syn_simv:	$(SYNFILES) ${SIMFILES} $(TESTBENCH) ${HEADERS}
+# 	$(VCS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv | tee syn_simv.log
 
 syn: 
 	-mkdir -p logs
@@ -98,7 +103,7 @@ syn:
 	-mv command.log temp_files/
 	-mv default.svf temp_files/
 	-mkdir -p export
-	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
+# -cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
 
 memgen:
 	cd memory; ./memgen.sh
@@ -118,6 +123,8 @@ nuke:	clean
 	-rm -rvf filenames*log 
 	-rm -rvf temp_files
 	-rm -rvf syn
+	-rm -rvf logs
+	-rm -rvf reports
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/
 
 run_all:
@@ -129,13 +136,25 @@ run_all:
 	@echo "Running simulation..."
 	./simv | tee program.out
 
-# TODO: Fix this
-gate_sim:
-	@echo "Cleaning..."
-	@$(MAKE) clean
+# # TODO: Fix this
+# gate_sim:
+# 	@echo "Cleaning..."
+# 	@$(MAKE) clean
+# 	@echo "Synthesizing..."
+# 	@$(MAKE) syn
+# 	@echo "Simulating..."
+# 	@$(MAKE) syn_simv
+# 	@echo "Running simulation..."
+# 	./syn_simv | tee syn_program.out
+
+gate_sim: $(SYN_TARGET) syn_simv
+	@echo "Running gate-level simulation..."
+	./syn_simv | tee syn_program.out
+
+$(SYN_TARGET):
 	@echo "Synthesizing..."
 	@$(MAKE) syn
-	@echo "Simulating..."
-	@$(MAKE) syn_simv
-	@echo "Running simulation..."
-	./syn_simv | tee syn_program.out
+
+syn_simv: $(SYNFILES) $(SIMFILES) $(TESTBENCH) $(HEADERS)
+	@echo "Compiling gate-level simulation..."
+	$(VCS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv | tee syn_simv.log

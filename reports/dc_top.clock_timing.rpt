@@ -5,7 +5,7 @@ Report : clock timing
         -type summary
 Design : dc_top
 Version: T-2022.03-SP3
-Date   : Sun Nov 10 21:12:50 2024
+Date   : Mon Nov 11 14:10:13 2024
 ****************************************
 
 Error: No clock pins of 'launching' sequential devices found. (UITE-406)
