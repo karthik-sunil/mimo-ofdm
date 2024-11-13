@@ -1,7 +1,3 @@
-test/inv_sqrt_tb.sv:31 NO "a non-instrumentable system task: $finish" (31)
-test/inv_sqrt_tb.sv:37 NO "a system function with side effects: $sscanf" (38)
-test/inv_sqrt_tb.sv:59 YES
-verilog/inv_sqrt.sv:53 YES
 verilog/fp_mul.sv:45 YES
 verilog/fp_mul.sv:71 YES
 verilog/fp_mul.sv:91 YES
@@ -10,8 +6,11 @@ verilog/fp_add.sv:126 YES
 verilog/fp_add.sv:178 YES
 verilog/delay.sv:18 YES
 verilog/delay.sv:32 YES
+verilog/fp_add.sv:56 YES
+verilog/fp_add.sv:126 YES
+verilog/fp_add.sv:178 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    115
-instrumented assignments:      114
-instrumentation success rate:  99%
+instrumentable assignments:    150
+instrumented assignments:      150
+instrumentation success rate:  100%

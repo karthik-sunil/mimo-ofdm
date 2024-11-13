@@ -1,9 +1,10 @@
 module butterfly_fp #(
-    parameter W_R = 32'hbf800000,
-    parameter W_I = 32'h00000000
+    parameter W_R = 32'h3f800000,
+    parameter W_I = 32'hbf800000
 ) (
     input logic clk,
     input logic reset,
+    input logic enable,
 
     input complex_fp_t A, 
     input complex_fp_t B,
@@ -26,7 +27,7 @@ fp_mul #(
 ) mul_0 (
     .clk(clk),
     .reset(reset),
-    .enable(1'b1),
+    .enable(enable),
     .idataA(B.r),
     .idataB(W_R),
     .odata(B_W_rr),
@@ -41,7 +42,7 @@ fp_mul #(
 ) mul_1 (
     .clk(clk),
     .reset(reset),
-    .enable(1'b1),
+    .enable(enable),
     .idataA(B.i),
     .idataB(W_I),
     .odata(B_W_ii),
@@ -56,7 +57,7 @@ fp_mul #(
 ) mul_2 (
     .clk(clk),
     .reset(reset),
-    .enable(1'b1),
+    .enable(enable),
     .idataA(B.r),
     .idataB(W_I),
     .odata(B_W_ri),
@@ -71,7 +72,7 @@ fp_mul #(
 ) mul_3 (
     .clk(clk),
     .reset(reset),
-    .enable(1'b1),
+    .enable(enable),
     .idataA(B.i),
     .idataB(W_R),
     .odata(B_W_ir),

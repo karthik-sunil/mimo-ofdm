@@ -22,7 +22,7 @@ typedef struct packed {
     logic signed [COMPLEX_PRODUCT_WIDTH-1:0] i;
 } complex_product_t;
 
-typedef_struct packed {
+typedef struct packed {
     logic [I_DATA-1:0] r;
     logic [I_DATA-1:0] i;
 } complex_fp_t;

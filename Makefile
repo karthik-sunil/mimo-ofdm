@@ -53,7 +53,7 @@ all:	simv
 # SIMFILES = verilog/fp_mul.sv
 # SYNFILES = fp_add.vg
 
-HEADERS = verilog/headers.svh
+# HEADERS = verilog/headers.svh
 TESTBENCH = test/butterfly_fp_tb.sv
 SIMFILES = verilog/butterfly_fp.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
 # SIMFILES = syn/fp_mul.mapped.v
@@ -75,7 +75,10 @@ SYN_TARGET = syn
 #####
 # Should be no need to modify after here
 #####
-simv:	$(SIMFILES) $(TESTBENCH) $(HEADERS)
+# simv:	$(SIMFILES) $(TESTBENCH) $(HEADERS)
+# 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
+
+simv:	$(SIMFILES) $(TESTBENCH) 
 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
 
 dve:	$(SIMFILES) $(TESTBENCH) 
