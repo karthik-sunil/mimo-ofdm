@@ -1,16 +1,18 @@
 
-module bit_reverser_tb;
+`include "verilog/headers.svh"
+
+module bit_reverser_tb();
+
 
 parameter CLOCK_PERIOD = 10;
 
 
-parameter NUM_ENTRIES = 8;
-parameter ENTRY_WIDTH = $clog2(NUM_ENTRIES);
+parameter N = 8;
 
 logic clk;
 logic reset;
-logic [ENTRY_WIDTH-1:0] input_array[NUM_ENTRIES-1:0];
-logic [ENTRY_WIDTH-1:0] output_array[NUM_ENTRIES-1:0];
+complex_product_t input_array [N-1:0];
+complex_product_t output_array[N-1:0];
 
 bit_reverser dut (
     .clk(clk),
@@ -32,15 +34,16 @@ initial begin
     reset = 0;
 
     // Input set 1
-    for(int i = 0; i < NUM_ENTRIES; i = i + 1) begin
-        input_array[i] = i;
+    for(int i = 0; i < N; i = i + 1) begin
+        input_array[i].r = i;
+        input_array[i].i = 0;
     end
 
     @(negedge clk);
 
     $display("Output Array");
-    for (int i = 0; i < NUM_ENTRIES; i = i + 1) begin
-        $display("%b,%b", input_array[i], output_array[i]);
+    for (int i = 0; i < N; i = i + 1) begin
+        $display("%d,%d", input_array[i].r, output_array[i].r);
     end
 
     $finish;

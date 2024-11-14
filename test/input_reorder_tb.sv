@@ -11,8 +11,8 @@ parameter N = 16;
 logic clk;
 logic reset;
 
-complex_t input_array [N-1:0];
-complex_t output_array[N-1:0];
+complex_product_t input_array [N-1:0];
+complex_product_t output_array[N-1:0];
 
 input_reorder #(
     .N(N)
@@ -38,8 +38,8 @@ initial begin
 
     // Input set 1
     for(int i = 0; i < N; i = i + 1) begin
-        input_array[i].r = $random;
-        input_array[i].i = $random;
+        input_array[i].r = i;
+        input_array[i].i = 0;
     end
 
     @(negedge clk);

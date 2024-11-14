@@ -1,3 +1,4 @@
+// $sdf_annotate 
 module fp_mul_tb();
 
 parameter CLOCK_PERIOD = 10;
@@ -19,18 +20,18 @@ shortreal idataA_f;
 shortreal idataB_f;
 shortreal odata_expecected, odata_expecected_f;
 
-generate
-    if(I_DATA == 16) begin
-        assign idataA = shortreal_to_fp16(idataA_f);
-        assign idataB = shortreal_to_fp16(idataB_f);
-        assign odata_expecected = shortreal_to_fp16(odata_expecected_f);
-    end
-    else begin
-        assign idataA = 32'h3f3759df;
-        assign idataB = 32'h3f3759df;
-        assign odata_expecected = $shortrealtobits(odata_expecected_f);
-    end
-endgenerate
+// generate
+//     if(I_DATA == 16) begin
+//         assign idataA = shortreal_to_fp16(idataA_f);
+//         assign idataB = shortreal_to_fp16(idataB_f);
+//         assign odata_expecected = shortreal_to_fp16(odata_expecected_f);
+//     end
+//     else begin
+//         assign idataA = $urandom();
+//         assign idataB = $urandom();
+//         assign odata_expecected = $shortrealtobits(odata_expecected_f);
+//     end
+// endgenerate
 
 assign odata_expecected_f = idataA_f * idataB_f;
 
@@ -124,9 +125,9 @@ initial begin
     reset = 1'b0;
     enable = 1'b1;
 
-    for(int i=0; i<10; i++) begin
-        idataA_f = 32'h3f3759df;
-        idataB_f = 32'h3f3759df;
+    for(int i=0; i<32; i++) begin
+        idataA = $urandom();
+        idataB = $urandom();
         repeat((DEBUG_MODE*3)+1) @(negedge clk);
     end
 

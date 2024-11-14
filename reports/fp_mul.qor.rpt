@@ -2,64 +2,64 @@
 ****************************************
 Report : qor
 Design : fp_mul
-Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Version: T-2022.03-SP3
+Date   : Wed Nov 13 13:26:42 2024
 ****************************************
 
 
   Timing Path Group 'core_clk'
   -----------------------------------
-  Levels of Logic:               3.00
-  Critical Path Length:          0.00
-  Critical Path Slack:           8.82
+  Levels of Logic:              55.00
+  Critical Path Length:          8.75
+  Critical Path Slack:           0.06
   Critical Path Clk Period:      9.80
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
-  Worst Hold Violation:         -0.98
-  Total Hold Violation:        -67.62
-  No. of Hold Violations:       69.00
+  Worst Hold Violation:         -0.91
+  Total Hold Violation:        -51.25
+  No. of Hold Violations:       71.00
   -----------------------------------
 
 
   Cell Count
   -----------------------------------
-  Hierarchical Cell Count:         12
-  Hierarchical Port Count:        417
-  Leaf Cell Count:               1656
-  Buf/Inv Cell Count:             185
-  Buf Cell Count:                 105
-  Inv Cell Count:                  80
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:               1634
+  Buf/Inv Cell Count:             110
+  Buf Cell Count:                   5
+  Inv Cell Count:                 105
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:      1520
-  Sequential Cell Count:          136
+  Combinational Cell Count:      1500
+  Sequential Cell Count:          134
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:        0.000000
-  Noncombinational Area:     0.000000
-  Buf/Inv Area:              0.000000
-  Total Buffer Area:             0.00
-  Total Inverter Area:           0.00
+  Combinational Area:     4108.491893
+  Noncombinational Area:   901.702938
+  Buf/Inv Area:            155.281985
+  Total Buffer Area:            13.72
+  Total Inverter Area:         141.56
   Macro/Black Box Area:      0.000000
-  Net Area:                  0.000000
+  Net Area:               1347.944640
   -----------------------------------
-  Cell Area:                 0.000000
-  Design Area:               0.000000
+  Cell Area:              5010.194831
+  Design Area:            6358.139471
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:          2534
-  Nets With Violations:             0
-  Max Trans Violations:             0
+  Total Number of Nets:          1952
+  Nets With Violations:            23
+  Max Trans Violations:            23
   Max Cap Violations:               0
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi15.engin.umich.edu
+  Hostname: caen-vnc-mi13.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -67,15 +67,15 @@ Date   : Tue Nov 12 13:34:59 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:                0.00
-  Overall Compile Wall Clock Time:     0.00
+  Overall Compile Time:                3.92
+  Overall Compile Wall Clock Time:     2.49
 
   --------------------------------------------------------------------
 
   Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
 
 
-  Design (Hold)  WNS: 0.98  TNS: 67.62  Number of Violating Paths: 69
+  Design (Hold)  WNS: 0.91  TNS: 51.25  Number of Violating Paths: 71
 
   --------------------------------------------------------------------
 

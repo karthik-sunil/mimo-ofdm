@@ -7,21 +7,23 @@ Report : timing
         -max_paths 1
         -transition_time
 Design : fp_mul
-Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Version: T-2022.03-SP3
+Date   : Wed Nov 13 13:26:42 2024
 ****************************************
 
- # A fanout number of 1000 was used for high fanout net computations.
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
 
-Operating Conditions: nom_pvt   Library: dw_foundation.sldb
-Wire Load Model Mode: top
-
-  Startpoint: product_exp_ff_reg_0_
+  Startpoint: idataA_mat_ff_reg_2_
               (rising edge-triggered flip-flop clocked by core_clk)
-  Endpoint: odata_exp_ff_reg_0_
+  Endpoint: product_mat_ff_reg_46_
             (rising edge-triggered flip-flop clocked by core_clk)
   Path Group: core_clk
   Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fp_mul             8000                  saed32rvt_tt1p05v25c
 
 Attributes:
     d - dont_touch
@@ -31,40 +33,137 @@ Attributes:
     i - ideal_net or ideal_network
   inf - infeasible path
 
-  Point                                  Fanout     Trans      Incr       Path      Attributes
-  ----------------------------------------------------------------------------------------------------
-  clock core_clk (rise edge)                                   0.00       0.00
-  clock network delay (ideal)                                  0.10       0.10
-  product_exp_ff_reg_0_/clocked_on (**SEQGEN**)      0.08      0.00       0.10 r
-  product_exp_ff_reg_0_/Q (**SEQGEN**)               0.00      0.00       0.10 f
-  product_exp_ff[0] (net)                  4                   0.00       0.10 f
-  sub_87_2/A_0 (*SUB_UNS_OP_8_7_8)                             0.00       0.10 f
-  sub_87_2/net1079 (net)                                       0.00       0.10 f
-  sub_87_2/*cell*34/A[0] (DW01_sub_width8)                     0.00       0.10 f
-  sub_87_2/*cell*34/A[0] (net)                                 0.00       0.10 f
-  ...
-  sub_87_2/*cell*34/DIFF[0] (DW01_sub_width8)                  0.00       0.10 r
-  sub_87_2/net1089 (net)                                       0.00       0.10 r
-  sub_87_2/Z_0 (*SUB_UNS_OP_8_7_8)                             0.00       0.10 r
-  N123 (net)                                                   0.00       0.10 r
-  C301/Z_0 (*SELECT_OP_2.8_2.1_8)                    0.00      0.00       0.10 r
-  odata_exp[0] (net)                       1                   0.00       0.10 r
-  C304/Z_0 (*SELECT_OP_2.8_2.1_8)                    0.00      0.00       0.10 r
-  N132 (net)                               1                   0.00       0.10 r
-  odata_exp_ff_reg_0_/next_state (**SEQGEN**)        0.00      0.00       0.10 r
-  data arrival time                                                       0.10
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  idataA_mat_ff_reg_2_/CLK (DFFX1_RVT)                    0.08      0.00       0.10 r
+  idataA_mat_ff_reg_2_/Q (DFFX1_RVT)                      0.01      0.10       0.20 r
+  idataA_mat_ff[2] (net)                        5                   0.00       0.20 r
+  U345/Y (IBUFFX16_RVT)                                   0.00      0.07       0.27 f
+  n4900 (net)                                   3                   0.00       0.27 f
+  U328/Y (NBUFFX8_RVT)                                    0.00      0.07       0.34 f
+  n4100 (net)                                  12                   0.00       0.34 f
+  U672/Y (AO22X1_RVT)                                     0.04      0.17       0.51 f
+  n3001 (net)                                   3                   0.00       0.51 f
+  U354/Y (INVX1_RVT)                                      0.01      0.12       0.64 r
+  n312 (net)                                    4                   0.00       0.64 r
+  U344/Y (NAND2X2_RVT)                                    0.09      0.15       0.78 f
+  n715 (net)                                   22                   0.00       0.78 f
+  U341/Y (OA22X1_RVT)                                     0.02      0.25       1.03 f
+  n327 (net)                                    1                   0.00       1.03 f
+  U972/Y (NAND2X0_RVT)                                    0.01      0.08       1.11 r
+  n328 (net)                                    1                   0.00       1.11 r
+  U313/SO (HADDX1_RVT)                                    0.01      0.05       1.17 r
+  n341 (net)                                    3                   0.00       1.17 r
+  U216/Y (NAND2X1_RVT)                                    0.04      0.09       1.25 f
+  n512 (net)                                    2                   0.00       1.25 f
+  U436/Y (AO21X1_RVT)                                     0.03      0.13       1.38 f
+  intadd_2_B_0_ (net)                           1                   0.00       1.38 f
+  intadd_2_U19/CO (FADDX1_RVT)                            0.03      0.25       1.64 f    mo 
+  intadd_2_n18 (net)                            1                   0.00       1.64 f
+  intadd_2_U18/CO (FADDX1_RVT)                            0.03      0.20       1.84 f    mo 
+  intadd_2_n17 (net)                            1                   0.00       1.84 f
+  intadd_2_U17/CO (FADDX1_RVT)                            0.03      0.20       2.04 f    mo 
+  intadd_2_n16 (net)                            1                   0.00       2.04 f
+  U1569/CO (FADDX1_RVT)                                   0.03      0.20       2.24 f    mo 
+  intadd_2_n15 (net)                            1                   0.00       2.24 f
+  U1571/CO (FADDX1_RVT)                                   0.03      0.20       2.44 f    mo 
+  intadd_2_n14 (net)                            1                   0.00       2.44 f
+  intadd_2_U14/CO (FADDX1_RVT)                            0.03      0.20       2.64 f    mo 
+  intadd_2_n13 (net)                            1                   0.00       2.64 f
+  intadd_2_U13/CO (FADDX1_RVT)                            0.03      0.20       2.84 f    mo 
+  intadd_2_n12 (net)                            1                   0.00       2.84 f
+  intadd_2_U12/CO (FADDX1_RVT)                            0.03      0.20       3.04 f    mo 
+  intadd_2_n11 (net)                            1                   0.00       3.04 f
+  intadd_2_U11/CO (FADDX1_RVT)                            0.03      0.20       3.23 f    mo 
+  intadd_2_n10 (net)                            1                   0.00       3.23 f
+  intadd_2_U10/CO (FADDX1_RVT)                            0.03      0.20       3.43 f    mo 
+  intadd_2_n9 (net)                             1                   0.00       3.43 f
+  intadd_2_U9/CO (FADDX1_RVT)                             0.03      0.20       3.63 f    mo 
+  intadd_2_n8 (net)                             1                   0.00       3.63 f
+  intadd_2_U8/CO (FADDX1_RVT)                             0.03      0.20       3.83 f    mo 
+  intadd_2_n7 (net)                             1                   0.00       3.83 f
+  intadd_2_U7/CO (FADDX1_RVT)                             0.03      0.20       4.03 f    mo 
+  intadd_2_n6 (net)                             1                   0.00       4.03 f
+  intadd_2_U6/CO (FADDX1_RVT)                             0.03      0.20       4.23 f    mo 
+  intadd_2_n5 (net)                             1                   0.00       4.23 f
+  intadd_2_U5/CO (FADDX1_RVT)                             0.03      0.20       4.43 f    mo 
+  intadd_2_n4 (net)                             1                   0.00       4.43 f
+  intadd_2_U4/CO (FADDX1_RVT)                             0.03      0.20       4.63 f    mo 
+  intadd_2_n3 (net)                             1                   0.00       4.63 f
+  intadd_2_U3/CO (FADDX1_RVT)                             0.03      0.20       4.83 f    mo 
+  intadd_2_n2 (net)                             1                   0.00       4.83 f
+  intadd_2_U2/S (FADDX1_RVT)                              0.03      0.21       5.04 f    mo 
+  intadd_2_SUM_17_ (net)                        1                   0.00       5.04 f
+  U686/CO (FADDX1_RVT)                                    0.04      0.25       5.30 f
+  n759 (net)                                    3                   0.00       5.30 f
+  U619/Y (AO222X1_RVT)                                    0.03      0.16       5.45 f
+  n778 (net)                                    3                   0.00       5.45 f
+  U637/Y (AO222X1_RVT)                                    0.03      0.15       5.61 f
+  n788 (net)                                    3                   0.00       5.61 f
+  U369/Y (AOI222X1_RVT)                                   0.01      0.14       5.75 r
+  n8301 (net)                                   3                   0.00       5.75 r
+  U367/Y (AO21X1_RVT)                                     0.01      0.06       5.81 r
+  n856 (net)                                    2                   0.00       5.81 r
+  U229/Y (OA21X1_RVT)                                     0.01      0.06       5.87 r
+  n877 (net)                                    2                   0.00       5.87 r
+  U222/Y (INVX0_RVT)                                      0.02      0.04       5.90 f
+  n876 (net)                                    1                   0.00       5.90 f
+  U317/Y (AO22X2_RVT)                                     0.02      0.10       6.00 f
+  n893 (net)                                    2                   0.00       6.00 f
+  U316/Y (IBUFFX4_RVT)                                    0.01      0.05       6.05 r
+  n126 (net)                                    1                   0.00       6.05 r
+  U603/Y (AND2X1_RVT)                                     0.01      0.04       6.10 r
+  n122 (net)                                    2                   0.00       6.10 r
+  U363/Y (AOI22X1_RVT)                                    0.02      0.09       6.18 f
+  intadd_4_A_14_ (net)                          1                   0.00       6.18 f
+  U567/CO (FADDX1_RVT)                                    0.04      0.21       6.40 f    mo 
+  intadd_4_n1 (net)                             2                   0.00       6.40 f
+  U577/Y (INVX1_RVT)                                      0.01      0.11       6.51 r
+  n9400 (net)                                   2                   0.00       6.51 r
+  U586/Y (AO21X1_RVT)                                     0.01      0.06       6.57 r
+  n955 (net)                                    2                   0.00       6.57 r
+  U339/Y (OAI21X2_RVT)                                    0.02      0.08       6.65 f
+  intadd_5_A_11_ (net)                          1                   0.00       6.65 f
+  U338/CO (FADDX2_RVT)                                    0.03      0.20       6.85 f    mo 
+  intadd_5_n1 (net)                             3                   0.00       6.85 f
+  U362/Y (AO222X1_RVT)                                    0.03      0.15       7.00 f
+  n988 (net)                                    3                   0.00       7.00 f
+  U1084/Y (AO222X1_RVT)                                   0.03      0.15       7.15 f
+  intadd_7_A_10_ (net)                          1                   0.00       7.15 f
+  U566/CO (FADDX1_RVT)                                    0.04      0.22       7.37 f    mo 
+  intadd_7_n1 (net)                             3                   0.00       7.37 f
+  U618/Y (AO222X1_RVT)                                    0.03      0.16       7.53 f
+  n1021 (net)                                   3                   0.00       7.53 f
+  U359/Y (AO222X1_RVT)                                    0.03      0.16       7.68 f
+  intadd_8_A_7_ (net)                           1                   0.00       7.68 f
+  U687/CO (FADDX1_RVT)                                    0.04      0.26       7.95 f    mo 
+  intadd_8_n1 (net)                             3                   0.00       7.95 f
+  U617/Y (AO222X1_RVT)                                    0.03      0.15       8.10 f
+  n1036 (net)                                   1                   0.00       8.10 f
+  U561/CO (FADDX1_RVT)                                    0.04      0.26       8.36 f
+  n164 (net)                                    2                   0.00       8.36 f
+  U212/Y (AO22X1_RVT)                                     0.03      0.14       8.50 f
+  n1046 (net)                                   2                   0.00       8.50 f
+  U210/S (FADDX1_RVT)                                     0.01      0.23       8.73 r
+  n1049 (net)                                   1                   0.00       8.73 r
+  U550/Y (NOR2X0_RVT)                                     0.01      0.06       8.79 f
+  N103 (net)                                    1                   0.00       8.79 f
+  product_mat_ff_reg_46_/D (DFFX1_RVT)                    0.01      0.06       8.85 f
+  data arrival time                                                            8.85
 
-  clock core_clk (rise edge)                                   9.80       9.80
-  clock network delay (ideal)                                  0.10       9.90
-  clock uncertainty                                           -0.98       8.92
-  odata_exp_ff_reg_0_/clocked_on (**SEQGEN**)                  0.00       8.92 r
-  library setup time                                           0.00       8.92
-  data required time                                                      8.92
-  ----------------------------------------------------------------------------------------------------
-  data required time                                                      8.92
-  data arrival time                                                      -0.10
-  ----------------------------------------------------------------------------------------------------
-  slack (MET)                                                             8.82
+  clock core_clk (rise edge)                                        9.80       9.80
+  clock network delay (ideal)                                       0.10       9.90
+  clock uncertainty                                                -0.98       8.92
+  product_mat_ff_reg_46_/CLK (DFFX1_RVT)                            0.00       8.92 r
+  library setup time                                               -0.01       8.91
+  data required time                                                           8.91
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           8.91
+  data arrival time                                                           -8.85
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.06
 
 
 1

@@ -3,13 +3,15 @@ module input_reorder #(
 )(
   input logic clk,
   input logic reset,
-  input complex_t input_array [N-1:0],
-  output complex_t output_array [N-1:0]
+  input logic enable,
+  input complex_product_t input_array [N-1:0],
+  output complex_product_t output_array [N-1:0],
+  output logic out_valid
 );
     logic [$clog2(N)-1:0] index [N-1:0];
     logic [$clog2(N)-1:0] reversed_index [N-1:0];
 
-    complex_t input_reordered [N-1:0];
+    complex_product_t input_reordered [N-1:0];
 
     genvar i;
     genvar j;
@@ -26,21 +28,19 @@ module input_reorder #(
         for(int i = 0; i < N; i = i + 1) begin
             input_reordered[i] = input_array[reversed_index[i]];
         end
-
-        // Now that we have reordered the input, we can use it for further FFT Computations
-        // This module can be extended to include the FFT computations as well
-        
     end
 
 
     always_ff @(posedge clk) begin
-    if (reset) begin
+    if (reset | ~enable) begin
         for (int i = 0; i < N; i = i + 1) begin
             output_array[i] <= '0;
+            out_valid <= 0;
         end
     end else begin
         for (int i = 0; i < N; i = i + 1) begin
             output_array <= input_reordered;
+            out_valid <= 1;
         end
     end
 

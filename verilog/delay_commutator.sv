@@ -1,15 +1,14 @@
 // In the delay commutator, for each stage, delay by N/k samples where k ranges from 4 to N in powers of two.
 module delay_commutator #(
-    parameter DELAY = 4,
-    parameter DATA_WIDTH = 16
+    parameter DELAY = 4
 )(
     input logic clk,
     input logic reset,
     input logic enable,
-    input logic [DATA_WIDTH-1:0] x0,
-    input logic [DATA_WIDTH-1:0] x1,
-    output logic [DATA_WIDTH-1:0] y0,
-    output logic [DATA_WIDTH-1:0] y1,
+    input complex_product_t x0,
+    input complex_product_t x1,
+    output complex_product_t y0,
+    output complex_product_t y1,
     output logic commutator_out_valid
 );
 
@@ -17,13 +16,12 @@ module delay_commutator #(
     // Do not delay x0
 
     logic out_valid, switch_enable, switch_enable_ff;
-    logic [DATA_WIDTH-1:0] x1_delayed;
-    logic [DATA_WIDTH-1:0] x0_ff, x1_ff;
-    logic [DATA_WIDTH-1:0] y0_comb, y1_comb;
+    complex_product_t x1_delayed;
+    complex_product_t x0_ff, x1_ff;
+    complex_product_t y0_comb, y1_comb;
 
     delay #(
-        .DELAY(DELAY),
-        .DATA_WIDTH(DATA_WIDTH)
+        .DELAY(DELAY)
     ) delay_x1 (
         .clk(clk),
         .reset(reset),
@@ -53,12 +51,11 @@ module delay_commutator #(
     // Delay y0 by D cycles
     // Do not delay y1
 
-    logic [DATA_WIDTH-1:0] y0_delayed;
+    complex_product_t y0_delayed;
     logic commutator_out_valid_comb, commutator_out_valid_ff;
 
     delay #(
-        .DELAY(DELAY),
-        .DATA_WIDTH(DATA_WIDTH)
+        .DELAY(DELAY)
     ) delay_y0 (
         .clk(clk),
         .reset(reset),

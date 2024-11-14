@@ -6,8 +6,8 @@ module butterfly #(
     input logic reset,
     input logic enable,
 
-    input complex_t A,
-    input complex_t B,
+    input complex_product_t A,
+    input complex_product_t B,
 
     output complex_product_t X,
     output complex_product_t Y,

@@ -1,19 +1,21 @@
+`include "verilog/headers.svh"
+
 module dc_top_tb();
 
     parameter DATA_WIDTH = 32;
     parameter CLOCK_PERIOD = 10;
 
-    parameter N = 16;
+    parameter N = 128;
 
     localparam NUM_COMMUTATORS = $clog2(N) - 1;
 
     logic clk;
     logic reset;
-    logic [DATA_WIDTH-1:0] x0;
-    logic [DATA_WIDTH-1:0] x1;
+    complex_product_t x0;
+    complex_product_t x1;
 
-    logic [DATA_WIDTH-1:0] y0;
-    logic [DATA_WIDTH-1:0] y1;
+    complex_product_t y0;
+    complex_product_t y1;
 
     logic dc_chain_out_valid;
 
@@ -39,7 +41,7 @@ module dc_top_tb();
 
     always @(negedge clk) begin
         if (N==8) begin
-            $fdisplay(f_out,"%d, %d | %d, %d, [%b] | %d, %d, [%b]", x0, x1, dut.x0_dc[0], dut.x1_dc[0], dut.dc_out_valid[0] ,y0, y1, dc_chain_out_valid);
+            $fdisplay(f_out,"%d, %d | %d, %d, [%b] | %d, %d, [%b]", x0.r, x1.r, dut.x0_dc[0], dut.x1_dc[0], dut.dc_out_valid[0],y0.r, y1.r, dc_chain_out_valid);
         end
 
         else if (N==16) begin
@@ -51,11 +53,12 @@ module dc_top_tb();
         end
 
         else if (N==64) begin
-            $fdisplay(f_out,"%d, %d | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b]", x0, x1, dut.x0_dc[0], dut.x1_dc[0], dut.dc_out_valid[0], dut.x0_dc[1], dut.x1_dc[1], dut.dc_out_valid[1] , dut.x0_dc[2], dut.x1_dc[2], dut.dc_out_valid[2], dut.x0_dc[3], dut.x1_dc[3], dut.dc_out_valid[3], y0, y1, dc_chain_out_valid);
+            $fdisplay(f_out,"%d, %d | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b] | %d, %d, [%b]", x0.r, x1.r, dut.x0_dc[0], dut.x1_dc[0], dut.dc_out_valid[0], dut.x0_dc[1], dut.x1_dc[1], dut.dc_out_valid[1] , dut.x0_dc[2], dut.x1_dc[2], dut.dc_out_valid[2], dut.x0_dc[3], dut.x1_dc[3], dut.dc_out_valid[3], y0.r, y1.r, dc_chain_out_valid);
         end
 
         else begin
-             $fdisplay(f_out,"%d, %d, %d, %d, [%b]", x0, x1, y0, y1, dc_chain_out_valid);
+            //  $fdisplay(f_out,"%d, %d, %d, %d, [%b]", x0.r, x1.r, y0.r, y1.r, dc_chain_out_valid);
+             $display("%d, %d, %d, %d, [%b]", x0.r, x1.r, y0.r, y1.r, dc_chain_out_valid);
         end
     end
 
@@ -68,14 +71,18 @@ module dc_top_tb();
 
         // Generate N point input
         for(int i=0; i<N/2; i++) begin
-            x0 = i;
-            x1 = i+N/2;
+            x0.r = i;
+            x0.i = 0;
+            x1.r = i+N/2;
+            x1.i = 0;
             @(negedge clk);
         end
 
         repeat(N) begin
-            x0 = 0;
-            x1 = 0;
+            x0.r = 0;
+            x0.i = 0;
+            x1.r = 0;
+            x1.i = 0;
             @(negedge clk);
         end
 
