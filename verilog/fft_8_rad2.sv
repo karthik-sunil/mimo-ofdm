@@ -92,28 +92,29 @@ butterfly butterfly_2 (
 );
 
 complex_product_t output_buffer [N-1:0];
+complex_product_t flipped_output_buffer [N-1:0];
 logic buffer_ready;
 logic [$clog2(N)-1:0] w_ptr;
 
 
 always_ff @(posedge clk) begin
     if (reset | ~ butterfly_2_out_valid) begin
-        w_ptr <= 0;
+        w_ptr <= 7;
         buffer_ready <= 0;     
         for(int i=0; i<N; i++) begin
             output_buffer[i] <= '0;
         end
     end
     else begin
-        output_buffer[w_ptr[$clog2(N/2)-1:0]]       <= butterfly_2_x;
-        output_buffer[w_ptr[$clog2(N/2)-1:0] + N/2] <= butterfly_2_y;
+        output_buffer[w_ptr[$clog2(N)-1:0]]       <= butterfly_2_x;
+        output_buffer[w_ptr[$clog2(N)-1:0] - 1] <= butterfly_2_y;
         
-        if (w_ptr == N/2-1) begin
-            w_ptr <= 0;
+        if (w_ptr == 1) begin
+            w_ptr <= 7;
             buffer_ready <= 1'b1;
         end
         else begin
-            w_ptr <= w_ptr + 1;
+            w_ptr <= w_ptr - 2;
             buffer_ready <= 1'b0;
         end
     end

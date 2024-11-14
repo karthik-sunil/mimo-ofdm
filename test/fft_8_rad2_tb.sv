@@ -43,27 +43,27 @@ initial begin
     enable = 1;
 
     // @(negedge clk);
-    data_0.r = 1; 
+    data_0.r = 0; 
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 4;
     data_1.i = 0;
     
     @(negedge clk);
     data_0.r = 1; 
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 5;
     data_1.i = 0;
     
     @(negedge clk);
-    data_0.r = 1; 
+    data_0.r = 2; 
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 6;
     data_1.i = 0;
     
     @(negedge clk);
-    data_0.r = 1; 
+    data_0.r = 3; 
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 7;
     data_1.i = 0;
     @(negedge clk);
     data_0.r = 0; 
@@ -83,6 +83,7 @@ initial begin
         $display("--------------------");
         for (int j=0; j<N; j++) begin
             $display("fft_out[%0d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
+            // $display("output_buffer[%0d]= output_buffer.r=%d; output_buffer.i=%d", j, dut.output_buffer[j].r, dut.output_buffer[j].i);
         end
 
     end
