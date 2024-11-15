@@ -5,10 +5,10 @@ module deserializer #(
     input logic reset,
     input logic enable,
 
-    input complex_product_t x_0,
-    input complex_product_t x_1,
+    input complex_product_t data_0,
+    input complex_product_t data_1,
 
-    output complex_product_t x_deserialized [N-1:0],
+    output complex_product_t data_deserialized [N-1:0],
     output logic out_valid
 );
 
@@ -28,8 +28,8 @@ module deserializer #(
         end
         else begin
             // Write to buffer, 2 per cycle
-            buffer[w_ptr[$clog2(N)-1:0]]       <= x_0;
-            buffer[w_ptr[$clog2(N)-1:0] - 1]   <= x_1;
+            buffer[w_ptr[$clog2(N)-1:0]]       <= data_0;
+            buffer[w_ptr[$clog2(N)-1:0] - 1]   <= data_1;
 
             if (w_ptr == 1) begin
                 w_ptr <= N-1;
@@ -43,7 +43,7 @@ module deserializer #(
     end
 
     // Output the buffer
-    assign x_deserialized = buffer;
+    assign data_deserialized = buffer;
     assign out_valid = buffer_ready;
 
 endmodule
