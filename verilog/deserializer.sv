@@ -28,10 +28,10 @@ module deserializer #(
         end
         else begin
             // Write to buffer, 2 per cycle
-            buffer[w_ptr[[$clog2(N)-1:0]]]       <= x_0;
-            buffer[w_ptr[[$clog2(N)-1:0]] - 1] <= x_1;
+            buffer[w_ptr[$clog2(N)-1:0]]       <= x_0;
+            buffer[w_ptr[$clog2(N)-1:0] - 1]   <= x_1;
 
-            if (w_ptr == 0) begin
+            if (w_ptr == 1) begin
                 w_ptr <= N-1;
                 buffer_ready <= 1;
             end
