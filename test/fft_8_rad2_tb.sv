@@ -18,6 +18,8 @@ complex_product_t fft_out [N-1:0];
 
 logic out_valid;
 
+integer cycle_count;
+
 fft_8_rad2 dut (
     .clk(clk),
     .reset(reset),
@@ -33,16 +35,30 @@ always begin
     #(CLOCK_PERIOD/2);
 end
 
+always @(negedge clk) begin
+    integer f_out = $fopen("out/fft_8_rad2_tb_output.txt");
+    if(enable) cycle_count++;
+    $fdisplay(f_out,"--------------------");
+        for (int j=0; j<N; j++) begin
+            $fdisplay(f_out,"fft_out[%0d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
+        end
+
+        if (out_valid) begin
+            $fdisplay(f_out,"out_valid = %d, cycle_count = %d", out_valid, cycle_count);
+            $finish();
+        end
+end
+
 initial begin
     reset = 1;
     enable = 0;
     clk = 0;
+    cycle_count = 0;
 
     @(negedge clk);
     reset = 0;
     enable = 1;
 
-    // @(negedge clk);
     data_0.r = 0; 
     data_0.i = 0;
     data_1.r = 4;
@@ -73,19 +89,7 @@ initial begin
     @(negedge clk);
 
     for(int i=0; i<16; i++) begin
-        // 
-        // $display("data_0 = %d, data_1 = %d, butterfly_0_x = %d, butterfly_0_y = %d, butterfly_0_out_valid = %d", data_0.r, data_1.r, dut.butterfly_0_x.r, dut.butterfly_0_y.r, dut.butterfly_0_out_valid);
-        // $display("butterfly_0_x = %d, butterfly_0_y = %d, butterfly_0_x_reordered_dc_2 = %d, butterfly_0_y_reordered_dc_2 = %d, dc_2_out_valid = %d", dut.butterfly_0_x.r, dut.butterfly_0_y.r, dut.butterfly_0_x_reordered_dc_2.r, dut.butterfly_0_y_reordered_dc_2.r, dut.dc_2_out_valid);
-        // $display("butterfly_0_x_reordered_dc_2 = %d, butterfly_0_y_reordered_dc_2 = %d, butterfly_1_x = %d, butterfly_1_y = %d, butterfly_1_out_valid = %d", dut.butterfly_0_x_reordered_dc_2.r, dut.butterfly_0_y_reordered_dc_2.r, dut.butterfly_1_x.r, dut.butterfly_1_y.r, dut.butterfly_1_out_valid);
-        // $display("data_0 = %d, data_1 = %d, butterfly_1_x = %d, butterfly_1_x = %d, butterfly_1_out_valid = %d, %d, %d, %d", data_0.r, data_1.r, dut.butterfly_1.X_comb.r, dut.butterfly_1.Y_comb.r, dut.butterfly_1_out_valid, dut.butterfly_1.B.r, dut.butterfly_1.B_W.r, dut.butterfly_1.B_W.i);
-        // $display("data_0 = %d, data_1 = %d, data_out_0 = %d, data_out_1 = %d, out_valid = %d", data_0.r, data_1.r, data_out_0.r, data_out_1.r, out_valid);
         @(negedge clk);
-        $display("--------------------");
-        for (int j=0; j<N; j++) begin
-            $display("fft_out[%0d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
-            // $display("output_buffer[%0d]= output_buffer.r=%d; output_buffer.i=%d", j, dut.output_buffer[j].r, dut.output_buffer[j].i);
-        end
-
     end
 
 
