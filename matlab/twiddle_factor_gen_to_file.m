@@ -36,16 +36,93 @@ function generateTwiddleFactorsToFile(N, filename)
                 % else
                 %     fprintf(fileID, '%.4f - %.4fi\n', realPart, abs(imagPart));
                 % end
-                fprintf(fileID, '%.4f,%.4f\n', realPart, imagPart);
+
+                % Convert to IEEE754 binary using built-in typecast
+                ieeeReal = singleToBinary(realPart);
+                ieeeImag = singleToBinary(imagPart);
+
+                % ieeeReal = floatToIEEE754(realPart);
+                % ieeeImag = floatToIEEE754(imagPart);
+
+                ieeeRealHex = singleToHex(realPart);
+                ieeeImagHex = singleToHex(imagPart);
+                
+                % Print values and their IEEE754 representations and hex
+                % for our rep
+                fprintf('realPart: %.4f, imagPart: %.4f\n', realPart, imagPart);
+                fprintf('IEEE Real: %s, Hex: %s\n', ieeeReal, ieeeRealHex);
+                fprintf('IEEE Imag: %s, Hex: %s\n', ieeeImag, ieeeImagHex);
+                
+                % Write values and their IEEE754 representation
+                fprintf(fileID, '%f,%f,%s,%s\n', realPart, imagPart, ieeeReal, ieeeImag);
             end
         end
     end
     
     fclose(fileID);
-    fprintf('Twiddle factors successfully written to "%s".\n', filename);
+    fprintf('Twiddle factors in IEEE754 representation successfully written to "%s".\n', filename);
 end
 
+function binaryStr = singleToBinary(value)
+    % Convert a single-precision float to its IEEE754 binary representation
+    singleValue = single(value); % Convert to single precision
+    binary = typecast(singleValue, 'uint32'); % Interpret as uint32
+    binaryStr = dec2bin(binary, 32); % Convert to 32-bit binary string
+end
+
+function hexStr = singleToHex(value)
+    % Convert a single-precision float to its IEEE754 hexadecimal representation
+    singleValue = single(value); % Convert to single precision
+    hexValue = typecast(singleValue, 'uint32'); % Interpret as uint32
+    hexStr = dec2hex(hexValue, 8); % Convert to 8-character hexadecimal string
+end
+
+% function ieee754Str = floatToIEEE754(num)
+%     % Convert a floating-point number to its IEEE754 32-bit representation
+%     if num == 0
+%         ieee754Str = '00000000000000000000000000000000'; % Special case for zero
+%         return;
+%     end
+% 
+%     signBit = '0';
+%     if num < 0
+%         signBit = '1';
+%         num = -num;
+%     end
+% 
+%     % Decompose number
+%     [frac, exp] = log2(num); % Get fractional and exponent parts
+%     frac = frac * 2 - 1; % Normalize fraction (remove leading 1)
+%     exp = exp + 127; % Bias exponent for 32-bit IEEE754
+% 
+%     % Handle special cases
+%     if exp <= 0
+%         ieee754Str = '00000000000000000000000000000000'; % Underflow
+%         return;
+%     elseif exp >= 255
+%         ieee754Str = [signBit, '11111111', repmat('0', 1, 23)]; % Overflow
+%         return;
+%     end
+% 
+%     % Convert fraction to binary (23 bits)
+%     fracBits = '';
+%     for i = 1:23
+%         frac = frac * 2;
+%         if frac >= 1
+%             fracBits = [fracBits, '1'];
+%             frac = frac - 1;
+%         else
+%             fracBits = [fracBits, '0'];
+%         end
+%     end
+% 
+%     % Assemble IEEE754 binary representation
+%     expBits = dec2bin(exp, 8);
+%     ieee754Str = [signBit, expBits, fracBits];
+% end
+% 
+
 %paramterizable
-N = 16; 
+N = 8; 
 filename = 'twiddle_factors.txt'; 
 generateTwiddleFactorsToFile(N, filename);
