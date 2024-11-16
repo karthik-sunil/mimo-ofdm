@@ -12,6 +12,11 @@ parameter N=4;
 // Addressing bits
 parameter FFT_BITS=$clog2(N);
 
+//fixed-point params
+parameter FIXED_INT_BITS = 8; 
+parameter FIXED_FRAC_BITS = 8;
+parameter FIXED_WIDTH = FIXED_INT_BITS + FIXED_FRAC_BITS; // 16 for now- Total fixed pt width
+
 typedef struct packed {
     logic signed [COMPLEX_WIDTH-1:0] r;
     logic signed [COMPLEX_WIDTH-1:0] i;
@@ -26,3 +31,9 @@ typedef struct packed {
     logic [I_DATA-1:0] r;
     logic [I_DATA-1:0] i;
 } complex_fp_t;
+
+//NOTE: try to keep the COMPLEX_PRODUCT_WIDTH and FIXED_WIDTH the same as far as possible
+typedef struct packed {
+    logic signed [FIXED_WIDTH-1:0] r; // Real part
+    logic signed [FIXED_WIDTH-1:0] i; // Imaginary part
+} complex_fixed_t;
