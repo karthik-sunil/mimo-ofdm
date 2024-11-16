@@ -16,15 +16,14 @@ logic out_valid;
 
 parameter CLOCK_PERIOD = 10;
 
-butterfly #(
-    .W_R(-1),
-    .W_I(0)
-) dut (
+butterfly dut (
     .clk(clk),
     .reset(reset),
     .enable(enable),
     .A(A),
     .B(B),
+    .W_R(-1),
+    .W_I(0),
     .X(X),
     .Y(Y),
     .out_valid(out_valid)

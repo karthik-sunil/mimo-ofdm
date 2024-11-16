@@ -1,13 +1,13 @@
-module butterfly #(
-    parameter W_R = -1,
-    parameter W_I =  0
-)(
+module butterfly(
     input logic clk,
     input logic reset,
     input logic enable,
 
     input complex_product_t A,
     input complex_product_t B,
+
+    input logic signed [15:0] W_R,
+    input logic signed [15:0] W_I,
 
     output complex_product_t X,
     output complex_product_t Y,
@@ -18,9 +18,6 @@ module butterfly #(
     complex_product_t Y_Wout; 
 
     always_comb begin
-        // Complex multiplication B * W
-        // B_W.r = B.r * W_R - B.i * W_I;
-        // B_W.i = B.r * W_I + B.i * W_R;
 
         // Complex addition A + B
         X_comb.r = A.r + B.r;
