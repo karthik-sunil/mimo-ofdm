@@ -192,8 +192,8 @@ delay #(
     .clk(clk),
     .reset(reset),
     .enable(adder_sub_valid),
-    .in(A_B_sum),
-    .out(X_comb),
+    .idata(A_B_sum),
+    .odata(X_comb),
     .out_valid(X_comb_valid)
 );
 
