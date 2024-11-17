@@ -1,7 +1,7 @@
-test/fp2int_tb.sv:27 NO "a non-instrumentable system task: $finish" (27)
-test/fp2int_tb.sv:33 NO "a system function with side effects: $sscanf" (34)
-test/fp2int_tb.sv:62 YES
-verilog/fp2int.sv:35 YES
+test/int2fp_tb.sv:23 NO "a non-instrumentable system task: $finish" (23)
+test/int2fp_tb.sv:29 NO "a system function with side effects: $sscanf" (30)
+test/int2fp_tb.sv:52 YES
+verilog/int2fp.sv:38 YES
 ==================================================
 X P R O P   S T A T I S T I C S
 instrumentable assignments:    5

@@ -91,9 +91,13 @@ all:	simv
 # TESTBENCH = test/butterfly_fp_tb.sv
 # SIMFILES = verilog/butterfly_fp.sv verilog/fp_add.sv verilog/delay.sv verilog/fp_mul.sv
 
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fp2int_tb.sv
+# SIMFILES = verilog/fp2int.sv
+
 HEADERS = verilog/headers.svh
-TESTBENCH = test/fp2int_tb.sv
-SIMFILES = verilog/fp2int.sv
+TESTBENCH = test/int2fp_tb.sv
+SIMFILES = verilog/int2fp.sv 
 
 
 # HEADERS = verilog/headers.svh

@@ -11,7 +11,7 @@ module fp2int #(
     output logic out_valid
 );
 
-localparam bias = (2**(I_EXP-1)-1) - R;
+localparam BIAS = (2**(I_EXP-1)-1) - R;
 
 
 logic sign; 
@@ -27,7 +27,7 @@ assign exponent = fp_in[I_DATA-1:I_MNT];
 assign mantissa = fp_in[I_MNT-1:0];
 
 assign temp_1 = {1'b1, mantissa};
-assign abs_int = temp_1 >> (I_MNT - (exponent - bias));
+assign abs_int = temp_1 >> (I_MNT - (exponent - BIAS));
 assign temp_2 = sign? (~abs_int)+1 : abs_int;
 assign int_comb = {sign, temp_2};
 
