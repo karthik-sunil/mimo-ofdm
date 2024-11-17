@@ -13,8 +13,6 @@ module fft_8_rad2 #(
     input logic signed [15:0] W_R_STAGE [NUM_STAGES][NUM_BUTTERFLIES], // real twiddle driven dynamically from TB
     input logic signed [15:0] W_I_STAGE [NUM_STAGES][NUM_BUTTERFLIES],// img twiddle driven dynamically from TB
 
-    // output complex_product_t data_out_0,
-    // output complex_product_t data_out_1,
     output complex_product_t fft_out [N-1:0],
     output logic out_valid
 );

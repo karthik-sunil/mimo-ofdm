@@ -68,22 +68,6 @@ initial begin
         end
     end
 
-    // // fed into 2d array
-    // for (int stage = 0; stage < NUM_STAGES; stage++) begin
-    //     for (int butterfly = 0; butterfly < NUM_BUTTERFLIES; butterfly++) begin
-    //         // Read binary strings and convert to signed logic
-    //         $fscanf(twiddle_file, "%b,%b\n", 
-    //                 twiddle_factors[stage][butterfly].r, 
-    //                 twiddle_factors[stage][butterfly].i);
-
-    //         //debug
-    //         $display("Read Twiddle Factor (Binary): Stage %0d, Butterfly %0d, W_R=%b, W_I=%b", 
-    //         stage, butterfly, 
-    //         twiddle_factors[stage][butterfly].r, 
-    //         twiddle_factors[stage][butterfly].i);
-    //     end
-    // end
-
     $fclose(twiddle_file);
 end
 
@@ -112,47 +96,6 @@ initial begin
     @(negedge clk);
     reset = 0;
     enable = 1;
-
-    // for (int i = 0; i < 16; i++) begin
-    //         data_0.r = 1; 
-    //         data_0.i = 0;        
-    //         data_1.r = 0; 
-    //         data_1.i = 0; 
-
-    //     @(negedge clk);
-    // end
-
-
-    // for (int stage = 0; stage < NUM_STAGES; stage++) begin
-    //     for (int butterfly = 0; butterfly < NUM_BUTTERFLIES; butterfly++) begin
-    //         // we can test for various scenarios
-    //         data_0.r = 1; 
-    //         data_0.i = 0;        
-    //         data_1.r = 0; 
-    //         data_1.i = 0; 
-
-    //         W_R = twiddle_factors[stage][butterfly].r; // real part
-    //         W_I = twiddle_factors[stage][butterfly].i; // imaginary part
-
-    //         $display("Cycle %0d, W_R=%b, W_I=%b, Data_0=%d, Data_1=%d", 
-    //                  cycle_count, W_R, W_I, data_0.r, data_1.r);
-    //         //checking our twiddle factors applied
-    //         // $display("Stage %0d, Butterfly_no %0d, Twiddle_Factor (Binary): W_R=%b, W_I=%b", 
-    //         // stage, butterfly, 
-    //         // twiddle_factors[stage][butterfly].r, 
-    //         // twiddle_factors[stage][butterfly].i);
-    //         // $display("Data_0.r = %d, Data_0.i = %d, Data_1.r = %d, Data_1.i = %d", 
-    //         // data_0.r, data_0.i, data_1.r, data_1.i);
-
-    //         //to move to next set of inputs and twiddle factors
-    //         @(negedge clk);
-    //         //print the intermediates for the butterfly just before being fed to next stage (after DC)
-    //         $display("but_0_x_re_dc_2.r = %d, but_0_x_re_dc_2.i = %d, but_0_y_re_dc_2.r = %d. but_0_y_re_dc_2.i = %d", dut.butterfly_0_x_reordered_dc_2.r, dut.butterfly_0_x_reordered_dc_2.i, dut.butterfly_0_y_reordered_dc_2.r, dut.butterfly_0_y_reordered_dc_2.i);
-    //         $display("but_1_x_re_dc_1.r = %d, but_1_x_re_dc_1.i = %d, but_1_y_re_dc_1.r = %d, but_1_y_re_dc_1.i = %d", dut.butterfly_1_x_reordered_dc_1.r, dut.butterfly_1_x_reordered_dc_1.i, dut.butterfly_1_y_reordered_dc_1.r, dut.butterfly_1_y_reordered_dc_1.i);
-    //         $display("------------------------------------------------------------");
-    //         cycle_count++;
-    //     end
-    // end
 
     data_0.r = 0; 
     data_0.i = 0;
