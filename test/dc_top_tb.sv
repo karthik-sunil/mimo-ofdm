@@ -5,7 +5,7 @@ module dc_top_tb();
     parameter DATA_WIDTH = 32;
     parameter CLOCK_PERIOD = 10;
 
-    parameter N = 128;
+    parameter N = 16;
 
     localparam NUM_COMMUTATORS = $clog2(N) - 1;
 

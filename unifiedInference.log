@@ -1,5 +1,5 @@
-test/int2fp_tb.sv:52 YES:SyncFF
-verilog/int2fp.sv:38 YES:SyncFF
+test/fp2int_tb.sv:62 YES:SyncFF
+verilog/fp2int.sv:34 YES:SyncFF
 ==================================================
 Unified Inference Statistics
 Number of always_ff:                   1
