@@ -39,7 +39,7 @@ module input_reorder #(
         end
     end else begin
         for (int i = 0; i < N; i = i + 1) begin
-            output_array <= input_reordered;
+            output_array[N-1-i] <= input_reordered[i];
             out_valid <= 1;
         end
     end

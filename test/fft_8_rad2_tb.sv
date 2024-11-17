@@ -9,7 +9,7 @@ parameter CLOCK_PERIOD = 10;
 // code changes to incorporate for LUT based twiddle factors
 parameter NUM_STAGES = $clog2(N);
 parameter NUM_BUTTERFLIES = N/2; //no of butterflies to be put per stage
-parameter TWIDDLE_FILE = "./test/data/twiddle_factors8fixed.txt";
+parameter TWIDDLE_FILE = "./dat/twiddle_factors_temp.txt";
 
 logic clk;
 logic reset;
@@ -76,6 +76,10 @@ always @(negedge clk) begin
     if(enable) cycle_count++;
     $fdisplay(f_out,"--------------------");
         for (int j=0; j<N; j++) begin
+            // $fdisplay(f_out,"before deserializer: buttefly_x = %d; butterfly_y = %d", dut.butterfly_2_x, dut.butterfly_2_y);
+            // $fdisplay(f_out, "deserializer output[%d, %d, %d, %d, %d, %d, %d, %d]", dut.deserializer_out_buffer[7].r, dut.deserializer_out_buffer[6].r, dut.deserializer_out_buffer[5].r, dut.deserializer_out_buffer[4].r, dut.deserializer_out_buffer[3].r, dut.deserializer_out_buffer[2].r, dut.deserializer_out_buffer[1].r, dut.deserializer_out_buffer[0].r);
+            // the above output of deserializer is correct
+            // $fdisplay(f_out,"before input reorder: fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
             $fdisplay(f_out,"fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
         end
 

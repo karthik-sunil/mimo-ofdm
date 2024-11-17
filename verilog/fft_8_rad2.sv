@@ -19,14 +19,19 @@ module fft_8_rad2 #(
 
 complex_product_t butterfly_0_x, butterfly_0_y;
 logic butterfly_0_out_valid;
-integer twiddle_idx;
+// counter for twiddle
+logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
 
 // Butterfly for this stage
 always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
-        twiddle_idx <= 0;
+        twiddle_counter <= 0;
     end else if (enable) begin
-        twiddle_idx <= (twiddle_idx + 1) % NUM_BUTTERFLIES; // Loop over twiddle factors
+        if (twiddle_counter == NUM_BUTTERFLIES - 1) begin
+            twiddle_counter <= 0; // reset counter when it gets to max
+        end else begin
+            twiddle_counter <= twiddle_counter + 1;
+        end
     end
 end
 
@@ -37,8 +42,8 @@ butterfly butterfly_0 (
     .enable(enable),
     .A(data_0),
     .B(data_1),
-    .W_R(W_R_STAGE[0][twiddle_idx]), // real tewiddle
-    .W_I(W_I_STAGE[0][twiddle_idx]), // img twiddle
+    .W_R(W_R_STAGE[0][twiddle_counter]), // real tewiddle
+    .W_I(W_I_STAGE[0][twiddle_counter]), // img twiddle
     .X(butterfly_0_x),
     .Y(butterfly_0_y),
     .out_valid(butterfly_0_out_valid)
@@ -70,8 +75,8 @@ butterfly butterfly_1 (
     .enable(dc_2_out_valid),
     .A(butterfly_0_x_reordered_dc_2),
     .B(butterfly_0_y_reordered_dc_2),
-    .W_R(W_R_STAGE[1][twiddle_idx]), // real tewiddle
-    .W_I(W_I_STAGE[1][twiddle_idx]), // img twiddle
+    .W_R(W_R_STAGE[1][twiddle_counter]), // real tewiddle
+    .W_I(W_I_STAGE[1][twiddle_counter]), // img twiddle
     .X(butterfly_1_x),
     .Y(butterfly_1_y),
     .out_valid(butterfly_1_out_valid)
@@ -103,8 +108,8 @@ butterfly butterfly_2 (
     .enable(dc_1_out_valid),
     .A(butterfly_1_x_reordered_dc_1),
     .B(butterfly_1_y_reordered_dc_1),
-    .W_R(W_R_STAGE[2][twiddle_idx]), // real tewiddle
-    .W_I(W_I_STAGE[2][twiddle_idx]), // img twiddle
+    .W_R(W_R_STAGE[2][twiddle_counter]), // real tewiddle
+    .W_I(W_I_STAGE[2][twiddle_counter]), // img twiddle
     .X(butterfly_2_x),
     .Y(butterfly_2_y),
     .out_valid(butterfly_2_out_valid)
