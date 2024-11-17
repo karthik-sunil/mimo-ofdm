@@ -1,16 +1,9 @@
-verilog/fp_add.sv:56 YES
-verilog/fp_add.sv:126 YES
-verilog/fp_add.sv:178 YES
-verilog/delay.sv:17 YES
-verilog/delay.sv:33 YES
-verilog/fp_mul.sv:45 YES
-verilog/fp_mul.sv:71 YES
-verilog/fp_mul.sv:91 YES
-verilog/fp_add.sv:56 YES
-verilog/fp_add.sv:126 YES
-verilog/fp_add.sv:178 YES
+test/fp2int_tb.sv:27 NO "a non-instrumentable system task: $finish" (27)
+test/fp2int_tb.sv:33 NO "a system function with side effects: $sscanf" (34)
+test/fp2int_tb.sv:62 YES
+verilog/fp2int.sv:35 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    152
-instrumented assignments:      152
-instrumentation success rate:  100%
+instrumentable assignments:    5
+instrumented assignments:      4
+instrumentation success rate:  80%

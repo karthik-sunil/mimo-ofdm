@@ -12,6 +12,14 @@ parameter N=4;
 // Addressing bits
 parameter FFT_BITS=$clog2(N);
 
+parameter FIXED_POINT_WIDTH = 16;
+parameter R = 8;
+
+parameter signed FIXED_POINT_MIN = -2**(FIXED_POINT_WIDTH-1);
+parameter signed FIXED_POINT_MAX = 2**(FIXED_POINT_WIDTH-1)-1;
+
+parameter CLOCK_PERIOD = 10;
+
 //fixed-point params
 parameter FIXED_INT_BITS = 8; 
 parameter FIXED_FRAC_BITS = 8;
