@@ -95,35 +95,35 @@ initial begin
 repeat(2) begin 
     data_0.r = 256;
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 1280;
     data_1.i = 0;
     
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 256;
+    data_0.r = 512;
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 1536;
     data_1.i = 0;
     
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 256;
+    data_0.r = 768;
     data_0.i = 0;
-    data_1.r = 0;
+    data_1.r = 1792;
     data_1.i = 0;
     
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 256;
+    data_0.r = 1024;
     data_0.i = 0;
     data_1.r = 0;
-    data_1.i = 0;
+    data_1.i = 2048;
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
