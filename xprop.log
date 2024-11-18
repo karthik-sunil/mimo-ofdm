@@ -1,17 +1,18 @@
-test/inv_sqrt_tb.sv:31 NO "a non-instrumentable system task: $finish" (31)
-test/inv_sqrt_tb.sv:37 NO "a system function with side effects: $sscanf" (38)
-test/inv_sqrt_tb.sv:59 YES
-verilog/inv_sqrt.sv:53 YES
-verilog/fp_mul.sv:45 YES
-verilog/fp_mul.sv:71 YES
-verilog/fp_mul.sv:91 YES
-verilog/fp_add.sv:56 YES
-verilog/fp_add.sv:126 YES
-verilog/fp_add.sv:178 YES
-verilog/delay_fp.sv:18 YES
-verilog/delay_fp.sv:32 YES
+test/fft_8_rad2_tb.sv:74 NO "a non-instrumentable system task: $finish" (82)
+verilog/fft_8_rad2.sv:26 YES
+verilog/butterfly.sv:38 YES
+verilog/delay_commutator.sv:36 YES
+verilog/delay_commutator.sv:69 YES
+verilog/delay.sv:17 YES
+verilog/delay.sv:33 YES
+verilog/deserializer.sv:20 YES
+verilog/input_reorder.sv:34 YES
+verilog/delay_commutator.sv:36 YES
+verilog/delay_commutator.sv:69 YES
+verilog/delay.sv:17 YES
+verilog/delay.sv:33 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    115
-instrumented assignments:      114
-instrumentation success rate:  99%
+instrumentable assignments:    76
+instrumented assignments:      73
+instrumentation success rate:  96%

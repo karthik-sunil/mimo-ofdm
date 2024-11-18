@@ -125,12 +125,12 @@ fft_out[          5]= fft_out.r=          0; fft_out.i=          0
 fft_out[          6]= fft_out.r=          0; fft_out.i=          0
 fft_out[          7]= fft_out.r=          0; fft_out.i=          0
 --------------------
-fft_out[          0]= fft_out.r=         28; fft_out.i=          0
-fft_out[          1]= fft_out.r=         56; fft_out.i=          0
-fft_out[          2]= fft_out.r=        -12; fft_out.i=          0
-fft_out[          3]= fft_out.r=        -24; fft_out.i=          0
-fft_out[          4]= fft_out.r=         -4; fft_out.i=          0
-fft_out[          5]= fft_out.r=         -8; fft_out.i=          0
-fft_out[          6]= fft_out.r=          4; fft_out.i=          0
-fft_out[          7]= fft_out.r=          8; fft_out.i=          0
+fft_out[          0]= fft_out.r=       1024; fft_out.i=          0
+fft_out[          1]= fft_out.r=        256; fft_out.i=       -618
+fft_out[          2]= fft_out.r=          0; fft_out.i=          0
+fft_out[          3]= fft_out.r=        256; fft_out.i=       -106
+fft_out[          4]= fft_out.r=          0; fft_out.i=          0
+fft_out[          5]= fft_out.r=        256; fft_out.i=        106
+fft_out[          6]= fft_out.r=          0; fft_out.i=          0
+fft_out[          7]= fft_out.r=        256; fft_out.i=        618
 out_valid = 1, cycle_count =          13

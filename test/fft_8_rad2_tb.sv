@@ -61,7 +61,7 @@ initial begin
     // loadingthe full twiddle factor set fr each stage and buttefly
     for (int stage = 0; stage < NUM_STAGES; stage++) begin
         for (int butterfly = 0; butterfly < NUM_BUTTERFLIES; butterfly++) begin
-            $fscanf(twiddle_file, "%d,%d\n", 
+            $fscanf(twiddle_file, "%d,%d", 
                     W_R_STAGE[stage][butterfly], 
                     W_I_STAGE[stage][butterfly]);
             $display("W_R_STAGE[%d][%d]= %d, W_R_STAGE[%d][%d]= %d", stage, butterfly, W_R_STAGE[stage][butterfly], stage, butterfly, W_I_STAGE[stage][butterfly]);
@@ -76,10 +76,6 @@ always @(negedge clk) begin
     if(enable) cycle_count++;
     $fdisplay(f_out,"--------------------");
         for (int j=0; j<N; j++) begin
-            // $fdisplay(f_out,"before deserializer: buttefly_x = %d; butterfly_y = %d", dut.butterfly_2_x, dut.butterfly_2_y);
-            // $fdisplay(f_out, "deserializer output[%d, %d, %d, %d, %d, %d, %d, %d]", dut.deserializer_out_buffer[7].r, dut.deserializer_out_buffer[6].r, dut.deserializer_out_buffer[5].r, dut.deserializer_out_buffer[4].r, dut.deserializer_out_buffer[3].r, dut.deserializer_out_buffer[2].r, dut.deserializer_out_buffer[1].r, dut.deserializer_out_buffer[0].r);
-            // the above output of deserializer is correct
-            // $fdisplay(f_out,"before input reorder: fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
             $fdisplay(f_out,"fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
         end
 
@@ -101,7 +97,7 @@ initial begin
     reset = 0;
     enable = 1;
 
-    data_0.r = 1; 
+   data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -110,7 +106,7 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 1; 
+   data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -119,7 +115,7 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 1; 
+   data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -128,7 +124,7 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 1; 
+   data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;

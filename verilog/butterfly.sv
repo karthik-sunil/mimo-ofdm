@@ -15,34 +15,49 @@ module butterfly(
 );
 
     complex_product_t X_comb, Y_comb;
+    complex_product_t X_ff, Y_ff;
     complex_product_t Y_Wout; 
 
-    always_comb begin
+    logic out_valid_ff;
 
-        // Complex addition A + B
-        X_comb.r = A.r + B.r;
-        X_comb.i = A.i + B.i;
+    
 
-        // Complex subtraction A - B
-        Y_comb.r = A.r - B.r;
-        Y_comb.i = A.i - B.i;
+    // Complex addition A + B
+    assign X_comb.i = A.i + B.i;
+    assign X_comb.r = A.r + B.r;
 
-        // Twiddle factor mult after the stage - DIF FFT
-        Y_Wout.r = Y_comb.r * W_R - Y_comb.i * W_I;
-        Y_Wout.i = Y_comb.r * W_I + Y_comb.i * W_R;
+    // Complex subtraction A - B
+    assign Y_comb.r = A.r - B.r;
+    assign Y_comb.i = A.i - B.i;
 
-    end
+    // Twiddle factor mult after the stage - DIF FFT
+    assign Y_Wout.r = Y_comb.r * W_R - Y_comb.i * W_I;
+    assign Y_Wout.i = Y_comb.r * W_I + Y_comb.i * W_R;
 
+    
    always_ff @(posedge clk) begin
         if(reset | ~enable) begin
-            X <= '0;
-            Y <= '0;
-            out_valid <= 0;
+            X_ff <= '0;
+            Y_ff <= '0;
+            out_valid_ff <= 0;
         end else begin
-            X <= X_comb;
-            Y <= Y_Wout;
-            out_valid <= 1'b1;
+            X_ff <= X_comb;
+            Y_ff.r <= Y_Wout.r >>> R;
+            Y_ff.i <= Y_Wout.i >>> R;
+            out_valid_ff <= 1'b1;
         end
    end
+
+   assign X.r = (X_ff.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (X_ff.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff.r;
+   assign X.i = (X_ff.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (X_ff.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff.i;
+   
+   assign Y.r = (Y_ff.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (Y_ff.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff.r;
+   assign Y.i = (Y_ff.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (Y_ff.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff.i;
+
+   assign out_valid = out_valid_ff;   
 
 endmodule
