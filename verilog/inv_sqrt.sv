@@ -64,7 +64,7 @@ always_ff @(posedge clk) begin
 end
 
 // Delay idata_half by 3 clock cycles
-delay #(
+delay_fp #(
     .DELAY(3),
     .DATA_WIDTH(I_DATA)
 ) delay_idata_half (
@@ -137,7 +137,7 @@ logic [I_DATA-1:0] i_delay_9;
 logic i_delay_9_valid;
 
 // Delay i_ff by 9 cycles
-delay #(
+delay_fp #(
     .DELAY(9),
     .DATA_WIDTH(I_DATA)
 ) delay_i (

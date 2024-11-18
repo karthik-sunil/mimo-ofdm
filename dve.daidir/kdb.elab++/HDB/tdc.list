@@ -1,0 +1,5 @@
+test/inv_sqrt_tb.sv
+verilog/delay_fp.sv
+verilog/fp_add.sv
+verilog/fp_mul.sv
+verilog/inv_sqrt.sv

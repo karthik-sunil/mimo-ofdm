@@ -1,0 +1,494 @@
+#######################################################################################
+# log primitive debug message of FSDB dumping                                         #
+# This is for R&D to analyze when there are issues happening when FSDB dump           #
+#######################################################################################
+ANF: vcsd_get_serial_mode_status('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_get_serial_mode_status')
+ANF: vcsd_enable_sva_success_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_enable_sva_success_callback')
+ANF: vcsd_disable_sva_success_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_disable_sva_success_callback')
+ANF: vcsd_get_power_scope_name('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_get_power_scope_name')
+ANF: vcsd_dump_var_vpdg('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_dump_var_vpdg')
+ANF: vcsd_begin_no_value_var_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_begin_no_value_var_info')
+ANF: vcsd_end_no_value_var_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_end_no_value_var_info')
+ANF: vcsd_remove_xprop_merge_mode_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vcsd_remove_xprop_merge_mode_callback')
+ANF: vhpi_get_cb_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_get_cb_info')
+ANF: vhpi_free_handle('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_free_handle')
+ANF: vhpi_fetch_vcsd_handle('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_fetch_vcsd_handle')
+ANF: vhpi_fetch_vpi_handle('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_fetch_vpi_handle')
+ANF: vhpi_has_verilog_parent('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_has_verilog_parent')
+ANF: vhpi_is_verilog_scope('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhpi_is_verilog_scope')
+ANF: scsd_xprop_is_enabled('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_is_enabled')
+ANF: scsd_xprop_sig_is_promoted('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_sig_is_promoted')
+ANF: scsd_xprop_int_xvalue('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_int_xvalue')
+ANF: scsd_xprop_bool_xvalue('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_bool_xvalue')
+ANF: scsd_xprop_enum_xvalue('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_enum_xvalue')
+ANF: scsd_xprop_register_merge_mode_cb('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_register_merge_mode_cb')
+ANF: scsd_xprop_delete_merge_mode_cb('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_delete_merge_mode_cb')
+ANF: scsd_xprop_get_merge_mode('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_xprop_get_merge_mode')
+ANF: scsd_thread_get_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_thread_get_info')
+ANF: scsd_thread_vc_init('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_thread_vc_init')
+ANF: scsd_master_set_delta_sync_cbk('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_master_set_delta_sync_cbk')
+ANF: scsd_fgp_get_fsdb_cores('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_fgp_get_fsdb_cores')
+ANF: scsd_fgp_get_is_cpu_affinity_disabled('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: scsd_fgp_get_is_cpu_affinity_disabled')
+ANF: vhdi_dt_get_type('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_type')
+ANF: vhdi_dt_get_key('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_key')
+ANF: vhdi_dt_get_vhdl_enum_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_vhdl_enum_info')
+ANF: vhdi_dt_get_vhdl_physical_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_vhdl_physical_info')
+ANF: vhdi_dt_get_vhdl_array_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_vhdl_array_info')
+ANF: vhdi_dt_get_vhdl_record_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_vhdl_record_info')
+ANF: vhdi_dt_get_vhdl_integer_range_info('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_dt_get_vhdl_integer_range_info')
+ANF: vhdi_def_traverse_module('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_traverse_module')
+ANF: vhdi_def_traverse_scope('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_traverse_scope')
+ANF: vhdi_def_traverse_variable('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_traverse_variable')
+ANF: vhdi_def_get_module_id_by_vhpi('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_get_module_id_by_vhpi')
+ANF: vhdi_def_get_handle_by_module_id('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_get_handle_by_module_id')
+ANF: vhdi_def_get_variable_info_by_vhpi('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_get_variable_info_by_vhpi')
+ANF: vhdi_def_free('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_def_free')
+ANF: vhdi_ist_traverse_scope('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_traverse_scope')
+ANF: vhdi_ist_traverse_variable('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_traverse_variable')
+ANF: vhdi_ist_convert_by_vhpi('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_convert_by_vhpi')
+ANF: vhdi_ist_clone('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_clone')
+ANF: vhdi_ist_free('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_free')
+ANF: vhdi_ist_hash_key('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_hash_key')
+ANF: vhdi_ist_compare('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_compare')
+ANF: vhdi_ist_get_value_addr('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_get_value_addr')
+ANF: vhdi_set_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_set_scsd_callback')
+ANF: vhdi_cbk_set_force_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_cbk_set_force_callback')
+ANF: vhdi_trigger_init_force('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_trigger_init_force')
+ANF: vhdi_ist_check_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_check_scsd_callback')
+ANF: vhdi_ist_add_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_add_scsd_callback')
+ANF: vhdi_ist_remove_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_remove_scsd_callback')
+ANF: vhdi_ist_get_scsd_user_data('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_get_scsd_user_data')
+ANF: vhdi_add_time_change_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_add_time_change_callback')
+ANF: vhdi_get_real_value_by_value_addr('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_get_real_value_by_value_addr')
+ANF: vhdi_get_64_value_by_value_addr('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_get_64_value_by_value_addr')
+ANF: vhdi_xprop_inst_is_promoted('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_xprop_inst_is_promoted')
+ANF: vdi_ist_convert_by_vhdi('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vdi_ist_convert_by_vhdi')
+ANF: vhdi_ist_get_module_id('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_ist_get_module_id')
+ANF: vhdi_refine_foreign_scope_type('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_refine_foreign_scope_type')
+ANF: vhdi_flush_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_flush_callback')
+ANF: vhdi_set_orig_name('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_set_orig_name')
+ANF: vhdi_set_dump_pt('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_set_dump_pt')
+ANF: vhdi_set_int_subtype('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_set_int_subtype')
+ANF: vhdi_set_fixed_point('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_set_fixed_point')
+ANF: vhdi_get_fsdb_option('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_get_fsdb_option')
+ANF: vhdi_fgp_get_mode('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_fgp_get_mode')
+ANF: vhdi_node_register_composite_var('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_register_composite_var')
+ANF: vhdi_node_analysis('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_analysis')
+ANF: vhdi_node_id('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_id')
+ANF: vhdi_node_ist_check_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_ist_check_scsd_callback')
+ANF: vhdi_node_ist_add_scsd_callback('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_ist_add_scsd_callback')
+ANF: vhdi_node_ist_get_value_addr('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_node_ist_get_value_addr')
+ANF: vhdi_enc_def_traverse_module('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_def_traverse_module')
+ANF: vhdi_enc_def_traverse_scope('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_def_traverse_scope')
+ANF: vhdi_enc_def_traverse_variable('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_def_traverse_variable')
+ANF: vhdi_enc_ist_traverse_scope('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_ist_traverse_scope')
+ANF: vhdi_enc_ist_traverse_variable('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_ist_traverse_variable')
+ANF: vhdi_enc_ist_get_module_id('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_ist_get_module_id')
+ANF: vhdi_enc_def_get_handle_by_module_id('/home/ksnl/eecs598/final-project/mimo-ofdm/dve: undefined symbol: vhdi_enc_def_get_handle_by_module_id')
+VCS compile option:
+ option[0]: /home/ksnl/eecs598/final-project/mimo-ofdm/dve
+ option[1]: +vc
+ option[2]: -nc
+ option[3]: +define+
+ option[4]: -sml=verdi
+ option[5]: +UVM_VERDI_TRACE=UVM_AWARE
+ option[6]: +fsdb+gate=off
+ option[7]: -ucli2Proc
+ option[8]: -lca
+ option[9]: -ucli
+ option[10]: -l
+ option[11]: /tmp/vcs_20241117235131_158129/verdi_11_17_2024_ksnl_158927/sim.log
+ option[12]: /usr/caen/vcs-2023.12-SP2-1/linux64/bin/vcs1
+ option[13]: -Mcc=gcc
+ option[14]: -Mcplusplus=g++
+ option[15]: -Masflags=
+ option[16]: -Mcfl= -pipe -fPIC -O -I/usr/caen/vcs-2023.12-SP2-1/include 
+ option[17]: -Mxllcflags=
+ option[18]: -Mxcflags= -pipe -fPIC -I/usr/caen/vcs-2023.12-SP2-1/include
+ option[19]: -Mldflags= -rdynamic 
+ option[20]: -Mout=dve
+ option[21]: -Mamsrun=
+ option[22]: -Mvcsaceobjs=
+ option[23]: -Mobjects= /usr/caen/vcs-2023.12-SP2-1/linux64/lib/libvirsim.so /usr/caen/vcs-2023.12-SP2-1/linux64/lib/liberrorinf.so /usr/caen/vcs-2023.12-SP2-1/linux64/lib/libsnpsmalloc.so /usr/caen/vcs-2023.12-SP2-1/linux64/lib/libvfs.so 
+ option[24]: -Mexternalobj=
+ option[25]: -Msaverestoreobj=/usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcs_save_restore_new.o
+ option[26]: -Mcrt0=
+ option[27]: -Mcrtn=
+ option[28]: -Mcsrc=
+ option[29]: -Mupdate
+ option[30]: -Msyslibs=/usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/pli.a -ldl 
+ option[31]: -Xvcs_run_simv=1
+ option[32]: +vc
+ option[33]: -line
+ option[34]: -full64
+ option[35]: -kdb
+ option[36]: -Xufe=2steps
+ option[37]: -nc
+ option[38]: -xprop=tmerge
+ option[39]: -lca
+ option[40]: -debug_access+all+reverse
+ option[41]: +vpi
+ option[42]: +vcsd1
+ option[43]: +itf+/usr/caen/vcs-2023.12-SP2-1/linux64/lib/vcsdp_lite.tab
+ option[44]: +define+
+ option[45]: -timescale=1ns/1ps
+ option[46]: -o
+ option[47]: dve
+ option[48]: -gui
+ option[49]: -debug_acccess+all
+ option[50]: -kdb
+ option[51]: -Xufe=2steps
+ option[52]: -picarchive
+ option[53]: -ucli
+ option[54]: -P
+ option[55]: /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/verdi.tab
+ option[56]: -fsdb
+ option[57]: -sverilog
+ option[58]: -gen_obj
+ option[59]: test/inv_sqrt_tb.sv
+ option[60]: verilog/inv_sqrt.sv
+ option[61]: verilog/fp_mul.sv
+ option[62]: verilog/fp_add.sv
+ option[63]: verilog/delay_fp.sv
+ option[64]: -load
+ option[65]: /usr/caen/verdi-2023.12-SP2-1/share/PLI/VCS/LINUX64/libnovas.so:FSDBDumpCmd
+ option[66]: timescale=1ns/1ps
+Chronologic Simulation VCS Release V-2023.12-SP2-1_Full64
+Linux 4.18.0-553.22.1.el8_10.x86_64 #1 SMP Wed Sep 11 18:02:00 EDT 2024 x86_64
+CPU cores: 20
+Limit information:
+======================================
+cputime		unlimited
+filesize		unlimited
+datasize		unlimited
+stacksize		unlimited
+coredumpsize		0 kbytes
+memoryuse		unlimited
+vmemoryuse		unlimited
+descriptors		262144
+memorylocked		64 kbytes
+maxproc		126019
+======================================
+(Special)Runtime environment variables:
+
+Runtime environment variables:
+UNAME=/bin/uname
+VCS_TARGET_ARCH=linux64
+LC_ALL=C
+LD_LIBRARY_PATH=/usr/caen/vcs-2023.12-SP2-1/lib:/usr/caen/vcs-2023.12-SP2-1/linux64/lib:
+SAED_PDK_14=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/etc/techs/SAED14_PDK
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SYS_INST_DIR=/usr/caen/verdi-2023.12-SP2-1
+__LMOD_REF_COUNT_PATH=/usr/caen/vcs-2023.12-SP2-1/bin:1;/usr/caen/verdi-2023.12-SP2-1/bin:1;/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/14nm/scripts:1;/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/14nm:1;/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/tools/GDT-4.0.4:1;/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/tools/python/3.7.0/bin:1;/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/bin:1;/usr/caen/synopsys-synth-2022.03-SP3/bin:1;/usr/um/vscode-1.92.2/code/bin:1;/home/ksnl/OpenLLMASIC/google-cloud-sdk/bin:1;/home/ksnl/eecs583/llvm-project/build/bin:2;/usr/local/bin:1;/usr/local/sbin:1;/usr/bin:1;/usr/sbin:1;/usr/um/bin:1;/usr/caen/bin:1
+_ModuleTable002_=L2NhZW4vbWlzYy9tb2R1bGVzL3N5bm9wc3lzLXN5bnRoLzIwMjIuMDMtU1AzLmx1YSIsCmZ1bGxOYW1lID0gInN5bm9wc3lzLXN5bnRoLzIwMjIuMDMtU1AzIiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJzeW5vcHN5cy1zeW50aC8yMDIyLjAzLVNQMyIsCndWID0gIjAwMDAwMjAyMi4wMDAwMDAwMDMuKnNwLjAwMDAwMDAwMy4qemZpbmFsIiwKfSwKdmNzID0gewpmbiA9ICIvdXNyL2NhZW4vbWlzYy9tb2R1bGVzL3Zjcy8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZjcy8yMDIzLjEyLVNQMi0xIiwKbG9hZE9yZGVyID0gNSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAs
+SNPS_VCS_INTERNAL_ROOT_START_TIME=1731887491.995903161
+MK_USE_NUM_CORES=4
+XDG_MENU_PREFIX=gnome-
+LANG=C
+GDM_LANG=en_US.UTF-8
+HISTCONTROL=ignoredups
+SNPS_VCS_INTERNAL_MAKE=make
+DISPLAY=:1
+HOSTNAME=vizhub01.dc.umich.edu
+SCRNAME=vcs
+OLDPWD=/home/ksnl/eecs598/final-project/mimo-ofdm/dve.daidir/debug_dump/fsearch
+ORIGINAL_XDG_CURRENT_DESKTOP=GNOME
+SNPS_VCS_INTERNAL_CURR_PID=158129
+TOOL_HOME=/usr/caen/vcs-2023.12-SP2-1/linux64
+COLORTERM=truecolor
+SNPS_VCS_INTERNAL_MAKE_OPT=
+FPATH=/usr/share/lmod/lmod/init/ksh_funcs
+LAMMPS_POTENTIALS=/usr/share/lammps/potentials
+MAKE_TERMOUT=/dev/pts/1
+SNPS_VCS_CLANG_PATH=/usr/caen/vcs-2023.12-SP2-1/linux64/clang
+USERNAME=ksnl
+SNPSLMD_LICENSE_FILE=/usr/caen/FLEXlm/data/license.dat.synopsys
+OVA_UUM=0
+__GL_SHADER_DISK_CACHE=0
+__LMOD_REF_COUNT_LM_LICENSE_FILE=license.dat:1;/usr/caen/FLEXlm/data/license.dat.synopsys:1
+CHROME_DESKTOP=code-url-handler.desktop
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+SAED_MC_32_28_PDK=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/etc/techs/SAED_PDK_32
+NO_AT_BRIDGE=1
+XDG_VTNR=2
+_ModuleTable004_=L2NhZW4vbWlzYy9tb2R1bGVzL3ZzY29kZS8xLjkyLjIubHVhIiwKZnVsbE5hbWUgPSAidnNjb2RlLzEuOTIuMiIsCmxvYWRPcmRlciA9IDEsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAwLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAidnNjb2RlIiwKd1YgPSAiXjAwMDAwMDAxLjAwMDAwMDA5Mi4wMDAwMDAwMDIuKnpmaW5hbCIsCn0sCn0sCm1wYXRoQSA9IHsKIi91c3IvY2Flbi9taXNjL21vZHVsZXMiLCAiL2V0Yy9zY2wvbW9kdWxlZmlsZXMiLCAiL2V0Yy9tb2R1bGVmaWxlcyIsICIvdXNyL3NoYXJlL21vZHVsZWZpbGVzIiwgIi91c3IvY2Flbi9taXNjL2NsYXNzL21vZHVsZXMiLCAiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eCIsICIvdXNyL3NoYXJl
+MFLAGS=
+VCS_MODE_FLAG=64
+S_COLORS=auto
+which_declare=declare -f
+XDG_SESSION_ID=2
+NOVAS_SYNC_MOTIF_DISP=
+SNPS_VCS_PYTHON3=/usr/caen/vcs-2023.12-SP2-1/linux64/bin/Python-3.6.1/bin/python3
+USER=ksnl
+VCS_MX_HOME_INTERNAL=1
+DESKTOP_SESSION=gnome
+VCS_EXEC_DONE=1
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+__LMOD_REF_COUNT_MODULEPATH=/usr/caen/misc/modules:2;/etc/scl/modulefiles:1;/etc/modulefiles:1;/usr/share/modulefiles:1;/usr/caen/misc/class/modules:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/68541c1f_bd0c_407b_bdfa_4fc305391b7a
+MK_DESIGN_NAME=fp_mul
+PWD=/home/ksnl/eecs598/final-project/mimo-ofdm
+VMR_MODE_FLAG=64
+HOME=/home/ksnl
+VSCODE_GIT_ASKPASS_NODE=/opt/caen/um/vscode-1.92.2/code/code
+TERM_PROGRAM=vscode
+TERM_PROGRAM_VERSION=1.92.2
+MSI2LMP_LIBRARY=/usr/share/lammps/frc_files
+VCS_PATHMAP_PRELOAD_DONE=1
+LMOD_VERSION=8.7.53
+XNLSPATH=/usr/caen/verdi-2023.12-SP2-1/etc/access/nls
+XDG_SESSION_TYPE=x11
+SW_VCS=2020.12-SP2-1
+KRB5CCNAME=KEYRING:persistent:114358882
+VCS_ARG_ADDED_FOR_TMP=1
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+XDG_DATA_DIRS=/home/ksnl/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/usr/caen/misc/menus
+MC_HOME=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc
+XDG_SESSION_DESKTOP=gnome
+DBUS_STARTER_ADDRESS=unix:abstract=/tmp/dbus-hv1PqhCZvX,guid=6cdb9da36254fc1a01301502673a160c
+SPS_XFONT_PATH=/usr/caen/verdi-2023.12-SP2-1/XFont
+LMOD_sys=Linux
+_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IDcyMDAuMCwKY19zaG9ydFRpbWUgPSAwLjAwNjQ1ODk5NzcyNjQ0MDQsCmRlcHRoVCA9IHt9LApmYW1pbHkgPSB7fSwKbVQgPSB7ClsiZWVjczU5OC0wMDIiXSA9IHsKZm4gPSAiL3Vzci9jYWVuL21pc2MvY2xhc3MvbW9kdWxlcy9lZWNzNTk4LTAwMi9mMjMiLApmdWxsTmFtZSA9ICJlZWNzNTk4LTAwMi9mMjMiLApsb2FkT3JkZXIgPSAzLApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMCwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gImVlY3M1OTgtMDAyL2YyMyIsCndWID0gIipmLjAwMDAwMDAyMy4qemZpbmFsIiwKfSwKWyJzeW5vcHN5cy1zeW50aCJdID0gewpmbiA9ICIvdXNy
+LOADEDMODULES=vscode/1.92.2:synopsys-synth/2022.03-SP3:eecs598-002/f23:verdi/2023.12-SP2-1:vcs/2023.12-SP2-1
+_ModuleTable003_=CnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJ2Y3MiLAp3ViA9ICJeMDAwMDIwMjMuMDAwMDAwMDEyLipzcC4wMDAwMDAwMDIuKnpmaW5hbC0uMDAwMDAwMDAxLip6ZmluYWwiLAp9LAp2ZXJkaSA9IHsKZm4gPSAiL3Vzci9jYWVuL21pc2MvbW9kdWxlcy92ZXJkaS8yMDIzLjEyLVNQMi0xLmx1YSIsCmZ1bGxOYW1lID0gInZlcmRpLzIwMjMuMTItU1AyLTEiLApsb2FkT3JkZXIgPSA0LApwcm9wVCA9IHt9LApzdGFja0RlcHRoID0gMCwKc3RhdHVzID0gImFjdGl2ZSIsCnVzZXJOYW1lID0gInZlcmRpIiwKd1YgPSAiXjAwMDAyMDIzLjAwMDAwMDAxMi4qc3AuMDAwMDAwMDAyLip6ZmluYWwtLjAwMDAwMDAwMS4qemZpbmFsIiwKfSwKdnNjb2RlID0gewpmbiA9ICIvdXNy
+LMOD_ROOT=/usr/share/lmod
+MAIL=/var/spool/mail/ksnl
+SAED32_PATH=/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK
+SYNOPSYS=/usr/caen/synopsys-synth-2022.03-SP3
+VSCODE_GIT_ASKPASS_MAIN=/opt/caen/um/vscode-1.92.2/code/resources/app/extensions/git/dist/askpass-main.js
+WINDOWPATH=2
+LD_NOVERSION=1
+QT_PLUGIN_PATH=/usr/caen/verdi-2023.12-SP2-1/platform/LINUXAMD64/lib/Qt/plugins
+TERM=xterm-256color
+VTE_VERSION=5204
+SHELL=/bin/bash
+SNPS_VCS_INTERNAL_ROOT_PID=158129
+SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
+XMODIFIERS=@im=none
+SNPS_VCS_INTERNAL_MEMPRELOAD_USE_LIBC=1
+_ModuleTable_Sz_=5
+LM_LICENSE_FILE=license.dat:/usr/caen/FLEXlm/data/license.dat.synopsys
+DBUS_STARTER_BUS_TYPE=session
+SNPS_VCS_TMPDIR=/tmp/vcs_20241117235131_158129
+XDG_CURRENT_DESKTOP=GNOME
+MK_MEM_SUFFIX=typ_1d05_25
+PERL5LIB=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/lib
+GNOME_TERMINAL_SERVICE=:1.85
+MK_COURSE_NAME=EECS598-002
+MAKELEVEL=1
+VERDI_HOME=/usr/caen/verdi-2023.12-SP2-1
+TURBO_LOG_DIR=/tmp/vcs_20241117235131_158129
+SHLVL=6
+XDG_SEAT=seat0
+VCS_COM=/usr/caen/vcs-2023.12-SP2-1/linux64/bin/vcs1
+MAKE_TERMERR=/dev/pts/1
+VSCODE_GIT_IPC_HANDLE=/run/user/114358882/vscode-git-3f36c72c61.sock
+VCS_ARCH=linux64
+MANPATH=/usr/share/lmod/lmod/share/man:
+VCS_DEPTH=0
+SPS_FONT_PATH=/usr/caen/verdi-2023.12-SP2-1/font
+SAED_PDK_32=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/etc/techs/SAED_PDK_32
+GDK_BACKEND=x11
+MODULEPATH=/usr/caen/misc/modules:/etc/scl/modulefiles:/etc/modulefiles:/usr/share/modulefiles:/usr/caen/misc/class/modules:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+GDMSESSION=gnome
+__LMOD_REF_COUNT_PERL5LIB=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/lib:1
+VERDI_ORIGNAL_LD_LIBRARY_PATH=/usr/caen/vcs-2023.12-SP2-1/lib:/usr/caen/vcs-2023.12-SP2-1/linux64/lib:
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LOGNAME=ksnl
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-hv1PqhCZvX,guid=6cdb9da36254fc1a01301502673a160c
+SPS_RGB_PATH=/usr/caen/verdi-2023.12-SP2-1/etc/rgb
+GIT_ASKPASS=/opt/caen/um/vscode-1.92.2/code/resources/app/extensions/git/dist/askpass.sh
+XDG_RUNTIME_DIR=/run/user/114358882
+XAUTHORITY=/run/user/114358882/gdm/Xauthority
+MODULEPATH_ROOT=/usr/share/modulefiles
+SAED32_28_PDK=/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/etc/techs/SAED_PDK_32
+MALLOC_ARENA_MAX=1
+PATH=.:/usr/caen/vcs-2023.12-SP2-1/bin:/usr/caen/verdi-2023.12-SP2-1/bin:/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/14nm/scripts:/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/14nm:/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/tools/GDT-4.0.4:/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/tools/python/3.7.0/bin:/afs/umich.edu/class/eecs598-002/SAED32/saed_mc_v3_0_1/saed_mc/bin:/usr/caen/synopsys-synth-2022.03-SP3/bin:/usr/um/vscode-1.92.2/code/bin:/home/ksnl/OpenLLMASIC/google-cloud-sdk/bin:/home/ksnl/eecs583/llvm-project/build/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/um/bin:/usr/caen/bin
+_LMFILES_=/usr/caen/misc/modules/vscode/1.92.2.lua:/usr/caen/misc/modules/synopsys-synth/2022.03-SP3.lua:/usr/caen/misc/class/modules/eecs598-002/f23:/usr/caen/misc/modules/verdi/2023.12-SP2-1.lua:/usr/caen/misc/modules/vcs/2023.12-SP2-1.lua
+VCS_HOME=/usr/caen/vcs-2023.12-SP2-1
+MODULESHOME=/usr/share/lmod/lmod
+LMOD_SETTARG_FULL_SUPPORT=no
+sysc_uni_pwd=/home/ksnl/eecs598/final-project/mimo-ofdm
+LMOD_CACHED_LOADS=yes
+HISTSIZE=1000
+MAKEFLAGS=
+LMOD_PKG=/usr/share/lmod/lmod
+VCS_PYTHON3=/usr/caen/vcs-2023.12-SP2-1/linux64/bin/Python-3.6.1/bin/python3
+SYS_PROG_NAME=verdi
+_ModuleTable005_=L21vZHVsZWZpbGVzL0NvcmUiLCAiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsCn0sCnN5c3RlbUJhc2VNUEFUSCA9ICIvZXRjL3NjbC9tb2R1bGVmaWxlczovZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9jYWVuL21pc2MvbW9kdWxlczovdXNyL2NhZW4vbWlzYy9jbGFzcy9tb2R1bGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLAp9Cg==
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+NOVASHLPPATH=/usr/caen/verdi-2023.12-SP2-1/doc
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+BASH_FUNC_module%%=() {  if [ -z "${LMOD_SH_DBG_ON+x}" ]; then
+ case "$-" in 
+ *v*x*)
+ __lmod_sh_dbg='vx'
+ ;;
+ *v*)
+ __lmod_sh_dbg='v'
+ ;;
+ *x*)
+ __lmod_sh_dbg='x'
+ ;;
+ esac;
+ fi;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ set +$__lmod_sh_dbg;
+ echo "Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output" 1>&2;
+ fi;
+ eval "$($LMOD_CMD shell "$@")" && eval "$(${LMOD_SETTARG_CMD:-:} -s sh)";
+ __lmod_my_status=$?;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ echo "Shell debugging restarted" 1>&2;
+ set -$__lmod_sh_dbg;
+ fi;
+ unset __lmod_sh_dbg;
+ return $__lmod_my_status
+}
+BASH_FUNC_ml%%=() {  eval "$($LMOD_DIR/ml_cmd "$@")"
+}
+NOVAS_LC_ALL=C
+SIMV_DAIDIR_PATH=/home/ksnl/eecs598/final-project/mimo-ofdm/dve.daidir
+NOVAS_SIGNAL_BASE_EXTRACTION=1
+SIGNAL_BASE_EXTRACTION=1
+NOVAS_VERDI_SVTB_BETA=1
+VERDI_SVTB_BETA=1
+NOVAS_VERDI_SVTB_ALPHA=1
+VERDI_SVTB_ALPHA=1
+NOVAS_VERDI_TB_HT=1
+VERDI_TB_HT=1
+NOVAS_WAVE_REDRAW_ALLVC=1
+WAVE_REDRAW_ALLVC=1
+NOVAS_TCL_LIBRARY=/usr/caen/verdi-2023.12-SP2-1/etc/access/tcl86_library
+TCL_LIBRARY=/usr/caen/verdi-2023.12-SP2-1/etc/access/tcl86_library
+XKEYSYMDB=/usr/caen/verdi-2023.12-SP2-1/etc/access/XKeysymDB2.1
+XLOCALEDIR=/usr/caen/verdi-2023.12-SP2-1/etc/access/locale
+QTWEBENGINE_CHROMIUM_FLAGS=--log-level=3
+NOVAS_SIGNAL_BASED_BA=0
+SIGNAL_BASED_BA=0
+SNPS_SIM_DEFAULT_GUI=verdi
+FSDB_FILE=/home/ksnl/eecs598/final-project/mimo-ofdm/inter.fsdb
+VCS_UCLI_STDIN_BLOCKING=1
+FSDB_VHDL_PROTECTED=1
+FSDB_RD_IR_ENABLE=1
+FSDB_SVA_STATUS=1
+VCS_STOP_SAFE=1
+DVE_SIM_SELECT_LOOP=on
+VCS_LCAMSG_PRINT_OFF=1
+FLEXLM_BORROWFILE=/home/ksnl/.vizhub01.dc.umich.edu-borrow.txt
+Runtime command line arguments:
+argv[0]=/home/ksnl/eecs598/final-project/mimo-ofdm/dve
+argv[1]=+vc
+argv[2]=-nc
+argv[3]=+define+
+argv[4]=-sml=verdi
+argv[5]=+UVM_VERDI_TRACE=UVM_AWARE
+argv[6]=+fsdb+gate=off
+argv[7]=-ucli2Proc
+argv[8]=-lca
+argv[9]=-ucli
+argv[10]=-l
+argv[11]=/tmp/vcs_20241117235131_158129/verdi_11_17_2024_ksnl_158927/sim.log
+367 profile - 100
+          CPU/Mem usage: 0.020 sys,  0.020 user,  310.39M mem
+368 Elapsed time:    0:00:00    Sun Nov 17 18:51:41 2024
+369 User CPU time used: 0 seconds
+370 System CPU time used: 0 seconds
+371 pliAppInit
+372 [pliEnvSetDefaultValueWithLCA] start
+373 [pliEnvSetDefaultValueWithLCA] end
+374 ndpGetenv(FSDB_FILE): /home/ksnl/eecs598/final-project/mimo-ofdm/inter.fsdb
+375 ndpGetenv(FSDB_SVA_STATUS): 1
+376 ndpGetenv(FSDB_VHDL_PROTECTED): 1
+377 [SC]Init: MemoryConsumed=0.00MB ElapsedTime=0hour 0min. 0sec.
+378 FSDB_GATE & FSDB_RTL is disabled.
+379 FSDB_PACKED_MODE is enabled.
+380 FSDB_GATE_PACKED is enabled.
+381 FSDB_ALIAS_ARRAY_ELEM is set to 4294967295.
+382 Enable Parallel Dumping.
+383 pliAppMiscSet: New Sim Round
+384 pliEntryInit
+385 LIBSSCORE=found /usr/caen/verdi-2023.12-SP2-1/share/PLI/lib/LINUXAMD64/libsscore_vcs202312.so through $NOVAS_HOME setting.
+386 FSDB Dumper for VCS, Release Verdi_V-2023.12-SP2-1, Linux x86_64/64bit, 07/15/2024
+387 (C) 1996 - 2024 by Synopsys, Inc.
+388 sps_tcl_fsdbDumpfile_main at 0
+389 argv[0]: /home/ksnl/eecs598/final-project/mimo-ofdm/inter.fsdb
+390 *Verdi* : Create FSDB file '/home/ksnl/eecs598/final-project/mimo-ofdm/inter.fsdb'
+391 [spi_vcs_vd_ppi_create_root]: no upf option
+392 compile option from '/home/ksnl/eecs598/final-project/mimo-ofdm/dve.daidir/vcs_rebuild'.
+393   "vcs '-sverilog' '+vc' '-Mupdate' '-line' '-full64' '-kdb' '-nc' '-xprop=tmerge' '-lca' '-debug_access+all+reverse' '+define+' '-timescale=1ns/1ps' 'test/inv_sqrt_tb.sv' 'verilog/inv_sqrt.sv' 'verilog/fp_mul.sv' 'verilog/fp_add.sv' 'verilog/delay_fp.sv' '-o' 'dve' '-R' '-gui' '-debug_acccess+all' '-kdb' 2>&1"
+394 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+395 *Verdi* : Flush all FSDB Files at 0 ps.
+396 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+397 *Verdi* : Flush all FSDB Files at 0 ps.
+398 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+399 *Verdi* : Flush all FSDB Files at 0 ps.
+400 DVDI_is_vir_unload_enabled is enable
+401 FSDB_VCS_ENABLE_NATIVE_VC is enable
+402 sps_tcl_fsdbDumpvars_vd_main
+403 argv[0]: 1
+404 argv[1]: inv_sqrt_tb.dut
+405 argv[2]: +all
+406 argv[3]: +trace_process
+407 *Verdi* : Begin traversing the scope (inv_sqrt_tb.dut), layer (1).
+408 *Verdi* : Enable +trace_process and +all dumping.
+409 *Verdi* : End of traversing.
+410 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.030 sys,  0.020 user,  423.94M mem
+                   incr: 0.000 sys,  0.000 user,  3.39M mem
+                   accu: 0.000 sys,  0.000 user,  3.39M mem
+              accu incr: 0.000 sys,  0.000 user,  3.39M mem
+
+          Count usage: 23 var,  26 idcode,  22 callback
+                 incr: 23 var,  26 idcode,  22 callback
+                 accu: 23 var,  26 idcode,  22 callback
+            accu incr: 23 var,  26 idcode,  22 callback
+411 Elapsed time:    0:00:24    Sun Nov 17 18:52:05 2024
+412 User CPU time used: 0 seconds
+413 System CPU time used: 0 seconds
+414 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.030 sys,  0.020 user,  425.00M mem
+                   incr: 0.000 sys,  0.000 user,  1.05M mem
+                   accu: 0.000 sys,  0.000 user,  4.44M mem
+              accu incr: 0.000 sys,  0.000 user,  1.05M mem
+
+          Count usage: 23 var,  26 idcode,  22 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 23 var,  26 idcode,  22 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+415 Elapsed time:    0:00:24    Sun Nov 17 18:52:05 2024
+416 User CPU time used: 0 seconds
+417 System CPU time used: 0 seconds
+418 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+419 *Verdi* : Flush all FSDB Files at 0 ps.
+420 sps_tcl_fsdbDumpflush_vd_main at 20690000 : N/A(0)
+421 *Verdi* : Flush all FSDB Files at 20,690,000 ps.
+422 End of simulation at 20690000
+423 Memory usage: 427.041 M
+424 Maximum resident set size: 121 MB
+425 Hard page faults: 4
+426 Soft page faults: 6781
+427 Elapsed time:    0:15:29    Sun Nov 17 19:07:10 2024
+428 User CPU time used: 0 seconds
+429 System CPU time used: 0 seconds
+430 Begin FSDB profile info:
+431 FSDB Writer : bc1(4167) bcn(24614) mtf/stf(0/5)
+FSDB Writer elapsed time : flush(0.105819) io wait(0.000000) theadpool wait(0.000000)
+FSDB Writer cpu time : MT Compression : 0
+432 End FSDB profile info
+433 FSDB closed. Name: /home/ksnl/eecs598/final-project/mimo-ofdm/inter.fsdb Size: 75056
+434 Parallel profile     - ProducerThread:1 ConsumerThread:1 Buffer:64MB
+435                      - BlockUsed:1 Acquire:0 BufferUsed:530133
+436                      - Flush:8 Expand:0 ProducerWait:0 ConsumerWait:0
+437                      - MainProducerTime:0.100094385 TotalConsumerTime:0.000000000
+438                      - ElapsedTime:928.512127000
+439 Producer   0 profile - BlockUsed:2 Acquire:0 BufferUsed:530133
+440 Consumer   0 profile - Affinity:-1 CPUTime:0.000000000 LifeTime:0.000000000 (-nan%)
+441                      - BlockUsed:2 Acquire:0 BufferUsed:530133
+442 SimExit
+443 Elapsed time:    0:15:29    Sun Nov 17 19:07:10 2024
+444 User CPU time used: 0 seconds
+445 System CPU time used: 0 seconds
+446 Sim process exit
