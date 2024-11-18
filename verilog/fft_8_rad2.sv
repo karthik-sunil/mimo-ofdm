@@ -19,6 +19,7 @@ module fft_8_rad2 #(
 
 complex_product_t butterfly_0_x, butterfly_0_y;
 logic butterfly_0_out_valid;
+
 // counter for twiddle
 logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
 
@@ -42,7 +43,7 @@ butterfly butterfly_0 (
     .enable(enable),
     .A(data_0),
     .B(data_1),
-    .W_R(W_R_STAGE[0][twiddle_counter]), // real tewiddle
+    .W_R(W_R_STAGE[0][twiddle_counter]), // real twiddle
     .W_I(W_I_STAGE[0][twiddle_counter]), // img twiddle
     .X(butterfly_0_x),
     .Y(butterfly_0_y),
