@@ -41,7 +41,8 @@ module butterfly(
             Y_ff <= '0;
             out_valid_ff <= 0;
         end else begin
-            X_ff <= X_comb;
+            X_ff.r <= X_comb.r;
+            X_ff.i <= X_comb.i;
             Y_ff.r <= Y_Wout.r >>> R;
             Y_ff.i <= Y_Wout.i >>> R;
             out_valid_ff <= 1'b1;

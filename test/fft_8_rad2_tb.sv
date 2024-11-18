@@ -92,7 +92,7 @@ initial begin
     reset = 0;
     enable = 1;
 
-repeat(2) begin 
+repeat(1) begin 
     data_0.r = 256;
     data_0.i = 0;
     data_1.r = 1280;
@@ -122,9 +122,15 @@ repeat(2) begin
 
     data_0.r = 1024;
     data_0.i = 0;
-    data_1.r = 0;
-    data_1.i = 2048;
+    data_1.r = 2048;
+    data_1.i = 0;
     @(negedge clk);
+    $display("Error Here");
+    $display("A.r = %d, A.i = %d", dut.butterfly_0.A.r, dut.butterfly_0.A.i);
+    $display("B.r = %d, B.i = %d", dut.butterfly_0.B.r, dut.butterfly_0.B.i);
+    $display("X_comb.r = %d, X_comb.i = %d", dut.butterfly_0.X_comb.r, dut.butterfly_0.X_comb.i);
+    $display("X_ff.r = %d, X_ff.i = %d", dut.butterfly_0.X_ff.r, dut.butterfly_0.X_ff.i);
+    $display("Y_ff.r = %d, Y_ff.i = %d", dut.butterfly_0.Y_ff.r, dut.butterfly_0.Y_ff.i);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
   end

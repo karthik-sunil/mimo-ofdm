@@ -12,7 +12,7 @@ parameter N=4;
 // Addressing bits
 parameter FFT_BITS=$clog2(N);
 
-parameter FIXED_POINT_WIDTH = 32;
+parameter FIXED_POINT_WIDTH = 16;
 parameter R = 8;
 
 parameter signed FIXED_POINT_MIN = -2**(FIXED_POINT_WIDTH-1);

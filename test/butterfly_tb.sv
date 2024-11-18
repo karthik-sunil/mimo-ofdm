@@ -22,8 +22,8 @@ butterfly dut (
     .enable(enable),
     .A(A),
     .B(B),
-    .W_R(-1),
-    .W_I(0),
+    .W_R(-181),
+    .W_I(-181),
     .X(X),
     .Y(Y),
     .out_valid(out_valid)
@@ -34,8 +34,8 @@ always begin
     #(CLOCK_PERIOD/2);
 end
 
-int A_r_values[4] = '{4, 6, 4, 4};
-int B_r_values[4] = '{8, 10, 4, 4};
+int A_r_values[4] = '{256, 512, 768, 1024};
+int B_r_values[4] = '{1280, 1536, 1792, 2048};
 
 initial begin
     clk = 0;

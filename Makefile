@@ -88,8 +88,8 @@ TESTBENCH = test/fft_8_rad2_tb.sv
 SIMFILES = verilog/fft_8_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv
 
 # HEADERS = verilog/headers.svh
-# TESTBENCH = test/butterfly_fp_tb.sv
-# SIMFILES = verilog/butterfly_fp.sv verilog/fp_add.sv verilog/delay.sv verilog/fp_mul.sv
+# TESTBENCH = test/butterfly_tb.sv
+# SIMFILES = verilog/butterfly.sv 
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/fp2int_tb.sv
