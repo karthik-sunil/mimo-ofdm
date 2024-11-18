@@ -6,19 +6,19 @@ module dc_top #(
 )(
     input logic clk,
     input logic reset,
-    input logic [DATA_WIDTH-1:0] x0,
-    input logic [DATA_WIDTH-1:0] x1,
+    input complex_product_t x0,
+    input complex_product_t x1,
     
-    output logic [DATA_WIDTH-1:0] y0,
-    output logic [DATA_WIDTH-1:0] y1,
+    output complex_product_t y0,
+    output complex_product_t y1,
     output logic dc_chain_out_valid
 );
 
     // Calculate the number of commutators from FFT Size
     localparam NUM_COMMUTATORS = $clog2(N) - 1;
 
-    logic [DATA_WIDTH-1:0] x0_dc [NUM_COMMUTATORS-1:0];
-    logic [DATA_WIDTH-1:0] x1_dc [NUM_COMMUTATORS-1:0];    
+    complex_product_t x0_dc [NUM_COMMUTATORS-1:0];
+    complex_product_t x1_dc [NUM_COMMUTATORS-1:0];    
     logic dc_out_valid [NUM_COMMUTATORS-1:0];
     
     genvar i;

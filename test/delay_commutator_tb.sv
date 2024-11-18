@@ -8,11 +8,11 @@ module delay_commutator_tb();
     logic reset;
     logic enable;
 
-    logic [DATA_WIDTH-1:0] x0;
-    logic [DATA_WIDTH-1:0] x1;
+    complex_product_t x0;
+    complex_product_t x1;
 
-    logic [DATA_WIDTH-1:0] y0;
-    logic [DATA_WIDTH-1:0] y1;
+    complex_product_t y0;
+    complex_product_t y1;
 
     logic switch_enable;
     logic commutator_out_valid;
@@ -40,7 +40,7 @@ module delay_commutator_tb();
         // $display("%d,%d",x1,dut.x1_delayed);
         if(1) begin
             // $display("%d,%d,%d,%d,[%b]", x0, x1, x0, dut.x1_delayed,dut.switch_enable);
-            $display("%d,%d,%d,%d,%d", x0, x1, y0, y1, commutator_out_valid);
+            $display("%d,%d,%d,%d,%d", x0.r, x1.r, y0.r, y1.r, commutator_out_valid);
         end
         // $display("%d,%d,%d,%d", x1,dut.x1_delayed, dut.delay_x1.delay_counter, dut.delay_x1.out_valid);
     end
@@ -55,14 +55,18 @@ module delay_commutator_tb();
         enable = 1;
         
         for(int i=0; i<2*DELAY; i++) begin
-            x0 = i;
-            x1 = i+2*DELAY;
+            x0.r = i;
+            x0.i = 0;
+            x1.r = i+2*DELAY;
+            x1.i = 0;
             @(negedge clk);
         end
 
         repeat(10) begin
-            x0 = 0;
-            x1 = 0;
+            x0.r = 0;
+            x0.i = 0;
+            x1.r = 0;
+            x1.i = 0;
             @(negedge clk);
         end
 

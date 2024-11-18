@@ -1,22 +1,12 @@
-test/inv_sqrt_tb.sv:59 YES:SyncFF
-verilog/inv_sqrt.sv:53 YES:SyncFF
-verilog/fp_mul.sv:45 YES:SyncFF
-verilog/fp_mul.sv:71 YES:SyncFF
-verilog/fp_mul.sv:91 YES:SyncFF
-verilog/fp_add.sv:56 YES:SyncFF
-verilog/fp_add.sv:126 YES:SyncFF
-verilog/fp_add.sv:178 YES:SyncFF
-verilog/delay.sv:18 YES:SyncFF
-verilog/delay.sv:32 YES:SyncFF
-verilog/delay.sv:18 YES:SyncFF
-verilog/delay.sv:32 YES:SyncFF
+test/fp2int_tb.sv:62 YES:SyncFF
+verilog/fp2int.sv:34 YES:SyncFF
 ==================================================
 Unified Inference Statistics
-Number of always_ff:                   11
+Number of always_ff:                   1
 Number of always_latch:                0
 Number of always @*:                   0
 Number of always_comb :                0
 Number of always :                     2
-Number of flip-flop candidates:        12
-Number of synchronous flops inferred:  12
+Number of flip-flop candidates:        2
+Number of synchronous flops inferred:  2
 Number of Asynchronous flops inferred: 0

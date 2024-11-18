@@ -2,31 +2,29 @@
 ****************************************
 Report : area
 Design : fp_mul
-Version: V-2023.12-SP5
-Date   : Tue Nov 12 13:34:59 2024
+Version: T-2022.03-SP3
+Date   : Wed Nov 13 13:26:42 2024
 ****************************************
 
 Library(s) Used:
 
-    gtech (File: /usr/caen/synopsys-synth-2023.12-SP5/libraries/syn/gtech.db)
+    saed32rvt_tt1p05v25c (File: /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db)
 
-Number of ports:                          517
-Number of nets:                          2905
-Number of cells:                         1675
-Number of combinational cells:           1503
-Number of sequential cells:               153
+Number of ports:                          100
+Number of nets:                          1952
+Number of cells:                         1637
+Number of combinational cells:           1500
+Number of sequential cells:               134
 Number of macros/black boxes:               0
-Number of buf/inv:                        185
-Number of references:                      17
+Number of buf/inv:                        110
+Number of references:                      51
 
-Combinational area:                  0.000000
-Buf/Inv area:                        0.000000
-Noncombinational area:               0.000000
+Combinational area:               4108.491893
+Buf/Inv area:                      155.281985
+Noncombinational area:             901.702938
 Macro/Black Box area:                0.000000
-Net Interconnect area:      undefined  (No wire load specified)
+Net Interconnect area:            1347.944640
 
-Total cell area:                     0.000000
-Total area:                 undefined
-
-Information: This design contains unmapped logic. (RPT-7)
+Total cell area:                  5010.194831
+Total area:                       6358.139471
 1

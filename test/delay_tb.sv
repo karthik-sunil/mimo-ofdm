@@ -1,4 +1,6 @@
 `timescale 1ps/1ps
+`include "verilog/headers.svh"
+
 module delay_tb();
     // must be power of 2
     parameter DELAY = 2;
@@ -9,8 +11,8 @@ module delay_tb();
     logic reset; 
     logic enable;
 
-    logic [DATA_WIDTH-1:0] in;
-    logic [DATA_WIDTH-1:0] out;
+    complex_product_t in;
+    complex_product_t out;
     logic out_valid;
     logic switch_enable;
 
@@ -36,10 +38,12 @@ module delay_tb();
 
     always @(negedge clk) begin
         if($isunknown(out)) begin
-            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in, 0, out_valid, switch_enable);
+            // $fdisplay(f_out,"%5d | %d | %d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in.r, 0, out_valid, switch_enable);
+
         end
         else begin
-            $fdisplay(f_out,"%5d | %d | %5d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in, out, out_valid, switch_enable);
+            // $fdisplay(f_out,"%5d | %d | %d |   %d   |    %d   |", ($time/CLOCK_PERIOD)-1, in.r, out, out_valid, switch_enable);
+            $fdisplay(f_out,"%d %d, %d %d, %d", in.r, in.i, out.r, out.i, out_valid);
         end
     end
 
@@ -57,12 +61,14 @@ module delay_tb();
         $fdisplay(f_out,"Cycle | In  | Out | Valid | Switch |");
 
         for(int i=0; i<4; i++) begin
-            in = i+4;
+            in.r = i+4;
+            in.i = 0;
             @(negedge clk);
         end
 
         repeat(DELAY) begin
-            in = 0;
+            in.r = 0;
+            in.i = 0;
             @(negedge clk);
         end
 

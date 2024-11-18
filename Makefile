@@ -28,8 +28,8 @@ export MK_MEM_SUFFIX = typ_1d05_25
 
 # the Verilog Compiler command and arguments
 VCS = SW_VCS=2020.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca \
-      -debug_access+all+reverse $(VCS_BAD_WARNINGS) +define+
-LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
+      -debug_access+all+reverse $(VCS_BAD_WARNINGS) +define+ -timescale=1ns/1ps 
+LIB = /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/verilog/saed32nm.v
 
 all:	simv
 	./simv | tee program.out
@@ -39,8 +39,8 @@ all:	simv
 #####
 
 # HEADERS = verilog/headers.svh
-# TESTBENCH = test/delay_commutator_tb.sv
-# SIMFILES = verilog/delay_commutator.sv verilog/delay.sv
+# TESTBENCH = test/delay_tb.sv
+# SIMFILES = verilog/delay.sv
 # SYNFILES = cmul.vg
 
 # HEADERS = verilog/headers.svh
@@ -49,16 +49,21 @@ all:	simv
 # SYNFILES = cmul.vg
 
 # HEADERS = verilog/headers.svh
+# TESTBENCH = test/butterfly_tb.sv
+# SIMFILES = verilog/butterfly.sv 
+# SYNFILES = cmul.vg
+
+# HEADERS = verilog/headers.svh
 # TESTBENCH = test/fp_mul_tb.sv
 # SIMFILES = verilog/fp_mul.sv
 # SYNFILES = fp_add.vg
 
-HEADERS = verilog/headers.svh
-TESTBENCH = test/butterfly_fp_tb.sv
-SIMFILES = verilog/butterfly_fp.sv verilog/fp_mul.sv verilog/fp_add.sv verilog/delay.sv
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fp_mul_tb.sv
+# SIMFILES = verilog/fp_mul.sv
 # SIMFILES = syn/fp_mul.mapped.v
 
-SYN_TARGET = syn
+# SYN_TARGET = syn
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/fp_add_tb.sv
@@ -70,13 +75,48 @@ SYN_TARGET = syn
 # SIMFILES = verilog/delay.sv
 # SYNFILES = cmul.vg
 
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/dc_top_tb.sv
+# SIMFILES = verilog/dc_top.sv verilog/delay_commutator.sv verilog/delay.sv
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/input_reorder_tb.sv
+# SIMFILES = verilog/input_reorder.sv
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fft_8_rad2_tb.sv
+# SIMFILES = verilog/fft_8_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/butterfly_fp_tb.sv
+# SIMFILES = verilog/butterfly_fp.sv verilog/fp_add.sv verilog/delay.sv verilog/fp_mul.sv
+
+HEADERS = verilog/headers.svh
+TESTBENCH = test/fp2int_tb.sv
+SIMFILES = verilog/fp2int.sv
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/dc_top_tb.sv
+# SIMFILES = verilog/dc_top.sv verilog/delay_commutator.sv verilog/delay.sv 
+
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/deserializer_tb.sv
+# SIMFILES = verilog/deserializer.sv
 
 
 #####
 # Should be no need to modify after here
 #####
-simv:	$(SIMFILES) $(TESTBENCH) $(HEADERS)
+# simv:	$(SIMFILES) $(TESTBENCH) $(HEADERS)
+# 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
+
+# simv:	$(SIMFILES) $(TESTBENCH) 
+# 	$(VCS) $(TESTBENCH) $(SIMFILES) $(LIB) -o simv | tee simv.log
+
+simv:	$(SIMFILES) $(TESTBENCH) 
 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv | tee simv.log
+
 
 dve:	$(SIMFILES) $(TESTBENCH) 
 	$(VCS) $(TESTBENCH) $(SIMFILES) -o dve -R -gui -debug_acccess+all -kdb | tee dve.log
@@ -118,6 +158,7 @@ nuke:	clean
 	-rm -rvf filenames*log 
 	-rm -rvf temp_files
 	-rm -rvf syn
+	
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/
 
 run_all:
