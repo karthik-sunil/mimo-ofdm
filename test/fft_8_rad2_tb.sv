@@ -78,11 +78,6 @@ always @(negedge clk) begin
         for (int j=0; j<N; j++) begin
             $fdisplay(f_out,"fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
         end
-
-        if (out_valid) begin
-            $fdisplay(f_out,"out_valid = %d, cycle_count = %d", out_valid, cycle_count);
-            $finish();
-        end
 end
 
 integer f_new = $fopen("out/fft_8_debug.txt");
@@ -97,7 +92,8 @@ initial begin
     reset = 0;
     enable = 1;
 
-   data_0.r = 256;
+repeat(2) begin 
+    data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -106,7 +102,7 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-   data_0.r = 256;
+    data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -115,7 +111,7 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-   data_0.r = 256;
+    data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
@@ -124,20 +120,20 @@ initial begin
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-   data_0.r = 256;
+    data_0.r = 256;
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
-
+  end
     data_0.r = 0; 
     data_0.i = 0;
     data_1.r = 0;
     data_1.i = 0;
 
-    for(int i=0; i<30; i++) begin
+    for(int i=0; i<60; i++) begin
        
         // Butterfly 1 Outputs
         $display("idx 0 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][0], dut.W_I_STAGE[1][0]);

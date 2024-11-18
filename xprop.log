@@ -1,4 +1,4 @@
-test/fft_8_rad2_tb.sv:74 NO "a non-instrumentable system task: $finish" (82)
+test/fft_8_rad2_tb.sv:74 YES
 verilog/fft_8_rad2.sv:26 YES
 verilog/butterfly.sv:38 YES
 verilog/delay_commutator.sv:36 YES
@@ -14,5 +14,5 @@ verilog/delay.sv:33 YES
 ==================================================
 X P R O P   S T A T I S T I C S
 instrumentable assignments:    76
-instrumented assignments:      73
-instrumentation success rate:  96%
+instrumented assignments:      76
+instrumentation success rate:  100%

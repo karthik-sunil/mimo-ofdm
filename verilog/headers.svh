@@ -1,4 +1,4 @@
-parameter COEFF_WIDTH = 16;
+parameter  COEFF_WIDTH = 16;
 parameter  COMPLEX_WIDTH = 8;
 parameter  COMPLEX_PRODUCT_WIDTH = 32;
 

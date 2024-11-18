@@ -19,6 +19,7 @@ module fft_8_rad2 #(
 
 complex_product_t butterfly_0_x, butterfly_0_y;
 logic butterfly_0_out_valid;
+
 // counter for twiddle
 logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
 
