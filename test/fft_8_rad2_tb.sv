@@ -9,7 +9,7 @@ parameter CLOCK_PERIOD = 10;
 // code changes to incorporate for LUT based twiddle factors
 parameter NUM_STAGES = $clog2(N);
 parameter NUM_BUTTERFLIES = N/2; //no of butterflies to be put per stage
-parameter TWIDDLE_FILE = "./dat/twiddle_factors_temp.txt";
+parameter TWIDDLE_FILE = "./dat/twiddle_factors8fixed.txt";
 
 logic clk;
 logic reset;
@@ -101,9 +101,9 @@ initial begin
     reset = 0;
     enable = 1;
 
-    data_0.r = 0; 
+    data_0.r = 1; 
     data_0.i = 0;
-    data_1.r = 4;
+    data_1.r = 0;
     data_1.i = 0;
     
     @(negedge clk);
@@ -112,25 +112,25 @@ initial begin
 
     data_0.r = 1; 
     data_0.i = 0;
-    data_1.r = 5;
+    data_1.r = 0;
     data_1.i = 0;
     
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 2; 
+    data_0.r = 1; 
     data_0.i = 0;
-    data_1.r = 6;
+    data_1.r = 0;
     data_1.i = 0;
     
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
     $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
-    data_0.r = 3; 
+    data_0.r = 1; 
     data_0.i = 0;
-    data_1.r = 7;
+    data_1.r = 0;
     data_1.i = 0;
     @(negedge clk);
     $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
