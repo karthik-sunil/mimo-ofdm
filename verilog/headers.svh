@@ -36,8 +36,8 @@ typedef struct packed {
 } complex_product_t;
 
 typedef struct packed {
-    logic signed [I_DATA-1:0] r;
-    logic signed [I_DATA-1:0] i;
+    logic [I_DATA-1:0] r;
+    logic [I_DATA-1:0] i;
 } complex_fp_t;
 
 //NOTE: try to keep the COMPLEX_PRODUCT_WIDTH and FIXED_WIDTH the same as far as possible
