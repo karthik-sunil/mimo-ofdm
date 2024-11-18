@@ -93,7 +93,9 @@ initial begin
     enable = 0;
     clk = 0;
     cycle_count = 0;
-
+    
+    @(negedge clk);
+    
     //reading the sine value file
     input_file = $fopen(INPUT_FILE, "r");
     if (input_file == 0) begin
@@ -101,37 +103,45 @@ initial begin
         $finish;
     end
 
-    for (int i = 0; i < 8; i++) begin
-        $fscanf(input_file, "%d,%d", input_values[i][0], input_values[i][1]);
-    end
-
-    @(negedge clk);
     reset = 0;
     enable = 1;
 
-
-    while (!$feof(input_file)) begin
-        data_0.r = input_values[input_index][0];
-        data_0.i = input_values[input_index][1];
-        data_1.r =input_values[(input_index + 4) % 8][0];
-        data_1.i =input_values[(input_index + 4) % 8][1];
-        
+    while(!feof(input_file)) begin
+      // Read in 2 values every clock cycle
+        $fscanf(input_file, "%d,%d\n%d,%d", data_0.r, data_0.i, data_1.r, data_1.i);
         @(negedge clk);
-        // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-        // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
-
-        input_index = (input_index + 1) % 8;
-
-        if (input_index == 0) begin
-            // Read next 8 values
-            for (int i = 0; i < 8; i++) begin
-                //check to see if we do not have equal to 8 values then we break
-                if ($fscanf(input_file, "%d,%d", input_values[i][0], input_values[i][1]) != 2) begin
-                    break; 
-                end
-            end
-        end
     end
+
+    // for (int i = 0; i < 8; i++) begin
+    //     $fscanf(input_file, "%d,%d\n%d,%d\n%d,%d\n%d,%d", input_values[i][0], input_values[i][1]);
+    // end
+
+    // @(negedge clk);
+    
+
+
+    // while (!$feof(input_file)) begin
+    //     data_0.r = input_values[input_index][0];
+    //     data_0.i = input_values[input_index][1];
+    //     data_1.r =input_values[(input_index + 4) % 8][0];
+    //     data_1.i =input_values[(input_index + 4) % 8][1];
+        
+    //     @(negedge clk);
+    //     // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
+    //     // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
+
+    //     input_index = (input_index + 1) % 8;
+
+    //     if (input_index == 0) begin
+    //         // Read next 8 values
+    //         for (int i = 0; i < 8; i++) begin
+    //             //check to see if we do not have equal to 8 values then we break
+    //             if ($fscanf(input_file, "%d,%d", input_values[i][0], input_values[i][1]) != 2) begin
+    //                 break; 
+    //             end
+    //         end
+    //     end
+    // end
 
     $fclose(input_file);
 
