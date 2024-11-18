@@ -31,7 +31,21 @@ integer twiddle_file;
 // to hold the twiddle factors in a 2D array such that for each stage we use 
 complex_fixed_t twiddle_factors [NUM_STAGES][NUM_BUTTERFLIES]; // i do not think we need this or use this anymore
 
-fft_8_rad2 #(
+// fft_8_rad2 #(
+//     .N(N)
+// ) dut (
+//     .clk(clk),
+//     .reset(reset),
+//     .enable(enable),
+//     .data_0(data_0),
+//     .data_1(data_1),
+//     .W_R_STAGE(W_R_STAGE), //stage wise passing
+//     .W_I_STAGE(W_I_STAGE),
+//     .fft_out(fft_out),
+//     .out_valid(out_valid)
+// );
+
+fft_N_rad2 #(
     .N(N)
 ) dut (
     .clk(clk),
@@ -72,7 +86,7 @@ initial begin
 end
 
 always @(negedge clk) begin
-    integer f_out = $fopen("out/fft_8_rad2_tb_output.txt");
+    integer f_out = $fopen("out/fft_8_rad2.out");
     if(enable) cycle_count++;
     $fdisplay(f_out,"--------------------");
         for (int j=0; j<N; j++) begin
@@ -99,8 +113,8 @@ repeat(1) begin
     data_1.i = 0;
     
     @(negedge clk);
-    $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-    $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
+    // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
+    // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
     data_0.r = 512;
     data_0.i = 0;
@@ -108,8 +122,8 @@ repeat(1) begin
     data_1.i = 0;
     
     @(negedge clk);
-    $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-    $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
+    // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
+    // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
     data_0.r = 768;
     data_0.i = 0;
@@ -117,22 +131,22 @@ repeat(1) begin
     data_1.i = 0;
     
     @(negedge clk);
-    $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-    $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
+    // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
+    // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
 
     data_0.r = 1024;
     data_0.i = 0;
     data_1.r = 2048;
     data_1.i = 0;
     @(negedge clk);
-    $display("Error Here");
-    $display("A.r = %d, A.i = %d", dut.butterfly_0.A.r, dut.butterfly_0.A.i);
-    $display("B.r = %d, B.i = %d", dut.butterfly_0.B.r, dut.butterfly_0.B.i);
-    $display("X_comb.r = %d, X_comb.i = %d", dut.butterfly_0.X_comb.r, dut.butterfly_0.X_comb.i);
-    $display("X_ff.r = %d, X_ff.i = %d", dut.butterfly_0.X_ff.r, dut.butterfly_0.X_ff.i);
-    $display("Y_ff.r = %d, Y_ff.i = %d", dut.butterfly_0.Y_ff.r, dut.butterfly_0.Y_ff.i);
-    $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-    $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
+    // $display("Error Here");
+    // $display("A.r = %d, A.i = %d", dut.butterfly_0.A.r, dut.butterfly_0.A.i);
+    // $display("B.r = %d, B.i = %d", dut.butterfly_0.B.r, dut.butterfly_0.B.i);
+    // $display("X_comb.r = %d, X_comb.i = %d", dut.butterfly_0.X_comb.r, dut.butterfly_0.X_comb.i);
+    // $display("X_ff.r = %d, X_ff.i = %d", dut.butterfly_0.X_ff.r, dut.butterfly_0.X_ff.i);
+    // $display("Y_ff.r = %d, Y_ff.i = %d", dut.butterfly_0.Y_ff.r, dut.butterfly_0.Y_ff.i);
+    // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
+    // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
   end
     data_0.r = 0; 
     data_0.i = 0;
@@ -141,14 +155,14 @@ repeat(1) begin
 
     for(int i=0; i<60; i++) begin
        
-        // Butterfly 1 Outputs
-        $display("idx 0 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][0], dut.W_I_STAGE[1][0]);
-        $display("idx 1 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][1], dut.W_I_STAGE[1][1]);
-        $display("idx 2 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][2], dut.W_I_STAGE[1][2]);
-        $display("idx 3 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][3], dut.W_I_STAGE[1][3]);
+        // // Butterfly 1 Outputs
+        // $display("idx 0 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][0], dut.W_I_STAGE[1][0]);
+        // $display("idx 1 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][1], dut.W_I_STAGE[1][1]);
+        // $display("idx 2 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][2], dut.W_I_STAGE[1][2]);
+        // $display("idx 3 Stage 1 Twiddle Factors: W_R = %d, W_I = %d", dut.W_R_STAGE[1][3], dut.W_I_STAGE[1][3]);
         @(negedge clk);
-        $display("Butterfly_1 Output: X.r = %d, X.i = %d", dut.butterfly_1_x.r, dut.butterfly_1_x.i);
-        $display("Butterfly_1 Output: Y.r = %d, Y.i = %d", dut.butterfly_1_y.r, dut.butterfly_1_y.i);
+        // $display("Butterfly_1 Output: X.r = %d, X.i = %d", dut.butterfly_1_x.r, dut.butterfly_1_x.i);
+        // $display("Butterfly_1 Output: Y.r = %d, Y.i = %d", dut.butterfly_1_y.r, dut.butterfly_1_y.i);
     end
 
 
