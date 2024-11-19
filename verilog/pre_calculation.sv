@@ -16,16 +16,16 @@ module pre_calculation(
 logic [15:0] H_hermitian_real[0:3][0:3];
 logic [15:0] H_hermitian_imag[0:3][0:3];
 
-for(int i=0; i<16;i++)begin
-    for(int j=0;j<16;j++)begin
+for(int i=0; i<4;i++)begin
+    for(int j=0;j<4;j++)begin
         H_hermitian_real[i][j]=H_matrix_real[j][i];
         H_hermitian_imag[i][j]=-H_matrix_imag[j][i];
     end
 end
 // get H^H
 
-for(int i=0; i<16;i++)begin
-    for(int j=0;j<16;j++)begin
+for(int i=0; i<4;i++)begin
+    for(int j=0;j<4;j++)begin
 
         if(i=j)begin
             [matrix_A_real[i][j],matrix_A_imag[i][j]]=[snr_real,snr_imag];
