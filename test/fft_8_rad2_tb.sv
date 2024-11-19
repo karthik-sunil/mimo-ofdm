@@ -85,8 +85,10 @@ always @(negedge clk) begin
     if(enable) cycle_count++;
     // $fdisplay(f_out,"--------------------");
         if(out_valid) begin
-            for (int j=0; j<N; j++) begin
-                $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+            if(~$isunknown(out_valid)) begin 
+                for (int j=0; j<N; j++) begin
+                    $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+                end
             end
         end
 end
