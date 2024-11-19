@@ -20,7 +20,7 @@ function twiddle_factors = generateTwiddleFactors(N)
 end
 
 %paramterizable
-N = 8;
+N = 32;
 twiddles = generateTwiddleFactors(N);
 
 %print twiddle factors

@@ -3,21 +3,23 @@
 
 module fft_8_rad2_tb();
 
-parameter N = 8;
+parameter N = 128;
 parameter CLOCK_PERIOD = 10;
 
 // code changes to incorporate for LUT based twiddle factors
 parameter NUM_STAGES = $clog2(N);
 parameter NUM_BUTTERFLIES = N/2; //no of butterflies to be put per stage
-parameter TWIDDLE_FILE = "./dat/twiddle_factors8fixed.txt";
-parameter INPUT_FILE = "./dat/inputsine.txt";
+
+string INPUT_FILE = "./dat/inputsine.txt";
+string TWIDDLE_FILE = $sformatf("./dat/twiddle_factors%0dfixed.txt",N);
+string OUTPUT_FILE = $sformatf("./out/fft_out/fft%0d_rad2.out",N);
 
 logic clk;
 logic reset;
 logic enable;
 
-complex_product_t data_0;
-complex_product_t data_1;
+complex_product_t data_in;
+// complex_product_t data_1;
 
 // complex_product_t data_out_0;
 complex_product_t fft_out [N-1:0];
@@ -37,14 +39,15 @@ integer input_file;
 integer input_values[7:0][1:0];  // 8 pairs of values from the file - need to think of a beter way to do this
 integer input_index;
 
-fft_8_rad2 #(
+fft_N_rad2 #(
     .N(N)
 ) dut (
     .clk(clk),
     .reset(reset),
     .enable(enable),
-    .data_0(data_0),
-    .data_1(data_1),
+    // .data_0(data_0),
+    // .data_1(data_1),
+    .data_in(data_in),
     .W_R_STAGE(W_R_STAGE), //stage wise passing
     .W_I_STAGE(W_I_STAGE),
     .fft_out(fft_out),
@@ -78,11 +81,13 @@ initial begin
 end
 
 always @(negedge clk) begin
-    integer f_out = $fopen("out/fft_8_rad2.out");
+    integer f_out = $fopen(OUTPUT_FILE, "w");
     if(enable) cycle_count++;
-    $fdisplay(f_out,"--------------------");
-        for (int j=0; j<N; j++) begin
-            $fdisplay(f_out,"fft_out[%d]= fft_out.r=%d; fft_out.i=%d", j, fft_out[j].r, fft_out[j].i);
+    // $fdisplay(f_out,"--------------------");
+        if(out_valid) begin
+            for (int j=0; j<N; j++) begin
+                $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+            end
         end
 end
 
@@ -106,49 +111,15 @@ initial begin
     reset = 0;
     enable = 1;
 
-    while(!feof(input_file)) begin
-      // Read in 2 values every clock cycle
-        $fscanf(input_file, "%d,%d\n%d,%d", data_0.r, data_0.i, data_1.r, data_1.i);
+    while(!$feof(input_file)) begin
+        $fscanf(input_file, "%d,%d", data_in.r, data_in.i);
         @(negedge clk);
     end
 
-    // for (int i = 0; i < 8; i++) begin
-    //     $fscanf(input_file, "%d,%d\n%d,%d\n%d,%d\n%d,%d", input_values[i][0], input_values[i][1]);
-    // end
-
-    // @(negedge clk);
-    
-
-
-    // while (!$feof(input_file)) begin
-    //     data_0.r = input_values[input_index][0];
-    //     data_0.i = input_values[input_index][1];
-    //     data_1.r =input_values[(input_index + 4) % 8][0];
-    //     data_1.i =input_values[(input_index + 4) % 8][1];
-        
-    //     @(negedge clk);
-    //     // $display("Butterfly_0 Output: X.r = %d, X.i = %d", dut.butterfly_0_x.r, dut.butterfly_0_x.i);
-    //     // $display("Butterfly_0 Output: Y.r = %d, Y.i = %d", dut.butterfly_0_y.r, dut.butterfly_0_y.i);
-
-    //     input_index = (input_index + 1) % 8;
-
-    //     if (input_index == 0) begin
-    //         // Read next 8 values
-    //         for (int i = 0; i < 8; i++) begin
-    //             //check to see if we do not have equal to 8 values then we break
-    //             if ($fscanf(input_file, "%d,%d", input_values[i][0], input_values[i][1]) != 2) begin
-    //                 break; 
-    //             end
-    //         end
-    //     end
-    // end
-
     $fclose(input_file);
 
-    repeat(60) begin
+    repeat(N*2) begin
         @(negedge clk);
-        // $display("Butterfly_1 Output: X.r = %d, X.i = %d", dut.butterfly_1_x.r, dut.butterfly_1_x.i);
-        // $display("Butterfly_1 Output: Y.r = %d, Y.i = %d", dut.butterfly_1_y.r, dut.butterfly_1_y.i);
     end
 
 

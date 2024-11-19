@@ -49,12 +49,14 @@ function generateTwiddleFactorsToFile(N, filename)
                 
                 % Print values and their IEEE754 representations and hex
                 % for our rep
-                fprintf('realPart: %.4f, imagPart: %.4f\n', realPart, imagPart);
-                fprintf('IEEE Real: %s, Hex: %s\n', ieeeReal, ieeeRealHex);
-                fprintf('IEEE Imag: %s, Hex: %s\n', ieeeImag, ieeeImagHex);
+                % fprintf('realPart: %.4f, imagPart: %.4f\n', realPart, imagPart);
+                % fprintf('IEEE Real: %s, Hex: %s\n', ieeeReal, ieeeRealHex);
+                % fprintf('IEEE Imag: %s, Hex: %s\n', ieeeImag, ieeeImagHex);
                 
                 % Write values and their IEEE754 representation
-                fprintf(fileID, '%f,%f,%s,%s\n', realPart, imagPart, ieeeReal, ieeeImag);
+                % fprintf(fileID, '%f,%f,%s,%s\n', realPart, imagPart, ieeeReal, ieeeImag);
+                fprintf(fileID, '%d,%d\n', realPart*2**8, imagPart*2**8);
+                
             end
         end
     end
@@ -123,6 +125,6 @@ end
 % 
 
 %paramterizable
-N = 8; 
-filename = 'twiddle_factors.txt'; 
+N = 32; 
+filename = strcat('twiddle_factors_',int2str(N),'.txt'); 
 generateTwiddleFactorsToFile(N, filename);

@@ -17,7 +17,7 @@ export MK_COURSE_NAME = EECS598-002
 # export CLOCK_PERIOD = 5.0
 
 # your top-level module name
-export MK_DESIGN_NAME = fp_mul
+export MK_DESIGN_NAME = fft_N_rad2 
 
 # CPU core usage, capped at 6
 export MK_USE_NUM_CORES = 4
@@ -85,7 +85,8 @@ all:	simv
 
 HEADERS = verilog/headers.svh
 TESTBENCH = test/fft_8_rad2_tb.sv
-SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv
+SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv
+# SYNFILES = src/fft_N_rad2.sv src/butterfly.sv  src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/butterfly_tb.sv

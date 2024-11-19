@@ -1,0 +1,18 @@
+test/fft_8_rad2_tb.sv:83 YES
+verilog/butterfly.sv:38 YES
+verilog/delay_commutator.sv:36 YES
+verilog/delay_commutator.sv:69 YES
+verilog/delay.sv:17 YES
+verilog/delay.sv:33 YES
+verilog/deserializer.sv:20 YES
+verilog/fft_N_rad2.sv:29 YES
+verilog/input_reorder.sv:34 YES
+verilog/delay.sv:17 YES
+verilog/delay.sv:33 YES
+verilog/delay_commutator.sv:36 YES
+verilog/delay_commutator.sv:69 YES
+==================================================
+X P R O P   S T A T I S T I C S
+instrumentable assignments:    178
+instrumented assignments:      178
+instrumentation success rate:  100%

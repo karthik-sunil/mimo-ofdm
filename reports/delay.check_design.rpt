@@ -1,0 +1,16 @@
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Mon Nov 18 21:05:27 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Nets                                                                2
+    Unloaded nets (LINT-2)                                          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'delay', net 'net17' driven by pin 'C323/Z' has no loads. (LINT-2)
+Warning: In design 'delay', net 'net16' driven by pin 'C320/Z' has no loads. (LINT-2)
+1

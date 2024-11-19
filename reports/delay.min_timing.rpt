@@ -1,0 +1,1333 @@
+ 
+****************************************
+Report : timing
+        -path full_clock
+        -delay min
+        -nets
+        -max_paths 30
+        -transition_time
+Design : delay
+Version: T-2022.03-SP3
+Date   : Mon Nov 18 21:06:35 2024
+****************************************
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: delay_reg_reg_0__r__29_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__r__29_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__r__29_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__r__29_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__r__29_ (net)                     1                   0.00       0.19 r
+  delay_reg_reg_1__r__29_/SI (SDFFX1_RVT)                 0.01      0.01       0.20 r
+  data arrival time                                                            0.20
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__r__29_/CLK (SDFFX1_RVT)                          0.00       1.08 r
+  library hold time                                                -0.04       1.04
+  data required time                                                           1.04
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.04
+  data arrival time                                                           -0.20
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.84
+
+
+  Startpoint: delay_reg_reg_2__i__2_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_3__i__2_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_2__i__2_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_2__i__2_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_2__i__2_ (net)                      1                   0.00       0.19 r
+  delay_reg_reg_3__i__2_/SI (SDFFX1_RVT)                  0.01      0.01       0.20 r
+  data arrival time                                                            0.20
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_3__i__2_/CLK (SDFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.04       1.04
+  data required time                                                           1.04
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.04
+  data arrival time                                                           -0.20
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.84
+
+
+  Startpoint: switch_counter_reg_0_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: switch_counter_reg_0_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  switch_counter_reg_0_/CLK (DFFX1_RVT)                   0.08      0.00       0.10 r
+  switch_counter_reg_0_/QN (DFFX1_RVT)                    0.01      0.08       0.18 r
+  n520 (net)                                    1                   0.00       0.18 r
+  U382/Y (AND3X1_RVT)                                     0.01      0.04       0.23 r
+  N279 (net)                                    1                   0.00       0.23 r
+  switch_counter_reg_0_/D (DFFX1_RVT)                     0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  switch_counter_reg_0_/CLK (DFFX1_RVT)                             0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__26_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__26_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__26_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__26_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__26_ (net)                     1                   0.00       0.19 r
+  U414/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N97 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__26_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__26_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__25_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__25_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__25_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__25_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__25_ (net)                     1                   0.00       0.19 r
+  U413/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N96 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__25_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__25_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__24_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__24_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__24_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__24_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__24_ (net)                     1                   0.00       0.19 r
+  U412/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N95 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__24_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__24_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__23_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__23_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__23_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__23_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__23_ (net)                     1                   0.00       0.19 r
+  U411/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N94 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__23_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__23_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__22_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__22_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__22_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__22_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__22_ (net)                     1                   0.00       0.19 r
+  U410/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N93 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__22_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__22_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__21_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__21_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__21_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__21_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__21_ (net)                     1                   0.00       0.19 r
+  U409/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N92 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__21_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__21_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__20_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__20_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__20_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__20_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__20_ (net)                     1                   0.00       0.19 r
+  U408/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N91 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__20_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__20_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__19_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__19_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__19_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__19_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__19_ (net)                     1                   0.00       0.19 r
+  U407/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N90 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__19_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__19_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__18_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__18_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__18_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__18_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__18_ (net)                     1                   0.00       0.19 r
+  U406/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N89 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__18_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__18_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__17_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__17_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__17_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__17_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__17_ (net)                     1                   0.00       0.19 r
+  U405/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N88 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__17_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__17_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__16_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__16_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__16_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__16_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__16_ (net)                     1                   0.00       0.19 r
+  U404/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N87 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__16_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__16_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__15_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__15_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__15_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__15_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__15_ (net)                     1                   0.00       0.19 r
+  U403/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N86 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__15_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__15_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__14_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__14_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__14_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__14_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__14_ (net)                     1                   0.00       0.19 r
+  U402/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N85 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__14_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__14_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__13_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__13_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__13_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__13_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__13_ (net)                     1                   0.00       0.19 r
+  U401/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N84 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__13_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__13_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__12_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__12_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__12_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__12_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__12_ (net)                     1                   0.00       0.19 r
+  U400/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N83 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__12_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__12_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__11_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__11_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__11_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__11_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__11_ (net)                     1                   0.00       0.19 r
+  U399/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N82 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__11_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__11_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__10_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__10_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__10_/CLK (DFFX1_RVT)                 0.08      0.00       0.10 r
+  delay_reg_reg_0__i__10_/Q (DFFX1_RVT)                   0.01      0.09       0.19 r
+  delay_reg_0__i__10_ (net)                     1                   0.00       0.19 r
+  U398/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N81 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__10_/D (DFFX1_RVT)                   0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__10_/CLK (DFFX1_RVT)                           0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__9_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__9_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__9_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__9_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__9_ (net)                      1                   0.00       0.19 r
+  U397/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N80 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__9_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__9_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__8_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__8_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__8_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__8_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__8_ (net)                      1                   0.00       0.19 r
+  U396/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N79 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__8_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__8_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__7_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__7_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__7_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__7_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__7_ (net)                      1                   0.00       0.19 r
+  U395/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N78 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__7_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__7_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__6_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__6_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__6_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__6_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__6_ (net)                      1                   0.00       0.19 r
+  U394/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N77 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__6_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__6_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__5_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__5_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__5_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__5_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__5_ (net)                      1                   0.00       0.19 r
+  U393/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N76 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__5_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__5_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__4_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__4_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__4_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__4_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__4_ (net)                      1                   0.00       0.19 r
+  U392/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N75 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__4_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__4_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__3_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__3_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__3_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__3_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__3_ (net)                      1                   0.00       0.19 r
+  U391/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N74 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__3_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__3_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__2_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__2_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__2_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__2_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__2_ (net)                      1                   0.00       0.19 r
+  U390/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N73 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__2_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__2_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__1_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__1_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__1_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__1_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__1_ (net)                      1                   0.00       0.19 r
+  U389/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N72 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__1_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__1_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+  Startpoint: delay_reg_reg_0__i__0_
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: delay_reg_reg_1__i__0_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  delay              8000                  saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  delay_reg_reg_0__i__0_/CLK (DFFX1_RVT)                  0.08      0.00       0.10 r
+  delay_reg_reg_0__i__0_/Q (DFFX1_RVT)                    0.01      0.09       0.19 r
+  delay_reg_0__i__0_ (net)                      1                   0.00       0.19 r
+  U388/Y (AND2X1_RVT)                                     0.01      0.04       0.23 r
+  N71 (net)                                     1                   0.00       0.23 r
+  delay_reg_reg_1__i__0_/D (DFFX1_RVT)                    0.01      0.01       0.24 r
+  data arrival time                                                            0.24
+
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  clock uncertainty                                                 0.98       1.08
+  delay_reg_reg_1__i__0_/CLK (DFFX1_RVT)                            0.00       1.08 r
+  library hold time                                                -0.01       1.07
+  data required time                                                           1.07
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.07
+  data arrival time                                                           -0.24
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -0.83
+
+
+1

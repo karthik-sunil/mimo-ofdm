@@ -7,8 +7,8 @@ module fft_N_rad2 #(
     input logic reset,
     input logic enable,
 
-    input complex_product_t data_0,
-    input complex_product_t data_1,
+    // use 1 input instead
+    input complex_product_t data_in,
 
     input logic signed [COEFF_WIDTH-1:0] W_R_STAGE [NUM_STAGES][NUM_BUTTERFLIES], // real twiddle driven dynamically from TB
     input logic signed [COEFF_WIDTH-1:0] W_I_STAGE [NUM_STAGES][NUM_BUTTERFLIES],// img twiddle driven dynamically from TB
@@ -35,6 +35,28 @@ always_ff @(posedge clk) begin
     end
 end
 
+/*
+================================================
+||               INPUT FOLDING                ||
+================================================
+*/
+
+complex_product_t data_0;
+complex_product_t data_1;
+logic input_folding_out_valid;
+
+input_folding #(
+    .N(N)
+) input_folding_inst (
+    .clk(clk),
+    .reset(reset),
+    .enable(enable),
+    .data_in(data_in),
+    .data_out_0(data_0),
+    .data_out_1(data_1),
+    .out_valid(input_folding_out_valid)
+);
+
 
 /*
 ================================================
@@ -55,7 +77,7 @@ generate
         butterfly butterfly_inst(
             .clk(clk),
             .reset(reset),
-            .enable((i == 0) ? enable : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
+            .enable((i == 0) ? input_folding_out_valid : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
             .A((i == 0)? data_0 : butterfly_x_reordered_dc[i-1]), // if i == 0, data_0, else previous X
             .B((i == 0)? data_1 : butterfly_y_reordered_dc[i-1]), // if i == 0, data_1, else previous Y
             .W_R(W_R_STAGE[i][twiddle_counter]), // real twiddle
@@ -122,7 +144,7 @@ logic bit_reverse_out_valid;
 
 // Bit Reversal
 input_reorder #(
-    .N(8)
+    .N(N)
 ) input_reorder (
     .clk(clk),
     .reset(reset),
@@ -140,6 +162,15 @@ input_reorder #(
 
 assign fft_out = bit_corrected_output_buffer;
 assign out_valid = bit_reverse_out_valid;
+
+/*
+================================================
+||              TWIDDLE MEMORY                ||
+================================================
+*/
+
+logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
+logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
 
 
 endmodule
