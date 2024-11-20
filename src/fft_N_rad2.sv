@@ -1,21 +1,19 @@
-// `include "verilog/headers_syn.svh"
-
 module fft_N_rad2 #(
-    parameter NUM_STAGES = $clog2(`N),
-    parameter NUM_BUTTERFLIES = `N / 2
+    parameter N = 8,
+    parameter NUM_STAGES = $clog2(N),
+    parameter NUM_BUTTERFLIES = N / 2
 )(
     input logic clk,
     input logic reset,
     input logic enable,
 
-    // Change to 1 input
-    input COMPLEX_PRODUCT_T data_0,
-    input COMPLEX_PRODUCT_T data_1,
+    // use 1 input instead
+    input complex_product_t data_in,
 
     input logic signed [COEFF_WIDTH-1:0] W_R_STAGE [NUM_STAGES][NUM_BUTTERFLIES], // real twiddle driven dynamically from TB
     input logic signed [COEFF_WIDTH-1:0] W_I_STAGE [NUM_STAGES][NUM_BUTTERFLIES],// img twiddle driven dynamically from TB
 
-    output COMPLEX_PRODUCT_T fft_out [`N-1:0],
+    output complex_product_t fft_out [N-1:0],
     output logic out_valid
 );
 
@@ -37,15 +35,27 @@ always_ff @(posedge clk) begin
     end
 end
 
-
 /*
 ================================================
-||           TWIDDLE CONTROL LOGIC            ||
+||               INPUT FOLDING                ||
 ================================================
 */
 
+complex_product_t data_0;
+complex_product_t data_1;
+logic input_folding_out_valid;
 
-
+input_folding #(
+    .N(N)
+) input_folding_inst (
+    .clk(clk),
+    .reset(reset),
+    .enable(enable),
+    .data_in(data_in),
+    .data_out_0(data_0),
+    .data_out_1(data_1),
+    .out_valid(input_folding_out_valid)
+);
 
 
 /*
@@ -54,10 +64,10 @@ end
 ================================================
 */
 
-COMPLEX_PRODUCT_T [NUM_STAGES-1:0] butterfly_x, butterfly_y;
+complex_product_t [NUM_STAGES-1:0] butterfly_x, butterfly_y;
 logic [NUM_STAGES-1:0] butterfly_out_valid;
 
-COMPLEX_PRODUCT_T [NUM_STAGES-2:0] butterfly_x_reordered_dc, butterfly_y_reordered_dc;
+complex_product_t [NUM_STAGES-2:0] butterfly_x_reordered_dc, butterfly_y_reordered_dc;
 logic [NUM_STAGES-2:0] dc_out_valid;
 
 genvar i;
@@ -67,7 +77,7 @@ generate
         butterfly butterfly_inst(
             .clk(clk),
             .reset(reset),
-            .enable((i == 0) ? enable : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
+            .enable((i == 0) ? input_folding_out_valid : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
             .A((i == 0)? data_0 : butterfly_x_reordered_dc[i-1]), // if i == 0, data_0, else previous X
             .B((i == 0)? data_1 : butterfly_y_reordered_dc[i-1]), // if i == 0, data_1, else previous Y
             .W_R(W_R_STAGE[i][twiddle_counter]), // real twiddle
@@ -79,7 +89,7 @@ generate
 
         // Delay Commutator
         delay_commutator #(
-            .DELAY(`N >> (i+2))
+            .DELAY(N >> (i+2))
         ) dc_2 (
             .clk(clk),
             .reset(reset),
@@ -113,11 +123,13 @@ butterfly butterfly_final(
 ================================================
 */
 
-COMPLEX_PRODUCT_T deserializer_out_buffer [`N-1:0];
+complex_product_t deserializer_out_buffer [N-1:0];
 logic deserializer_out_valid;
 
 // Deserializer
-deserializer deserializer_inst (
+deserializer #(
+    .N(N)
+) deserializer_inst (
     .clk(clk),
     .reset(reset),
     .enable(butterfly_out_valid[NUM_STAGES-1]),
@@ -127,13 +139,13 @@ deserializer deserializer_inst (
     .out_valid(deserializer_out_valid)
 );
 
-COMPLEX_PRODUCT_T bit_corrected_output_buffer [`N-1:0];
+complex_product_t bit_corrected_output_buffer [N-1:0];
 logic bit_reverse_out_valid;
 
 // Bit Reversal
 input_reorder #(
-    .N(`N)
-)input_reorder (
+    .N(N)
+) input_reorder (
     .clk(clk),
     .reset(reset),
     .enable(deserializer_out_valid),
@@ -157,8 +169,8 @@ assign out_valid = bit_reverse_out_valid;
 ================================================
 */
 
-logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(`N)-1][NUM_STAGES][NUM_BUTTERFLIES];
-logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(`N)-1][NUM_STAGES][NUM_BUTTERFLIES];
+logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
+logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
 
 
 endmodule

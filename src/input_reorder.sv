@@ -1,19 +1,17 @@
-// `include "verilog/headers_syn.svh"
-
 module input_reorder #(
-    parameter N = 8
+  parameter N = 8
 )(
   input logic clk,
   input logic reset,
   input logic enable,
-  input COMPLEX_PRODUCT_T input_array [N-1:0],
-  output COMPLEX_PRODUCT_T output_array [N-1:0],
+  input complex_product_t input_array [N-1:0],
+  output complex_product_t output_array [N-1:0],
   output logic out_valid
 );
     logic [$clog2(N)-1:0] index [N-1:0];
     logic [$clog2(N)-1:0] reversed_index [N-1:0];
 
-    COMPLEX_PRODUCT_T input_reordered [N-1:0];
+    complex_product_t input_reordered [N-1:0];
 
     genvar i;
     genvar j;

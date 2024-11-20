@@ -1,24 +1,22 @@
-// `include "verilog/headers_syn.svh"
-
 module butterfly(
     input logic clk,
     input logic reset,
     input logic enable,
 
-    input COMPLEX_PRODUCT_T A,
-    input COMPLEX_PRODUCT_T B,
+    input complex_product_t A,
+    input complex_product_t B,
 
     input logic signed [15:0] W_R,
     input logic signed [15:0] W_I,
 
-    output COMPLEX_PRODUCT_T X,
-    output COMPLEX_PRODUCT_T Y,
+    output complex_product_t X,
+    output complex_product_t Y,
     output logic out_valid
 );
 
-    COMPLEX_PRODUCT_T X_comb, Y_comb;
-    COMPLEX_PRODUCT_T X_ff, Y_ff;
-    COMPLEX_PRODUCT_T Y_Wout; 
+    complex_product_t X_comb, Y_comb;
+    complex_product_t X_ff, Y_ff;
+    complex_product_t Y_Wout; 
 
     logic out_valid_ff;
 

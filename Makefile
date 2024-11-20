@@ -17,7 +17,7 @@ export MK_COURSE_NAME = EECS598-002
 # export CLOCK_PERIOD = 5.0
 
 # your top-level module name
-export MK_DESIGN_NAME = fft_N_rad2 
+export MK_DESIGN_NAME = fft_N_rad2
 
 # CPU core usage, capped at 6
 export MK_USE_NUM_CORES = 4

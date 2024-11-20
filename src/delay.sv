@@ -1,18 +1,16 @@
-// `include "verilog/headers_syn.svh"
 module delay #(
     parameter DELAY = 4
 )(
     input logic clk,
     input logic reset,
     input logic enable,
-    input COMPLEX_PRODUCT_T in,
-    
-    output COMPLEX_PRODUCT_T out,
+    input complex_product_t in,
+    output complex_product_t out,
     output logic out_valid,
     output logic switch_enable
 );
 
-    COMPLEX_PRODUCT_T delay_reg [DELAY-1:0];
+    complex_product_t delay_reg [DELAY-1:0];
     logic [$clog2(DELAY):0] delay_counter, switch_counter;
 
 

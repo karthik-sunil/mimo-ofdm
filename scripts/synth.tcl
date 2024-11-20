@@ -12,7 +12,7 @@ set PDK_PATH $::env(SAED32_PATH)
 puts "PDK path at $PDK_PATH"
 
 set DESIGN_NAME $::env(MK_DESIGN_NAME)
-set RTL_SOURCE_FILES  [glob -nocomplain src/*.v	src/*.sv src/*.vh src/*.svh]
+set RTL_SOURCE_FILES  [glob -nocomplain  src/*.vh src/*.svh src/*.v	src/*.sv]
 set NETLIST_FILES ""
 set DESIGN_DEFINES ""
 set DESIGN_PATH          "[pwd]"

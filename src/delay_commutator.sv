@@ -5,10 +5,10 @@ module delay_commutator #(
     input logic clk,
     input logic reset,
     input logic enable,
-    input COMPLEX_PRODUCT_T x0,
-    input COMPLEX_PRODUCT_T x1,
-    output COMPLEX_PRODUCT_T y0,
-    output COMPLEX_PRODUCT_T y1,
+    input complex_product_t x0,
+    input complex_product_t x1,
+    output complex_product_t y0,
+    output complex_product_t y1,
     output logic commutator_out_valid
 );
 
@@ -16,9 +16,9 @@ module delay_commutator #(
     // Do not delay x0
 
     logic out_valid, switch_enable, switch_enable_ff;
-    COMPLEX_PRODUCT_T x1_delayed;
-    COMPLEX_PRODUCT_T x0_ff, x1_ff;
-    COMPLEX_PRODUCT_T y0_comb, y1_comb;
+    complex_product_t x1_delayed;
+    complex_product_t x0_ff, x1_ff;
+    complex_product_t y0_comb, y1_comb;
 
     delay #(
         .DELAY(DELAY)
@@ -51,7 +51,7 @@ module delay_commutator #(
     // Delay y0 by D cycles
     // Do not delay y1
 
-    COMPLEX_PRODUCT_T y0_delayed;
+    complex_product_t y0_delayed;
     logic commutator_out_valid_comb, commutator_out_valid_ff;
 
     delay #(
