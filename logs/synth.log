@@ -29,6 +29,7 @@
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
+Error: could not open command log file "/home/ksnl/eecs598/final-project/mimo-ofdm/command.log" (CMD-015)
 ###############################
 #                             #
 # Create By Yufan Yue 2023.10 #
@@ -44,9 +45,9 @@ set PDK_PATH $::env(SAED32_PATH)
 puts "PDK path at $PDK_PATH"
 PDK path at /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK
 set DESIGN_NAME $::env(MK_DESIGN_NAME)
-fft_N_rad2 
-set RTL_SOURCE_FILES  [glob -nocomplain src/*.v	src/*.sv src/*.vh src/*.svh]
-src/input_reorder.sv src/fft_N_rad2.sv src/butterfly.sv src/delay.sv src/delay_commutator.sv src/deserializer.sv
+fft_N_rad2
+set RTL_SOURCE_FILES  [glob -nocomplain  src/*.vh src/*.svh src/*.v	src/*.sv]
+src/headers.svh src/input_reorder.sv src/fft_N_rad2.sv src/butterfly.sv src/input_folding.sv src/delay.sv src/delay_commutator.sv src/deserializer.sv
 set NETLIST_FILES ""
 set DESIGN_DEFINES ""
 set DESIGN_PATH          "[pwd]"
@@ -115,26 +116,2253 @@ check_library > ${REPORTS_DIR}/${DESIGN_NAME}.check_library.rpt
 #################################################################################
 if { ! [file exists ${DESIGN_NAME}_dclib] } { file mkdir ${DESIGN_NAME}_dclib }
 define_design_lib WORK -path ${DESIGN_PATH}/${DESIGN_NAME}_dclib
+Warning: Error code 23 encountered while writing SVF file:
+         could not open /home/ksnl/eecs598/final-project/mimo-ofdm/default.svf for writing
+         Operation aborted. (FMLINK-1)
 1
 if { [llength $NETLIST_FILES] > 0} { read_verilog -netlist $NETLIST_FILES }
 if { ![analyze -define ${DESIGN_DEFINES} -f sverilog $RTL_SOURCE_FILES] } { exit 1 }
 Running PRESTO HDLC
+Compiling source file ./src/headers.svh
+Warning:  ./src/headers.svh:1: Parameter keyword used in local parameter declaration. (VER-329)
 Compiling source file ./src/input_reorder.sv
-Error:  ./src/input_reorder.sv:9: Syntax error at or near token 'input_array'. (VER-294)
-Error:  ./src/input_reorder.sv:10: Redeclaration of port 'COMPLEX_PRODUCT_T' is not allowed. (VER-121)
-Error:  ./src/input_reorder.sv:10: Syntax error at or near token 'output_array'. (VER-294)
-Error:  ./src/input_reorder.sv:12: 'COMPLEX_PRODUCT_T' is listed more than once in port list. (VER-174)
-Error:  ./src/input_reorder.sv:16: Syntax error at or near token ';'. (VER-294)
 Compiling source file ./src/fft_N_rad2.sv
-Error:  Cannot recover from previous errors. (VER-518)
-*** Presto compilation terminated with 6 errors. ***
+Compiling source file ./src/butterfly.sv
+Compiling source file ./src/input_folding.sv
+Compiling source file ./src/delay.sv
+Compiling source file ./src/delay_commutator.sv
+Compiling source file ./src/deserializer.sv
+Presto compilation completed successfully.
 Loading db file '/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
 Information: Using CCS timing libraries. (TIM-024)
 Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/dw_foundation.sldb'
+elaborate ${DESIGN_NAME}
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_tt1p05v25c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
 
-Memory usage for this session 244 Mbytes.
-Memory usage for this session including child processes 244 Mbytes.
-CPU usage for this session 3 seconds ( 0.00 hours ).
-Elapsed time for this session 5 seconds ( 0.00 hours ).
+Inferred memory devices in process
+	in routine fft_N_rad2 line 29 in file
+		'./src/fft_N_rad2.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| twiddle_counter_reg | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  fft_N_rad2/77   |   4    |   96    |      2       |
+======================================================
+Presto compilation completed successfully. (fft_N_rad2)
+Elaborated 1 design.
+Current design is now 'fft_N_rad2'.
+Information: Building the design 'input_folding' instantiated from design 'fft_N_rad2' with
+	the parameters "N=8". (HDL-193)
+Presto compilation completed successfully. (input_folding_N8)
+Information: Building the design 'butterfly'. (HDL-193)
+
+Inferred memory devices in process
+	in routine butterfly line 38 in file
+		'./src/butterfly.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      X_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|      Y_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (butterfly)
+Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
+	the parameters "DELAY=2". (HDL-193)
+
+Inferred memory devices in process
+	in routine delay_commutator_DELAY2 line 36 in file
+		'./src/delay_commutator.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| switch_enable_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      x0_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|      x1_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+================================================================================
+
+Inferred memory devices in process
+	in routine delay_commutator_DELAY2 line 69 in file
+		'./src/delay_commutator.sv'.
+=======================================================================================
+|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=======================================================================================
+| commutator_out_valid_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+=======================================================================================
+Presto compilation completed successfully. (delay_commutator_DELAY2)
+Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
+	the parameters "DELAY=1". (HDL-193)
+
+Inferred memory devices in process
+	in routine delay_commutator_DELAY1 line 36 in file
+		'./src/delay_commutator.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| switch_enable_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      x0_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|      x1_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+================================================================================
+
+Inferred memory devices in process
+	in routine delay_commutator_DELAY1 line 69 in file
+		'./src/delay_commutator.sv'.
+=======================================================================================
+|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=======================================================================================
+| commutator_out_valid_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+=======================================================================================
+Presto compilation completed successfully. (delay_commutator_DELAY1)
+Information: Building the design 'deserializer' instantiated from design 'fft_N_rad2' with
+	the parameters "N=8". (HDL-193)
+Warning:  ./src/deserializer.sv:22: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./src/deserializer.sv:35: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine deserializer_N8 line 20 in file
+		'./src/deserializer.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     buffer_reg      | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
+|      w_ptr_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+|  buffer_ready_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (deserializer_N8)
+Information: Building the design 'input_reorder' instantiated from design 'fft_N_rad2' with
+	the parameters "N=8". (HDL-193)
+
+Inferred memory devices in process
+	in routine input_reorder_N8 line 34 in file
+		'./src/input_reorder.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  output_array_reg   | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
+|    out_valid_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+=========================================================
+|  block name/line    | Inputs | Outputs | # sel inputs |
+=========================================================
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+=========================================================
+Presto compilation completed successfully. (input_reorder_N8)
+Information: Building the design 'delay' instantiated from design 'input_folding_N8' with
+	the parameters "DELAY=4". (HDL-193)
+
+Inferred memory devices in process
+	in routine delay_DELAY4 line 17 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    delay_reg_reg    | Flip-flop |  256  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine delay_DELAY4 line 33 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| switch_counter_reg  | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+|  delay_counter_reg  | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (delay_DELAY4)
+Information: Building the design 'delay' instantiated from design 'delay_commutator_DELAY2' with
+	the parameters "DELAY=2". (HDL-193)
+
+Inferred memory devices in process
+	in routine delay_DELAY2 line 17 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    delay_reg_reg    | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine delay_DELAY2 line 33 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| switch_counter_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+|  delay_counter_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (delay_DELAY2)
+Information: Building the design 'delay' instantiated from design 'delay_commutator_DELAY1' with
+	the parameters "DELAY=1". (HDL-193)
+
+Inferred memory devices in process
+	in routine delay_DELAY1 line 17 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    delay_reg_reg    | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine delay_DELAY1 line 33 in file
+		'./src/delay.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| switch_counter_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  delay_counter_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (delay_DELAY1)
+1
+check_design -multiple_designs
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Wed Nov 20 10:19:20 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     64
+    Feedthrough (LINT-29)                                          64
+
+Cells                                                               6
+    Cells do not drive (LINT-1)                                     6
+
+Designs                                                             3
+    Multiply instantiated designs (LINT-45)                         3
+
+Nets                                                                2
+    Unloaded nets (LINT-2)                                          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'fft_N_rad2', cell 'B_3' does not drive any nets. (LINT-1)
+Warning: In design 'deserializer_N8', cell 'C1663' does not drive any nets. (LINT-1)
+Warning: In design 'delay_DELAY4', cell 'C320' does not drive any nets. (LINT-1)
+Warning: In design 'delay_DELAY4', cell 'C323' does not drive any nets. (LINT-1)
+Warning: In design 'delay_DELAY2', cell 'C186' does not drive any nets. (LINT-1)
+Warning: In design 'delay_DELAY2', cell 'C189' does not drive any nets. (LINT-1)
+Warning: In design 'fft_N_rad2', net 'genblk1[0].dc_2/out_valid' driven by pin 'genblk1[0].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'genblk1[1].dc_2/out_valid' driven by pin 'genblk1[1].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
+Warning: In design 'input_folding_N8', input port 'data_in[r][31]' is connected directly to output port 'data_out_1[r][31]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][30]' is connected directly to output port 'data_out_1[r][30]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][29]' is connected directly to output port 'data_out_1[r][29]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][28]' is connected directly to output port 'data_out_1[r][28]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][27]' is connected directly to output port 'data_out_1[r][27]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][26]' is connected directly to output port 'data_out_1[r][26]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][25]' is connected directly to output port 'data_out_1[r][25]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][24]' is connected directly to output port 'data_out_1[r][24]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][23]' is connected directly to output port 'data_out_1[r][23]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][22]' is connected directly to output port 'data_out_1[r][22]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][21]' is connected directly to output port 'data_out_1[r][21]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][20]' is connected directly to output port 'data_out_1[r][20]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][19]' is connected directly to output port 'data_out_1[r][19]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][18]' is connected directly to output port 'data_out_1[r][18]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][17]' is connected directly to output port 'data_out_1[r][17]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][16]' is connected directly to output port 'data_out_1[r][16]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][15]' is connected directly to output port 'data_out_1[r][15]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][14]' is connected directly to output port 'data_out_1[r][14]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][13]' is connected directly to output port 'data_out_1[r][13]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][12]' is connected directly to output port 'data_out_1[r][12]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][11]' is connected directly to output port 'data_out_1[r][11]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][10]' is connected directly to output port 'data_out_1[r][10]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][9]' is connected directly to output port 'data_out_1[r][9]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][8]' is connected directly to output port 'data_out_1[r][8]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][7]' is connected directly to output port 'data_out_1[r][7]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][6]' is connected directly to output port 'data_out_1[r][6]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][5]' is connected directly to output port 'data_out_1[r][5]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][4]' is connected directly to output port 'data_out_1[r][4]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][3]' is connected directly to output port 'data_out_1[r][3]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][2]' is connected directly to output port 'data_out_1[r][2]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][1]' is connected directly to output port 'data_out_1[r][1]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[r][0]' is connected directly to output port 'data_out_1[r][0]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][31]' is connected directly to output port 'data_out_1[i][31]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][30]' is connected directly to output port 'data_out_1[i][30]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][29]' is connected directly to output port 'data_out_1[i][29]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][28]' is connected directly to output port 'data_out_1[i][28]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][27]' is connected directly to output port 'data_out_1[i][27]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][26]' is connected directly to output port 'data_out_1[i][26]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][25]' is connected directly to output port 'data_out_1[i][25]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][24]' is connected directly to output port 'data_out_1[i][24]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][23]' is connected directly to output port 'data_out_1[i][23]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][22]' is connected directly to output port 'data_out_1[i][22]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][21]' is connected directly to output port 'data_out_1[i][21]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][20]' is connected directly to output port 'data_out_1[i][20]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][19]' is connected directly to output port 'data_out_1[i][19]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][18]' is connected directly to output port 'data_out_1[i][18]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][17]' is connected directly to output port 'data_out_1[i][17]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][16]' is connected directly to output port 'data_out_1[i][16]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][15]' is connected directly to output port 'data_out_1[i][15]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][14]' is connected directly to output port 'data_out_1[i][14]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][13]' is connected directly to output port 'data_out_1[i][13]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][12]' is connected directly to output port 'data_out_1[i][12]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][11]' is connected directly to output port 'data_out_1[i][11]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][10]' is connected directly to output port 'data_out_1[i][10]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][9]' is connected directly to output port 'data_out_1[i][9]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][8]' is connected directly to output port 'data_out_1[i][8]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][7]' is connected directly to output port 'data_out_1[i][7]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][6]' is connected directly to output port 'data_out_1[i][6]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][5]' is connected directly to output port 'data_out_1[i][5]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][4]' is connected directly to output port 'data_out_1[i][4]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][3]' is connected directly to output port 'data_out_1[i][3]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][2]' is connected directly to output port 'data_out_1[i][2]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][1]' is connected directly to output port 'data_out_1[i][1]'. (LINT-29)
+Warning: In design 'input_folding_N8', input port 'data_in[i][0]' is connected directly to output port 'data_out_1[i][0]'. (LINT-29)
+Information: Design 'butterfly' is instantiated 3 times. (LINT-45)
+         Cell 'genblk1[0].butterfly_inst' in design 'fft_N_rad2' 
+         Cell 'genblk1[1].butterfly_inst' in design 'fft_N_rad2' 
+         Cell 'butterfly_final' in design 'fft_N_rad2' 
+Information: Design 'delay_DELAY2' is instantiated 2 times. (LINT-45)
+         Cell 'genblk1[0].dc_2/delay_x1' in design 'fft_N_rad2' 
+         Cell 'genblk1[0].dc_2/delay_y0' in design 'fft_N_rad2' 
+Information: Design 'delay_DELAY1' is instantiated 2 times. (LINT-45)
+         Cell 'genblk1[1].dc_2/delay_x1' in design 'fft_N_rad2' 
+         Cell 'genblk1[1].dc_2/delay_y0' in design 'fft_N_rad2' 
+1
+current_design ${DESIGN_NAME}
+Current design is 'fft_N_rad2'.
+{fft_N_rad2}
+link
+
+  Linking design 'fft_N_rad2'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (10 designs)              /home/ksnl/eecs598/final-project/mimo-ofdm/fft_N_rad2.db, etc
+  saed32rvt_tt1p05v25c (library)
+                              /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+  dw_foundation.sldb (library)
+                              /usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/dw_foundation.sldb
+
+1
+puts "\[$COURSE_NAME\] Sourcing script file [which ${CONSTRAINTS_FILE}]\n"
+[EECS598-002] Sourcing script file /home/ksnl/eecs598/final-project/mimo-ofdm/scripts/constraints.tcl
+
+source -echo -verbose ${CONSTRAINTS_FILE}
+set_max_transition 0.150 ${DESIGN_NAME}
+1
+set_input_transition 0.080 [all_inputs]
+1
+set_max_transition 0.080 [all_outputs]
+1
+set clock_period 9.8
+9.8
+set clock_uncertainty [expr $clock_period * 0.10]
+0.98
+set clock_transition 0.080
+0.080
+set clock_latency 0.1
+0.1
+create_clock -name core_clk -period $clock_period [get_ports clk]
+1
+set_clock_uncertainty $clock_uncertainty [get_clocks core_clk]
+1
+set_clock_transition $clock_transition [get_clocks core_clk]
+1
+set_clock_latency $clock_latency [get_clocks core_clk]
+1
+set_load 0.3 [all_outputs]
+1
+set_driving_cell -no_design_rule -lib_cell NBUFFX4_RVT [all_inputs]
+1
+# Need to add own constraints for each top module
+# set_input_delay -max [expr $clock_period * 0.2] [get_ports -filter "direction == in" a*] -clock core_clk
+# set_input_delay -min [expr $clock_period * 0.1] [get_ports -filter "direction == in" a*] -clock core_clk
+# set_input_delay -max [expr $clock_period * 0.2] [get_ports -filter "direction == in" b*] -clock core_clk
+# set_input_delay -min [expr $clock_period * 0.1] [get_ports -filter "direction == in" b*] -clock core_clk
+# set_output_delay -max [expr $clock_period * 0.5] [get_ports -filter "direction == out" c*] -clock core_clk
+# set_output_delay -min [expr $clock_period * 0.4] [get_ports -filter "direction == out" c*] -clock core_clk
+# set_output_delay -max [expr $clock_period * 0.3] [get_ports -filter "direction == out" mo*] -clock core_clk
+# set_output_delay -min [expr $clock_period * 0.2] [get_ports -filter "direction == out" mo*] -clock core_clk
+set_false_path -from [get_ports -filter "direction == in" reset]
+1
+1
+redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.check_timing.rpt {check_timing}
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Changed wire load model for 'input_reorder_N8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'deserializer_N8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_commutator_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_commutator_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'input_folding_N8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'alt1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'apparch' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_3_2_3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_dec_width4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_3_1_4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Updating design information... (UID-85)
+Warning: Design 'fft_N_rad2' contains 11 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+reset
+enable
+data_in[r][31]
+data_in[r][30]
+data_in[r][29]
+data_in[r][28]
+data_in[r][27]
+data_in[r][26]
+data_in[r][25]
+data_in[r][24]
+data_in[r][23]
+data_in[r][22]
+data_in[r][21]
+data_in[r][20]
+data_in[r][19]
+data_in[r][18]
+data_in[r][17]
+data_in[r][16]
+data_in[r][15]
+data_in[r][14]
+data_in[r][13]
+data_in[r][12]
+data_in[r][11]
+data_in[r][10]
+data_in[r][9]
+data_in[r][8]
+data_in[r][7]
+data_in[r][6]
+data_in[r][5]
+data_in[r][4]
+data_in[r][3]
+data_in[r][2]
+data_in[r][1]
+data_in[r][0]
+data_in[i][31]
+data_in[i][30]
+data_in[i][29]
+data_in[i][28]
+data_in[i][27]
+data_in[i][26]
+data_in[i][25]
+data_in[i][24]
+data_in[i][23]
+data_in[i][22]
+data_in[i][21]
+data_in[i][20]
+data_in[i][19]
+data_in[i][18]
+data_in[i][17]
+data_in[i][16]
+data_in[i][15]
+data_in[i][14]
+data_in[i][13]
+data_in[i][12]
+data_in[i][11]
+data_in[i][10]
+data_in[i][9]
+data_in[i][8]
+data_in[i][7]
+data_in[i][6]
+data_in[i][5]
+data_in[i][4]
+data_in[i][3]
+data_in[i][2]
+data_in[i][1]
+data_in[i][0]
+W_R_STAGE[0][0][15]
+W_R_STAGE[0][0][14]
+W_R_STAGE[0][0][13]
+W_R_STAGE[0][0][12]
+W_R_STAGE[0][0][11]
+W_R_STAGE[0][0][10]
+W_R_STAGE[0][0][9]
+W_R_STAGE[0][0][8]
+W_R_STAGE[0][0][7]
+W_R_STAGE[0][0][6]
+W_R_STAGE[0][0][5]
+W_R_STAGE[0][0][4]
+W_R_STAGE[0][0][3]
+W_R_STAGE[0][0][2]
+W_R_STAGE[0][0][1]
+W_R_STAGE[0][0][0]
+W_R_STAGE[0][1][15]
+W_R_STAGE[0][1][14]
+W_R_STAGE[0][1][13]
+W_R_STAGE[0][1][12]
+W_R_STAGE[0][1][11]
+W_R_STAGE[0][1][10]
+W_R_STAGE[0][1][9]
+W_R_STAGE[0][1][8]
+W_R_STAGE[0][1][7]
+W_R_STAGE[0][1][6]
+W_R_STAGE[0][1][5]
+W_R_STAGE[0][1][4]
+W_R_STAGE[0][1][3]
+W_R_STAGE[0][1][2]
+W_R_STAGE[0][1][1]
+W_R_STAGE[0][1][0]
+W_R_STAGE[0][2][15]
+W_R_STAGE[0][2][14]
+W_R_STAGE[0][2][13]
+W_R_STAGE[0][2][12]
+W_R_STAGE[0][2][11]
+W_R_STAGE[0][2][10]
+W_R_STAGE[0][2][9]
+W_R_STAGE[0][2][8]
+W_R_STAGE[0][2][7]
+W_R_STAGE[0][2][6]
+W_R_STAGE[0][2][5]
+W_R_STAGE[0][2][4]
+W_R_STAGE[0][2][3]
+W_R_STAGE[0][2][2]
+W_R_STAGE[0][2][1]
+W_R_STAGE[0][2][0]
+W_R_STAGE[0][3][15]
+W_R_STAGE[0][3][14]
+W_R_STAGE[0][3][13]
+W_R_STAGE[0][3][12]
+W_R_STAGE[0][3][11]
+W_R_STAGE[0][3][10]
+W_R_STAGE[0][3][9]
+W_R_STAGE[0][3][8]
+W_R_STAGE[0][3][7]
+W_R_STAGE[0][3][6]
+W_R_STAGE[0][3][5]
+W_R_STAGE[0][3][4]
+W_R_STAGE[0][3][3]
+W_R_STAGE[0][3][2]
+W_R_STAGE[0][3][1]
+W_R_STAGE[0][3][0]
+W_R_STAGE[1][0][15]
+W_R_STAGE[1][0][14]
+W_R_STAGE[1][0][13]
+W_R_STAGE[1][0][12]
+W_R_STAGE[1][0][11]
+W_R_STAGE[1][0][10]
+W_R_STAGE[1][0][9]
+W_R_STAGE[1][0][8]
+W_R_STAGE[1][0][7]
+W_R_STAGE[1][0][6]
+W_R_STAGE[1][0][5]
+W_R_STAGE[1][0][4]
+W_R_STAGE[1][0][3]
+W_R_STAGE[1][0][2]
+W_R_STAGE[1][0][1]
+W_R_STAGE[1][0][0]
+W_R_STAGE[1][1][15]
+W_R_STAGE[1][1][14]
+W_R_STAGE[1][1][13]
+W_R_STAGE[1][1][12]
+W_R_STAGE[1][1][11]
+W_R_STAGE[1][1][10]
+W_R_STAGE[1][1][9]
+W_R_STAGE[1][1][8]
+W_R_STAGE[1][1][7]
+W_R_STAGE[1][1][6]
+W_R_STAGE[1][1][5]
+W_R_STAGE[1][1][4]
+W_R_STAGE[1][1][3]
+W_R_STAGE[1][1][2]
+W_R_STAGE[1][1][1]
+W_R_STAGE[1][1][0]
+W_R_STAGE[1][2][15]
+W_R_STAGE[1][2][14]
+W_R_STAGE[1][2][13]
+W_R_STAGE[1][2][12]
+W_R_STAGE[1][2][11]
+W_R_STAGE[1][2][10]
+W_R_STAGE[1][2][9]
+W_R_STAGE[1][2][8]
+W_R_STAGE[1][2][7]
+W_R_STAGE[1][2][6]
+W_R_STAGE[1][2][5]
+W_R_STAGE[1][2][4]
+W_R_STAGE[1][2][3]
+W_R_STAGE[1][2][2]
+W_R_STAGE[1][2][1]
+W_R_STAGE[1][2][0]
+W_R_STAGE[1][3][15]
+W_R_STAGE[1][3][14]
+W_R_STAGE[1][3][13]
+W_R_STAGE[1][3][12]
+W_R_STAGE[1][3][11]
+W_R_STAGE[1][3][10]
+W_R_STAGE[1][3][9]
+W_R_STAGE[1][3][8]
+W_R_STAGE[1][3][7]
+W_R_STAGE[1][3][6]
+W_R_STAGE[1][3][5]
+W_R_STAGE[1][3][4]
+W_R_STAGE[1][3][3]
+W_R_STAGE[1][3][2]
+W_R_STAGE[1][3][1]
+W_R_STAGE[1][3][0]
+W_R_STAGE[2][0][15]
+W_R_STAGE[2][0][14]
+W_R_STAGE[2][0][13]
+W_R_STAGE[2][0][12]
+W_R_STAGE[2][0][11]
+W_R_STAGE[2][0][10]
+W_R_STAGE[2][0][9]
+W_R_STAGE[2][0][8]
+W_R_STAGE[2][0][7]
+W_R_STAGE[2][0][6]
+W_R_STAGE[2][0][5]
+W_R_STAGE[2][0][4]
+W_R_STAGE[2][0][3]
+W_R_STAGE[2][0][2]
+W_R_STAGE[2][0][1]
+W_R_STAGE[2][0][0]
+W_R_STAGE[2][1][15]
+W_R_STAGE[2][1][14]
+W_R_STAGE[2][1][13]
+W_R_STAGE[2][1][12]
+W_R_STAGE[2][1][11]
+W_R_STAGE[2][1][10]
+W_R_STAGE[2][1][9]
+W_R_STAGE[2][1][8]
+W_R_STAGE[2][1][7]
+W_R_STAGE[2][1][6]
+W_R_STAGE[2][1][5]
+W_R_STAGE[2][1][4]
+W_R_STAGE[2][1][3]
+W_R_STAGE[2][1][2]
+W_R_STAGE[2][1][1]
+W_R_STAGE[2][1][0]
+W_R_STAGE[2][2][15]
+W_R_STAGE[2][2][14]
+W_R_STAGE[2][2][13]
+W_R_STAGE[2][2][12]
+W_R_STAGE[2][2][11]
+W_R_STAGE[2][2][10]
+W_R_STAGE[2][2][9]
+W_R_STAGE[2][2][8]
+W_R_STAGE[2][2][7]
+W_R_STAGE[2][2][6]
+W_R_STAGE[2][2][5]
+W_R_STAGE[2][2][4]
+W_R_STAGE[2][2][3]
+W_R_STAGE[2][2][2]
+W_R_STAGE[2][2][1]
+W_R_STAGE[2][2][0]
+W_R_STAGE[2][3][15]
+W_R_STAGE[2][3][14]
+W_R_STAGE[2][3][13]
+W_R_STAGE[2][3][12]
+W_R_STAGE[2][3][11]
+W_R_STAGE[2][3][10]
+W_R_STAGE[2][3][9]
+W_R_STAGE[2][3][8]
+W_R_STAGE[2][3][7]
+W_R_STAGE[2][3][6]
+W_R_STAGE[2][3][5]
+W_R_STAGE[2][3][4]
+W_R_STAGE[2][3][3]
+W_R_STAGE[2][3][2]
+W_R_STAGE[2][3][1]
+W_R_STAGE[2][3][0]
+W_I_STAGE[0][0][15]
+W_I_STAGE[0][0][14]
+W_I_STAGE[0][0][13]
+W_I_STAGE[0][0][12]
+W_I_STAGE[0][0][11]
+W_I_STAGE[0][0][10]
+W_I_STAGE[0][0][9]
+W_I_STAGE[0][0][8]
+W_I_STAGE[0][0][7]
+W_I_STAGE[0][0][6]
+W_I_STAGE[0][0][5]
+W_I_STAGE[0][0][4]
+W_I_STAGE[0][0][3]
+W_I_STAGE[0][0][2]
+W_I_STAGE[0][0][1]
+W_I_STAGE[0][0][0]
+W_I_STAGE[0][1][15]
+W_I_STAGE[0][1][14]
+W_I_STAGE[0][1][13]
+W_I_STAGE[0][1][12]
+W_I_STAGE[0][1][11]
+W_I_STAGE[0][1][10]
+W_I_STAGE[0][1][9]
+W_I_STAGE[0][1][8]
+W_I_STAGE[0][1][7]
+W_I_STAGE[0][1][6]
+W_I_STAGE[0][1][5]
+W_I_STAGE[0][1][4]
+W_I_STAGE[0][1][3]
+W_I_STAGE[0][1][2]
+W_I_STAGE[0][1][1]
+W_I_STAGE[0][1][0]
+W_I_STAGE[0][2][15]
+W_I_STAGE[0][2][14]
+W_I_STAGE[0][2][13]
+W_I_STAGE[0][2][12]
+W_I_STAGE[0][2][11]
+W_I_STAGE[0][2][10]
+W_I_STAGE[0][2][9]
+W_I_STAGE[0][2][8]
+W_I_STAGE[0][2][7]
+W_I_STAGE[0][2][6]
+W_I_STAGE[0][2][5]
+W_I_STAGE[0][2][4]
+W_I_STAGE[0][2][3]
+W_I_STAGE[0][2][2]
+W_I_STAGE[0][2][1]
+W_I_STAGE[0][2][0]
+W_I_STAGE[0][3][15]
+W_I_STAGE[0][3][14]
+W_I_STAGE[0][3][13]
+W_I_STAGE[0][3][12]
+W_I_STAGE[0][3][11]
+W_I_STAGE[0][3][10]
+W_I_STAGE[0][3][9]
+W_I_STAGE[0][3][8]
+W_I_STAGE[0][3][7]
+W_I_STAGE[0][3][6]
+W_I_STAGE[0][3][5]
+W_I_STAGE[0][3][4]
+W_I_STAGE[0][3][3]
+W_I_STAGE[0][3][2]
+W_I_STAGE[0][3][1]
+W_I_STAGE[0][3][0]
+W_I_STAGE[1][0][15]
+W_I_STAGE[1][0][14]
+W_I_STAGE[1][0][13]
+W_I_STAGE[1][0][12]
+W_I_STAGE[1][0][11]
+W_I_STAGE[1][0][10]
+W_I_STAGE[1][0][9]
+W_I_STAGE[1][0][8]
+W_I_STAGE[1][0][7]
+W_I_STAGE[1][0][6]
+W_I_STAGE[1][0][5]
+W_I_STAGE[1][0][4]
+W_I_STAGE[1][0][3]
+W_I_STAGE[1][0][2]
+W_I_STAGE[1][0][1]
+W_I_STAGE[1][0][0]
+W_I_STAGE[1][1][15]
+W_I_STAGE[1][1][14]
+W_I_STAGE[1][1][13]
+W_I_STAGE[1][1][12]
+W_I_STAGE[1][1][11]
+W_I_STAGE[1][1][10]
+W_I_STAGE[1][1][9]
+W_I_STAGE[1][1][8]
+W_I_STAGE[1][1][7]
+W_I_STAGE[1][1][6]
+W_I_STAGE[1][1][5]
+W_I_STAGE[1][1][4]
+W_I_STAGE[1][1][3]
+W_I_STAGE[1][1][2]
+W_I_STAGE[1][1][1]
+W_I_STAGE[1][1][0]
+W_I_STAGE[1][2][15]
+W_I_STAGE[1][2][14]
+W_I_STAGE[1][2][13]
+W_I_STAGE[1][2][12]
+W_I_STAGE[1][2][11]
+W_I_STAGE[1][2][10]
+W_I_STAGE[1][2][9]
+W_I_STAGE[1][2][8]
+W_I_STAGE[1][2][7]
+W_I_STAGE[1][2][6]
+W_I_STAGE[1][2][5]
+W_I_STAGE[1][2][4]
+W_I_STAGE[1][2][3]
+W_I_STAGE[1][2][2]
+W_I_STAGE[1][2][1]
+W_I_STAGE[1][2][0]
+W_I_STAGE[1][3][15]
+W_I_STAGE[1][3][14]
+W_I_STAGE[1][3][13]
+W_I_STAGE[1][3][12]
+W_I_STAGE[1][3][11]
+W_I_STAGE[1][3][10]
+W_I_STAGE[1][3][9]
+W_I_STAGE[1][3][8]
+W_I_STAGE[1][3][7]
+W_I_STAGE[1][3][6]
+W_I_STAGE[1][3][5]
+W_I_STAGE[1][3][4]
+W_I_STAGE[1][3][3]
+W_I_STAGE[1][3][2]
+W_I_STAGE[1][3][1]
+W_I_STAGE[1][3][0]
+W_I_STAGE[2][0][15]
+W_I_STAGE[2][0][14]
+W_I_STAGE[2][0][13]
+W_I_STAGE[2][0][12]
+W_I_STAGE[2][0][11]
+W_I_STAGE[2][0][10]
+W_I_STAGE[2][0][9]
+W_I_STAGE[2][0][8]
+W_I_STAGE[2][0][7]
+W_I_STAGE[2][0][6]
+W_I_STAGE[2][0][5]
+W_I_STAGE[2][0][4]
+W_I_STAGE[2][0][3]
+W_I_STAGE[2][0][2]
+W_I_STAGE[2][0][1]
+W_I_STAGE[2][0][0]
+W_I_STAGE[2][1][15]
+W_I_STAGE[2][1][14]
+W_I_STAGE[2][1][13]
+W_I_STAGE[2][1][12]
+W_I_STAGE[2][1][11]
+W_I_STAGE[2][1][10]
+W_I_STAGE[2][1][9]
+W_I_STAGE[2][1][8]
+W_I_STAGE[2][1][7]
+W_I_STAGE[2][1][6]
+W_I_STAGE[2][1][5]
+W_I_STAGE[2][1][4]
+W_I_STAGE[2][1][3]
+W_I_STAGE[2][1][2]
+W_I_STAGE[2][1][1]
+W_I_STAGE[2][1][0]
+W_I_STAGE[2][2][15]
+W_I_STAGE[2][2][14]
+W_I_STAGE[2][2][13]
+W_I_STAGE[2][2][12]
+W_I_STAGE[2][2][11]
+W_I_STAGE[2][2][10]
+W_I_STAGE[2][2][9]
+W_I_STAGE[2][2][8]
+W_I_STAGE[2][2][7]
+W_I_STAGE[2][2][6]
+W_I_STAGE[2][2][5]
+W_I_STAGE[2][2][4]
+W_I_STAGE[2][2][3]
+W_I_STAGE[2][2][2]
+W_I_STAGE[2][2][1]
+W_I_STAGE[2][2][0]
+W_I_STAGE[2][3][15]
+W_I_STAGE[2][3][14]
+W_I_STAGE[2][3][13]
+W_I_STAGE[2][3][12]
+W_I_STAGE[2][3][11]
+W_I_STAGE[2][3][10]
+W_I_STAGE[2][3][9]
+W_I_STAGE[2][3][8]
+W_I_STAGE[2][3][7]
+W_I_STAGE[2][3][6]
+W_I_STAGE[2][3][5]
+W_I_STAGE[2][3][4]
+W_I_STAGE[2][3][3]
+W_I_STAGE[2][3][2]
+W_I_STAGE[2][3][1]
+W_I_STAGE[2][3][0]
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+fft_out[0][i][0]
+fft_out[0][i][1]
+fft_out[0][i][2]
+fft_out[0][i][3]
+fft_out[0][i][4]
+fft_out[0][i][5]
+fft_out[0][i][6]
+fft_out[0][i][7]
+fft_out[0][i][8]
+fft_out[0][i][9]
+fft_out[0][i][10]
+fft_out[0][i][11]
+fft_out[0][i][12]
+fft_out[0][i][13]
+fft_out[0][i][14]
+fft_out[0][i][15]
+fft_out[0][i][16]
+fft_out[0][i][17]
+fft_out[0][i][18]
+fft_out[0][i][19]
+fft_out[0][i][20]
+fft_out[0][i][21]
+fft_out[0][i][22]
+fft_out[0][i][23]
+fft_out[0][i][24]
+fft_out[0][i][25]
+fft_out[0][i][26]
+fft_out[0][i][27]
+fft_out[0][i][28]
+fft_out[0][i][29]
+fft_out[0][i][30]
+fft_out[0][i][31]
+fft_out[0][r][0]
+fft_out[0][r][1]
+fft_out[0][r][2]
+fft_out[0][r][3]
+fft_out[0][r][4]
+fft_out[0][r][5]
+fft_out[0][r][6]
+fft_out[0][r][7]
+fft_out[0][r][8]
+fft_out[0][r][9]
+fft_out[0][r][10]
+fft_out[0][r][11]
+fft_out[0][r][12]
+fft_out[0][r][13]
+fft_out[0][r][14]
+fft_out[0][r][15]
+fft_out[0][r][16]
+fft_out[0][r][17]
+fft_out[0][r][18]
+fft_out[0][r][19]
+fft_out[0][r][20]
+fft_out[0][r][21]
+fft_out[0][r][22]
+fft_out[0][r][23]
+fft_out[0][r][24]
+fft_out[0][r][25]
+fft_out[0][r][26]
+fft_out[0][r][27]
+fft_out[0][r][28]
+fft_out[0][r][29]
+fft_out[0][r][30]
+fft_out[0][r][31]
+fft_out[1][i][0]
+fft_out[1][i][1]
+fft_out[1][i][2]
+fft_out[1][i][3]
+fft_out[1][i][4]
+fft_out[1][i][5]
+fft_out[1][i][6]
+fft_out[1][i][7]
+fft_out[1][i][8]
+fft_out[1][i][9]
+fft_out[1][i][10]
+fft_out[1][i][11]
+fft_out[1][i][12]
+fft_out[1][i][13]
+fft_out[1][i][14]
+fft_out[1][i][15]
+fft_out[1][i][16]
+fft_out[1][i][17]
+fft_out[1][i][18]
+fft_out[1][i][19]
+fft_out[1][i][20]
+fft_out[1][i][21]
+fft_out[1][i][22]
+fft_out[1][i][23]
+fft_out[1][i][24]
+fft_out[1][i][25]
+fft_out[1][i][26]
+fft_out[1][i][27]
+fft_out[1][i][28]
+fft_out[1][i][29]
+fft_out[1][i][30]
+fft_out[1][i][31]
+fft_out[1][r][0]
+fft_out[1][r][1]
+fft_out[1][r][2]
+fft_out[1][r][3]
+fft_out[1][r][4]
+fft_out[1][r][5]
+fft_out[1][r][6]
+fft_out[1][r][7]
+fft_out[1][r][8]
+fft_out[1][r][9]
+fft_out[1][r][10]
+fft_out[1][r][11]
+fft_out[1][r][12]
+fft_out[1][r][13]
+fft_out[1][r][14]
+fft_out[1][r][15]
+fft_out[1][r][16]
+fft_out[1][r][17]
+fft_out[1][r][18]
+fft_out[1][r][19]
+fft_out[1][r][20]
+fft_out[1][r][21]
+fft_out[1][r][22]
+fft_out[1][r][23]
+fft_out[1][r][24]
+fft_out[1][r][25]
+fft_out[1][r][26]
+fft_out[1][r][27]
+fft_out[1][r][28]
+fft_out[1][r][29]
+fft_out[1][r][30]
+fft_out[1][r][31]
+fft_out[2][i][0]
+fft_out[2][i][1]
+fft_out[2][i][2]
+fft_out[2][i][3]
+fft_out[2][i][4]
+fft_out[2][i][5]
+fft_out[2][i][6]
+fft_out[2][i][7]
+fft_out[2][i][8]
+fft_out[2][i][9]
+fft_out[2][i][10]
+fft_out[2][i][11]
+fft_out[2][i][12]
+fft_out[2][i][13]
+fft_out[2][i][14]
+fft_out[2][i][15]
+fft_out[2][i][16]
+fft_out[2][i][17]
+fft_out[2][i][18]
+fft_out[2][i][19]
+fft_out[2][i][20]
+fft_out[2][i][21]
+fft_out[2][i][22]
+fft_out[2][i][23]
+fft_out[2][i][24]
+fft_out[2][i][25]
+fft_out[2][i][26]
+fft_out[2][i][27]
+fft_out[2][i][28]
+fft_out[2][i][29]
+fft_out[2][i][30]
+fft_out[2][i][31]
+fft_out[2][r][0]
+fft_out[2][r][1]
+fft_out[2][r][2]
+fft_out[2][r][3]
+fft_out[2][r][4]
+fft_out[2][r][5]
+fft_out[2][r][6]
+fft_out[2][r][7]
+fft_out[2][r][8]
+fft_out[2][r][9]
+fft_out[2][r][10]
+fft_out[2][r][11]
+fft_out[2][r][12]
+fft_out[2][r][13]
+fft_out[2][r][14]
+fft_out[2][r][15]
+fft_out[2][r][16]
+fft_out[2][r][17]
+fft_out[2][r][18]
+fft_out[2][r][19]
+fft_out[2][r][20]
+fft_out[2][r][21]
+fft_out[2][r][22]
+fft_out[2][r][23]
+fft_out[2][r][24]
+fft_out[2][r][25]
+fft_out[2][r][26]
+fft_out[2][r][27]
+fft_out[2][r][28]
+fft_out[2][r][29]
+fft_out[2][r][30]
+fft_out[2][r][31]
+fft_out[3][i][0]
+fft_out[3][i][1]
+fft_out[3][i][2]
+fft_out[3][i][3]
+fft_out[3][i][4]
+fft_out[3][i][5]
+fft_out[3][i][6]
+fft_out[3][i][7]
+fft_out[3][i][8]
+fft_out[3][i][9]
+fft_out[3][i][10]
+fft_out[3][i][11]
+fft_out[3][i][12]
+fft_out[3][i][13]
+fft_out[3][i][14]
+fft_out[3][i][15]
+fft_out[3][i][16]
+fft_out[3][i][17]
+fft_out[3][i][18]
+fft_out[3][i][19]
+fft_out[3][i][20]
+fft_out[3][i][21]
+fft_out[3][i][22]
+fft_out[3][i][23]
+fft_out[3][i][24]
+fft_out[3][i][25]
+fft_out[3][i][26]
+fft_out[3][i][27]
+fft_out[3][i][28]
+fft_out[3][i][29]
+fft_out[3][i][30]
+fft_out[3][i][31]
+fft_out[3][r][0]
+fft_out[3][r][1]
+fft_out[3][r][2]
+fft_out[3][r][3]
+fft_out[3][r][4]
+fft_out[3][r][5]
+fft_out[3][r][6]
+fft_out[3][r][7]
+fft_out[3][r][8]
+fft_out[3][r][9]
+fft_out[3][r][10]
+fft_out[3][r][11]
+fft_out[3][r][12]
+fft_out[3][r][13]
+fft_out[3][r][14]
+fft_out[3][r][15]
+fft_out[3][r][16]
+fft_out[3][r][17]
+fft_out[3][r][18]
+fft_out[3][r][19]
+fft_out[3][r][20]
+fft_out[3][r][21]
+fft_out[3][r][22]
+fft_out[3][r][23]
+fft_out[3][r][24]
+fft_out[3][r][25]
+fft_out[3][r][26]
+fft_out[3][r][27]
+fft_out[3][r][28]
+fft_out[3][r][29]
+fft_out[3][r][30]
+fft_out[3][r][31]
+fft_out[4][i][0]
+fft_out[4][i][1]
+fft_out[4][i][2]
+fft_out[4][i][3]
+fft_out[4][i][4]
+fft_out[4][i][5]
+fft_out[4][i][6]
+fft_out[4][i][7]
+fft_out[4][i][8]
+fft_out[4][i][9]
+fft_out[4][i][10]
+fft_out[4][i][11]
+fft_out[4][i][12]
+fft_out[4][i][13]
+fft_out[4][i][14]
+fft_out[4][i][15]
+fft_out[4][i][16]
+fft_out[4][i][17]
+fft_out[4][i][18]
+fft_out[4][i][19]
+fft_out[4][i][20]
+fft_out[4][i][21]
+fft_out[4][i][22]
+fft_out[4][i][23]
+fft_out[4][i][24]
+fft_out[4][i][25]
+fft_out[4][i][26]
+fft_out[4][i][27]
+fft_out[4][i][28]
+fft_out[4][i][29]
+fft_out[4][i][30]
+fft_out[4][i][31]
+fft_out[4][r][0]
+fft_out[4][r][1]
+fft_out[4][r][2]
+fft_out[4][r][3]
+fft_out[4][r][4]
+fft_out[4][r][5]
+fft_out[4][r][6]
+fft_out[4][r][7]
+fft_out[4][r][8]
+fft_out[4][r][9]
+fft_out[4][r][10]
+fft_out[4][r][11]
+fft_out[4][r][12]
+fft_out[4][r][13]
+fft_out[4][r][14]
+fft_out[4][r][15]
+fft_out[4][r][16]
+fft_out[4][r][17]
+fft_out[4][r][18]
+fft_out[4][r][19]
+fft_out[4][r][20]
+fft_out[4][r][21]
+fft_out[4][r][22]
+fft_out[4][r][23]
+fft_out[4][r][24]
+fft_out[4][r][25]
+fft_out[4][r][26]
+fft_out[4][r][27]
+fft_out[4][r][28]
+fft_out[4][r][29]
+fft_out[4][r][30]
+fft_out[4][r][31]
+fft_out[5][i][0]
+fft_out[5][i][1]
+fft_out[5][i][2]
+fft_out[5][i][3]
+fft_out[5][i][4]
+fft_out[5][i][5]
+fft_out[5][i][6]
+fft_out[5][i][7]
+fft_out[5][i][8]
+fft_out[5][i][9]
+fft_out[5][i][10]
+fft_out[5][i][11]
+fft_out[5][i][12]
+fft_out[5][i][13]
+fft_out[5][i][14]
+fft_out[5][i][15]
+fft_out[5][i][16]
+fft_out[5][i][17]
+fft_out[5][i][18]
+fft_out[5][i][19]
+fft_out[5][i][20]
+fft_out[5][i][21]
+fft_out[5][i][22]
+fft_out[5][i][23]
+fft_out[5][i][24]
+fft_out[5][i][25]
+fft_out[5][i][26]
+fft_out[5][i][27]
+fft_out[5][i][28]
+fft_out[5][i][29]
+fft_out[5][i][30]
+fft_out[5][i][31]
+fft_out[5][r][0]
+fft_out[5][r][1]
+fft_out[5][r][2]
+fft_out[5][r][3]
+fft_out[5][r][4]
+fft_out[5][r][5]
+fft_out[5][r][6]
+fft_out[5][r][7]
+fft_out[5][r][8]
+fft_out[5][r][9]
+fft_out[5][r][10]
+fft_out[5][r][11]
+fft_out[5][r][12]
+fft_out[5][r][13]
+fft_out[5][r][14]
+fft_out[5][r][15]
+fft_out[5][r][16]
+fft_out[5][r][17]
+fft_out[5][r][18]
+fft_out[5][r][19]
+fft_out[5][r][20]
+fft_out[5][r][21]
+fft_out[5][r][22]
+fft_out[5][r][23]
+fft_out[5][r][24]
+fft_out[5][r][25]
+fft_out[5][r][26]
+fft_out[5][r][27]
+fft_out[5][r][28]
+fft_out[5][r][29]
+fft_out[5][r][30]
+fft_out[5][r][31]
+fft_out[6][i][0]
+fft_out[6][i][1]
+fft_out[6][i][2]
+fft_out[6][i][3]
+fft_out[6][i][4]
+fft_out[6][i][5]
+fft_out[6][i][6]
+fft_out[6][i][7]
+fft_out[6][i][8]
+fft_out[6][i][9]
+fft_out[6][i][10]
+fft_out[6][i][11]
+fft_out[6][i][12]
+fft_out[6][i][13]
+fft_out[6][i][14]
+fft_out[6][i][15]
+fft_out[6][i][16]
+fft_out[6][i][17]
+fft_out[6][i][18]
+fft_out[6][i][19]
+fft_out[6][i][20]
+fft_out[6][i][21]
+fft_out[6][i][22]
+fft_out[6][i][23]
+fft_out[6][i][24]
+fft_out[6][i][25]
+fft_out[6][i][26]
+fft_out[6][i][27]
+fft_out[6][i][28]
+fft_out[6][i][29]
+fft_out[6][i][30]
+fft_out[6][i][31]
+fft_out[6][r][0]
+fft_out[6][r][1]
+fft_out[6][r][2]
+fft_out[6][r][3]
+fft_out[6][r][4]
+fft_out[6][r][5]
+fft_out[6][r][6]
+fft_out[6][r][7]
+fft_out[6][r][8]
+fft_out[6][r][9]
+fft_out[6][r][10]
+fft_out[6][r][11]
+fft_out[6][r][12]
+fft_out[6][r][13]
+fft_out[6][r][14]
+fft_out[6][r][15]
+fft_out[6][r][16]
+fft_out[6][r][17]
+fft_out[6][r][18]
+fft_out[6][r][19]
+fft_out[6][r][20]
+fft_out[6][r][21]
+fft_out[6][r][22]
+fft_out[6][r][23]
+fft_out[6][r][24]
+fft_out[6][r][25]
+fft_out[6][r][26]
+fft_out[6][r][27]
+fft_out[6][r][28]
+fft_out[6][r][29]
+fft_out[6][r][30]
+fft_out[6][r][31]
+fft_out[7][i][0]
+fft_out[7][i][1]
+fft_out[7][i][2]
+fft_out[7][i][3]
+fft_out[7][i][4]
+fft_out[7][i][5]
+fft_out[7][i][6]
+fft_out[7][i][7]
+fft_out[7][i][8]
+fft_out[7][i][9]
+fft_out[7][i][10]
+fft_out[7][i][11]
+fft_out[7][i][12]
+fft_out[7][i][13]
+fft_out[7][i][14]
+fft_out[7][i][15]
+fft_out[7][i][16]
+fft_out[7][i][17]
+fft_out[7][i][18]
+fft_out[7][i][19]
+fft_out[7][i][20]
+fft_out[7][i][21]
+fft_out[7][i][22]
+fft_out[7][i][23]
+fft_out[7][i][24]
+fft_out[7][i][25]
+fft_out[7][i][26]
+fft_out[7][i][27]
+fft_out[7][i][28]
+fft_out[7][i][29]
+fft_out[7][i][30]
+fft_out[7][i][31]
+fft_out[7][r][0]
+fft_out[7][r][1]
+fft_out[7][r][2]
+fft_out[7][r][3]
+fft_out[7][r][4]
+fft_out[7][r][5]
+fft_out[7][r][6]
+fft_out[7][r][7]
+fft_out[7][r][8]
+fft_out[7][r][9]
+fft_out[7][r][10]
+fft_out[7][r][11]
+fft_out[7][r][12]
+fft_out[7][r][13]
+fft_out[7][r][14]
+fft_out[7][r][15]
+fft_out[7][r][16]
+fft_out[7][r][17]
+fft_out[7][r][18]
+fft_out[7][r][19]
+fft_out[7][r][20]
+fft_out[7][r][21]
+fft_out[7][r][22]
+fft_out[7][r][23]
+fft_out[7][r][24]
+fft_out[7][r][25]
+fft_out[7][r][26]
+fft_out[7][r][27]
+fft_out[7][r][28]
+fft_out[7][r][29]
+fft_out[7][r][30]
+fft_out[7][r][31]
+input_folding_inst/delay_inst/delay_reg_reg[0][i][0]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][1]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][2]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][3]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][4]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][5]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][6]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][7]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][8]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][9]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][10]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][11]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][12]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][13]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][14]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][15]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][16]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][17]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][18]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][19]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][20]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][21]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][22]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][23]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][24]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][25]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][26]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][27]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][28]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][29]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][30]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][i][31]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][0]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][1]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][2]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][3]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][4]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][5]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][6]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][7]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][8]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][9]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][10]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][11]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][12]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][13]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][14]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][15]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][16]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][17]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][18]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][19]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][20]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][21]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][22]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][23]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][24]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][25]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][26]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][27]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][28]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][29]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][30]/next_state
+input_folding_inst/delay_inst/delay_reg_reg[0][r][31]/next_state
+out_valid
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+#################################################################################
+# Create Default Path Groups
+#
+# Separating these paths can help improve optimization.
+# Remove these path group settings if user path groups have already been defined.
+#################################################################################
+set ports_clock_root [filter_collection [get_attribute [get_clocks] sources] object_class==port]
+{clk}
+group_path -name REGOUT -to [all_outputs]
+1
+group_path -name REGIN -from [remove_from_collection [all_inputs] ${ports_clock_root}]
+1
+group_path -name FEEDTHROUGH -from [remove_from_collection [all_inputs] ${ports_clock_root}] -to [all_outputs]
+1
+#################################################################################
+# Apply Additional Optimization Constraints
+#################################################################################
+# Replace special characters with non-special ones before writing out the synthesized netlist.
+# For example \bus[5] -> bus_5_
+set_app_var verilogout_no_tri true
+true
+# Prevent assignment statements in the Verilog netlist.
+set_fix_multiple_port_nets -all -buffer_constants
+1
+#################################################################################
+# Check for Design Problems
+#################################################################################
+check_design -summary
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Wed Nov 20 10:19:22 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     64
+    Feedthrough (LINT-29)                                          64
+
+Cells                                                               1
+    Cells do not drive (LINT-1)                                     1
+
+Nets                                                               57
+    Unloaded nets (LINT-2)                                         57
+--------------------------------------------------------------------------------
+
+Information: Use the 'check_design' command for 
+	 more information about warnings. (LINT-98)
+
+1
+check_design > ${REPORTS_DIR}/${DESIGN_NAME}.check_design.rpt
+set_app_var compile_ultra_ungroup_dw true
+true
+ungroup -all -flatten
+1
+# append compile_ultra_options " -no_autoungroup"
+# puts "Information: Starting compile_ultra with the following flags: $compile_ultra_options"
+# compile_ultra $compile_ultra_options
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
+Library analysis succeeded.
+Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | T-2022.03-DWBB_202203.3 |     *     |
+| Licensed DW Building Blocks        | T-2022.03-DWBB_202203.3 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 2662                                   |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 2336                                   |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 5                                      |
+| Number of VT Class                                      | 1                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 88                                     |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -all -buffer_constants                 |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 59 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'fft_N_rad2'
+Information: The register 'genblk1[1].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
+Information: The register 'genblk1[0].dc_2/delay_y0/switch_counter_reg[1]' will be removed. (OPT-1207)
+Information: The register 'genblk1[0].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
+Information: The register 'input_folding_inst/delay_inst/switch_counter_reg[2]' will be removed. (OPT-1207)
+Information: The register 'input_folding_inst/delay_inst/switch_counter_reg[1]' will be removed. (OPT-1207)
+Information: The register 'input_folding_inst/delay_inst/switch_counter_reg[0]' will be removed. (OPT-1207)
+
+Loaded alib file './alib-52/saed32rvt_tt1p05v25c.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fft_N_rad2'
+Information: Added key list 'DesignWare' to design 'fft_N_rad2'. (DDB-72)
+ Implement Synthetic for 'fft_N_rad2'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: The register 'deserializer_inst/w_ptr_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_y0/delay_counter_reg[0]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_counter_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/switch_enable_ff_reg' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/switch_counter_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][31]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][30]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][29]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][28]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][27]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][26]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][25]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][24]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][31]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][30]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][29]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][28]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][27]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][26]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][25]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][24]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][31]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][30]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][29]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][28]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][27]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][26]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][25]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][24]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][31]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][30]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][29]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][28]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][27]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][26]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][25]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][24]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][31]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][30]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][29]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][28]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][27]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][26]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][25]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][24]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][31]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][30]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][29]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][28]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][27]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][26]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][25]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][24]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:17   66306.2     74.27   20208.9   40595.7                           1744414208.0000
+    0:01:18   66182.1     74.27   20209.0   40741.5                           1741090176.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+    0:01:19   66849.8    198.16   33113.1   79390.0                           1737520768.0000
+    0:01:20   66817.3    198.16   33113.1   79390.0                           1736609920.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:01:32   56254.0     78.54   16851.0  118264.9                           1648229376.0000
+    0:01:55   57375.5     36.96   12758.2   37842.1                           1668157952.0000
+    0:01:55   57375.5     36.96   12758.2   37842.1                           1668157952.0000
+    0:01:56   57364.4     36.96   12888.3   37876.0                           1667158656.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+    0:01:58   57326.5     36.95   12884.1   37592.1                           1666276096.0000
+    0:01:58   57305.2     36.95   12886.2   37591.9                           1665833984.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+    0:02:05   56666.5     36.95   11458.3   25394.7                           1650749952.0000
+    0:02:06   56463.7     36.95   10594.7   23767.5                           1644472320.0000
+    0:02:08   56562.0     36.85   10567.5   23867.2                           1645532032.0000
+    0:02:08   56562.0     36.85   10567.5   23867.2                           1645532032.0000
+    0:02:09   56372.4     36.85   10705.1   24105.4                           1643826048.0000
+    0:02:09   56372.4     36.85   10705.1   24105.4                           1643826048.0000
+    0:02:13   58127.8     36.43   10689.5   29412.4                           1682339456.0000
+    0:02:13   58127.8     36.43   10689.5   29412.4                           1682339456.0000
+    0:02:13   58222.9     36.22   10653.0   29819.7                           1682969984.0000
+    0:02:13   58222.9     36.22   10653.0   29819.7                           1682969984.0000
+    0:02:15   58439.1     36.20   10647.9   29769.6                           1687788416.0000
+    0:02:15   58439.1     36.20   10647.9   29769.6                           1687788416.0000
+    0:02:33   60246.6     34.48   10475.6   50572.5                           1720822912.0000
+    0:02:33   60246.6     34.48   10475.6   50572.5                           1720822912.0000
+    0:02:38   61292.2     34.34   10451.6   56440.8                           1742859648.0000
+    0:02:38   61292.2     34.34   10451.6   56440.8                           1742859648.0000
+    0:03:20   64118.0     31.85   10194.7   58332.8                           1795425408.0000
+    0:03:20   64118.0     31.85   10194.7   58332.8                           1795425408.0000
+    0:03:22   64426.5     31.83   10208.8   55821.1                           1801758592.0000
+    0:03:22   64426.5     31.83   10208.8   55821.1                           1801758592.0000
+    0:03:24   64562.2     31.74   10211.8   56306.7                           1804348032.0000
+    0:03:24   64562.2     31.74   10211.8   56306.7                           1804348032.0000
+    0:03:27   64954.1     31.71   10209.4   57262.0                           1812761600.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:03:27   64954.1     31.71   10209.4   57262.0                           1812761600.0000
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:03:32   65340.7     35.36    9741.0   15710.3 net70350                  1820708736.0000
+    0:03:35   65380.8     35.33    9530.3   10531.8 net61076                  1821645056.0000
+    0:03:37   65410.8     33.61    9364.3   10484.7                           1822460416.0000
+    0:03:39   65543.2     33.52    9355.8   10734.6                           1825417600.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:03:39   65543.2     33.52    9355.8   10734.6                           1825417600.0000
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+    0:03:53   61744.0     38.94    8226.9   29443.6                           1740641024.0000
+    0:03:55   61875.7     38.69    8220.9   33039.5                           1743033728.0000
+    0:03:55   61875.7     38.69    8220.9   33039.5                           1743033728.0000
+    0:03:56   61759.3     38.63    7679.7   27431.5                           1741327744.0000
+    0:03:57   61759.3     38.63    7679.7   27431.5                           1741327744.0000
+    0:04:00   62270.1     38.12    7668.6   28553.4                           1752164480.0000
+    0:04:00   62270.1     38.12    7668.6   28553.4                           1752164480.0000
+    0:04:01   62317.6     37.47    7554.9   24039.2                           1752683776.0000
+    0:04:01   62317.6     37.47    7554.9   24039.2                           1752683776.0000
+    0:04:03   62686.1     37.29    7513.3   24965.5                           1760646912.0000
+    0:04:03   62686.1     37.29    7513.3   24965.5                           1760646912.0000
+    0:05:22   69918.1     29.68    6740.3   45804.6                           1904369024.0000
+    0:05:22   69918.1     29.68    6740.3   45804.6                           1904369024.0000
+    0:05:24   69998.6     29.66    6738.8   45784.0                           1905993856.0000
+    0:05:24   69998.6     29.66    6738.8   45784.0                           1905993856.0000
+    0:05:38   71448.8     29.02    6678.2   48204.0                           1936394368.0000
+    0:05:38   71448.8     29.02    6678.2   48204.0                           1936394368.0000
+    0:05:47   73478.6     28.81    6644.5   50705.0                           1980513792.0000
+    0:05:47   73478.6     28.81    6644.5   50705.0                           1980513792.0000
+    0:06:49   81420.6     25.43    6218.6   76233.9                           2144747904.0000
+    0:06:49   81420.6     25.43    6218.6   76233.9                           2144747904.0000
+    0:06:51   81616.3     25.42    6218.0   76600.2                           2149061120.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:06:52   80433.3     29.51    8312.7   76274.8                           2122975104.0000
+    0:06:58   70030.1     81.37   15417.5   54121.2                           1954165504.0000
+    0:07:04   70807.6     41.21   10484.2   19313.5 genblk1[1].butterfly_inst/Y_ff_reg[i][23]/D 1971164416.0000
+    0:07:05   70950.7     40.01   10330.5   21551.2                           1972552064.0000
+    0:07:06   70895.0     40.01   10326.8   21527.9                           1970838400.0000
+    0:07:06   70895.0     40.01   10326.8   21527.9                           1970838400.0000
+    0:07:07   70864.0     40.01   11149.6   21206.5                           1970393344.0000
+    0:07:10   70406.0     39.99   11107.9   17575.7                           1956070912.0000
+    0:07:12   70396.4     39.99   10983.4   15145.4 net83531                  1956640000.0000
+    0:07:16   70883.6     36.90   10481.6   14373.5 genblk1[0].butterfly_inst/Y_ff_reg[i][23]/D 1963179392.0000
+    0:07:19   71076.7     35.54   10193.5   15382.0 butterfly_final/Y_ff_reg[r][23]/D 1966134784.0000
+    0:07:23   71318.9     34.86   10141.7   15403.4 butterfly_final/Y_ff_reg[i][23]/D 1969293696.0000
+    0:07:25   71513.8     34.65    9834.4   10666.7 net67831                  1972609792.0000
+    0:07:26   71541.0     34.65    9833.4    8685.9                           1973328896.0000
+    0:08:45   77186.1     28.71    8955.7   57267.2                           2086279168.0000
+    0:08:45   77186.1     28.71    8955.7   57267.2                           2086279168.0000
+    0:10:01   81420.4     26.95    8727.5   65775.1                           2174854144.0000
+    0:10:01   81420.4     26.95    8727.5   65775.1                           2174854144.0000
+    0:10:02   81430.8     26.95    8727.5   65775.1                           2175144960.0000
+    0:10:02   81430.8     26.95    8727.5   65775.1                           2175144960.0000
+    0:10:02   81461.8     26.94    8706.6   66042.1                           2175740672.0000
+    0:10:02   81461.8     26.94    8706.6   66042.1                           2175740672.0000
+    0:10:07   81533.2     26.94    8684.1   60193.9                           2176408064.0000
+    0:10:08   81534.5     26.94    8673.8   60133.3                           2176445184.0000
+    0:10:08   81534.5     26.94    8673.8   60133.3                           2176445184.0000
+    0:10:09   81541.8     26.94    8673.7   60133.3                           2176482304.0000
+    0:10:19   79159.0     26.94    8219.3   37857.7                           2150278656.0000
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 2199 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+optimize_netlist -area
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+
+
+  Updating timing information
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_tt1p05v25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+
+
+  Beginning Area Optimization
+  -----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01   78919.8     27.57    8229.1   38024.5                           2145058176.0000
+    0:00:33   74000.9     27.51    7499.9   30318.5                           2058847872.0000
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 2199 load(s), 1 driver(s)
+1
+#################################################################################
+# Write Out Final Design and Reports
+#
+#        .ddc:   Recommended binary format used for subsequent Design Compiler sessions
+#        .v  :   Verilog netlist for ASCII flow (Formality, PrimeTime, VCS)
+#       .spef:   Topographical mode parasitics for PrimeTime
+#        .sdf:   SDF backannotated topographical mode timing for PrimeTime
+#        .sdc:   SDC constraints for ASCII flow
+#
+#################################################################################
+# If this will be a sub-block in a hierarchical design, uniquify the block
+# unique names to avoid name collisions when integrating the design at the
+# toplevel
+set uniquify_naming_style "${DESIGN_NAME}_%s_%d"
+fft_N_rad2_%s_%d
+uniquify -force
+1
+# Use naming rules to preserve structs
+define_name_rules verilog -preserve_struct_ports -case_insensitive
+1
+report_names -rules verilog > ${REPORTS_DIR}/${DESIGN_NAME}.name_change.rpt
+change_names -rules verilog -hierarchy
+1
+#################################################################################
+# Write out Design
+#################################################################################
+write -format verilog -hierarchy -output ${RESULTS_DIR}/${DESIGN_NAME}.mapped.v
+Writing verilog file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v'.
+1
+write -format svsim              -output ${RESULTS_DIR}/${DESIGN_NAME}.mapped.svsim
+Writing svsim file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.svsim'.
+1
+write -format ddc     -hierarchy -output ${RESULTS_DIR}/${DESIGN_NAME}.mapped.ddc
+Writing ddc file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.ddc'.
+1
+#################################################################################
+# Write out Design Data
+#################################################################################
+# Write SDF backannotation data from Design Compiler Topographical placement for static timing analysis
+write_parasitics -output ${RESULTS_DIR}/${DESIGN_NAME}.mapped.spef
+Information: Writing parasitics to file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.spef'. (WP-3)
+1
+write_sdf ${RESULTS_DIR}/${DESIGN_NAME}.mapped.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+# Do not write out net RC info into SDC
+set_app_var write_sdc_output_lumped_net_capacitance false
+false
+set_app_var write_sdc_output_net_resistance false
+false
+write_sdc -nosplit ${RESULTS_DIR}/${DESIGN_NAME}.mapped.sdc
+1
+#################################################################################
+# Generate Final Reports
+#################################################################################
+redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.units.rpt {report_units}
+************************************
+Report : units
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Nov 20 10:31:20 2024
+
+************************************
+Units
+------------------------------------
+Time_unit            : 1.0e-09 Second(ns)
+Capacitive_load_unit : 1.0e-15 Farad(fF)
+Resistance_unit      : 1.0e+6 Ohm(MOhm)
+Voltage_unit         : 1 Volt
+Power_unit           : N/A
+Current_unit         : 1.0e-06 Amp(uA)
+1
+redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.fanout.rpt {report_net_fanout -high_fanout}
+ 
+****************************************
+Report : net fanout
+        -high_fanout
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Nov 20 10:31:20 2024
+****************************************
+
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+fft_N_rad2             140000            saed32rvt_tt1p05v25c
+
+
+Attributes:
+   dr - drc disabled
+    c - annotated capacitance
+    d - dont_touch
+    i - ideal_net
+    I - ideal_network
+    p - includes pin load
+    r - annotated resistance
+    h - high fanout
+
+Net                 Fanout   Attributes   Capacitance   Driver
+--------------------------------------------------------------------------------
+clk                   2199   dr, h        1001029.88    clk
+1
+redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
+ 
+****************************************
+Report : qor
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Nov 20 10:31:20 2024
+****************************************
+
+
+  Timing Path Group 'core_clk'
+  -----------------------------------
+  Levels of Logic:              49.00
+  Critical Path Length:         36.30
+  Critical Path Slack:         -27.51
+  Critical Path Clk Period:      9.80
+  Total Negative Slack:      -7499.85
+  No. of Violating Paths:     1296.00
+  Worst Hold Violation:       -328.07
+  Total Hold Violation:     -32587.68
+  No. of Hold Violations:     2128.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:              23632
+  Buf/Inv Cell Count:            5100
+  Buf Cell Count:                 303
+  Inv Cell Count:                4797
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:     21433
+  Sequential Cell Count:         2199
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:    59422.170858
+  Noncombinational Area: 14578.716884
+  Buf/Inv Area:           8752.719332
+  Total Buffer Area:           804.37
+  Total Inverter Area:        7948.35
+  Macro/Black Box Area:      0.000000
+  Net Area:              28913.458189
+  -----------------------------------
+  Cell Area:             74000.887742
+  Design Area:          102914.345931
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:         25754
+  Nets With Violations:           778
+  Max Trans Violations:           778
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: caen-vnc-mi10.engin.umich.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.00
+  Logic Optimization:                  0.00
+  Mapping Optimization:                0.00
+  -----------------------------------------
+  Overall Compile Time:               63.56
+  Overall Compile Wall Clock Time:    34.20
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 27.51  TNS: 7499.85  Number of Violating Paths: 1296
+
+
+  Design (Hold)  WNS: 328.07  TNS: 32587.68  Number of Violating Paths: 2128
+
+  --------------------------------------------------------------------
+
+
+1
+report_timing -transition_time -nets -attributes -nosplit > ${REPORTS_DIR}/${DESIGN_NAME}.timing.rpt
+report_clock_timing -type summary > ${REPORTS_DIR}/${DESIGN_NAME}.clock_timing.rpt
+report_timing -delay_type max -path_type full_clock -max_paths 30 -transition_time -nets -attributes -nosplit > ${REPORTS_DIR}/${DESIGN_NAME}.max_timing.rpt
+report_timing -delay_type min -path_type full_clock -max_paths 30 -transition_time -nets -attributes -nosplit > ${REPORTS_DIR}/${DESIGN_NAME}.min_timing.rpt
+report_area -nosplit > ${REPORTS_DIR}/${DESIGN_NAME}.area.rpt
+report_power -nosplit > ${REPORTS_DIR}/${DESIGN_NAME}.power.rpt
+puts "\[$COURSE_NAME\] Completed script [info script]\n"
+[EECS598-002] Completed script /home/ksnl/eecs598/final-project/mimo-ofdm/scripts/synth.tcl
+
+exit
+
+Memory usage for this session 382 Mbytes.
+Memory usage for this session including child processes 580 Mbytes.
+CPU usage for this session 1253 seconds ( 0.35 hours ).
+Elapsed time for this session 729 seconds ( 0.20 hours ).
 
 Thank you...

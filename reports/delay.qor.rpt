@@ -3,7 +3,7 @@
 Report : qor
 Design : delay
 Version: T-2022.03-SP3
-Date   : Mon Nov 18 21:06:34 2024
+Date   : Wed Nov 20 10:15:45 2024
 ****************************************
 
 
@@ -59,7 +59,7 @@ Date   : Mon Nov 18 21:06:34 2024
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi09.engin.umich.edu
+  Hostname: caen-vnc-mi10.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -67,8 +67,8 @@ Date   : Mon Nov 18 21:06:34 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:                1.19
-  Overall Compile Wall Clock Time:     0.99
+  Overall Compile Time:                1.27
+  Overall Compile Wall Clock Time:     1.04
 
   --------------------------------------------------------------------
 

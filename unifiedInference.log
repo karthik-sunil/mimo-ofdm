@@ -1,5 +1,7 @@
 test/fft_8_rad2_tb.sv:83 YES:SyncFF
-verilog/butterfly.sv:38 YES:SyncFF
+verilog/butterfly.sv:31 YES:SyncFF
+verilog/butterfly.sv:56 YES:SyncFF
+verilog/butterfly.sv:83 YES:SyncFF
 verilog/delay_commutator.sv:36 YES:SyncFF
 verilog/delay_commutator.sv:69 YES:SyncFF
 verilog/delay.sv:17 YES:SyncFF
@@ -11,31 +13,15 @@ verilog/delay.sv:17 YES:SyncFF
 verilog/delay.sv:33 YES:SyncFF
 verilog/delay.sv:17 YES:SyncFF
 verilog/delay.sv:33 YES:SyncFF
-verilog/delay.sv:17 YES:SyncFF
-verilog/delay.sv:33 YES:SyncFF
-verilog/delay.sv:17 YES:SyncFF
-verilog/delay.sv:33 YES:SyncFF
-verilog/delay.sv:17 YES:SyncFF
-verilog/delay.sv:33 YES:SyncFF
-verilog/delay.sv:17 YES:SyncFF
-verilog/delay.sv:33 YES:SyncFF
-verilog/delay_commutator.sv:36 YES:SyncFF
-verilog/delay_commutator.sv:69 YES:SyncFF
-verilog/delay_commutator.sv:36 YES:SyncFF
-verilog/delay_commutator.sv:69 YES:SyncFF
-verilog/delay_commutator.sv:36 YES:SyncFF
-verilog/delay_commutator.sv:69 YES:SyncFF
-verilog/delay_commutator.sv:36 YES:SyncFF
-verilog/delay_commutator.sv:69 YES:SyncFF
 verilog/delay_commutator.sv:36 YES:SyncFF
 verilog/delay_commutator.sv:69 YES:SyncFF
 ==================================================
 Unified Inference Statistics
-Number of always_ff:                   30
+Number of always_ff:                   16
 Number of always_latch:                0
 Number of always @*:                   0
 Number of always_comb :                1
 Number of always :                     2
-Number of flip-flop candidates:        31
-Number of synchronous flops inferred:  31
+Number of flip-flop candidates:        17
+Number of synchronous flops inferred:  17
 Number of Asynchronous flops inferred: 0

@@ -5,9 +5,9 @@ Warning: Design has unannotated sequential cell outputs. (PWR-415)
 ****************************************
 Report : power
         -analysis_effort low
-Design : delay
+Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 10:15:45 2024
+Date   : Wed Nov 20 10:31:23 2024
 ****************************************
 
 
@@ -21,7 +21,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-delay                  8000              saed32rvt_tt1p05v25c
+fft_N_rad2             140000            saed32rvt_tt1p05v25c
 
 
 Global Operating Voltage = 1.05 
@@ -38,12 +38,12 @@ Attributes
 i - Including register clock pin internal power
 
 
-  Cell Internal Power  = 203.3983 uW   (96%)
-  Net Switching Power  =   7.5154 uW    (4%)
+  Cell Internal Power  =   3.7367 mW   (65%)
+  Net Switching Power  =   2.0060 mW   (35%)
                          ---------
-Total Dynamic Power    = 210.9138 uW  (100%)
+Total Dynamic Power    =   5.7427 mW  (100%)
 
-Cell Leakage Power     =  53.9180 uW
+Cell Leakage Power     =   2.0588 mW
 
 
                  Internal         Switching           Leakage            Total
@@ -52,10 +52,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network    199.5800            0.0000            0.0000          199.5800  (  75.36%)  i
-register           1.9014            1.6543        3.6933e+07           40.4886  (  15.29%)
+clock_network  1.6795e+03            0.0000            0.0000        1.6795e+03  (  21.53%)  i
+register          15.8472           16.9254        3.0998e+08          342.7460  (   4.39%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      1.9170            5.8611        1.6985e+07           24.7632  (   9.35%)
+combinational  2.0413e+03        1.9891e+03        1.7489e+09        5.7793e+03  (  74.08%)
 --------------------------------------------------------------------------------------------------
-Total            203.3983 uW         7.5154 uW     5.3918e+07 pW       264.8318 uW
+Total          3.7367e+03 uW     2.0060e+03 uW     2.0588e+09 pW     7.8015e+03 uW
 1

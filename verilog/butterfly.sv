@@ -15,12 +15,9 @@ module butterfly(
 );
 
     complex_product_t X_comb, Y_comb;
-    complex_product_t X_ff, Y_ff;
-    complex_product_t Y_Wout; 
+    complex_product_t X_ff_1, Y_ff_1;
 
-    logic out_valid_ff;
-
-    
+    logic out_valid_stage_1, out_valid_stage_2, out_valid_stage_3;
 
     // Complex addition A + B
     assign X_comb.i = A.i + B.i;
@@ -30,35 +27,83 @@ module butterfly(
     assign Y_comb.r = A.r - B.r;
     assign Y_comb.i = A.i - B.i;
 
-    // Twiddle factor mult after the stage - DIF FFT
-    assign Y_Wout.r = Y_comb.r * W_R - Y_comb.i * W_I;
-    assign Y_Wout.i = Y_comb.r * W_I + Y_comb.i * W_R;
-
-    
-   always_ff @(posedge clk) begin
-        if(reset | ~enable) begin
-            X_ff <= '0;
-            Y_ff <= '0;
-            out_valid_ff <= 0;
+    // Stage 1 - Sum-Difference
+    always_ff @(posedge clk) begin
+        if (reset | ~enable) begin
+            X_ff_1 <= '0;
+            Y_ff_1 <= '0;
+            out_valid_stage_1 <= 0;
         end else begin
-            X_ff.r <= X_comb.r;
-            X_ff.i <= X_comb.i;
-            Y_ff.r <= Y_Wout.r >>> R;
-            Y_ff.i <= Y_Wout.i >>> R;
-            out_valid_ff <= 1'b1;
+            X_ff_1 <= X_comb;
+            Y_ff_1 <= Y_comb;
+            out_valid_stage_1 <= 1'b1;
         end
-   end
+    end
 
-   assign X.r = (X_ff.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (X_ff.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff.r;
-   assign X.i = (X_ff.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (X_ff.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff.i;
+    // Stage 2 - Multiply Y with twiddle factor
+    complex_product_t X_ff_2;
+    
+    logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_rr, Y_Wout_rr_ff;
+    logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_ii, Y_Wout_ii_ff;
+    logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_ri, Y_Wout_ri_ff;
+    logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_ir, Y_Wout_ir_ff;
+
+    assign Y_Wout_rr = Y_ff_1.r * W_R;
+    assign Y_Wout_ii = Y_ff_1.i * W_I;
+    assign Y_Wout_ri = Y_ff_1.r * W_I;
+    assign Y_Wout_ir = Y_ff_1.i * W_R;
+
+    always_ff @(posedge clk) begin
+        if(reset | ~out_valid_stage_1) begin
+            X_ff_2 <= '0;
+            Y_Wout_rr_ff <= 0;
+            Y_Wout_ii_ff <= 0;
+            Y_Wout_ri_ff <= 0;
+            Y_Wout_ir_ff <= 0;
+            out_valid_stage_2 <= 0;
+        end else begin
+            X_ff_2.r <= X_ff_1.r;
+            X_ff_2.i <= X_ff_1.i;
+            Y_Wout_rr_ff <= Y_Wout_rr;
+            Y_Wout_ii_ff <= Y_Wout_ii;
+            Y_Wout_ri_ff <= Y_Wout_ri;
+            Y_Wout_ir_ff <= Y_Wout_ir;
+            out_valid_stage_2 <= 1'b1;
+        end
+    end
+
+    // Stage 3 - Assemble Y_Wout
+    
+    complex_product_t Y_Wout;
+    complex_product_t X_ff_3, Y_ff_3;
+
+    assign Y_Wout.r = Y_Wout_rr_ff - Y_Wout_ii_ff;  
+    assign Y_Wout.i = Y_Wout_ri_ff + Y_Wout_ir_ff;
+
+    always_ff @(posedge clk) begin
+        if(reset | ~out_valid_stage_2) begin
+            X_ff_3 <= '0;
+            Y_ff_3 <= '0;
+            out_valid_stage_3 <= 0;
+        end else begin
+            X_ff_3 <= X_ff_2;
+            Y_ff_3.r <= Y_Wout.r >>> R;
+            Y_ff_3.i <= Y_Wout.i >>> R;
+            out_valid_stage_3 <= 1'b1;
+        end
+    end
+
+
+   assign X.r = (X_ff_3.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (X_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff_3.r;
+   assign X.i = (X_ff_3.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (X_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff_3.i;
    
-   assign Y.r = (Y_ff.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff.r;
-   assign Y.i = (Y_ff.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff.i;
+   assign Y.r = (Y_ff_3.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (Y_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.r;
+   assign Y.i = (Y_ff_3.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
+                (Y_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.i;
 
-   assign out_valid = out_valid_ff;   
+   assign out_valid = out_valid_stage_3;   
 
 endmodule
