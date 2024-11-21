@@ -139,6 +139,8 @@ deserializer #(
     .out_valid(deserializer_out_valid)
 );
 
+logic deserializer_out_valid_delayed;
+
 complex_product_t bit_corrected_output_buffer [N-1:0];
 logic bit_reverse_out_valid;
 
@@ -155,13 +157,36 @@ input_reorder #(
 );
 
 /*
+====================================================
+||              OUTPUT DOWNSAMPLING               ||
+====================================================
+*/
+
+// Set up counter to increment up to 2 N, while counter < N, output is valid, else 0
+// logic [$clog2(N)-1:0] downsample_counter;
+logic downsample_counter;
+logic downsample_flag;
+
+always_ff @(posedge clk) begin
+    if (reset) begin
+        downsample_counter <= 0;
+    end 
+    else begin
+        if(bit_reverse_out_valid) begin
+            downsample_counter <= downsample_counter + 1;
+        end
+    end
+end
+
+/*
 ==================================================
 ||              OUTPUT ASSIGNMENT               ||
 ==================================================
 */
 
-assign fft_out = bit_corrected_output_buffer;
-assign out_valid = bit_reverse_out_valid;
+assign fft_out =  bit_corrected_output_buffer;
+assign out_valid = bit_reverse_out_valid & ~downsample_counter[0];
+// assign out_valid = bit_reverse_out_valid;
 
 /*
 ================================================

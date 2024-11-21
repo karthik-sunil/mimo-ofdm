@@ -27,9 +27,9 @@ deserializer #(
     .clk(clk),
     .reset(reset),
     .enable(enable),
-    .x_0(x_0),
-    .x_1(x_1),
-    .x_deserialized(x_deserialized),
+    .data_0(x_0),
+    .data_1(x_1),
+    .data_deserialized(x_deserialized),
     .out_valid(out_valid)
 );
 

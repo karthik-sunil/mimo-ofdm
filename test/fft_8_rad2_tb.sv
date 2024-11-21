@@ -3,7 +3,7 @@
 
 module fft_8_rad2_tb();
 
-parameter N = 8;
+parameter N = 256;
 parameter CLOCK_PERIOD = 10;
 
 // code changes to incorporate for LUT based twiddle factors
@@ -70,10 +70,10 @@ initial begin
     // loadingthe full twiddle factor set fr each stage and buttefly
     for (int stage = 0; stage < NUM_STAGES; stage++) begin
         for (int butterfly = 0; butterfly < NUM_BUTTERFLIES; butterfly++) begin
-            $fscanf(twiddle_file, "%d,%d", 
+            $fscanf(twiddle_file, "%b,%b", 
                     W_R_STAGE[stage][butterfly], 
                     W_I_STAGE[stage][butterfly]);
-            $display("W_R_STAGE[%d][%d]= %d, W_R_STAGE[%d][%d]= %d", stage, butterfly, W_R_STAGE[stage][butterfly], stage, butterfly, W_I_STAGE[stage][butterfly]);
+            $display("W_R_STAGE[%d][%d]= %d, W_R_STAGE[%d][%d]= %d", stage, butterfly, W_R_STAGE[stage][butterfly] , stage, butterfly, W_I_STAGE[stage][butterfly]);
         end
     end
 
@@ -85,9 +85,13 @@ always @(negedge clk) begin
     if(enable) cycle_count++;
     // $fdisplay(f_out,"--------------------");
         if(out_valid) begin
+        // if(1) begin
             if(~$isunknown(out_valid)) begin 
+            //  if(1) begin 
                 for (int j=0; j<N; j++) begin
+                    // $fdisplay(f_out,"%d, %d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid, ~dut.downsample_counter[0]);
                     $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+
                 end
             end
         end

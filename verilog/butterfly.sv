@@ -36,7 +36,7 @@ module butterfly(
         end else begin
             X_ff_1 <= X_comb;
             Y_ff_1 <= Y_comb;
-            out_valid_stage_1 <= 1'b1;
+            out_valid_stage_1 <= enable;
         end
     end
 
@@ -68,7 +68,7 @@ module butterfly(
             Y_Wout_ii_ff <= Y_Wout_ii;
             Y_Wout_ri_ff <= Y_Wout_ri;
             Y_Wout_ir_ff <= Y_Wout_ir;
-            out_valid_stage_2 <= 1'b1;
+            out_valid_stage_2 <= out_valid_stage_1;
         end
     end
 
@@ -89,7 +89,7 @@ module butterfly(
             X_ff_3 <= X_ff_2;
             Y_ff_3.r <= Y_Wout.r >>> R;
             Y_ff_3.i <= Y_Wout.i >>> R;
-            out_valid_stage_3 <= 1'b1;
+            out_valid_stage_3 <= out_valid_stage_2;
         end
     end
 

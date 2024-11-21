@@ -87,8 +87,8 @@ module butterfly(
             out_valid_stage_3 <= 0;
         end else begin
             X_ff_3 <= X_ff_2;
-            Y_ff_3.r <= Y_Wout.r >>> R;
-            Y_ff_3.i <= Y_Wout.i >>> R;
+            Y_ff_3.r <= Y_Wout.r;
+            Y_ff_3.i <= Y_Wout.i;
             out_valid_stage_3 <= 1'b1;
         end
     end
@@ -100,9 +100,9 @@ module butterfly(
                 (X_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff_3.i;
    
    assign Y.r = (Y_ff_3.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.r;
+                (Y_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.r  >>> R;
    assign Y.i = (Y_ff_3.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.i;
+                (Y_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.i >>> R;
 
    assign out_valid = out_valid_stage_3;   
 

@@ -7,7 +7,7 @@ parameter I_MNT = 23;
 parameter I_DATA = I_EXP + I_MNT + 1;
 
 // Number of input samples 
-parameter N=4;
+parameter N=8;
 
 // Addressing bits
 parameter FFT_BITS=$clog2(N);

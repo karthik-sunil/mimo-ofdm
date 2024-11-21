@@ -29,7 +29,6 @@
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 Initializing...
-Error: could not open command log file "/home/ksnl/eecs598/final-project/mimo-ofdm/command.log" (CMD-015)
 ###############################
 #                             #
 # Create By Yufan Yue 2023.10 #
@@ -59,7 +58,7 @@ set RESULTS_DIR "${DESIGN_PATH}/syn"
 set CONSTRAINTS_FILE "${DESIGN_PATH}/scripts/constraints.tcl"
 /home/ksnl/eecs598/final-project/mimo-ofdm/scripts/constraints.tcl
 set USE_NUM_CORES $::env(MK_USE_NUM_CORES)
-4
+6
 set ADDITIONAL_SEARCH_PATH ""
 set MEM_SUFFIX $::env(MK_MEM_SUFFIX)
 typ_1d05_25
@@ -116,9 +115,6 @@ check_library > ${REPORTS_DIR}/${DESIGN_NAME}.check_library.rpt
 #################################################################################
 if { ! [file exists ${DESIGN_NAME}_dclib] } { file mkdir ${DESIGN_NAME}_dclib }
 define_design_lib WORK -path ${DESIGN_PATH}/${DESIGN_NAME}_dclib
-Warning: Error code 23 encountered while writing SVF file:
-         could not open /home/ksnl/eecs598/final-project/mimo-ofdm/default.svf for writing
-         Operation aborted. (FMLINK-1)
 1
 if { [llength $NETLIST_FILES] > 0} { read_verilog -netlist $NETLIST_FILES }
 if { ![analyze -define ${DESIGN_DEFINES} -f sverilog $RTL_SOURCE_FILES] } { exit 1 }
@@ -166,15 +162,40 @@ Presto compilation completed successfully. (input_folding_N8)
 Information: Building the design 'butterfly'. (HDL-193)
 
 Inferred memory devices in process
-	in routine butterfly line 38 in file
+	in routine butterfly line 31 in file
 		'./src/butterfly.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|      X_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-|      Y_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+| out_valid_stage_1_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      X_ff_1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|      Y_ff_1_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine butterfly line 56 in file
+		'./src/butterfly.sv'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+| out_valid_stage_2_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      X_ff_2_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|   Y_Wout_rr_ff_reg    | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|   Y_Wout_ii_ff_reg    | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|   Y_Wout_ri_ff_reg    | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|   Y_Wout_ir_ff_reg    | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
+
+Inferred memory devices in process
+	in routine butterfly line 83 in file
+		'./src/butterfly.sv'.
+=================================================================================
+|     Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=================================================================================
+| out_valid_stage_3_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      X_ff_3_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+|      Y_ff_3_reg       | Flip-flop |  48   |  Y  | N  | N  | N  | N  | N  | N  |
+=================================================================================
 Presto compilation completed successfully. (butterfly)
 Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
 	the parameters "DELAY=2". (HDL-193)
@@ -336,13 +357,14 @@ check_design -multiple_designs
 ****************************************
 check_design summary:
 Version:     T-2022.03-SP3
-Date:        Wed Nov 20 10:19:20 2024
+Date:        Wed Nov 20 14:14:23 2024
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                     64
+Inputs/Outputs                                                     80
     Feedthrough (LINT-29)                                          64
+    Shorted outputs (LINT-31)                                      16
 
 Cells                                                               6
     Cells do not drive (LINT-1)                                     6
@@ -426,6 +448,22 @@ Warning: In design 'input_folding_N8', input port 'data_in[i][3]' is connected d
 Warning: In design 'input_folding_N8', input port 'data_in[i][2]' is connected directly to output port 'data_out_1[i][2]'. (LINT-29)
 Warning: In design 'input_folding_N8', input port 'data_in[i][1]' is connected directly to output port 'data_out_1[i][1]'. (LINT-29)
 Warning: In design 'input_folding_N8', input port 'data_in[i][0]' is connected directly to output port 'data_out_1[i][0]'. (LINT-29)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][23]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][24]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][25]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][26]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][27]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][28]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][29]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[r][31]' is connected directly to output port 'Y[r][30]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][23]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][24]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][25]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][26]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][27]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][28]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][29]'. (LINT-31)
+Warning: In design 'butterfly', output port 'Y[i][31]' is connected directly to output port 'Y[i][30]'. (LINT-31)
 Information: Design 'butterfly' is instantiated 3 times. (LINT-45)
          Cell 'genblk1[0].butterfly_inst' in design 'fft_N_rad2' 
          Cell 'genblk1[1].butterfly_inst' in design 'fft_N_rad2' 
@@ -462,10 +500,10 @@ set_input_transition 0.080 [all_inputs]
 1
 set_max_transition 0.080 [all_outputs]
 1
-set clock_period 9.8
-9.8
+set clock_period 15
+15
 set clock_uncertainty [expr $clock_period * 0.10]
-0.98
+1.5
 set clock_transition 0.080
 0.080
 set clock_latency 0.1
@@ -1672,13 +1710,14 @@ check_design -summary
 ****************************************
 check_design summary:
 Version:     T-2022.03-SP3
-Date:        Wed Nov 20 10:19:22 2024
+Date:        Wed Nov 20 14:14:26 2024
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                     64
+Inputs/Outputs                                                     80
     Feedthrough (LINT-29)                                          64
+    Shorted outputs (LINT-31)                                      16
 
 Cells                                                               1
     Cells do not drive (LINT-1)                                     1
@@ -1703,7 +1742,7 @@ compile_ultra
 Information: Performing power optimization. (PWR-850)
 Analyzing: "/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db"
 Library analysis succeeded.
-Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+Information: Running optimization using a maximum of 6 cores. (OPT-1500)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
@@ -1722,15 +1761,15 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Design Information                                      | Value                                  |
 ====================================================================================================
 | Number of Scenarios                                     | 0                                      |
-| Leaf Cell Count                                         | 2662                                   |
+| Leaf Cell Count                                         | 3631                                   |
 | Number of User Hierarchies                              | 0                                      |
-| Sequential Cell Count                                   | 2336                                   |
+| Sequential Cell Count                                   | 3254                                   |
 | Macro Count                                             | 0                                      |
 | Number of Power Domains                                 | 0                                      |
 | Number of Path Groups                                   | 5                                      |
 | Number of VT Class                                      | 1                                      |
 | Number of Clocks                                        | 1                                      |
-| Number of Dont Touch Cells                              | 88                                     |
+| Number of Dont Touch Cells                              | 106                                    |
 | Number of Dont Touch Nets                               | 0                                      |
 | Number of Size Only Cells                               | 0                                      |
 | Design with UPF Data                                    | false                                  |
@@ -1774,54 +1813,38 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
 Information: The register 'deserializer_inst/w_ptr_reg[0]' is a constant and will be removed. (OPT-1206)
 Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_y0/delay_counter_reg[0]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_counter_reg[0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/switch_enable_ff_reg' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/switch_counter_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][31]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][30]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][29]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][28]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][27]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][26]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][25]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[r][24]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][31]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][30]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][29]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][28]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][27]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][26]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][25]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_reg[i][24]' is removed because it is merged to 'genblk1[0].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][31]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][30]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][29]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][28]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][27]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][26]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][25]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[r][24]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][31]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][30]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][29]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][28]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][27]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][26]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][25]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_reg[i][24]' is removed because it is merged to 'genblk1[1].butterfly_inst/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][31]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][30]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][29]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][28]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][27]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][26]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][25]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[r][24]' is removed because it is merged to 'butterfly_final/Y_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][31]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][30]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][29]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][28]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][27]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][26]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][25]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_reg[i][24]' is removed because it is merged to 'butterfly_final/Y_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
@@ -1829,51 +1852,12 @@ Threshold voltage group cell usage:
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
   Mapping Optimization (Phase 1)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'genblk1[1].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-
-                                  TOTAL                                                
-   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
-    0:01:17   66306.2     74.27   20208.9   40595.7                           1744414208.0000
-    0:01:18   66182.1     74.27   20209.0   40741.5                           1741090176.0000
-
-Threshold voltage group cell usage:
->> saed32cell_svt 100.00%
-
-  Beginning Constant Register Removal
-  -----------------------------------
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'genblk1[0].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'genblk1[0].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'genblk1[1].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[1].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'genblk1[1].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_1_reg[i][0]' is removed because it is merged to 'butterfly_final/X_ff_1_reg[i][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_1_reg[r][0]' is removed because it is merged to 'butterfly_final/X_ff_1_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][31]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][30]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][29]' is removed because it is merged to 'genblk1[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
@@ -1906,8 +1890,37 @@ Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][
 Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'genblk1[1].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'genblk1[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-    0:01:19   66849.8    198.16   33113.1   79390.0                           1737520768.0000
-    0:01:20   66817.3    198.16   33113.1   79390.0                           1736609920.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:18   78211.0     54.67   24570.3   50006.8                           1881236992.0000
+    0:01:19   78152.3     54.67   24555.6   49964.9                           1879654016.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+    0:01:21   79406.0    171.11   49571.1  140404.1                           1883546112.0000
+    0:01:21   79406.0    171.11   49571.1  140404.1                           1883546112.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
@@ -1959,57 +1972,42 @@ Threshold voltage group cell usage:
 
   Beginning Delay Optimization
   ----------------------------
-    0:01:32   56254.0     78.54   16851.0  118264.9                           1648229376.0000
-    0:01:55   57375.5     36.96   12758.2   37842.1                           1668157952.0000
-    0:01:55   57375.5     36.96   12758.2   37842.1                           1668157952.0000
-    0:01:56   57364.4     36.96   12888.3   37876.0                           1667158656.0000
+    0:01:38   62961.1    114.52   28452.4   49431.2                           1656759808.0000
+    0:02:27   65547.0     20.72   12743.8   22570.0                           1709591040.0000
+    0:02:27   65547.0     20.72   12743.8   22570.0                           1709591040.0000
+    0:02:29   65556.2     20.67   12902.8   22582.2                           1708825344.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
-    0:01:58   57326.5     36.95   12884.1   37592.1                           1666276096.0000
-    0:01:58   57305.2     36.95   12886.2   37591.9                           1665833984.0000
+    0:02:31   65524.4     20.67   12897.3   22583.3                           1708194304.0000
+    0:02:32   65515.3     20.81   12897.6   22498.3                           1707998592.0000
 
   Beginning WLM Backend Optimization
   --------------------------------------
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'genblk1[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-    0:02:05   56666.5     36.95   11458.3   25394.7                           1650749952.0000
-    0:02:06   56463.7     36.95   10594.7   23767.5                           1644472320.0000
-    0:02:08   56562.0     36.85   10567.5   23867.2                           1645532032.0000
-    0:02:08   56562.0     36.85   10567.5   23867.2                           1645532032.0000
-    0:02:09   56372.4     36.85   10705.1   24105.4                           1643826048.0000
-    0:02:09   56372.4     36.85   10705.1   24105.4                           1643826048.0000
-    0:02:13   58127.8     36.43   10689.5   29412.4                           1682339456.0000
-    0:02:13   58127.8     36.43   10689.5   29412.4                           1682339456.0000
-    0:02:13   58222.9     36.22   10653.0   29819.7                           1682969984.0000
-    0:02:13   58222.9     36.22   10653.0   29819.7                           1682969984.0000
-    0:02:15   58439.1     36.20   10647.9   29769.6                           1687788416.0000
-    0:02:15   58439.1     36.20   10647.9   29769.6                           1687788416.0000
-    0:02:33   60246.6     34.48   10475.6   50572.5                           1720822912.0000
-    0:02:33   60246.6     34.48   10475.6   50572.5                           1720822912.0000
-    0:02:38   61292.2     34.34   10451.6   56440.8                           1742859648.0000
-    0:02:38   61292.2     34.34   10451.6   56440.8                           1742859648.0000
-    0:03:20   64118.0     31.85   10194.7   58332.8                           1795425408.0000
-    0:03:20   64118.0     31.85   10194.7   58332.8                           1795425408.0000
-    0:03:22   64426.5     31.83   10208.8   55821.1                           1801758592.0000
-    0:03:22   64426.5     31.83   10208.8   55821.1                           1801758592.0000
-    0:03:24   64562.2     31.74   10211.8   56306.7                           1804348032.0000
-    0:03:24   64562.2     31.74   10211.8   56306.7                           1804348032.0000
-    0:03:27   64954.1     31.71   10209.4   57262.0                           1812761600.0000
+    0:02:40   64584.9     20.64    8304.9   14201.5                           1684555392.0000
+    0:02:47   63961.9     20.62    8181.6   12173.1                           1664487552.0000
+    0:02:52   64048.4     20.44    7966.6   13331.8                           1666650752.0000
+    0:02:52   64122.6     20.44    7925.2   15587.7                           1667775488.0000
+    0:02:52   64122.6     20.44    7925.2   15587.7                           1667775488.0000
+    0:02:55   63632.6     20.44    7991.4   13476.2                           1662620416.0000
+    0:02:55   63632.6     20.44    7991.4   13476.2                           1662620416.0000
+    0:03:08   65635.5     18.77    7566.0   14467.2                           1713022976.0000
+    0:03:08   65635.5     18.77    7566.0   14467.2                           1713022976.0000
+    0:03:09   65650.5     18.64    7533.6   14792.6                           1713097216.0000
+    0:03:09   65650.5     18.64    7533.6   14792.6                           1713097216.0000
+    0:03:12   65979.3     18.41    7445.8   14497.9                           1720527104.0000
+    0:03:12   65979.3     18.41    7445.8   14497.9                           1720527104.0000
+    0:04:28   72244.2     10.32    4040.4   26564.0                           1850363520.0000
+    0:04:28   72244.2     10.32    4040.4   26564.0                           1850363520.0000
+    0:04:35   72687.5     10.25    3947.6   27532.6                           1861437184.0000
+    0:04:35   72687.5     10.25    3947.6   27532.6                           1861437184.0000
+    0:04:57   73938.1      8.94    3515.3   26508.5                           1887671040.0000
+    0:04:57   73938.1      8.94    3515.3   26508.5                           1887671040.0000
+    0:05:11   75350.6      8.66    3294.9   27321.6                           1921015424.0000
+    0:05:11   75350.6      8.66    3294.9   27321.6                           1921015424.0000
+    0:05:54   76190.1      7.46    2708.2   28227.9                           1939409920.0000
+    0:05:54   76190.1      7.46    2708.2   28227.9                           1939409920.0000
+    0:05:58   76335.2      7.45    2698.2   28087.1                           1942776960.0000
 
 
   Beginning Design Rule Fixing  (max_transition)
@@ -2019,14 +2017,15 @@ Information: In design 'fft_N_rad2', the register 'genblk1[0].dc_2/x1_ff_reg[r][
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:03:27   64954.1     31.71   10209.4   57262.0                           1812761600.0000
+    0:05:58   76335.2      7.45    2698.2   28087.1                           1942776960.0000
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
   Global Optimization (Phase 34)
-    0:03:32   65340.7     35.36    9741.0   15710.3 net70350                  1820708736.0000
-    0:03:35   65380.8     35.33    9530.3   10531.8 net61076                  1821645056.0000
-    0:03:37   65410.8     33.61    9364.3   10484.7                           1822460416.0000
-    0:03:39   65543.2     33.52    9355.8   10734.6                           1825417600.0000
+    0:06:03   76617.6     20.12    6152.8    7794.6 genblk1[0].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 1949653632.0000
+    0:06:06   76735.7     15.89    5944.5    4641.3 genblk1[1].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 1952673280.0000
+    0:06:10   76771.3     15.43    5916.0    4987.8 genblk1[1].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 1953263616.0000
+    0:06:10   76783.0     15.41    5913.9    4987.8                           1953426560.0000
+    0:06:23   77590.4     14.74    5588.8    9087.3                           1973460224.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
@@ -2039,7 +2038,7 @@ Threshold voltage group cell usage:
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:03:39   65543.2     33.52    9355.8   10734.6                           1825417600.0000
+    0:06:23   77590.4     14.74    5588.8    9087.3                           1973460224.0000
   Global Optimization (Phase 35)
   Global Optimization (Phase 36)
   Global Optimization (Phase 37)
@@ -2056,60 +2055,64 @@ Threshold voltage group cell usage:
   Global Optimization (Phase 48)
   Global Optimization (Phase 49)
   Global Optimization (Phase 50)
-    0:03:53   61744.0     38.94    8226.9   29443.6                           1740641024.0000
-    0:03:55   61875.7     38.69    8220.9   33039.5                           1743033728.0000
-    0:03:55   61875.7     38.69    8220.9   33039.5                           1743033728.0000
-    0:03:56   61759.3     38.63    7679.7   27431.5                           1741327744.0000
-    0:03:57   61759.3     38.63    7679.7   27431.5                           1741327744.0000
-    0:04:00   62270.1     38.12    7668.6   28553.4                           1752164480.0000
-    0:04:00   62270.1     38.12    7668.6   28553.4                           1752164480.0000
-    0:04:01   62317.6     37.47    7554.9   24039.2                           1752683776.0000
-    0:04:01   62317.6     37.47    7554.9   24039.2                           1752683776.0000
-    0:04:03   62686.1     37.29    7513.3   24965.5                           1760646912.0000
-    0:04:03   62686.1     37.29    7513.3   24965.5                           1760646912.0000
-    0:05:22   69918.1     29.68    6740.3   45804.6                           1904369024.0000
-    0:05:22   69918.1     29.68    6740.3   45804.6                           1904369024.0000
-    0:05:24   69998.6     29.66    6738.8   45784.0                           1905993856.0000
-    0:05:24   69998.6     29.66    6738.8   45784.0                           1905993856.0000
-    0:05:38   71448.8     29.02    6678.2   48204.0                           1936394368.0000
-    0:05:38   71448.8     29.02    6678.2   48204.0                           1936394368.0000
-    0:05:47   73478.6     28.81    6644.5   50705.0                           1980513792.0000
-    0:05:47   73478.6     28.81    6644.5   50705.0                           1980513792.0000
-    0:06:49   81420.6     25.43    6218.6   76233.9                           2144747904.0000
-    0:06:49   81420.6     25.43    6218.6   76233.9                           2144747904.0000
-    0:06:51   81616.3     25.42    6218.0   76600.2                           2149061120.0000
+    0:06:42   70950.7     19.84    6048.8    5785.7 genblk1[0].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 1808620928.0000
+    0:06:42   70962.1     19.41    6012.2    5785.6                           1808703872.0000
+    0:06:45   71059.7     18.33    5348.2    5826.4                           1810825728.0000
+    0:06:45   71059.7     18.33    5348.2    5826.4                           1810825728.0000
+    0:06:48   70136.6     18.32    5836.7    4737.2                           1797177728.0000
+    0:06:48   70136.6     18.32    5836.7    4737.2                           1797177728.0000
+    0:07:15   72574.9     14.83    4922.7   12122.9                           1853233408.0000
+    0:07:15   72574.9     14.83    4922.7   12122.9                           1853233408.0000
+    0:07:15   72575.1     14.61    4830.0   12226.0                           1853418752.0000
+    0:07:15   72575.1     14.61    4830.0   12226.0                           1853418752.0000
+    0:07:21   72751.8     14.40    4800.8   11740.1                           1857676928.0000
+    0:07:21   72751.8     14.40    4800.8   11740.1                           1857676928.0000
+    0:09:24   77079.3      8.14    2626.3   48749.1                           1946410368.0000
+    0:09:24   77079.3      8.14    2626.3   48749.1                           1946410368.0000
+    0:09:25   77168.3      8.13    2604.5   48838.5                           1948571904.0000
+    0:09:25   77168.3      8.13    2604.5   48838.5                           1948571904.0000
+    0:10:07   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:07   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:08   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:08   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:09   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:09   78264.4      7.61    2400.8   55545.1                           1971843200.0000
+    0:10:10   78264.4      7.61    2400.8   55545.1                           1971843200.0000
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:06:52   80433.3     29.51    8312.7   76274.8                           2122975104.0000
-    0:06:58   70030.1     81.37   15417.5   54121.2                           1954165504.0000
-    0:07:04   70807.6     41.21   10484.2   19313.5 genblk1[1].butterfly_inst/Y_ff_reg[i][23]/D 1971164416.0000
-    0:07:05   70950.7     40.01   10330.5   21551.2                           1972552064.0000
-    0:07:06   70895.0     40.01   10326.8   21527.9                           1970838400.0000
-    0:07:06   70895.0     40.01   10326.8   21527.9                           1970838400.0000
-    0:07:07   70864.0     40.01   11149.6   21206.5                           1970393344.0000
-    0:07:10   70406.0     39.99   11107.9   17575.7                           1956070912.0000
-    0:07:12   70396.4     39.99   10983.4   15145.4 net83531                  1956640000.0000
-    0:07:16   70883.6     36.90   10481.6   14373.5 genblk1[0].butterfly_inst/Y_ff_reg[i][23]/D 1963179392.0000
-    0:07:19   71076.7     35.54   10193.5   15382.0 butterfly_final/Y_ff_reg[r][23]/D 1966134784.0000
-    0:07:23   71318.9     34.86   10141.7   15403.4 butterfly_final/Y_ff_reg[i][23]/D 1969293696.0000
-    0:07:25   71513.8     34.65    9834.4   10666.7 net67831                  1972609792.0000
-    0:07:26   71541.0     34.65    9833.4    8685.9                           1973328896.0000
-    0:08:45   77186.1     28.71    8955.7   57267.2                           2086279168.0000
-    0:08:45   77186.1     28.71    8955.7   57267.2                           2086279168.0000
-    0:10:01   81420.4     26.95    8727.5   65775.1                           2174854144.0000
-    0:10:01   81420.4     26.95    8727.5   65775.1                           2174854144.0000
-    0:10:02   81430.8     26.95    8727.5   65775.1                           2175144960.0000
-    0:10:02   81430.8     26.95    8727.5   65775.1                           2175144960.0000
-    0:10:02   81461.8     26.94    8706.6   66042.1                           2175740672.0000
-    0:10:02   81461.8     26.94    8706.6   66042.1                           2175740672.0000
-    0:10:07   81533.2     26.94    8684.1   60193.9                           2176408064.0000
-    0:10:08   81534.5     26.94    8673.8   60133.3                           2176445184.0000
-    0:10:08   81534.5     26.94    8673.8   60133.3                           2176445184.0000
-    0:10:09   81541.8     26.94    8673.7   60133.3                           2176482304.0000
-    0:10:19   79159.0     26.94    8219.3   37857.7                           2150278656.0000
+    0:10:11   77669.5      7.71    2393.1   55265.1                           1958627200.0000
+    0:10:16   71135.4    210.25   22994.2   29602.3                           1850348672.0000
+    0:10:21   71642.9     21.97    7525.3  101115.3                           1860131072.0000
+    0:10:22   71587.5     21.97    7520.0   99856.3                           1858049792.0000
+    0:10:26   71504.2     21.97    7507.3   97476.0                           1855045376.0000
+    0:10:29   71442.7     21.88    7083.1   93960.2                           1852747776.0000
+    0:10:29   71442.7     21.88    7083.1   93960.2                           1852747776.0000
+    0:10:31   71233.5     21.88    8347.9   33367.4                           1849743744.0000
+    0:10:35   70858.7     21.60    6322.4   31616.1                           1837226752.0000
+    0:10:40   70964.9     21.60    6320.5   24927.3 net81209                  1840536832.0000
+    0:10:44   71282.6     19.48    5871.7   25135.5 genblk1[1].butterfly_inst/Y_Wout_ri_ff_reg[29]/D 1844899328.0000
+    0:10:47   71454.6     18.94    5669.8   25582.5 butterfly_final/Y_Wout_ii_ff_reg[30]/D 1847956224.0000
+    0:10:51   71663.3     16.05    4944.9   27465.8 butterfly_final/Y_Wout_ii_ff_reg[30]/D 1850625408.0000
+    0:10:54   71931.9     14.24    4458.9   28730.4 genblk1[0].butterfly_inst/Y_Wout_rr_ff_reg[31]/D 1854560256.0000
+    0:10:59   72089.0     42.94    8518.3   17025.6 genblk1[0].butterfly_inst/Y_Wout_ii_ff_reg[29]/D 1857305472.0000
+    0:11:04   72163.4     19.00    5407.6    4878.5 genblk1[1].butterfly_inst/Y_Wout_ir_ff_reg[31]/D 1859136512.0000
+    0:11:05   72171.3     18.98    5399.4    3957.4                           1859319040.0000
+    0:11:54   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:54   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:56   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:56   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:57   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:57   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:58   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:11:58   72951.0     10.71    3551.6   27400.6                           1875775488.0000
+    0:12:06   73159.4     10.66    3469.9   27249.3                           1876786048.0000
+    0:12:07   73195.8     10.65    3454.6   27011.2                           1877008640.0000
+    0:12:07   73195.8     10.65    3454.6   27011.2                           1877008640.0000
+    0:12:07   73197.8     10.62    3454.7   27011.2                           1877008640.0000
+    0:12:16   72327.1     10.62    3447.6   25235.0                           1867171584.0000
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -2118,14 +2121,14 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   Optimization Complete
   ---------------------
 Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'clk': 2199 load(s), 1 driver(s)
+     Net 'clk': 3159 load(s), 1 driver(s)
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 1
 optimize_netlist -area
 Information: Performing power optimization. (PWR-850)
 Alib files are up-to-date.
-Information: Running optimization using a maximum of 4 cores. (OPT-1500)
+Information: Running optimization using a maximum of 6 cores. (OPT-1500)
 
 
   Updating timing information
@@ -2145,8 +2148,8 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:01   78919.8     27.57    8229.1   38024.5                           2145058176.0000
-    0:00:33   74000.9     27.51    7499.9   30318.5                           2058847872.0000
+    0:00:02   72327.1     10.62    3447.6   25235.0                           1867171584.0000
+    0:00:32   70012.1     10.59    3097.2    6412.0                           1821142784.0000
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -2155,7 +2158,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   Optimization Complete
   ---------------------
 Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'clk': 2199 load(s), 1 driver(s)
+     Net 'clk': 3159 load(s), 1 driver(s)
 1
 #################################################################################
 # Write Out Final Design and Reports
@@ -2220,7 +2223,7 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.units.rpt {report_units}
 Report : units
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 10:31:20 2024
+Date   : Wed Nov 20 14:28:21 2024
 
 ************************************
 Units
@@ -2239,7 +2242,7 @@ Report : net fanout
         -high_fanout
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 10:31:20 2024
+Date   : Wed Nov 20 14:28:21 2024
 ****************************************
 
 
@@ -2263,7 +2266,8 @@ Attributes:
 
 Net                 Fanout   Attributes   Capacitance   Driver
 --------------------------------------------------------------------------------
-clk                   2199   dr, h        1001029.88    clk
+clk                   3159   dr, h        1001029.88    clk
+n13499                 512                  758.97      U11015/Y
 1
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
  
@@ -2271,21 +2275,21 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
 Report : qor
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 10:31:20 2024
+Date   : Wed Nov 20 14:28:21 2024
 ****************************************
 
 
   Timing Path Group 'core_clk'
   -----------------------------------
-  Levels of Logic:              49.00
-  Critical Path Length:         36.30
-  Critical Path Slack:         -27.51
-  Critical Path Clk Period:      9.80
-  Total Negative Slack:      -7499.85
-  No. of Violating Paths:     1296.00
-  Worst Hold Violation:       -328.07
-  Total Hold Violation:     -32587.68
-  No. of Hold Violations:     2128.00
+  Levels of Logic:              27.00
+  Critical Path Length:         24.07
+  Critical Path Slack:         -10.59
+  Critical Path Clk Period:     15.00
+  Total Negative Slack:      -3097.22
+  No. of Violating Paths:      647.00
+  Worst Hold Violation:       -325.91
+  Total Hold Violation:     -33294.21
+  No. of Hold Violations:     3083.00
   -----------------------------------
 
 
@@ -2293,41 +2297,41 @@ Date   : Wed Nov 20 10:31:20 2024
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:              23632
-  Buf/Inv Cell Count:            5100
-  Buf Cell Count:                 303
-  Inv Cell Count:                4797
+  Leaf Cell Count:              20941
+  Buf/Inv Cell Count:            2747
+  Buf Cell Count:                 276
+  Inv Cell Count:                2471
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:     21433
-  Sequential Cell Count:         2199
+  Combinational Cell Count:     17782
+  Sequential Cell Count:         3159
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:    59422.170858
-  Noncombinational Area: 14578.716884
-  Buf/Inv Area:           8752.719332
-  Total Buffer Area:           804.37
-  Total Inverter Area:        7948.35
+  Combinational Area:    49017.007344
+  Noncombinational Area: 20995.090660
+  Buf/Inv Area:           4724.028668
+  Total Buffer Area:           699.91
+  Total Inverter Area:        4024.12
   Macro/Black Box Area:      0.000000
-  Net Area:              28913.458189
+  Net Area:              32560.768823
   -----------------------------------
-  Cell Area:             74000.887742
-  Design Area:          102914.345931
+  Cell Area:             70012.098004
+  Design Area:          102572.866826
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:         25754
-  Nets With Violations:           778
-  Max Trans Violations:           778
+  Total Number of Nets:         23391
+  Nets With Violations:           459
+  Max Trans Violations:           459
   Max Cap Violations:               0
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi10.engin.umich.edu
+  Hostname: caen-vnc-mi01.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -2335,15 +2339,15 @@ Date   : Wed Nov 20 10:31:20 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:               63.56
-  Overall Compile Wall Clock Time:    34.20
+  Overall Compile Time:               61.19
+  Overall Compile Wall Clock Time:    32.71
 
   --------------------------------------------------------------------
 
-  Design  WNS: 27.51  TNS: 7499.85  Number of Violating Paths: 1296
+  Design  WNS: 10.59  TNS: 3097.22  Number of Violating Paths: 647
 
 
-  Design (Hold)  WNS: 328.07  TNS: 32587.68  Number of Violating Paths: 2128
+  Design (Hold)  WNS: 325.91  TNS: 33294.21  Number of Violating Paths: 3083
 
   --------------------------------------------------------------------
 
@@ -2360,9 +2364,9 @@ puts "\[$COURSE_NAME\] Completed script [info script]\n"
 
 exit
 
-Memory usage for this session 382 Mbytes.
-Memory usage for this session including child processes 580 Mbytes.
-CPU usage for this session 1253 seconds ( 0.35 hours ).
-Elapsed time for this session 729 seconds ( 0.20 hours ).
+Memory usage for this session 373 Mbytes.
+Memory usage for this session including child processes 607 Mbytes.
+CPU usage for this session 1483 seconds ( 0.41 hours ).
+Elapsed time for this session 847 seconds ( 0.24 hours ).
 
 Thank you...

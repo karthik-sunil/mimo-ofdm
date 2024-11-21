@@ -105,6 +105,11 @@ SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.
 # TESTBENCH = test/deserializer_tb.sv
 # SIMFILES = verilog/deserializer.sv
 
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/input_folding_tb.sv
+# SIMFILES = verilog/input_folding.sv verilog/delay.sv
+
+
 
 #####
 # Should be no need to modify after here

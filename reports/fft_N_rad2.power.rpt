@@ -7,7 +7,7 @@ Report : power
         -analysis_effort low
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 10:31:23 2024
+Date   : Wed Nov 20 14:28:24 2024
 ****************************************
 
 
@@ -38,12 +38,12 @@ Attributes
 i - Including register clock pin internal power
 
 
-  Cell Internal Power  =   3.7367 mW   (65%)
-  Net Switching Power  =   2.0060 mW   (35%)
+  Cell Internal Power  =   2.7701 mW   (67%)
+  Net Switching Power  =   1.3925 mW   (33%)
                          ---------
-Total Dynamic Power    =   5.7427 mW  (100%)
+Total Dynamic Power    =   4.1626 mW  (100%)
 
-Cell Leakage Power     =   2.0588 mW
+Cell Leakage Power     =   1.8211 mW
 
 
                  Internal         Switching           Leakage            Total
@@ -52,10 +52,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network  1.6795e+03            0.0000            0.0000        1.6795e+03  (  21.53%)  i
-register          15.8472           16.9254        3.0998e+08          342.7460  (   4.39%)
+clock_network  1.5920e+03            0.0000            0.0000        1.5920e+03  (  26.61%)  i
+register          22.8107           32.1533        4.4657e+08          501.5325  (   8.38%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational  2.0413e+03        1.9891e+03        1.7489e+09        5.7793e+03  (  74.08%)
+combinational  1.1552e+03        1.3603e+03        1.3746e+09        3.8902e+03  (  65.01%)
 --------------------------------------------------------------------------------------------------
-Total          3.7367e+03 uW     2.0060e+03 uW     2.0588e+09 pW     7.8015e+03 uW
+Total          2.7701e+03 uW     1.3925e+03 uW     1.8211e+09 pW     5.9837e+03 uW
 1

@@ -19,6 +19,7 @@ module input_folding #(
 
 complex_product_t data_in_delayed;
 logic out_valid_delayed;
+logic switch_enable;
 
 delay #(
     .DELAY(N/2)

@@ -1,0 +1,35 @@
+`ifndef SYNTHESIS
+
+//
+// This is an automatically generated file from 
+// dc_shell Version T-2022.03-SP3 -- Jul 12, 2022
+//
+
+// For simulation only. Do not modify.
+
+module fft_N_rad2_svsim #(
+    parameter N = 8,
+    parameter NUM_STAGES = $clog2(N),
+    parameter NUM_BUTTERFLIES = N / 2
+)(
+    input logic clk,
+    input logic reset,
+    input logic enable,
+
+        input complex_product_t data_in,
+
+    input logic signed [COEFF_WIDTH-1:0] W_R_STAGE [NUM_STAGES][NUM_BUTTERFLIES],     input logic signed [COEFF_WIDTH-1:0] W_I_STAGE [NUM_STAGES][NUM_BUTTERFLIES],
+    output complex_product_t fft_out [N-1:0],
+    output logic out_valid
+);
+
+
+
+
+
+
+  fft_N_rad2 fft_N_rad2( {>>{ clk }}, {>>{ reset }}, {>>{ enable }}, 
+        {>>{ data_in }}, {>>{ W_R_STAGE }}, {>>{ W_I_STAGE }}, {>>{ fft_out }}, 
+        {>>{ out_valid }} );
+endmodule
+`endif
