@@ -1,0 +1,12 @@
+W_R_STAGE[0][0] = 256;
+W_R_STAGE[0][1] = 181;
+W_R_STAGE[0][2] = 0;
+W_R_STAGE[0][3] = -181;
+W_R_STAGE[1][0] = 256;
+W_R_STAGE[1][1] = 0;
+W_R_STAGE[1][0] = 256;
+W_R_STAGE[1][1] = 0;
+W_R_STAGE[2][0] = 256;
+W_R_STAGE[2][0] = 256;
+W_R_STAGE[2][0] = 256;
+W_R_STAGE[2][0] = 256;
