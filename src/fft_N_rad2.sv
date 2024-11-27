@@ -1,5 +1,4 @@
 module fft_N_rad2 #(
-    parameter N = 8,
     parameter NUM_STAGES = $clog2(N),
     parameter NUM_BUTTERFLIES = N / 2
 )(
@@ -171,6 +170,5 @@ assign out_valid = bit_reverse_out_valid;
 
 logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
 logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
-
 
 endmodule

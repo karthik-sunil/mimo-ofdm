@@ -1,5 +1,5 @@
 module fft_N_rad2 #(
-    parameter N = 8,
+    // parameter N = 32,
     parameter NUM_STAGES = $clog2(N),
     parameter NUM_BUTTERFLIES = N / 2
 )(
@@ -25,6 +25,7 @@ module fft_N_rad2 #(
 
 
 logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
+logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter_opt [NUM_STAGES-1:0];
 
 always_ff @(posedge clk) begin
     if (reset | ~enable) begin
@@ -32,6 +33,20 @@ always_ff @(posedge clk) begin
     end 
     else begin
         twiddle_counter <= twiddle_counter + 1;
+    end
+end
+
+// Optimization that allows smaller twiddle value tables : Only need N/2 twiddle values
+always_ff @(posedge clk) begin
+    if (reset | ~enable) begin
+        for(int i=0; i<NUM_STAGES; i++) begin
+            twiddle_counter_opt[i] <= 0;
+        end
+    end 
+    else begin
+        for(int i=0; i<NUM_STAGES; i++) begin
+            twiddle_counter_opt[i] <= (i == 0) ? twiddle_counter_opt[i] + 1 : twiddle_counter_opt[i] + 2<<i;
+        end
     end
 end
 
@@ -139,8 +154,6 @@ deserializer #(
     .out_valid(deserializer_out_valid)
 );
 
-logic deserializer_out_valid_delayed;
-
 complex_product_t bit_corrected_output_buffer [N-1:0];
 logic bit_reverse_out_valid;
 
@@ -157,36 +170,13 @@ input_reorder #(
 );
 
 /*
-====================================================
-||              OUTPUT DOWNSAMPLING               ||
-====================================================
-*/
-
-// Set up counter to increment up to 2 N, while counter < N, output is valid, else 0
-// logic [$clog2(N)-1:0] downsample_counter;
-logic downsample_counter;
-logic downsample_flag;
-
-always_ff @(posedge clk) begin
-    if (reset) begin
-        downsample_counter <= 0;
-    end 
-    else begin
-        if(bit_reverse_out_valid) begin
-            downsample_counter <= downsample_counter + 1;
-        end
-    end
-end
-
-/*
 ==================================================
 ||              OUTPUT ASSIGNMENT               ||
 ==================================================
 */
 
-assign fft_out =  bit_corrected_output_buffer;
-assign out_valid = bit_reverse_out_valid & ~downsample_counter[0];
-// assign out_valid = bit_reverse_out_valid;
+assign fft_out = bit_corrected_output_buffer;
+assign out_valid = bit_reverse_out_valid;
 
 /*
 ================================================
@@ -196,6 +186,41 @@ assign out_valid = bit_reverse_out_valid & ~downsample_counter[0];
 
 logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
 logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
+
+generate
+    case(N)
+        8 : begin
+            `include "twiddle_8_rad2.sv"
+            end
+        16 : begin
+            `include "twiddle_16_rad2.sv"
+            end
+        32 : begin
+            `include "twiddle_32_rad2.sv"
+            end
+        64 : begin
+            `include "twiddle_64_rad2.sv"
+            end
+        128 : begin
+            `include "twiddle_128_rad2.sv"
+            end
+        256 : begin
+            `include "twiddle_256_rad2.sv"
+            end
+        512 : begin
+            `include "twiddle_512_rad2.sv"
+            end
+        1024 : begin
+            `include "twiddle_1024_rad2.sv"
+            end
+        2048 : begin
+            `include "twiddle_2048_rad2.sv"
+            end
+        defualt : begin
+            $display("ERROR: N not supported");
+            $stop;
+        end
+endgenerate
 
 
 endmodule

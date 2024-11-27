@@ -25,6 +25,7 @@ export MK_USE_NUM_CORES = 4
 # memory library selection
 export MK_MEM_SUFFIX = typ_1d05_25
 
+export N = 8
 
 # the Verilog Compiler command and arguments
 VCS = SW_VCS=2020.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca \

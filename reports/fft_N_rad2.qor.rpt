@@ -3,21 +3,21 @@
 Report : qor
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 14:28:21 2024
+Date   : Tue Nov 26 18:56:38 2024
 ****************************************
 
 
   Timing Path Group 'core_clk'
   -----------------------------------
-  Levels of Logic:              27.00
-  Critical Path Length:         24.07
-  Critical Path Slack:         -10.59
+  Levels of Logic:              49.00
+  Critical Path Length:         28.56
+  Critical Path Slack:         -15.08
   Critical Path Clk Period:     15.00
-  Total Negative Slack:      -3097.22
-  No. of Violating Paths:      647.00
-  Worst Hold Violation:       -325.91
-  Total Hold Violation:     -33294.21
-  No. of Hold Violations:     3083.00
+  Total Negative Slack:     -10669.55
+  No. of Violating Paths:     2140.00
+  Worst Hold Violation:      -5422.57
+  Total Hold Violation:    -980399.94
+  No. of Hold Violations:    17166.00
   -----------------------------------
 
 
@@ -25,41 +25,42 @@ Date   : Wed Nov 20 14:28:21 2024
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:              20941
-  Buf/Inv Cell Count:            2747
-  Buf Cell Count:                 276
-  Inv Cell Count:                2471
+  Leaf Cell Count:              71779
+  Buf/Inv Cell Count:            8687
+  Buf Cell Count:                1253
+  Inv Cell Count:                7434
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:     17782
-  Sequential Cell Count:         3159
+  Combinational Cell Count:     54534
+  Sequential Cell Count:        17245
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:    49017.007344
-  Noncombinational Area: 20995.090660
-  Buf/Inv Area:           4724.028668
-  Total Buffer Area:           699.91
-  Total Inverter Area:        4024.12
+  Combinational Area:   142584.696224
+  Noncombinational Area:
+                        114598.361962
+  Buf/Inv Area:          17135.659139
+  Total Buffer Area:          3341.49
+  Total Inverter Area:       13794.17
   Macro/Black Box Area:      0.000000
-  Net Area:              32560.768823
+  Net Area:             149745.149509
   -----------------------------------
-  Cell Area:             70012.098004
-  Design Area:          102572.866826
+  Cell Area:            257183.058187
+  Design Area:          406928.207696
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:         23391
-  Nets With Violations:           459
-  Max Trans Violations:           459
+  Total Number of Nets:         81962
+  Nets With Violations:          5126
+  Max Trans Violations:          5126
   Max Cap Violations:               0
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi01.engin.umich.edu
+  Hostname: caen-vnc-mi07.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -67,15 +68,15 @@ Date   : Wed Nov 20 14:28:21 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:               61.19
-  Overall Compile Wall Clock Time:    32.71
+  Overall Compile Time:              197.70
+  Overall Compile Wall Clock Time:   106.85
 
   --------------------------------------------------------------------
 
-  Design  WNS: 10.59  TNS: 3097.22  Number of Violating Paths: 647
+  Design  WNS: 15.08  TNS: 10669.55  Number of Violating Paths: 2140
 
 
-  Design (Hold)  WNS: 325.91  TNS: 33294.21  Number of Violating Paths: 3083
+  Design (Hold)  WNS: 5422.57  TNS: 980399.94  Number of Violating Paths: 17166
 
   --------------------------------------------------------------------
 

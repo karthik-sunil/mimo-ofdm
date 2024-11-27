@@ -4,7 +4,7 @@ Report : net fanout
         -high_fanout
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Nov 20 14:28:21 2024
+Date   : Tue Nov 26 18:56:38 2024
 ****************************************
 
 
@@ -13,7 +13,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-fft_N_rad2             140000            saed32rvt_tt1p05v25c
+fft_N_rad2             280000            saed32rvt_tt1p05v25c
 
 
 Attributes:
@@ -28,6 +28,5 @@ Attributes:
 
 Net                 Fanout   Attributes   Capacitance   Driver
 --------------------------------------------------------------------------------
-clk                   3159   dr, h        1001029.88    clk
-n13499                 512                  758.97      U11015/Y
+clk                  17245   dr, h        1001037.69    clk
 1
