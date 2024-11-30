@@ -42,7 +42,7 @@ end
 always @(negedge clk) begin
     if (enable) begin
         for(int i=0; i<NUM_STAGES; i++) begin
-            $display("%0d, %0d", twiddle_pointers[i], twiddle_factors_real[twiddle_pointers[i]], twiddle_factors_imag[twiddle_pointers[i]]);
+            $display("%0d, %0d", i, twiddle_factors_real[twiddle_pointers[i]], twiddle_factors_imag[twiddle_pointers[i]]);
         end
         $display("--------------------");
     end
@@ -59,7 +59,8 @@ initial begin
         @(negedge clk);
     end
 
-    #100;
+    // #100;
+    #10;
     $finish;
 end
 

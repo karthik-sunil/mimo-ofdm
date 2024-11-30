@@ -87,11 +87,8 @@ always @(negedge clk) begin
         if(out_valid) begin
         // if(1) begin
             if(~$isunknown(out_valid)) begin 
-            //  if(1) begin 
                 for (int j=0; j<N; j++) begin
-                    // $fdisplay(f_out,"%d, %d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid, ~dut.downsample_counter[0]);
                     $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
-
                 end
             end
         end
