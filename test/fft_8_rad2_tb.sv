@@ -3,7 +3,7 @@
 
 module fft_8_rad2_tb();
 
-parameter N = 256;
+parameter N = 8;
 parameter CLOCK_PERIOD = 10;
 
 // code changes to incorporate for LUT based twiddle factors
@@ -73,7 +73,7 @@ initial begin
             $fscanf(twiddle_file, "%b,%b", 
                     W_R_STAGE[stage][butterfly], 
                     W_I_STAGE[stage][butterfly]);
-            $display("W_R_STAGE[%d][%d]= %d, W_R_STAGE[%d][%d]= %d", stage, butterfly, W_R_STAGE[stage][butterfly] , stage, butterfly, W_I_STAGE[stage][butterfly]);
+            $display("W_R_STAGE[%d][%d]= %d, W_I_STAGE[%d][%d]= %d", stage, butterfly, W_R_STAGE[stage][butterfly] , stage, butterfly, W_I_STAGE[stage][butterfly]);
         end
     end
 
@@ -85,7 +85,7 @@ always @(negedge clk) begin
     if(enable) cycle_count++;
     // $fdisplay(f_out,"--------------------");
         if(out_valid) begin
-        // if(1) begin
+            // $display("%d", dut.twiddle_pointers[0]);
             if(~$isunknown(out_valid)) begin 
                 for (int j=0; j<N; j++) begin
                     $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
