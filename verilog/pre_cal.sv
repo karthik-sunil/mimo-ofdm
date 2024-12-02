@@ -1,3 +1,4 @@
+`include "matmul.sv"
 module pre_cal(
     input logic clk,
     input logic reset,
@@ -26,9 +27,8 @@ always_comb begin
 end
 // get H^H
 
-matmul #(
-    .clk(clk),
-    .reset(reset),
+matmul m1(
+
     .a(H_hermitian),
     .b(H_matrix),
     .out(A_mul)
@@ -37,7 +37,7 @@ always_comb begin
     for(int i=0; i<4;i++)begin
         for(int j=0;j<4;j++)begin
 
-            if(i=j) begin
+            if(i==j) begin
                 A_add[i][j]=snr;
             end else begin
                 A_add[i][j]=0;
@@ -52,7 +52,7 @@ end
 always_comb begin
     for (int i=0;i<4;i++)begin
         for(int j=0;j<4;j++)begin
-            if(i=0)begin
+            if(i==0)begin
                 matrix_sig[i][j]=signal_receive[j];
             end else begin
                 matrix_sig[i][j]=0;
@@ -61,9 +61,8 @@ always_comb begin
     end
 end
 
-matmul #(
-    .clk(clk),
-    .reset(reset),
+matmul m2(
+
     .a(H_hermitian),
     .b(matrix_sig),
     .out(matrix_b)
