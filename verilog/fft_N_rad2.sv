@@ -51,10 +51,16 @@ generate
                 `include "verilog/mem/twiddle_256_rad2.sv"     
             end
         512 : begin
-            // `include "twiddle_512_rad2.sv"
+                `include "verilog/mem/twiddle_512_rad2.sv"
             end
         1024 : begin
-            // `include "twiddle_1024_rad2.sv"
+                `include "verilog/mem/twiddle_1024_rad2.sv"
+            end
+        2048 : begin
+                `include "verilog/mem/twiddle_2048_rad2.sv"
+            end
+        4096 : begin
+                `include "verilog/mem/twiddle_4096_rad2.sv"
             end
         endcase
 endgenerate
@@ -208,7 +214,6 @@ input_reorder #(
 ====================================================
 */
 
-// logic [$clog2(N)-2:0] output_select_counter;
 logic output_select;
 
 always_ff @(posedge clk) begin
