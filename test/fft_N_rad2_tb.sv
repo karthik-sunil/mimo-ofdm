@@ -12,20 +12,25 @@ parameter DEBUG_FLAG = 1;
 parameter NUM_STAGES = $clog2(N);
 parameter NUM_BUTTERFLIES = N/2; //no of butterflies to be put per stage
 
-string INPUT_FILE = "./dat/modulated.txt";
-string OUTPUT_FILE = $sformatf("./out/fft_out/fft%0d_rad2.out",N);
+string INPUT_FILE_1 = "./dat/inputsine.txt";
+string INPUT_FILE_2 = "./dat/modulated.txt";
+string OUTPUT_FILE_1 = $sformatf("./out/fft_out/out_0/input_0_fft%0d_rad2.out",N);
+string OUTPUT_FILE_2 = $sformatf("./out/fft_out/out_1/input_1_fft%0d_rad2.out",N);
 
 logic clk;
 logic reset;
 logic enable;
 
-complex_product_t data_in;
+complex_product_t data_in_0;
+complex_product_t data_in_1;
+
 complex_product_t fft_out [N-1:0];
 logic out_valid;
+logic output_mode;
 
 integer cycle_count;
 
-integer input_file;
+integer input_file_1, input_file_2;
 integer input_values[7:0][1:0];  // 8 pairs of values from the file - need to think of a beter way to do this
 integer input_index;
 
@@ -35,8 +40,10 @@ fft_N_rad2 #(
     .clk(clk),
     .reset(reset),
     .enable(enable),
-    .data_in(data_in),
+    .data_in_0(data_in_0),
+    .data_in_1(data_in_1),
     .fft_out(fft_out),
+    .output_mode(output_mode),
     .out_valid(out_valid)
 );
 
@@ -46,12 +53,18 @@ always begin
 end
 
 always @(negedge clk) begin
-   integer f_out = $fopen(OUTPUT_FILE, "w");
+   integer f_out_1 = $fopen(OUTPUT_FILE_1, "w");
+   integer f_out_2 = $fopen(OUTPUT_FILE_2, "w");
    if(enable) cycle_count++;
        if(out_valid) begin
            if(~$isunknown(out_valid)) begin 
                for (int j=0; j<N; j++) begin
-                   $fdisplay(f_out,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+                    if(~output_mode) begin
+                        $fdisplay(f_out_1,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+                    end
+                    else begin
+                        $fdisplay(f_out_2,"%d, %d, %d",fft_out[j].r,fft_out[j].i,out_valid);
+                    end
                end
            end
        end
@@ -68,21 +81,25 @@ initial begin
     @(negedge clk);
     
     //reading the sine value file
-    input_file = $fopen(INPUT_FILE, "r");
-    if (input_file == 0) begin
-        $display("Error opening input file.");
+    input_file_1 = $fopen(INPUT_FILE_1, "r");
+    input_file_2 = $fopen(INPUT_FILE_2, "r");
+
+    if (input_file_1 == 0 || input_file_2 == 0) begin
+        $display("Error opening one or more input file(s).");
         $finish;
     end
 
     reset = 0;
     enable = 1;
 
-    while(!$feof(input_file)) begin
-        $fscanf(input_file, "%d,%d", data_in.r, data_in.i);
+    while(!$feof(input_file_1) && !$feof(input_file_2)) begin
+        $fscanf(input_file_1, "%d,%d", data_in_0.r, data_in_0.i);
+        $fscanf(input_file_2, "%d,%d", data_in_1.r, data_in_1.i);
         @(negedge clk);
     end
 
-    $fclose(input_file);
+    $fclose(input_file_1);
+    $fclose(input_file_2);
 
     repeat(N*2) begin
         @(negedge clk);

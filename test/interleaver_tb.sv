@@ -1,6 +1,6 @@
 `include "verilog/headers.svh"
 
-module input_folding_tb();
+module interleaver_tb();
 
 parameter N = 8;
 
@@ -8,20 +8,22 @@ logic clk;
 logic reset;
 logic enable;
 
-complex_product_t data_in;
+complex_product_t x0;
+complex_product_t x1;
 
 complex_product_t data_out_0;
 complex_product_t data_out_1;
 
 logic out_valid;
 
-input_folding #(
+interleaver #(
     .N(N)
 ) dut (
     .clk(clk),
     .reset(reset),
     .enable(enable),
-    .data_in(data_in),
+    .x0(x0),
+    .x1(x1),
     .data_out_0(data_out_0),
     .data_out_1(data_out_1),
     .out_valid(out_valid)
@@ -47,7 +49,10 @@ initial begin
     enable = 1;
 
     for (int i = 0; i < 128; i++) begin
-        data_in.r = i;
+        x0.r = i;
+        x0.i = 0;
+        x1.r = i + 100;
+        x1.i = 0;
         @(negedge clk);
     end
 

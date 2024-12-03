@@ -7,9 +7,11 @@ module fft_N_rad2 #(
     input logic reset,
     input logic enable,
 
-    input complex_product_t data_in,
+    input complex_product_t data_in_0,
+    input complex_product_t data_in_1,
 
     output complex_product_t fft_out [N-1:0],
+    output logic output_mode,
     output logic out_valid
 );
 
@@ -54,9 +56,6 @@ generate
         1024 : begin
             // `include "twiddle_1024_rad2.sv"
             end
-        2048 : begin
-            // `include "twiddle_2048_rad2.sv"
-            end
         endcase
 endgenerate
 
@@ -67,36 +66,28 @@ endgenerate
 ================================================
 */
 
-logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
+// logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
 logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_pointers [NUM_STAGES-1:0];
 logic twiddle_pointers_out_valid [NUM_STAGES-1:0];
 
-always_ff @(posedge clk) begin
-    if (reset | ~enable) begin
-        twiddle_counter <= 0;
-    end 
-    else begin
-        twiddle_counter <= twiddle_counter + 1;
-    end
-end
-
 /*
-================================================
-||               INPUT FOLDING                ||
-================================================
+====================================================
+||               INPUT INTERLEAVER                ||
+====================================================
 */
 
 complex_product_t data_0;
 complex_product_t data_1;
 logic input_folding_out_valid;
 
-input_folding #(
+interleaver #(
     .N(N)
-) input_folding_inst (
+) interleaver_inst (
     .clk(clk),
     .reset(reset),
     .enable(enable),
-    .data_in(data_in),
+    .x0(data_in_0),
+    .x1(data_in_1),
     .data_out_0(data_0),
     .data_out_1(data_1),
     .out_valid(input_folding_out_valid)
@@ -213,20 +204,19 @@ input_reorder #(
 
 /*
 ====================================================
-||              OUTPUT DOWNSAMPLING               ||
+||                 OUTPUT SELECT                  ||
 ====================================================
 */
 
-logic downsample_counter;
-logic downsample_flag;
+// logic [$clog2(N)-2:0] output_select_counter;
+logic output_select;
+
 always_ff @(posedge clk) begin
     if (reset) begin
-        downsample_counter <= 0;
+        output_select <= 0;
     end 
     else begin
-        if(bit_reverse_out_valid) begin
-            downsample_counter <= downsample_counter + 1;
-        end
+        output_select <= (bit_reverse_out_valid)? ~output_select : output_select;
     end
 end
 
@@ -237,6 +227,7 @@ end
 */
 
 assign fft_out =  bit_corrected_output_buffer;
-assign out_valid = bit_reverse_out_valid & ~downsample_counter;
+assign out_valid = bit_reverse_out_valid;
+assign output_mode = output_select;
 
 endmodule

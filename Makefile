@@ -86,7 +86,7 @@ all:	simv
 
 HEADERS = verilog/headers.svh
 TESTBENCH = test/fft_N_rad2_tb.sv
-SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv
+SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
 SYNFILES = src/fft_N_rad2.sv src/butterfly.sv  src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv
 
 # HEADERS = verilog/headers.svh
@@ -113,6 +113,10 @@ SYNFILES = src/fft_N_rad2.sv src/butterfly.sv  src/delay_commutator.sv src/delay
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/input_folding_tb.sv
 # SIMFILES = verilog/input_folding.sv verilog/delay.sv
+
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/interleaver_tb.sv
+# SIMFILES = verilog/interleaver.sv verilog/input_folding.sv verilog/delay.sv
 
 
 
