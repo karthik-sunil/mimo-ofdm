@@ -6,8 +6,8 @@ module butterfly(
     input complex_product_t A,
     input complex_product_t B,
 
-    input logic signed [15:0] W_R,
-    input logic signed [15:0] W_I,
+    input logic signed [COEFF_WIDTH-1:0] W_R,
+    input logic signed [COEFF_WIDTH-1:0] W_I,
 
     output complex_product_t X,
     output complex_product_t Y,
@@ -18,6 +18,8 @@ module butterfly(
     complex_product_t X_ff_1, Y_ff_1;
 
     logic out_valid_stage_1, out_valid_stage_2, out_valid_stage_3;
+
+    logic signed [COEFF_WIDTH-1:0] W_R_ff, W_I_ff;
 
     // Complex addition A + B
     assign X_comb.i = A.i + B.i;
@@ -32,11 +34,15 @@ module butterfly(
         if (reset | ~enable) begin
             X_ff_1 <= '0;
             Y_ff_1 <= '0;
+            W_R_ff <= '0;
+            W_I_ff <= '0;
             out_valid_stage_1 <= 0;
         end else begin
             X_ff_1 <= X_comb;
             Y_ff_1 <= Y_comb;
-            out_valid_stage_1 <= 1'b1;
+            W_R_ff <= W_R;
+            W_I_ff <= W_I;
+            out_valid_stage_1 <= enable;
         end
     end
 
@@ -48,10 +54,15 @@ module butterfly(
     logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_ri, Y_Wout_ri_ff;
     logic signed [COMPLEX_PRODUCT_WIDTH-1:0] Y_Wout_ir, Y_Wout_ir_ff;
 
-    assign Y_Wout_rr = Y_ff_1.r * W_R;
-    assign Y_Wout_ii = Y_ff_1.i * W_I;
-    assign Y_Wout_ri = Y_ff_1.r * W_I;
-    assign Y_Wout_ir = Y_ff_1.i * W_R;
+    assign Y_Wout_rr = Y_ff_1.r * W_R_ff;
+    assign Y_Wout_ii = Y_ff_1.i * W_I_ff;
+    assign Y_Wout_ri = Y_ff_1.r * W_I_ff;
+    assign Y_Wout_ir = Y_ff_1.i * W_R_ff;
+
+    // assign Y_Wout_rr = Y_ff_1.r * W_R;
+    // assign Y_Wout_ii = Y_ff_1.i * W_I;
+    // assign Y_Wout_ri = Y_ff_1.r * W_I;
+    // assign Y_Wout_ir = Y_ff_1.i * W_R;
 
     always_ff @(posedge clk) begin
         if(reset | ~out_valid_stage_1) begin
@@ -68,7 +79,7 @@ module butterfly(
             Y_Wout_ii_ff <= Y_Wout_ii;
             Y_Wout_ri_ff <= Y_Wout_ri;
             Y_Wout_ir_ff <= Y_Wout_ir;
-            out_valid_stage_2 <= 1'b1;
+            out_valid_stage_2 <= out_valid_stage_1;
         end
     end
 
@@ -87,9 +98,9 @@ module butterfly(
             out_valid_stage_3 <= 0;
         end else begin
             X_ff_3 <= X_ff_2;
-            Y_ff_3.r <= Y_Wout.r;
-            Y_ff_3.i <= Y_Wout.i;
-            out_valid_stage_3 <= 1'b1;
+            Y_ff_3.r <= Y_Wout.r >>> R;
+            Y_ff_3.i <= Y_Wout.i >>> R;
+            out_valid_stage_3 <= out_valid_stage_2;
         end
     end
 
@@ -100,9 +111,10 @@ module butterfly(
                 (X_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : X_ff_3.i;
    
    assign Y.r = (Y_ff_3.r > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.r  >>> R;
+                (Y_ff_3.r < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.r;
    assign Y.i = (Y_ff_3.i > FIXED_POINT_MAX) ? FIXED_POINT_MAX : 
-                (Y_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.i >>> R;
+                (Y_ff_3.i < FIXED_POINT_MIN) ? FIXED_POINT_MIN : Y_ff_3.i;
+
 
    assign out_valid = out_valid_stage_3;   
 

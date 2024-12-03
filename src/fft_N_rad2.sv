@@ -1,4 +1,5 @@
 module fft_N_rad2 #(
+    // parameter N = 8,
     parameter NUM_STAGES = $clog2(N),
     parameter NUM_BUTTERFLIES = N / 2
 )(
@@ -6,11 +7,7 @@ module fft_N_rad2 #(
     input logic reset,
     input logic enable,
 
-    // use 1 input instead
     input complex_product_t data_in,
-
-    input logic signed [COEFF_WIDTH-1:0] W_R_STAGE [NUM_STAGES][NUM_BUTTERFLIES], // real twiddle driven dynamically from TB
-    input logic signed [COEFF_WIDTH-1:0] W_I_STAGE [NUM_STAGES][NUM_BUTTERFLIES],// img twiddle driven dynamically from TB
 
     output complex_product_t fft_out [N-1:0],
     output logic out_valid
@@ -18,12 +15,61 @@ module fft_N_rad2 #(
 
 /*
 ================================================
+||              TWIDDLE MEMORY                ||
+================================================
+*/
+
+logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [(N/2-1):0];
+logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [(N/2-1):0];
+
+logic signed [COEFF_WIDTH-1:0] W_R_FINAL;
+logic signed [COEFF_WIDTH-1:0] W_I_FINAL;
+
+assign W_R_FINAL = W_R_STAGE_LUT[0];
+assign W_I_FINAL = W_I_STAGE_LUT[0];
+
+generate
+    case(N)
+        8 : begin                                         
+                `include "verilog/mem/twiddle_8_rad2.sv"    
+            end
+        16 : begin
+                `include "verilog/mem/twiddle_16_rad2.sv"    
+            end
+        32 : begin
+                `include "verilog/mem/twiddle_32_rad2.sv"     
+            end
+        64 : begin
+                `include "verilog/mem/twiddle_64_rad2.sv"     
+            end
+        128 : begin
+                `include "verilog/mem/twiddle_128_rad2.sv"     
+            end
+        256 : begin
+                `include "verilog/mem/twiddle_256_rad2.sv"     
+            end
+        512 : begin
+            // `include "twiddle_512_rad2.sv"
+            end
+        1024 : begin
+            // `include "twiddle_1024_rad2.sv"
+            end
+        2048 : begin
+            // `include "twiddle_2048_rad2.sv"
+            end
+        endcase
+endgenerate
+
+
+/*
+================================================
 ||           TWIDDLE CONTROL LOGIC            ||
 ================================================
 */
 
-
 logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_counter;
+logic [$clog2(NUM_BUTTERFLIES)-1:0] twiddle_pointers [NUM_STAGES-1:0];
+logic twiddle_pointers_out_valid [NUM_STAGES-1:0];
 
 always_ff @(posedge clk) begin
     if (reset | ~enable) begin
@@ -56,6 +102,7 @@ input_folding #(
     .out_valid(input_folding_out_valid)
 );
 
+logic deserializer_out_valid_delayed;
 
 /*
 ================================================
@@ -72,6 +119,17 @@ logic [NUM_STAGES-2:0] dc_out_valid;
 genvar i;
 generate
     for (i =0; i<NUM_STAGES-1; i++) begin
+        twiddle_control_pointer #(
+            .N(N),
+            .STEP(1<<i)
+        ) twiddle_control_pointer_inst (
+            .clk(clk),
+            .reset(reset),
+            .enable((i == 0) ? input_folding_out_valid : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
+            .pointer(twiddle_pointers[i]),
+            .out_valid(twiddle_pointers_out_valid[i])
+        ); 
+
         // Butterfly
         butterfly butterfly_inst(
             .clk(clk),
@@ -79,8 +137,8 @@ generate
             .enable((i == 0) ? input_folding_out_valid : dc_out_valid[i-1]), // if i == 0, enable, else previous out_valid
             .A((i == 0)? data_0 : butterfly_x_reordered_dc[i-1]), // if i == 0, data_0, else previous X
             .B((i == 0)? data_1 : butterfly_y_reordered_dc[i-1]), // if i == 0, data_1, else previous Y
-            .W_R(W_R_STAGE[i][twiddle_counter]), // real twiddle
-            .W_I(W_I_STAGE[i][twiddle_counter]), // img twiddle
+            .W_R(W_R_STAGE_LUT[twiddle_pointers[i]]), // real twiddle
+            .W_I(W_I_STAGE_LUT[twiddle_pointers[i]]), // img twiddle
             .X(butterfly_x[i]), 
             .Y(butterfly_y[i]), 
             .out_valid(butterfly_out_valid[i]) 
@@ -109,8 +167,8 @@ butterfly butterfly_final(
     .enable(dc_out_valid[NUM_STAGES-2]),
     .A(butterfly_x_reordered_dc[NUM_STAGES-2]),
     .B(butterfly_y_reordered_dc[NUM_STAGES-2]),
-    .W_R(W_R_STAGE[NUM_STAGES-1][twiddle_counter]),
-    .W_I(W_I_STAGE[NUM_STAGES-1][twiddle_counter]),
+    .W_R(W_R_FINAL),
+    .W_I(W_I_FINAL),
     .X(butterfly_x[NUM_STAGES-1]),
     .Y(butterfly_y[NUM_STAGES-1]),
     .out_valid(butterfly_out_valid[NUM_STAGES-1])
@@ -154,21 +212,31 @@ input_reorder #(
 );
 
 /*
+====================================================
+||              OUTPUT DOWNSAMPLING               ||
+====================================================
+*/
+
+logic downsample_counter;
+logic downsample_flag;
+always_ff @(posedge clk) begin
+    if (reset) begin
+        downsample_counter <= 0;
+    end 
+    else begin
+        if(bit_reverse_out_valid) begin
+            downsample_counter <= downsample_counter + 1;
+        end
+    end
+end
+
+/*
 ==================================================
 ||              OUTPUT ASSIGNMENT               ||
 ==================================================
 */
 
-assign fft_out = bit_corrected_output_buffer;
-assign out_valid = bit_reverse_out_valid;
-
-/*
-================================================
-||              TWIDDLE MEMORY                ||
-================================================
-*/
-
-logic signed [COEFF_WIDTH-1:0] W_R_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
-logic signed [COEFF_WIDTH-1:0] W_I_STAGE_LUT [$clog2(N)-1][NUM_STAGES][NUM_BUTTERFLIES];
+assign fft_out =  bit_corrected_output_buffer;
+assign out_valid = bit_reverse_out_valid & ~downsample_counter;
 
 endmodule

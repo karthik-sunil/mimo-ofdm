@@ -12,11 +12,6 @@ module input_folding #(
     output logic out_valid
 );
 
-// Delay data_in by N/2 cycles
-// When out_valid of delay is 1, data_out_0 and data_out_1 are valid
-// data_0 = delayed(data_in, N/2)
-// data_1 = data_in
-
 complex_product_t data_in_delayed;
 logic out_valid_delayed;
 logic switch_enable;
@@ -33,8 +28,26 @@ delay #(
     .switch_enable()
 );    
 
-assign data_out_0 = data_in_delayed;
-assign data_out_1 = data_in;
-assign out_valid = out_valid_delayed;
+complex_product_t data_in_ff; 
+complex_product_t data_in_delayed_ff; 
+logic out_valid_delayed_ff; 
+
+always_ff @(posedge clk) begin
+    if (reset | ~enable) begin
+        data_in_delayed_ff <= '0;
+        data_in_ff <= '0;
+        out_valid_delayed_ff <= 0;
+    end 
+    else begin
+        data_in_delayed_ff <= data_in_delayed;
+        data_in_ff <= data_in;
+        out_valid_delayed_ff <= out_valid_delayed;
+    end
+end
+
+assign data_out_0 = data_in_delayed_ff;
+assign data_out_1 = data_in_ff;
+assign out_valid = out_valid_delayed_ff;
+
 
 endmodule

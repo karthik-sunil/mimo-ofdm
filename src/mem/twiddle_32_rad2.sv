@@ -1,0 +1,16 @@
+assign W_R_STAGE_LUT[0]  =  16'd256;  assign W_I_STAGE_LUT[0]  =   16'd0;
+assign W_R_STAGE_LUT[1]  =  16'd251;  assign W_I_STAGE_LUT[1]  =  -16'd50;
+assign W_R_STAGE_LUT[2]  =  16'd237;  assign W_I_STAGE_LUT[2]  =  -16'd98;
+assign W_R_STAGE_LUT[3]  =  16'd213;  assign W_I_STAGE_LUT[3]  = -16'd142;
+assign W_R_STAGE_LUT[4]  =  16'd181;  assign W_I_STAGE_LUT[4]  = -16'd181;
+assign W_R_STAGE_LUT[5]  =  16'd142;  assign W_I_STAGE_LUT[5]  = -16'd213;
+assign W_R_STAGE_LUT[6]  =   16'd98;  assign W_I_STAGE_LUT[6]  = -16'd237;
+assign W_R_STAGE_LUT[7]  =   16'd50;  assign W_I_STAGE_LUT[7]  = -16'd251;
+assign W_R_STAGE_LUT[8]  =    16'd0;  assign W_I_STAGE_LUT[8]  = -16'd256;
+assign W_R_STAGE_LUT[9]  =  -16'd50;  assign W_I_STAGE_LUT[9]  = -16'd251;
+assign W_R_STAGE_LUT[10] =  -16'd98;  assign W_I_STAGE_LUT[10] = -16'd237;
+assign W_R_STAGE_LUT[11] = -16'd142;  assign W_I_STAGE_LUT[11] = -16'd213;
+assign W_R_STAGE_LUT[12] = -16'd181;  assign W_I_STAGE_LUT[12] = -16'd181;
+assign W_R_STAGE_LUT[13] = -16'd213;  assign W_I_STAGE_LUT[13] = -16'd142;
+assign W_R_STAGE_LUT[14] = -16'd237;  assign W_I_STAGE_LUT[14] =  -16'd98;
+assign W_R_STAGE_LUT[15] = -16'd251;  assign W_I_STAGE_LUT[15] =  -16'd50;

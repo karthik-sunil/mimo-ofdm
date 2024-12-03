@@ -20,11 +20,6 @@ parameter signed FIXED_POINT_MAX = 2**(FIXED_POINT_WIDTH-1)-1;
 
 parameter CLOCK_PERIOD = 10;
 
-// //fixed-point params
-// parameter FIXED_INT_BITS = 16; 
-// parameter FIXED_FRAC_BITS = 16;
-// parameter FIXED_WIDTH = FIXED_INT_BITS + FIXED_FRAC_BITS; // 16 for now- Total fixed pt width
-
 typedef struct packed {
     logic signed [COMPLEX_WIDTH-1:0] r;
     logic signed [COMPLEX_WIDTH-1:0] i;

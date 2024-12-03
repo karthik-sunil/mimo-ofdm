@@ -11,11 +11,14 @@ logic reset;
 
 // Vector of enables 
 logic [NUM_STAGES-1:0] enable;
-logic [NUM_STAGES:0] twiddle_pointers [COUNTER_SIZE-1:0];
+logic [NUM_STAGES-1:0] twiddle_pointers [COUNTER_SIZE-1:0];
+
+
+assign twiddle_pointers [NUM_STAGES-1] = 0;
 
 genvar i;
 generate
-    for (i=0; i<NUM_STAGES-1; i++) begin 
+    for (i=0; i<NUM_STAGES; i++) begin 
         twiddle_control_pointer #(
             .N(N),
             .STEP(1<<i)
@@ -37,7 +40,7 @@ always @(negedge clk) begin
         for(int i=0; i<NUM_STAGES-1; i++) begin
             $display("%0d, %0d, %b", i, twiddle_pointers[i], enable);
         end
-        $display("final_pointer: %0d", twiddle_pointers[NUM_STAGES-2]);
+        $display("final_pointer: %0d", 0);
 end
 
 initial begin

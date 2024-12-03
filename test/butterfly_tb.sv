@@ -9,6 +9,9 @@ logic enable;
 complex_product_t A;
 complex_product_t B;
 
+logic signed [COEFF_WIDTH-1:0] W_R;
+logic signed [COEFF_WIDTH-1:0] W_I;
+
 complex_product_t X;
 complex_product_t Y;
 
@@ -22,8 +25,8 @@ butterfly dut (
     .enable(enable),
     .A(A),
     .B(B),
-    .W_R(-181),
-    .W_I(-181),
+    .W_R(W_R),
+    .W_I(W_I),
     .X(X),
     .Y(Y),
     .out_valid(out_valid)
@@ -55,14 +58,46 @@ initial begin
     //     $display("A.r=%h, A.i=%h, B.r=%h, B.i=%h, X.r=%h, X.i=%h, Y.r=%h, Y.i=%h, out_valid=%h", A.r, A.i, B.r, B.i, X.r, X.i, Y.r, Y.i, out_valid);
     // end
 
-    for (int i = 0; i < 4; i++) begin
-        A.r = A_r_values[i];
-        A.i = 0;
-        B.r = B_r_values[i];
-        B.i = 0;
-        @(negedge clk);
-        $display("A.r=%d, A.i=%d, B.r=%d, B.i=%d, X.r=%d, X.i=%d, Y.r=%d, Y.i=%d, out_valid=%d", A.r, A.i, B.r, B.i, X.r, X.i, Y.r, Y.i, out_valid);
-    end    
+    A.r = 256; 
+    A.i = 0;
+
+    B.r = 0;
+    B.i = 0;
+
+    W_R = 256;
+    W_I = -13;
+
+    @(negedge clk);
+
+    A.r = 256; 
+    A.i = 0;
+
+    B.r = 0;
+    B.i = 0;
+
+    W_R = 256;
+    W_I = -13;
+
+    @(negedge clk);
+
+    A.r = 256; 
+    A.i = 0;
+
+    B.r = 0;
+    B.i = 0;
+
+    W_R = 255;
+    W_I = -25;
+
+
+    // for (int i = 0; i < 4; i++) begin
+    //     A.r = A_r_values[i];
+    //     A.i = 0;
+    //     B.r = B_r_values[i];
+    //     B.i = 0;
+    //     @(negedge clk);
+    //     $display("A.r=%d, A.i=%d, B.r=%d, B.i=%d, X.r=%d, X.i=%d, Y.r=%d, Y.i=%d, out_valid=%d", A.r, A.i, B.r, B.i, X.r, X.i, Y.r, Y.i, out_valid);
+    // end    
 
     #100;
     $finish;
