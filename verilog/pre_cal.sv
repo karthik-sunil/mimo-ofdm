@@ -2,20 +2,20 @@
 module pre_cal(
     input logic clk,
     input logic reset,
-    input logic [31:0] H_matrix[0:3][0:3],
-    input logic [31:0] signal_receive[0:3],
-    input logic [31:0] snr,
+    input logic signed [31:0] H_matrix[0:3][0:3],
+    input logic signed [31:0] signal_receive[0:3],
+    input logic signed [31:0] snr,
 
-    output logic [31:0] matrix_A [0:3][0:3],
-    output logic [31:0] vector_b [0:3]
+    output logic signed [31:0] matrix_A [0:3][0:3],
+    output logic signed [31:0] vector_b [0:3]
     
 );
 
-logic [31:0] H_hermitian [0:3][0:3];
-logic [31:0] A_add [0:3][0:3];
-logic [31:0] A_mul [0:3][0:3];
-logic [31:0] matrix_sig [0:3][0:3];
-logic [31:0] matrix_b [0:3][0:3];
+logic signed [31:0] H_hermitian [0:3][0:3];
+logic signed [31:0] A_add [0:3][0:3];
+logic signed [31:0] A_mul [0:3][0:3];
+logic signed [31:0] matrix_sig [0:3][0:3];
+logic signed [31:0] matrix_b [0:3][0:3];
 
 
 always_comb begin
