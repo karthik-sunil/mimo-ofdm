@@ -10,9 +10,14 @@ module pre_cal(
     output logic signed [31:0] vector_b [0:3]
     
 );
+//registers
+reg [31:0] input_H[0:3][0:3];
+reg [31:0] input_sig[0:3][0:3];
+reg [31:0] input_snr;
+
 
 logic signed [31:0] H_hermitian [0:3][0:3];
-logic signed [31:0] A_add [0:3][0:3];
+logic signed [31:0] A_add ;
 logic signed [31:0] A_mul [0:3][0:3];
 logic signed [31:0] matrix_sig [0:3][0:3];
 logic signed [31:0] matrix_b [0:3][0:3];
@@ -21,7 +26,7 @@ logic signed [31:0] matrix_b [0:3][0:3];
 always_comb begin
     for(int i=0; i<4;i++)begin
         for(int j=0;j<4;j++)begin
-            H_hermitian[i][j]=H_matrix[j][i];
+            H_hermitian[i][j]=input_H[j][i];
         end
     end
 end
@@ -30,7 +35,7 @@ end
 matmul m1(
 
     .a(H_hermitian),
-    .b(H_matrix),
+    .b(input_H),
     .out(A_mul)
 );
 always_comb begin
@@ -38,11 +43,11 @@ always_comb begin
         for(int j=0;j<4;j++)begin
 
             if(i==j) begin
-                A_add[i][j]=snr;
+                matrix_A[i][j]=A_mul[i][j]+input_snr;
             end else begin
-                A_add[i][j]=0;
+                matrix_A[i][j]=A_mul[i][j];
             end
-            matrix_A[i][j]=A_mul[i][j]+A_add[i][j];
+            
             
         end
     end
@@ -53,7 +58,7 @@ always_comb begin
     for (int i=0;i<4;i++)begin
         for(int j=0;j<4;j++)begin
             if(i==0)begin
-                matrix_sig[i][j]=signal_receive[j];
+                matrix_sig[i][j]=input_sig[j];
             end else begin
                 matrix_sig[i][j]=0;
             end
@@ -74,6 +79,19 @@ always_comb begin
     end
 end
 // get vector B= H^H * r
+
+always_ff @(posedge clock) begin
+    if(reset)begin
+        input_H<=0;
+        input_sig<=0;
+        input_snr<=0;
+    end else begin
+        input_H<=H_matrix;
+        input_sig<=signal_receive;
+        input_snr<=snr;
+    end
+
+end
 
 
 
