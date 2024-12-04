@@ -1,0 +1,49 @@
+verilog/QR_decomp4.sv:21 YES:AsyncFF
+verilog/QR_decomp4.sv:130 YES:AsyncFF
+verilog/fp_add.sv:56 YES:SyncFF
+verilog/fp_add.sv:126 YES:SyncFF
+verilog/fp_add.sv:178 YES:SyncFF
+verilog/fp_mul.sv:45 YES:SyncFF
+verilog/fp_mul.sv:71 YES:SyncFF
+verilog/fp_mul.sv:91 YES:SyncFF
+verilog/givens_matrix.sv:31 YES:SyncFF
+verilog/givens_rotation.sv:26 YES:AsyncFF
+verilog/givens_rotation.sv:94 YES:AsyncFF
+verilog/givens_rotation.sv:119 YES:AsyncFF
+verilog/givens_rotation.sv:144 YES:AsyncFF
+verilog/givens_rotation.sv:168 YES:AsyncFF
+verilog/givens_rotation.sv:193 YES:AsyncFF
+verilog/givens_rotation.sv:220 YES:AsyncFF
+verilog/givens_rotation.sv:233 NO "Process has multiple clocks" 
+verilog/transpose.sv:18 YES:SyncFF
+verilog/inv_sqrt.sv:53 YES:SyncFF
+verilog/delay_fp.sv:18 YES:SyncFF
+verilog/delay_fp.sv:32 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/matmul.sv:94 YES:SyncFF
+verilog/delay_fp.sv:18 YES:SyncFF
+verilog/delay_fp.sv:32 YES:SyncFF
+==================================================
+Unified Inference Statistics
+Number of always_ff:                   38
+Number of always_latch:                0
+Number of always @*:                   0
+Number of always_comb :                2
+Number of always :                     2
+Number of flip-flop candidates:        39
+Number of synchronous flops inferred:  29
+Number of Asynchronous flops inferred: 9

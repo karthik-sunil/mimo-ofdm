@@ -1,0 +1,11 @@
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2023
+Contains Synopsys proprietary information.
+Compiler version V-2023.12-SP2-1_Full64; Runtime version V-2023.12-SP2-1_Full64;  Dec  4 17:38 2024
+$stop at time 10200000 Scope: testbench File: test/testbench.sv Line: 40
+Error: Message for 'CLE-10' has occurred (ERR-3)
+Error: Message for 'CLE-10' has occurred (ERR-3)
+ucli% 
+ucli% 
+ucli% 
