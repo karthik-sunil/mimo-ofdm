@@ -1,4 +1,4 @@
-`include "matmul.sv"
+
 module pre_cal(
     input logic clk,
     input logic reset,
@@ -11,9 +11,9 @@ module pre_cal(
     
 );
 //registers
-reg [31:0] input_H[0:3][0:3];
-reg [31:0] input_sig[0:3][0:3];
-reg [31:0] input_snr;
+logic signed [31:0] input_H[0:3][0:3];
+logic signed [31:0] input_sig[0:3];
+logic signed [31:0] input_snr;
 
 
 logic signed [31:0] H_hermitian [0:3][0:3];
@@ -33,7 +33,8 @@ end
 // get H^H
 
 matmul m1(
-
+    .clk(clk),
+    .reset(reset),
     .a(H_hermitian),
     .b(input_H),
     .out(A_mul)
@@ -67,7 +68,8 @@ always_comb begin
 end
 
 matmul m2(
-
+    .clk(clk),
+    .reset(reset),
     .a(H_hermitian),
     .b(matrix_sig),
     .out(matrix_b)
@@ -80,15 +82,13 @@ always_comb begin
 end
 // get vector B= H^H * r
 
-always_ff @(posedge clock) begin
+always_ff @(posedge clk) begin
     if(reset)begin
-        input_H<=0;
-        input_sig<=0;
-        input_snr<=0;
+
     end else begin
-        input_H<=H_matrix;
-        input_sig<=signal_receive;
-        input_snr<=snr;
+        input_H <= H_matrix;
+        input_sig <= signal_receive;
+        input_snr <= snr;
     end
 
 end

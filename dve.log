@@ -1,0 +1,60 @@
+Error loading vcs/2020.12-SP2-1
+
+To prevent this in the future, Consider changing or unsetting the
+SW_VCS variable.  This variable is likely to have been set in
+the ~/.cshrc or ~/.software files.
+
+Even better, try using environment modules described at
+http://www.engin.umich.edu/caen/software/modules
+In particular, execute these commands to run the default version:
+  module load vcs
+  vcs
+(or use vcs/<version> in the module load command)
+These versions are available (module avail vcs):
+/usr/caen/misc/modules:
+vcs/2017.03-SP1
+vcs/2017.12-SP2-1
+vcs/2020.03-SP1
+vcs/2020.12-SP2-1
+vcs/2022.06
+vcs/2023.12-SP2-1
+
+Would you like to try to run the default version of vcs (y/n)
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+The design hasn't changed and need not be recompiled. 
+If you really want to, delete file /home/tairong/Downloads/mimo-ofdm/dve.daidir/.vcs.timestamp and
+run VCS again.
+
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+logDir = /tmp/vcs_20241204220701_4165733/verdi_12_04_2024_tairong_1259
+
+
+                                   Verdi (R)
+
+              Version V-2023.12-SP2-1 for linux64 - Jul 15, 2024 
+
+                    Copyright (c) 1999 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+rcfile = /home/tairong/Downloads/mimo-ofdm/novas.rc
+guiConfFile (read)= /home/tairong/Downloads/mimo-ofdm/novas.conf (working directory)
+guiConfFile (write)= /home/tairong/Downloads/mimo-ofdm/novas.conf (working directory)
+*WARN* Verdi-Elite (Verdi) license is not available. Try to check out Verdi-Apex (Verdi-Ultra) license.

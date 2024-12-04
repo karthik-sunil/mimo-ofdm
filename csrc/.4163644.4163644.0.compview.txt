@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1733345084.450560942, "rt":3.01, "ut":0.50, "st":0.40}}
+{"vcselab":{"timestamp_begin":1733345087.594612761, "rt":1.49, "ut":0.27, "st":0.17}}
+{"link":{"timestamp_begin":1733345089.157555133, "rt":1.39, "ut":0.22, "st":0.22}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1733345082.860646541}
+{"VCS_COMP_START_TIME": 1733345082.860646541}
+{"VCS_COMP_END_TIME": 1733345213.605977281}
+{"VCS_USER_OPTIONS": "-sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca -debug_access+all+reverse +define+ -timescale=1ns/1ps test/precal_tb.sv verilog/pre_cal.sv verilog/matmul.sv verilog/fp_add.sv verilog/fp_mul.sv -o dve -R -gui -debug_acccess+all -kdb"}
+{"vcs1": {"peak_mem": 558748}}
+{"vcselab": {"peak_mem": 260844}}

@@ -30,7 +30,7 @@ module testbench();
                 for(int j=0;j<4;j++)begin
                     $write(" %d",matrix_A[i][j]);
                 end
-                $write("/n");
+                $write("\n");
             end
             $display("matrix end");
         end
