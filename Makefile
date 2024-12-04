@@ -17,7 +17,7 @@ export MK_COURSE_NAME = EECS598-002
 # export CLOCK_PERIOD = 5.0
 
 # your top-level module name
-export MK_DESIGN_NAME = pre_cal
+export MK_DESIGN_NAME = qr
 
 # CPU core usage, capped at 6
 export MK_USE_NUM_CORES = 4
@@ -85,9 +85,9 @@ all:	simv
 # SIMFILES = verilog/input_reorder.sv
 
 HEADERS = verilog/headers.svh
-TESTBENCH = test/precal_tb.sv
-SIMFILES = verilog/pre_cal.sv verilog/matmul.sv  verilog/fp_add.sv verilog/fp_mul.sv 
-#SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
+TESTBENCH = test/testbench.sv
+SIMFILES = verilog/QR_decomp4.sv verilog/matmul.sv  verilog/fp_add.sv verilog/fp_mul.sv verilog/givens_matrix.sv verilog/givens_rotation.sv verilog/transpose.sv 
+SYNFILES = src/QR_decomp4.sv src/matmul.sv  src/fp_add.sv src/fp_mul.sv src/givens_matrix.sv src/givens_rotation.sv src/transpose.sv
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/twiddle_control_pointer_tb.sv

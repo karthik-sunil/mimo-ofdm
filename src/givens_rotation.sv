@@ -1,6 +1,6 @@
 module givens_rotation (
     input clk,
-    input reset,
+    input reset
     input logic [31:0] a,
     input logic [31:0] b,
     output logic [31:0] cos,

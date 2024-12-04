@@ -1,0 +1,45 @@
+Error loading vcs/2020.12-SP2-1
+
+To prevent this in the future, Consider changing or unsetting the
+SW_VCS variable.  This variable is likely to have been set in
+the ~/.cshrc or ~/.software files.
+
+Even better, try using environment modules described at
+http://www.engin.umich.edu/caen/software/modules
+In particular, execute these commands to run the default version:
+  module load vcs
+  vcs
+(or use vcs/<version> in the module load command)
+These versions are available (module avail vcs):
+/usr/caen/misc/modules:
+vcs/2017.03-SP1
+vcs/2017.12-SP2-1
+vcs/2020.03-SP1
+vcs/2020.12-SP2-1
+vcs/2022.06
+vcs/2023.12-SP2-1
+
+Would you like to try to run the default version of vcs (y/n)
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+Parsing design file 'test/testbench.sv'
+Parsing design file 'verilog/QR_decomp4.sv'
+Parsing design file 'verilog/matmul.sv'
+Parsing design file 'verilog/fp_add.sv'
+Parsing design file 'verilog/fp_mul.sv'
+Parsing design file 'verilog/givens_matrix.sv'
+Parsing design file 'verilog/givens_rotation.sv'
+
+Error-[SE] Syntax error
+  Following verilog source has syntax error :
+  "verilog/givens_rotation.sv", 14: token is 'local'
+      local parameter I_EXP = 8,
+           ^
+  SystemVerilog  keyword 'local' is not expected to be used in this context.
+
+1 warning
+1 error
