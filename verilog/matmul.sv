@@ -94,6 +94,8 @@ module matmul(
                 always_ff @(posedge clk) begin
                     if (out_valid_add_3[i][j]) begin
                         out[i][j] <= sum[i][j];
+                    end else begin 
+                        out[i][j] <= sum[i][j];
                     end
                 end
                 
