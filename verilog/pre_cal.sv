@@ -84,7 +84,9 @@ end
 
 always_ff @(posedge clk) begin
     if(reset)begin
-
+        input_snr<=0;
+        input_sig<=signal_receive;
+        input_H<=H_matrix;
     end else begin
         input_H <= H_matrix;
         input_sig <= signal_receive;
