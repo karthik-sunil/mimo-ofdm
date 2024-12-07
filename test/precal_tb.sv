@@ -10,7 +10,7 @@ module testbench();
     logic [31:0] matrix_A [0:3][0:3];
     logic [31:0] vector_b [0:3];
 
-    pre_cal cal(
+    pre_calfixed cal(
 
         //input
         .clk(clock),
