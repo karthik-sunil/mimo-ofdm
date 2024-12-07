@@ -8,7 +8,7 @@ scaling_factor = 2^8; % scaling
 % filename = 'a_fft64outputsine.txt'; % 64 point
 % filename = 'a_fft128outputsine.txt'; % 128 point
 
-filename = 'check128ptfftout.txt';
+filename = 'inputsine_out_0_fft128_rad2.txt';
 
 
 data = readmatrix(filename); %readinf data
