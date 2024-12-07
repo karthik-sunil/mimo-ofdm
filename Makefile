@@ -17,7 +17,7 @@ export MK_COURSE_NAME = EECS598-002
 # export CLOCK_PERIOD = 5.0
 
 # your top-level module name
-export MK_DESIGN_NAME = givens_rotation
+export MK_DESIGN_NAME = fft_N_rad2
 
 # CPU core usage, capped at 6
 export MK_USE_NUM_CORES = 4
@@ -123,11 +123,13 @@ SYNFILES = src/givens_rotation.sv  src/fp_add.sv  src/fp_mul.sv src/delay_fp.sv 
 # TESTBENCH = test/interleaver_tb.sv
 # SIMFILES = verilog/interleaver.sv verilog/input_folding.sv verilog/delay.sv
 
-# HEADERS = verilog/headers.svh
-# TESTBENCH = test/fft_N_rad2_tb.sv
-# SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
-# SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
+HEADERS = verilog/headers.svh
+TESTBENCH = test/fft_N_rad2_tb.sv
+SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
+SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
 
+SYN_HEADERS = src/headers.svh
+SYN_SIMFILES = syn/fft_N_rad2.mapped.v
 #####
 # Should be no need to modify after here
 #####
@@ -212,6 +214,17 @@ run_all_fft:
 	@$(MAKE) simv HEADERS=verilog/headers.svh \
 		TESTBENCH=test/fft_N_rad2_tb.sv \
 		SIMFILES="verilog/fft_N_rad2.sv verilog/butterfly.sv verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv"
+	@echo "Running FFT simulation..."
+	./simv | tee program.out
+
+gate_sim_fft:
+	clear
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Simulating FFT..."
+	@$(MAKE) simv $(SYN_HEADERS) \
+		TESTBENCH=test/fft_N_rad2_tb.sv \
+		$(SYN_SIMFILES)
 	@echo "Running FFT simulation..."
 	./simv | tee program.out
 
