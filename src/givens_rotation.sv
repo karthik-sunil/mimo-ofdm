@@ -232,7 +232,13 @@ module givens_rotation (  // fully pipelined (I think?)
 
     always @ (posedge clk or posedge reset) begin
         cos <= c_reg;
-        sin <= s_reg | 32'h80000000;
+        if (s_reg[31] == 0) begin
+            sin <= s_reg | 32'h80000000;
+        end
+        else begin
+            sin <= s_reg & 32'h7FFFFFFF;
+        end
+        //sin <= s_reg | 32'h80000000;
     end
 
 
