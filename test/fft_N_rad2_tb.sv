@@ -13,7 +13,7 @@ parameter NUM_STAGES = $clog2(N);
 parameter NUM_BUTTERFLIES = N/2; //no of butterflies to be put per stage
 
 string INPUT_FILE_1 = "./dat/inputsine.txt";
-string INPUT_FILE_2 = "./dat/modulated.txt";
+string INPUT_FILE_2 = "./dat/inputsine.txt";
 string OUTPUT_FILE_1 = $sformatf("./out/fft_out/out_0/input_0_fft%0d_rad2.out",N);
 string OUTPUT_FILE_2 = $sformatf("./out/fft_out/out_1/input_1_fft%0d_rad2.out",N);
 

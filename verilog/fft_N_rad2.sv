@@ -1,5 +1,5 @@
 module fft_N_rad2 #(
-    parameter N = 8,
+    parameter N = 128,
     parameter NUM_STAGES = $clog2(N),
     parameter NUM_BUTTERFLIES = N / 2
 )(
