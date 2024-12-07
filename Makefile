@@ -203,3 +203,38 @@ gate_sim:
 	@$(MAKE) syn_simv
 	@echo "Running simulation..."
 	./syn_simv | tee syn_program.out
+
+run_all_fft:
+	clear
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Simulating FFT..."
+	@$(MAKE) simv HEADERS=verilog/headers.svh \
+		TESTBENCH=test/fft_N_rad2_tb.sv \
+		SIMFILES="verilog/fft_N_rad2.sv verilog/butterfly.sv verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv"
+	@echo "Running FFT simulation..."
+	./simv | tee program.out
+
+run_all_precalc:
+	clear
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Simulating Precalc..."
+	@$(MAKE) simv HEADERS=verilog/headers.svh \
+		TESTBENCH=test/precal_tb.sv \
+		SIMFILES="verilog/pre_calfixed.sv verilog/matmulfixed.sv" \
+		SYNFILES="src/givens_rotation.sv src/fp_add.sv src/fp_mul.sv src/delay_fp.sv src/inv_sqrt.sv"
+	@echo "Running Precalc simulation..."
+	./simv | tee program.out
+
+run_all_qr:
+	clear
+	@echo "Cleaning..."
+	@$(MAKE) clean
+	@echo "Simulating QR..."
+	@$(MAKE) simv HEADERS=verilog/headers.svh \
+		TESTBENCH=test/testbench.sv \
+		SIMFILES="verilog/QR_decomp4.sv verilog/matmul.sv verilog/fp_add.sv verilog/fp_mul.sv verilog/givens_matrix.sv verilog/givens_rotation.sv verilog/transpose.sv verilog/inv_sqrt.sv verilog/delay_fp.sv" \
+		SYNFILES="src/QR_decomp4.sv src/matmul.sv src/fp_add.sv src/fp_mul.sv src/givens_matrix.sv src/givens_rotation.sv src/transpose.sv src/inv_sqrt.sv src/delay_fp.sv"
+	@echo "Running QR simulation..."
+	./simv | tee program.out
