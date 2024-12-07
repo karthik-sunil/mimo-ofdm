@@ -88,14 +88,11 @@ all:	simv
 # TESTBENCH = test/testbench.sv
 # SIMFILES = verilog/QR_decomp4.sv verilog/matmul.sv  verilog/fp_add.sv verilog/fp_mul.sv verilog/givens_matrix.sv verilog/givens_rotation.sv verilog/transpose.sv verilog/inv_sqrt.sv verilog/delay_fp.sv
 # SYNFILES = src/QR_decomp4.sv src/matmul.sv  src/fp_add.sv src/fp_mul.sv src/givens_matrix.sv src/givens_rotation.sv src/transpose.sv src/inv_sqrt.sv src/delay_fp.sv
-<<<<<<< HEAD
-=======
 
 HEADERS = verilog/headers.svh
 TESTBENCH = test/precal_tb.sv
 SIMFILES = verilog/pre_calfixed.sv verilog/matmulfixed.sv  
 SYNFILES = src/pre_calfixed.sv src/matmulfixed.sv 
->>>>>>> 64da0979c7d1456b2638fbbea128243a01d80dd7
 
 # HEADERS = verilog/headers.svh
 # TESTBENCH = test/twiddle_control_pointer_tb.sv
@@ -126,10 +123,10 @@ SYNFILES = src/pre_calfixed.sv src/matmulfixed.sv
 # TESTBENCH = test/interleaver_tb.sv
 # SIMFILES = verilog/interleaver.sv verilog/input_folding.sv verilog/delay.sv
 
-HEADERS = verilog/headers.svh
-TESTBENCH = test/fft_N_rad2_tb.sv
-SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
-SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
+# HEADERS = verilog/headers.svh
+# TESTBENCH = test/fft_N_rad2_tb.sv
+# SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
+# SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
 
 #####
 # Should be no need to modify after here
