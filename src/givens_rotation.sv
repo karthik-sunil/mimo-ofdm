@@ -217,7 +217,23 @@ module givens_rotation (  // fully pipelined (I think?)
         .out_valid(s_out_valid)
     );
 
-    always_ff @(posedge clk or posedge reset) begin
+
+
+    always_ff @(posedge clk) begin
+        
+        if (~s_reg[31]) begin
+            sin <= s_reg | 32'h80000000;
+            cos <= c_reg;
+        end
+        else begin
+            sin <= s_reg & 32'h7FFFFFFF;
+            cos <= c_reg;
+        end
+        
+
+    end
+
+    always_ff @(posedge clk) begin
         if (reset) begin
             s_reg <= 0;
             s_out_valid_reg <= 0;
@@ -226,20 +242,9 @@ module givens_rotation (  // fully pipelined (I think?)
             s_reg <= s;
             s_out_valid_reg <= s_out_valid;
         end
+
     end
 
-
-
-    always @ (posedge clk or posedge reset) begin
-        cos <= c_reg;
-        if (s_reg[31] == 0) begin
-            sin <= s_reg | 32'h80000000;
-        end
-        else begin
-            sin <= s_reg & 32'h7FFFFFFF;
-        end
-        //sin <= s_reg | 32'h80000000;
-    end
 
 
 

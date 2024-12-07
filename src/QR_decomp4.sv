@@ -15,10 +15,9 @@ module QR_decomp4(
     // logic [31:0] G_m [0:5][0:3][0:3]; // Givens rotation matrix
     // logic [31:0] G_t [0:5][0:3][0:3]; // Transpose of G matrix
     //logic [31:0] c, s; // Cosine and Sine from Givens rotation
-    logic QR_valid;
 
     // Initialize Q and R matrices
-    always_ff @(posedge clk or posedge reset) begin
+    always_ff @(posedge clk) begin
         if (reset) begin
             // Initialize Q as identity matrix and R as input matrix
             for (int i = 0; i < 4; i++) begin

@@ -1,0 +1,97 @@
+ 
+****************************************
+Report : qor
+Design : matmul
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:48:21 2024
+****************************************
+
+
+  Timing Path Group 'REGIN'
+  -----------------------------------
+  Levels of Logic:               1.00
+  Critical Path Length:          1.55
+  Critical Path Slack:          11.80
+  Critical Path Clk Period:     14.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'core_clk'
+  -----------------------------------
+  Levels of Logic:               6.00
+  Critical Path Length:         70.34
+  Critical Path Slack:         -56.71
+  Critical Path Clk Period:     14.00
+  Total Negative Slack:    -204335.36
+  No. of Violating Paths:    11380.00
+  Worst Hold Violation:      -1368.70
+  Total Hold Violation:   -1525323.25
+  No. of Hold Violations:     1385.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:             206708
+  Buf/Inv Cell Count:           26729
+  Buf Cell Count:                1117
+  Inv Cell Count:               25612
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:    186682
+  Sequential Cell Count:        20026
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:   470617.253000
+  Noncombinational Area:
+                        133738.201210
+  Buf/Inv Area:          38526.705617
+  Total Buffer Area:          2632.42
+  Total Inverter Area:       35894.28
+  Macro/Black Box Area:      0.000000
+  Net Area:             586425.374424
+  -----------------------------------
+  Cell Area:            604355.454210
+  Design Area:         1190780.828634
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:        222713
+  Nets With Violations:          9987
+  Max Trans Violations:          9987
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: vizhub16.dc.umich.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.00
+  Logic Optimization:                  0.00
+  Mapping Optimization:                0.00
+  -----------------------------------------
+  Overall Compile Time:              181.55
+  Overall Compile Wall Clock Time:    63.84
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 56.71  TNS: 204335.36  Number of Violating Paths: 11380
+
+
+  Design (Hold)  WNS: 1368.70  TNS: 1525323.25  Number of Violating Paths: 1385
+
+  --------------------------------------------------------------------
+
+
+1

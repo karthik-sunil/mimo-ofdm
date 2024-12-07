@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : pre_calfixed
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:27:24 2024
+****************************************
+
+Library(s) Used:
+
+    saed32rvt_tt1p05v25c (File: /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db)
+
+Number of ports:                         1314
+Number of nets:                          1280
+Number of cells:                         1280
+Number of combinational cells:            640
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                        640
+Number of references:                       1
+
+Combinational area:                813.260803
+Buf/Inv area:                      813.260803
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:              89.218302
+
+Total cell area:                   813.260803
+Total area:                        902.479105
+1

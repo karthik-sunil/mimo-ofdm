@@ -1,0 +1,39 @@
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : givens_rotation
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 21:28:09 2024
+****************************************
+
+  Clock: core_clk
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      a_reg_array_reg_0__31_/CLK                             0.10      wr-+
+
+  Minimum setup capture latency:
+      a_reg_array_reg_0__31_/CLK                             0.10      wr-+
+
+  Minimum hold launch latency:
+      a_reg_array_reg_0__31_/CLK                             0.10      br-+
+
+  Maximum hold capture latency:
+      a_reg_array_reg_0__31_/CLK                             0.10      br-+
+
+  Maximum active transition:
+      a_reg_array_reg_0__31_/CLK                             0.08      wr-+
+
+  Minimum active transition:
+      a_reg_array_reg_0__31_/CLK                             0.08      wr-+
+
+  Maximum setup skew:
+      a2_b2_exp_diff_ff_reg_0_/CLK                                     wr-+
+      a2_b2_pre_mat_ff_reg_0_/CLK                            0.00      wr-+
+
+  Maximum hold skew:
+      a2_b2_exp_diff_ff_reg_0_/CLK                                     br-+
+      a2_b2_pre_mat_ff_reg_0_/CLK                            0.00      br-+
+----------------------------------------------------------------------------
+
+1

@@ -1,0 +1,70 @@
+ 
+****************************************
+Report : qor
+Design : pre_calfixed
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:27:24 2024
+****************************************
+
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:                640
+  Buf/Inv Cell Count:             640
+  Buf Cell Count:                   0
+  Inv Cell Count:                 640
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       640
+  Sequential Cell Count:            0
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:      813.260803
+  Noncombinational Area:     0.000000
+  Buf/Inv Area:            813.260803
+  Total Buffer Area:             0.00
+  Total Inverter Area:         813.26
+  Macro/Black Box Area:      0.000000
+  Net Area:                 89.218302
+  -----------------------------------
+  Cell Area:               813.260803
+  Design Area:             902.479105
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          1280
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: vizhub16.dc.umich.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.00
+  Logic Optimization:                  0.00
+  Mapping Optimization:                0.00
+  -----------------------------------------
+  Overall Compile Time:                0.54
+  Overall Compile Wall Clock Time:     0.47
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

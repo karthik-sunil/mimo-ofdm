@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : net fanout
+        -high_fanout
+Design : matmul
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:48:21 2024
+****************************************
+
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+matmul                 1000000           saed32rvt_tt1p05v25c
+
+
+Attributes:
+   dr - drc disabled
+    c - annotated capacitance
+    d - dont_touch
+    i - ideal_net
+    I - ideal_network
+    p - includes pin load
+    r - annotated resistance
+    h - high fanout
+
+Net                 Fanout   Attributes   Capacitance   Driver
+--------------------------------------------------------------------------------
+clk                  20026   dr, h        1001056.75    clk
+1

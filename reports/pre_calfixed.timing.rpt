@@ -1,0 +1,18 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 1
+        -transition_time
+Design : pre_calfixed
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:27:24 2024
+****************************************
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+No paths.
+
+1

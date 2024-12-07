@@ -1,0 +1,553 @@
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Fri Dec  6 21:24:56 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     33
+    Shorted outputs (LINT-31)                                      16
+    Constant outputs (LINT-52)                                     17
+
+Cells                                                             148
+    Cells do not drive (LINT-1)                                    16
+    Connected to power or ground (LINT-32)                         34
+    Nets connected to multiple pins on same cell (LINT-33)         98
+
+Nets                                                              217
+    Unloaded nets (LINT-2)                                        217
+--------------------------------------------------------------------------------
+
+Warning: In design 'fp_mul_I_EXP8_I_MNT23_I_DATA32', cell 'B_3' does not drive any nets. (LINT-1)
+Warning: In design 'fp_mul_I_EXP8_I_MNT23_I_DATA32', cell 'B_4' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_9' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_10' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_11' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_12' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_13' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_14' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32', cell 'B_15' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_9' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_10' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_11' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_12' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_13' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_14' does not drive any nets. (LINT-1)
+Warning: In design 'fp_add_I_EXP8_I_MNT23_I_DATA32_ADD_SUB1', cell 'B_15' does not drive any nets. (LINT-1)
+Warning: In design 'givens_rotation', net 'bsq/net1010' driven by pin 'bsq/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1009' driven by pin 'bsq/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1008' driven by pin 'bsq/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1007' driven by pin 'bsq/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1006' driven by pin 'bsq/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1005' driven by pin 'bsq/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1004' driven by pin 'bsq/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1003' driven by pin 'bsq/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1002' driven by pin 'bsq/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1001' driven by pin 'bsq/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net1000' driven by pin 'bsq/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net999' driven by pin 'bsq/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net998' driven by pin 'bsq/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net997' driven by pin 'bsq/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net996' driven by pin 'bsq/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net995' driven by pin 'bsq/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net994' driven by pin 'bsq/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net993' driven by pin 'bsq/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net992' driven by pin 'bsq/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net991' driven by pin 'bsq/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net990' driven by pin 'bsq/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net989' driven by pin 'bsq/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'bsq/net988' driven by pin 'bsq/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3130' driven by pin 'c_/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3129' driven by pin 'c_/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3128' driven by pin 'c_/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3127' driven by pin 'c_/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3126' driven by pin 'c_/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3125' driven by pin 'c_/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3124' driven by pin 'c_/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3123' driven by pin 'c_/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3122' driven by pin 'c_/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3121' driven by pin 'c_/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3120' driven by pin 'c_/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3119' driven by pin 'c_/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3118' driven by pin 'c_/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3117' driven by pin 'c_/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3116' driven by pin 'c_/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3115' driven by pin 'c_/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3114' driven by pin 'c_/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3113' driven by pin 'c_/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3112' driven by pin 'c_/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3111' driven by pin 'c_/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3110' driven by pin 'c_/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3109' driven by pin 'c_/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_/net3108' driven by pin 'c_/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'c_out_valid' driven by pin 'c_/out_valid' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3691' driven by pin 's_/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3690' driven by pin 's_/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3689' driven by pin 's_/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3688' driven by pin 's_/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3687' driven by pin 's_/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3686' driven by pin 's_/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3685' driven by pin 's_/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3684' driven by pin 's_/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3683' driven by pin 's_/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3682' driven by pin 's_/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3681' driven by pin 's_/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3680' driven by pin 's_/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3679' driven by pin 's_/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3678' driven by pin 's_/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3677' driven by pin 's_/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3676' driven by pin 's_/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3675' driven by pin 's_/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3674' driven by pin 's_/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3673' driven by pin 's_/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3672' driven by pin 's_/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3671' driven by pin 's_/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3670' driven by pin 's_/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_/net3669' driven by pin 's_/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 's_out_valid' driven by pin 's_/out_valid' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net449' driven by pin 'asq/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net448' driven by pin 'asq/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net447' driven by pin 'asq/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net446' driven by pin 'asq/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net445' driven by pin 'asq/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net444' driven by pin 'asq/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net443' driven by pin 'asq/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net442' driven by pin 'asq/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net441' driven by pin 'asq/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net440' driven by pin 'asq/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net439' driven by pin 'asq/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net438' driven by pin 'asq/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net437' driven by pin 'asq/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net436' driven by pin 'asq/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net435' driven by pin 'asq/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net434' driven by pin 'asq/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net433' driven by pin 'asq/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net432' driven by pin 'asq/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net431' driven by pin 'asq/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net430' driven by pin 'asq/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net429' driven by pin 'asq/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net428' driven by pin 'asq/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'asq/net427' driven by pin 'asq/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1573' driven by pin 'a2_b2/sll_175/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1572' driven by pin 'a2_b2/sll_175/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1571' driven by pin 'a2_b2/sll_175/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1570' driven by pin 'a2_b2/sll_175/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1569' driven by pin 'a2_b2/sll_175/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1568' driven by pin 'a2_b2/sll_175/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1567' driven by pin 'a2_b2/sll_175/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1566' driven by pin 'a2_b2/sll_175/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1565' driven by pin 'a2_b2/sll_175/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1564' driven by pin 'a2_b2/sll_175/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1563' driven by pin 'a2_b2/sll_175/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1562' driven by pin 'a2_b2/sll_175/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1561' driven by pin 'a2_b2/sll_175/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1560' driven by pin 'a2_b2/sll_175/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1559' driven by pin 'a2_b2/sll_175/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1558' driven by pin 'a2_b2/sll_175/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1557' driven by pin 'a2_b2/sll_175/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1556' driven by pin 'a2_b2/sll_175/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1555' driven by pin 'a2_b2/sll_175/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1554' driven by pin 'a2_b2/sll_175/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1553' driven by pin 'a2_b2/sll_175/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1552' driven by pin 'a2_b2/sll_175/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1551' driven by pin 'a2_b2/sll_175/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1550' driven by pin 'a2_b2/sll_175/Z_23' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'a2_b2/net1549' driven by pin 'a2_b2/sll_175/Z_24' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4274' driven by pin 'sqrt/fp_mul_0/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4273' driven by pin 'sqrt/fp_mul_0/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4272' driven by pin 'sqrt/fp_mul_0/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4271' driven by pin 'sqrt/fp_mul_0/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4270' driven by pin 'sqrt/fp_mul_0/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4269' driven by pin 'sqrt/fp_mul_0/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4268' driven by pin 'sqrt/fp_mul_0/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4267' driven by pin 'sqrt/fp_mul_0/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4266' driven by pin 'sqrt/fp_mul_0/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4265' driven by pin 'sqrt/fp_mul_0/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4264' driven by pin 'sqrt/fp_mul_0/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4263' driven by pin 'sqrt/fp_mul_0/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4262' driven by pin 'sqrt/fp_mul_0/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4261' driven by pin 'sqrt/fp_mul_0/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4260' driven by pin 'sqrt/fp_mul_0/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4259' driven by pin 'sqrt/fp_mul_0/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4258' driven by pin 'sqrt/fp_mul_0/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4257' driven by pin 'sqrt/fp_mul_0/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4256' driven by pin 'sqrt/fp_mul_0/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4255' driven by pin 'sqrt/fp_mul_0/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4254' driven by pin 'sqrt/fp_mul_0/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4253' driven by pin 'sqrt/fp_mul_0/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_0/net4252' driven by pin 'sqrt/fp_mul_0/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4835' driven by pin 'sqrt/fp_mul_1/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4834' driven by pin 'sqrt/fp_mul_1/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4833' driven by pin 'sqrt/fp_mul_1/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4832' driven by pin 'sqrt/fp_mul_1/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4831' driven by pin 'sqrt/fp_mul_1/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4830' driven by pin 'sqrt/fp_mul_1/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4829' driven by pin 'sqrt/fp_mul_1/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4828' driven by pin 'sqrt/fp_mul_1/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4827' driven by pin 'sqrt/fp_mul_1/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4826' driven by pin 'sqrt/fp_mul_1/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4825' driven by pin 'sqrt/fp_mul_1/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4824' driven by pin 'sqrt/fp_mul_1/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4823' driven by pin 'sqrt/fp_mul_1/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4822' driven by pin 'sqrt/fp_mul_1/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4821' driven by pin 'sqrt/fp_mul_1/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4820' driven by pin 'sqrt/fp_mul_1/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4819' driven by pin 'sqrt/fp_mul_1/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4818' driven by pin 'sqrt/fp_mul_1/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4817' driven by pin 'sqrt/fp_mul_1/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4816' driven by pin 'sqrt/fp_mul_1/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4815' driven by pin 'sqrt/fp_mul_1/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4814' driven by pin 'sqrt/fp_mul_1/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_1/net4813' driven by pin 'sqrt/fp_mul_1/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6829' driven by pin 'sqrt/fp_mul_2/mult_68/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6828' driven by pin 'sqrt/fp_mul_2/mult_68/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6827' driven by pin 'sqrt/fp_mul_2/mult_68/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6826' driven by pin 'sqrt/fp_mul_2/mult_68/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6825' driven by pin 'sqrt/fp_mul_2/mult_68/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6824' driven by pin 'sqrt/fp_mul_2/mult_68/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6823' driven by pin 'sqrt/fp_mul_2/mult_68/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6822' driven by pin 'sqrt/fp_mul_2/mult_68/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6821' driven by pin 'sqrt/fp_mul_2/mult_68/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6820' driven by pin 'sqrt/fp_mul_2/mult_68/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6819' driven by pin 'sqrt/fp_mul_2/mult_68/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6818' driven by pin 'sqrt/fp_mul_2/mult_68/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6817' driven by pin 'sqrt/fp_mul_2/mult_68/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6816' driven by pin 'sqrt/fp_mul_2/mult_68/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6815' driven by pin 'sqrt/fp_mul_2/mult_68/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6814' driven by pin 'sqrt/fp_mul_2/mult_68/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6813' driven by pin 'sqrt/fp_mul_2/mult_68/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6812' driven by pin 'sqrt/fp_mul_2/mult_68/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6811' driven by pin 'sqrt/fp_mul_2/mult_68/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6810' driven by pin 'sqrt/fp_mul_2/mult_68/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6809' driven by pin 'sqrt/fp_mul_2/mult_68/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6808' driven by pin 'sqrt/fp_mul_2/mult_68/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_mul_2/net6807' driven by pin 'sqrt/fp_mul_2/mult_68/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/delay_idata_half/net4232' driven by pin 'sqrt/delay_idata_half/C165/Z' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/delay_idata_half/net4231' driven by pin 'sqrt/delay_idata_half/C162/Z' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5398' driven by pin 'sqrt/fp_add_0/sll_175/Z_0' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5397' driven by pin 'sqrt/fp_add_0/sll_175/Z_1' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5396' driven by pin 'sqrt/fp_add_0/sll_175/Z_2' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5395' driven by pin 'sqrt/fp_add_0/sll_175/Z_3' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5394' driven by pin 'sqrt/fp_add_0/sll_175/Z_4' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5393' driven by pin 'sqrt/fp_add_0/sll_175/Z_5' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5392' driven by pin 'sqrt/fp_add_0/sll_175/Z_6' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5391' driven by pin 'sqrt/fp_add_0/sll_175/Z_7' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5390' driven by pin 'sqrt/fp_add_0/sll_175/Z_8' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5389' driven by pin 'sqrt/fp_add_0/sll_175/Z_9' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5388' driven by pin 'sqrt/fp_add_0/sll_175/Z_10' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5387' driven by pin 'sqrt/fp_add_0/sll_175/Z_11' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5386' driven by pin 'sqrt/fp_add_0/sll_175/Z_12' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5385' driven by pin 'sqrt/fp_add_0/sll_175/Z_13' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5384' driven by pin 'sqrt/fp_add_0/sll_175/Z_14' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5383' driven by pin 'sqrt/fp_add_0/sll_175/Z_15' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5382' driven by pin 'sqrt/fp_add_0/sll_175/Z_16' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5381' driven by pin 'sqrt/fp_add_0/sll_175/Z_17' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5380' driven by pin 'sqrt/fp_add_0/sll_175/Z_18' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5379' driven by pin 'sqrt/fp_add_0/sll_175/Z_19' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5378' driven by pin 'sqrt/fp_add_0/sll_175/Z_20' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5377' driven by pin 'sqrt/fp_add_0/sll_175/Z_21' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5376' driven by pin 'sqrt/fp_add_0/sll_175/Z_22' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5375' driven by pin 'sqrt/fp_add_0/sll_175/Z_23' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/fp_add_0/net5374' driven by pin 'sqrt/fp_add_0/sll_175/Z_24' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/delay_i/net6779' driven by pin 'sqrt/delay_i/C369/Z' has no loads. (LINT-2)
+Warning: In design 'givens_rotation', net 'sqrt/delay_i/net6778' driven by pin 'sqrt/delay_i/C366/Z' has no loads. (LINT-2)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[21]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[20]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[19]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[18]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[17]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[16]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[15]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[14]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[13]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[12]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[11]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[10]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[9]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[8]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[7]'. (LINT-31)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to output port 'odata[6]'. (LINT-31)
+Warning: In design 'givens_rotation', a pin on submodule 'asq' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'enable' is connected to logic 1. 
+Warning: In design 'givens_rotation', a pin on submodule 'bsq' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'enable' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[31]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[30]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[29]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[28]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[27]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[26]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[25]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[24]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[23]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[22]' is connected to logic 1. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[21]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[20]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[19]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[18]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[17]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[16]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[15]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[14]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[13]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[12]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[11]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[10]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[9]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[8]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[7]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[6]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[5]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[4]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[3]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[2]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[1]' is connected to logic 0. 
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', a pin on submodule 'fp_add_0' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'idataA[0]' is connected to logic 0. 
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[31]' is connected to pins 'idataA[31]', 'idataB[31]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[30]' is connected to pins 'idataA[30]', 'idataB[30]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[29]' is connected to pins 'idataA[29]', 'idataB[29]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[28]' is connected to pins 'idataA[28]', 'idataB[28]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[27]' is connected to pins 'idataA[27]', 'idataB[27]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[26]' is connected to pins 'idataA[26]', 'idataB[26]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[25]' is connected to pins 'idataA[25]', 'idataB[25]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[24]' is connected to pins 'idataA[24]', 'idataB[24]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[23]' is connected to pins 'idataA[23]', 'idataB[23]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[22]' is connected to pins 'idataA[22]', 'idataB[22]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[21]' is connected to pins 'idataA[21]', 'idataB[21]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[20]' is connected to pins 'idataA[20]', 'idataB[20]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[19]' is connected to pins 'idataA[19]', 'idataB[19]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[18]' is connected to pins 'idataA[18]', 'idataB[18]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[17]' is connected to pins 'idataA[17]', 'idataB[17]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[16]' is connected to pins 'idataA[16]', 'idataB[16]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[15]' is connected to pins 'idataA[15]', 'idataB[15]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[14]' is connected to pins 'idataA[14]', 'idataB[14]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[13]' is connected to pins 'idataA[13]', 'idataB[13]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[12]' is connected to pins 'idataA[12]', 'idataB[12]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[11]' is connected to pins 'idataA[11]', 'idataB[11]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[10]' is connected to pins 'idataA[10]', 'idataB[10]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[9]' is connected to pins 'idataA[9]', 'idataB[9]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[8]' is connected to pins 'idataA[8]', 'idataB[8]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[7]' is connected to pins 'idataA[7]', 'idataB[7]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[6]' is connected to pins 'idataA[6]', 'idataB[6]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[5]' is connected to pins 'idataA[5]', 'idataB[5]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[4]' is connected to pins 'idataA[4]', 'idataB[4]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[3]' is connected to pins 'idataA[3]', 'idataB[3]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[2]' is connected to pins 'idataA[2]', 'idataB[2]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[1]' is connected to pins 'idataA[1]', 'idataB[1]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'asq'. (LINT-33)
+   Net 'a[0]' is connected to pins 'idataA[0]', 'idataB[0]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[31]' is connected to pins 'idataA[31]', 'idataB[31]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[30]' is connected to pins 'idataA[30]', 'idataB[30]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[29]' is connected to pins 'idataA[29]', 'idataB[29]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[28]' is connected to pins 'idataA[28]', 'idataB[28]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[27]' is connected to pins 'idataA[27]', 'idataB[27]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[26]' is connected to pins 'idataA[26]', 'idataB[26]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[25]' is connected to pins 'idataA[25]', 'idataB[25]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[24]' is connected to pins 'idataA[24]', 'idataB[24]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[23]' is connected to pins 'idataA[23]', 'idataB[23]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[22]' is connected to pins 'idataA[22]', 'idataB[22]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[21]' is connected to pins 'idataA[21]', 'idataB[21]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[20]' is connected to pins 'idataA[20]', 'idataB[20]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[19]' is connected to pins 'idataA[19]', 'idataB[19]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[18]' is connected to pins 'idataA[18]', 'idataB[18]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[17]' is connected to pins 'idataA[17]', 'idataB[17]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[16]' is connected to pins 'idataA[16]', 'idataB[16]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[15]' is connected to pins 'idataA[15]', 'idataB[15]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[14]' is connected to pins 'idataA[14]', 'idataB[14]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[13]' is connected to pins 'idataA[13]', 'idataB[13]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[12]' is connected to pins 'idataA[12]', 'idataB[12]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[11]' is connected to pins 'idataA[11]', 'idataB[11]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[10]' is connected to pins 'idataA[10]', 'idataB[10]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[9]' is connected to pins 'idataA[9]', 'idataB[9]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[8]' is connected to pins 'idataA[8]', 'idataB[8]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[7]' is connected to pins 'idataA[7]', 'idataB[7]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[6]' is connected to pins 'idataA[6]', 'idataB[6]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[5]' is connected to pins 'idataA[5]', 'idataB[5]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[4]' is connected to pins 'idataA[4]', 'idataB[4]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[3]' is connected to pins 'idataA[3]', 'idataB[3]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[2]' is connected to pins 'idataA[2]', 'idataB[2]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[1]' is connected to pins 'idataA[1]', 'idataB[1]''.
+Warning: In design 'givens_rotation', the same net is connected to more than one pin on submodule 'bsq'. (LINT-33)
+   Net 'b[0]' is connected to pins 'idataA[0]', 'idataB[0]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[31]' is connected to pins 'idataA[31]', 'idataB[31]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[30]' is connected to pins 'idataA[30]', 'idataB[30]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[29]' is connected to pins 'idataA[29]', 'idataB[29]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[28]' is connected to pins 'idataA[28]', 'idataB[28]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[27]' is connected to pins 'idataA[27]', 'idataB[27]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[26]' is connected to pins 'idataA[26]', 'idataB[26]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[25]' is connected to pins 'idataA[25]', 'idataB[25]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[24]' is connected to pins 'idataA[24]', 'idataB[24]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[23]' is connected to pins 'idataA[23]', 'idataB[23]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[22]' is connected to pins 'idataA[22]', 'idataB[22]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[21]' is connected to pins 'idataA[21]', 'idataB[21]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[20]' is connected to pins 'idataA[20]', 'idataB[20]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[19]' is connected to pins 'idataA[19]', 'idataB[19]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[18]' is connected to pins 'idataA[18]', 'idataB[18]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[17]' is connected to pins 'idataA[17]', 'idataB[17]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[16]' is connected to pins 'idataA[16]', 'idataB[16]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[15]' is connected to pins 'idataA[15]', 'idataB[15]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[14]' is connected to pins 'idataA[14]', 'idataB[14]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[13]' is connected to pins 'idataA[13]', 'idataB[13]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[12]' is connected to pins 'idataA[12]', 'idataB[12]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[11]' is connected to pins 'idataA[11]', 'idataB[11]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[10]' is connected to pins 'idataA[10]', 'idataB[10]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[9]' is connected to pins 'idataA[9]', 'idataB[9]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[8]' is connected to pins 'idataA[8]', 'idataB[8]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[7]' is connected to pins 'idataA[7]', 'idataB[7]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[6]' is connected to pins 'idataA[6]', 'idataB[6]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[5]' is connected to pins 'idataA[5]', 'idataB[5]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[4]' is connected to pins 'idataA[4]', 'idataB[4]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[3]' is connected to pins 'idataA[3]', 'idataB[3]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[2]' is connected to pins 'idataA[2]', 'idataB[2]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[1]' is connected to pins 'idataA[1]', 'idataB[1]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_mul_0'. (LINT-33)
+   Net 'i_ff[0]' is connected to pins 'idataA[0]', 'idataB[0]''.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_add_0'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'idataA[31]', 'idataA[30]'', 'idataA[21]', 'idataA[20]', 'idataA[19]', 'idataA[18]', 'idataA[17]', 'idataA[16]', 'idataA[15]', 'idataA[14]', 'idataA[13]', 'idataA[12]', 'idataA[11]', 'idataA[10]', 'idataA[9]', 'idataA[8]', 'idataA[7]', 'idataA[6]', 'idataA[5]', 'idataA[4]', 'idataA[3]', 'idataA[2]', 'idataA[1]', 'idataA[0]'.
+Warning: In design 'inv_sqrt_I_EXP8_I_MNT23_I_DATA32', the same net is connected to more than one pin on submodule 'fp_add_0'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'idataA[29]', 'idataA[28]'', 'idataA[27]', 'idataA[26]', 'idataA[25]', 'idataA[24]', 'idataA[23]', 'idataA[22]'.
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[22]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[21]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[20]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[19]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[18]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[17]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[16]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[15]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[14]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[13]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[12]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[11]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[10]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[9]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[8]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'lead_one_IDATA_BIT48_ODATA_BIT23', output port 'odata[6]' is connected directly to 'logic 0'. (LINT-52)
+1

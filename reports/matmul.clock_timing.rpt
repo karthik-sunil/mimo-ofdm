@@ -1,0 +1,45 @@
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : matmul
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:48:21 2024
+****************************************
+
+  Clock: core_clk
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.10      wr-+
+
+  Minimum setup capture latency:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.10      wr-+
+
+  Minimum hold launch latency:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.10      br-+
+
+  Maximum hold capture latency:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.10      br-+
+
+  Maximum active transition:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.08      wr-+
+
+  Minimum active transition:
+      row_0__col_0__mult_add_0__mul_inst_product_mat_ff_reg_23_/CLK
+                                                             0.08      wr-+
+
+  Maximum setup skew:
+      out_reg_0__0__0_/CLK                                             wr-+
+      out_reg_0__0__0_/CLK                                   0.00      wr-+
+
+  Maximum hold skew:
+      out_reg_0__0__0_/CLK                                             br-+
+      out_reg_0__0__0_/CLK                                   0.00      br-+
+----------------------------------------------------------------------------
+
+1

@@ -1,0 +1,116 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nets
+        -max_paths 1
+        -transition_time
+Design : matmul
+Version: T-2022.03-SP3
+Date   : Fri Dec  6 20:48:21 2024
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: a[503] (input port clocked by core_clk)
+  Endpoint: row_0__col_0__mult_add_0__mul_inst_idataA_exp_ff_reg_0_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  matmul             1000000               saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  input external delay                                              0.28       0.38 f
+  a[503] (in)                                             0.24      0.03       0.41 f
+  a[503] (net)                                  1                   0.00       0.41 f
+  U221937/Y (AND2X1_RVT)                                  0.02      0.83       1.24 f
+  row_0__col_3__mult_add_0__mul_inst_N6 (net)     1                 0.00       1.24 f
+  row_0__col_0__mult_add_0__mul_inst_idataA_exp_ff_reg_0_/D (DFFX2_RVT)     0.02     0.69     1.93 f
+  data arrival time                                                            1.93
+
+  clock core_clk (rise edge)                                       14.00      14.00
+  clock network delay (ideal)                                       0.10      14.10
+  clock uncertainty                                                -0.35      13.75
+  row_0__col_0__mult_add_0__mul_inst_idataA_exp_ff_reg_0_/CLK (DFFX2_RVT)     0.00    13.75 r
+  library setup time                                               -0.02      13.73
+  data required time                                                          13.73
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                          13.73
+  data arrival time                                                           -1.93
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                 11.80
+
+
+  Startpoint: row_0__col_0__mult_add_0__mul_inst_out_valid_stage_3_reg
+              (rising edge-triggered flip-flop clocked by core_clk)
+  Endpoint: row_1__col_2__add_inst_2_idataB_ff_stage_2_reg_0_
+            (rising edge-triggered flip-flop clocked by core_clk)
+  Path Group: core_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  matmul             1000000               saed32rvt_tt1p05v25c
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock core_clk (rise edge)                                        0.00       0.00
+  clock network delay (ideal)                                       0.10       0.10
+  row_0__col_0__mult_add_0__mul_inst_out_valid_stage_3_reg/CLK (SDFFX1_RVT)     0.08     0.00 #     0.10 r
+  row_0__col_0__mult_add_0__mul_inst_out_valid_stage_3_reg/Q (SDFFX1_RVT)     0.01     0.09     0.19 r
+  out_valid_mul_0__0__0_ (net)                  1                   0.00       0.19 r
+  U69060/Y (AND2X1_RVT)                                   0.01      0.17       0.36 r
+  n147781 (net)                                 2                   0.00       0.36 r
+  U116297/Y (IBUFFX4_RVT)                                 0.24      0.30       0.67 f
+  n103770 (net)                                 5                   0.00       0.67 f
+  U159142/Y (IBUFFX8_RVT)                                 0.02      0.34       1.01 r
+  n126113 (net)                                 5                   0.00       1.01 r
+  U69062/Y (IBUFFX16_RVT)                                 0.04      0.40       1.41 f
+  n41439 (net)                                 32                   0.00       1.41 f
+  U162103/Y (INVX8_RVT)                                   0.01     67.28      68.69 r
+  n147767 (net)                                37                   0.00      68.69 r
+  U68947/Y (AND2X1_RVT)                                   0.01      1.61      70.30 r
+  row_1__col_2__add_inst_2_N451 (net)           1                   0.00      70.30 r
+  row_1__col_2__add_inst_2_idataB_ff_stage_2_reg_0_/D (DFFX1_RVT)     0.01     0.14    70.44 r
+  data arrival time                                                           70.44
+
+  clock core_clk (rise edge)                                       14.00      14.00
+  clock network delay (ideal)                                       0.10      14.10
+  clock uncertainty                                                -0.35      13.75
+  row_1__col_2__add_inst_2_idataB_ff_stage_2_reg_0_/CLK (DFFX1_RVT)     0.00    13.75 r
+  library setup time                                               -0.02      13.73
+  data required time                                                          13.73
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                          13.73
+  data arrival time                                                          -70.44
+  ---------------------------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                           -56.71
+
+
+1
