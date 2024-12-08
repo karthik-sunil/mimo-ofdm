@@ -16,9 +16,9 @@ module input_reorder #(
     genvar i;
     genvar j;
     generate
-        for(i=0;i<N;i=i+1) begin
+        for(i=0;i<N;i=i+1) begin : loop1
             assign index[i] = i;
-            for(j=0; j<$clog2(N); j = j+1) begin
+            for(j=0; j<$clog2(N); j = j+1) begin : loop2
             assign reversed_index[i][j] = index[i][$clog2(N)-1-j];
             end
         end

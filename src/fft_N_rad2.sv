@@ -31,29 +31,29 @@ assign W_R_FINAL = W_R_STAGE_LUT[0];
 assign W_I_FINAL = W_I_STAGE_LUT[0];
 
 generate
-    case(N)
-        8 : begin                                         
+    case(N)  
+        8 : begin : twiddle8                                    
                 `include "verilog/mem/twiddle_8_rad2.sv"    
             end
-        16 : begin
+        16 : begin : twiddle16
                 `include "verilog/mem/twiddle_16_rad2.sv"    
             end
-        32 : begin
+        32 : begin : twiddle32 
                 `include "verilog/mem/twiddle_32_rad2.sv"     
             end
-        64 : begin
+        64 : begin : twiddle64
                 `include "verilog/mem/twiddle_64_rad2.sv"     
             end
-        128 : begin
+        128 : begin : twiddle128
                 `include "verilog/mem/twiddle_128_rad2.sv"     
             end
-        256 : begin
+        256 : begin : twiddle256
                 `include "verilog/mem/twiddle_256_rad2.sv"     
             end
-        512 : begin
+        512 : begin : twiddle512
             // `include "twiddle_512_rad2.sv"
             end
-        1024 : begin
+        1024 : begin : twiddle1024
             // `include "twiddle_1024_rad2.sv"
             end
         endcase
@@ -109,7 +109,7 @@ logic [NUM_STAGES-2:0] dc_out_valid;
 
 genvar i;
 generate
-    for (i =0; i<NUM_STAGES-1; i++) begin
+    for (i =0; i<NUM_STAGES-1; i++) begin : engine
         twiddle_control_pointer #(
             .N(N),
             .STEP(1<<i)

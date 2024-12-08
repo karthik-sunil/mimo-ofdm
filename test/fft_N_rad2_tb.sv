@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "verilog/headers.svh"
+// `include "src/headers.svh"
 
 module fft_N_rad2_tb();
 
@@ -106,6 +106,10 @@ initial begin
     end
 
     #100; 
+
+    $dumpfile("fft_N_rad2_tb.vcd");
+    $dumpvars();
+
     $finish;
 
 end

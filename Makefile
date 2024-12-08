@@ -126,7 +126,7 @@ SYNFILES = src/givens_rotation.sv  src/fp_add.sv  src/fp_mul.sv src/delay_fp.sv 
 HEADERS = verilog/headers.svh
 TESTBENCH = test/fft_N_rad2_tb.sv
 SIMFILES = verilog/fft_N_rad2.sv verilog/butterfly.sv  verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv
-SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/interleaver.sv
+SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.sv src/deserializer.sv src/input_reorder.sv src/input_folding.sv src/interleaver.sv src/twiddle_control_pointer.sv
 
 SYN_HEADERS = src/headers.svh
 SYN_SIMFILES = syn/fft_N_rad2.mapped.v
@@ -164,6 +164,9 @@ syn:
 	-mv default.svf temp_files/
 	-mkdir -p export
 	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
+
+dve_syn: $(SYN_HEADERS) $(SYNFILES) $(TESTBENCH)
+	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYNFILES) $(LIB) +define+SYNTH_TEST -o syn_simv -R -gui
 
 memgen:
 	cd memory; ./memgen.sh
