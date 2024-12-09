@@ -43,7 +43,7 @@ set_host_options -max_cores 4
 #Specify switching activity data
 #####################################################
 #set_switching_activity
-read_vcd -strip_path $STRIP_PATH $ACTIVITY_FILE -time { $START_TIME $END_TIME}
+read_vcd -strip_path $STRIP_PATH $ACTIVITY_FILE -time  "$START_TIME $END_TIME"
 #saif(switching activity interface) : only in averaged power analysis mode
 #vcd (verilog change dump)          : both
 #fsdb(fast switching data dump)     : both

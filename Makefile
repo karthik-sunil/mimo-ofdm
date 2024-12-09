@@ -166,7 +166,7 @@ syn:
 	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
 
 dve_syn: $(SYN_HEADERS) $(SYNFILES) $(TESTBENCH)
-	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYNFILES) $(LIB) +define+SYNTH_TEST -o syn_simv -R -gui
+	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYNFILES) $(LIB) +define+SYNTH_TEST -o syn_simv -R 
 
 memgen:
 	cd memory; ./memgen.sh

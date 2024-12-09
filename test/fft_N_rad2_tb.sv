@@ -73,6 +73,9 @@ end
 integer f_new = $fopen("out/fft_8_debug.txt");
 
 initial begin
+    $dumpfile("fft_N_rad2_tb.vcd");
+    $dumpvars(0, fft_N_rad2_tb.dut);
+
     reset = 1;
     enable = 0;
     clk = 0;
@@ -106,10 +109,6 @@ initial begin
     end
 
     #100; 
-
-    $dumpfile("fft_N_rad2_tb.vcd");
-    $dumpvars();
-
     $finish;
 
 end
