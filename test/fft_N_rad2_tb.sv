@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 // `include "src/headers.svh"
 
 module fft_N_rad2_tb();
@@ -73,6 +74,11 @@ end
 integer f_new = $fopen("out/fft_8_debug.txt");
 
 initial begin
+    $sdf_annotate("syn/fft_N_rad2.mapped.sdf", dut);
+    $dumpfile("fft_N_rad2_tb.vcd");
+    // $dumpvars(0, fft_N_rad2_tb.dut);
+    $dumpvars(0);
+    
     reset = 1;
     enable = 0;
     clk = 0;
@@ -107,8 +113,7 @@ initial begin
 
     #100; 
 
-    $dumpfile("fft_N_rad2_tb.vcd");
-    $dumpvars();
+
 
     $finish;
 
