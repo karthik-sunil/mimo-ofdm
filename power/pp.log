@@ -41,20 +41,20 @@ read_verilog "$NETLIST_FILE"
 list_design
 Info: Library 'saed32rvt_tt1p05v25c' has compact CCS timing.
 Loading db file '/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
-Loading verilog file '/home/hitheshp/finalproj_eecs598/syn/fft_N_rad2.mapped.v'
+Loading verilog file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v'
 
 Design Registry:
- *  fft_N_rad2     /home/hitheshp/finalproj_eecs598/syn/fft_N_rad2.mapped.v:fft_N_rad2
+ *  fft_N_rad2     /home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v:fft_N_rad2
 
 1
 current_design $TOP_DESIGN
 Information: current_design won't return any data before link (DES-071)
 link
 Linking design fft_N_rad2...
-Information: 218 (74.15%) library cells are unused in library saed32rvt_tt1p05v25c..... (LNK-045)
-Information: total 218 library cells are unused (LNK-046)
+Information: 206 (70.07%) library cells are unused in library saed32rvt_tt1p05v25c..... (LNK-045)
+Information: total 206 library cells are unused (LNK-046)
 Design 'fft_N_rad2' was successfully linked.
-Information: There are 14208 leaf cells, ports, hiers and 14720 nets in the design (LNK-047)
+Information: There are 24400 leaf cells, ports, hiers and 24529 nets in the design (LNK-047)
 1
 read_sdc "$SDC_FILE"
 
@@ -84,10 +84,10 @@ Information: Building multi voltage information for entire design. (MV-022)
 #####################################################
 check_power
 Information: Checking 'out_of_table_range'.
-Warning: There are 28338 out_of_range ramps.
-Warning: There are 2559 out_of_range loads.
+Warning: There are 46908 out_of_range ramps.
+Warning: There are 3164 out_of_range loads.
 Information: Checking 'missing_table'.
-Warning: There are 5 library cells without internal power tables.
+Warning: There are 6 library cells without internal power tables.
 Information: Checking 'missing_function'.
 0
 #####################################################
@@ -109,10 +109,10 @@ read_vcd -strip_path $STRIP_PATH $ACTIVITY_FILE -time  "$START_TIME $END_TIME"
 
 ======================================================================
 Summary:
-Total number of nets = 14720
-Number of annotated nets = 14720 (100.00%)
-Total number of leaf cells = 13562
-Number of fully annotated leaf cells = 9953 (73.39%)
+Total number of nets = 24529
+Number of annotated nets = 24529 (100.00%)
+Total number of leaf cells = 23242
+Number of fully annotated leaf cells = 16898 (72.70%)
 ======================================================================
 
 1
@@ -125,7 +125,7 @@ Report : Switching Activity
 	-list_not_annotated
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 11:21:15 2024
+Date   : Wed Dec 11 14:18:56 2024
 ****************************************
 
  Switching Activity Overview Statistics for "fft_N_rad2"
@@ -134,15 +134,15 @@ Date   : Wed Dec 11 11:21:15 2024
 Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
                                                  Annotated    Implied                                                                                                        
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Nets             14720(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      14720
+ Nets             24529(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      24529
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Nets Driven by
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Primary Input     131(100.00%)      0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      131
 Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
-Sequential        4033(100.00%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      4033
-Combinational     10556(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      10556
+Sequential        7043(100.00%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      7043
+Combinational     17355(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      17355
 Memory            0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 Clock Gate        0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -152,15 +152,15 @@ Clock Gate        0(0%)             0(0%)        0(0%)        0(0%)            0
 Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
                                                  Annotated    Implied                                                                                                        
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Nets             14720(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      14720
+ Nets             24529(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      24529
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Nets Driven by
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Primary Input     131(100.00%)      0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      131
 Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
-Sequential        4033(100.00%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      4033
-Combinational     10556(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      10556
+Sequential        7043(100.00%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      7043
+Combinational     17355(100.00%)    0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      17355
 Memory            0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 Clock Gate        0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,12 +177,13 @@ set_power_analysis_options
 #####################################################
 update_power
 Information: Running time_based power analysis... (PWR-601)
-Warning: Can not find power table for library cell 'IBUFFX4_RVT' in technology libraries.  (PLIB-153)
-Warning: Can not find power table for library cell 'NBUFFX4_RVT' in technology libraries.  (PLIB-153)
-Warning: Can not find power table for library cell 'IBUFFX16_RVT' in technology libraries.  (PLIB-153)
-Warning: Can not find power table for library cell 'IBUFFX8_RVT' in technology libraries.  (PLIB-153)
 Warning: Can not find power table for library cell 'NBUFFX8_RVT' in technology libraries.  (PLIB-153)
-Information: Reading vcd file '/home/hitheshp/finalproj_eecs598/fft_N_rad2_tb.vcd'
+Warning: Can not find power table for library cell 'IBUFFX8_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'IBUFFX16_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'NBUFFX4_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'NBUFFX16_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'IBUFFX4_RVT' in technology libraries.  (PLIB-153)
+Information: Reading vcd file '/home/ksnl/eecs598/final-project/mimo-ofdm/fft_N_rad2_tb.vcd'
 Information: The waveform options are:
 		File name:	primetime_px.fsdb
 		File format:	fsdb
@@ -216,9 +217,9 @@ Information: Defining new variable 'power_model_preference'. (CMD-041)
 
 Timing updates: 1 (0 implicit, 1 explicit) (0 incremental, 1 full, 0 logical)
 Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
-Maximum memory usage for this session: 2777.57 MB
-CPU usage for this session: 8 seconds 
-Elapsed time for this session: 8 seconds
-Diagnostics summary: 7 warnings, 19 informationals
+Maximum memory usage for this session: 2773.59 MB
+CPU usage for this session: 11 seconds 
+Elapsed time for this session: 9 seconds
+Diagnostics summary: 8 warnings, 19 informationals
 
 Thank you for using pt_shell!

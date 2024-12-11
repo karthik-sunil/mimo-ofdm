@@ -1,0 +1,11 @@
+test/fft_N_rad2_pow_tb.sv:60 YES:SyncFF
+==================================================
+Unified Inference Statistics
+Number of always_ff:                   0
+Number of always_latch:                0
+Number of always @*:                   0
+Number of always_comb :                0
+Number of always :                     2
+Number of flip-flop candidates:        1
+Number of synchronous flops inferred:  1
+Number of Asynchronous flops inferred: 0

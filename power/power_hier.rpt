@@ -5,7 +5,7 @@ Report : Time Based Power
 	-nosplit
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 11:21:17 2024
+Date   : Wed Dec 11 14:18:59 2024
 ****************************************
 
 Simulation Periods: 50 ns - 3e+06 ns
@@ -22,7 +22,7 @@ Wire Load Model Mode: enclosed
 
 Cell               Design       Wire_model  Library       Selection_type
 --------------------------------------------------------------------------------
-                   fft_N_rad2   70000       saed32rvt_tt1p05v25c automatic-by-area
+                   fft_N_rad2   140000      saed32rvt_tt1p05v25c automatic-by-area
 
 Power-specific unit information :
     Voltage Units = 1 V
@@ -36,5 +36,5 @@ Power-specific unit information :
                                       Int      Switch   Leak     Peak     Peak            Glitch   X-tran   Total
 Hierarchy                             Power    Power    Power    Power    Time            Power    Power    Power    %
 -----------------------------------------------------------------------------------------------------------------------------
-fft_N_rad2                            1.49e-06 1.68e-09 1.24e-03    0.488 655.000-655.001    0.000    0.000 1.25e-03 100.0
+fft_N_rad2                            2.43e-06 1.69e-09 2.07e-03    0.679 350.010-350.011    0.000    0.000 2.07e-03 100.0
 1

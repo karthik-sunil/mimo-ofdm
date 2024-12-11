@@ -1,0 +1,4 @@
+/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/verilog/saed32nm.v
+/home/ksnl/eecs598/final-project/mimo-ofdm/src/headers.svh
+/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v
+/home/ksnl/eecs598/final-project/mimo-ofdm/test/fft_N_rad2_pow_tb.sv

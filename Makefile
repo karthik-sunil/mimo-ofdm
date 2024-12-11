@@ -130,6 +130,8 @@ SYNFILES = src/fft_N_rad2.sv src/butterfly.sv src/delay_commutator.sv src/delay.
 
 SYN_HEADERS = src/headers.svh
 SYN_SIMFILES = syn/fft_N_rad2.mapped.v
+POW_TESTBENCH = test/fft_N_rad2_pow_tb.sv
+
 #####
 # Should be no need to modify after here
 #####
@@ -165,8 +167,8 @@ syn:
 	-mkdir -p export
 	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
 
-dve_syn: $(SYN_HEADERS) $(SYN_SIMFILES) $(TESTBENCH)
-	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYN_SIMFILES) $(LIB) +define+SYNTH_TEST  +sdfverbose +neg_tchk -o syn_simv -R  | tee syn_simv.log
+dve_syn: $(SYN_HEADERS) $(SYN_SIMFILES) $(POW_TESTBENCH)
+	$(VCS) $(SYN_HEADERS) $(POW_TESTBENCH) $(SYN_SIMFILES) $(LIB) +define+SYNTH_TEST  +sdfverbose +neg_tchk -o syn_simv -R  | tee syn_simv.log
 
 memgen:
 	cd memory; ./memgen.sh
@@ -221,12 +223,13 @@ run_all_fft:
 	./simv | tee program.out
 
 gate_sim_fft:
+	@$(MAKE) syn
 	clear
 	@echo "Cleaning..."
 	@$(MAKE) clean
-	@echo "Simulating FFT..."
+	@echo "Running Post Synthesis Simulation FFT..."
 	@$(MAKE) simv $(SYN_HEADERS) \
-		TESTBENCH=test/fft_N_rad2_tb.sv \
+		TESTBENCH=test/fft_N_rad2_syn_tb.sv \
 		$(SYN_SIMFILES)
 	@echo "Running FFT simulation..."
 	./simv | tee program.out
@@ -256,8 +259,7 @@ run_all_qr:
 	./simv | tee program.out
 
 # for running power analysis
-power: 	
+power_analysis: 	
 	@$(MAKE) syn
 	@$(MAKE) dve_syn
-	cd power/
-	@$(MAKE) pp
+	@cd power && $(MAKE) pp

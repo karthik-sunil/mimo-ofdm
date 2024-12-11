@@ -1,3 +1,8 @@
+// FFT Size
+parameter N=16;
+
+
+
 parameter  COEFF_WIDTH = 16;
 parameter  COMPLEX_WIDTH = 8;
 parameter  COMPLEX_PRODUCT_WIDTH = 32;
@@ -5,9 +10,6 @@ parameter  COMPLEX_PRODUCT_WIDTH = 32;
 parameter I_EXP = 8;
 parameter I_MNT = 23;
 parameter I_DATA = I_EXP + I_MNT + 1;
-
-// Number of input samples 
-parameter N=4;
 
 // Addressing bits
 parameter FFT_BITS=$clog2(N);

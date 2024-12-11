@@ -2,22 +2,22 @@
 Report : hierarchy
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 11:21:17 2024
+Date   : Wed Dec 11 14:18:59 2024
 ****************************************
 
     AND2X1_RVT                      saed32rvt_tt1p05v25c
-    AND2X2_RVT                      saed32rvt_tt1p05v25c
     AND2X4_RVT                      saed32rvt_tt1p05v25c
     AND3X1_RVT                      saed32rvt_tt1p05v25c
     AND3X2_RVT                      saed32rvt_tt1p05v25c
     AND3X4_RVT                      saed32rvt_tt1p05v25c
     AND4X1_RVT                      saed32rvt_tt1p05v25c
-    AND4X4_RVT                      saed32rvt_tt1p05v25c
     AO21X1_RVT                      saed32rvt_tt1p05v25c
     AO21X2_RVT                      saed32rvt_tt1p05v25c
     AO221X1_RVT                     saed32rvt_tt1p05v25c
     AO222X1_RVT                     saed32rvt_tt1p05v25c
+    AO222X2_RVT                     saed32rvt_tt1p05v25c
     AO22X1_RVT                      saed32rvt_tt1p05v25c
+    AO22X2_RVT                      saed32rvt_tt1p05v25c
     AOI21X1_RVT                     saed32rvt_tt1p05v25c
     AOI21X2_RVT                     saed32rvt_tt1p05v25c
     AOI221X1_RVT                    saed32rvt_tt1p05v25c
@@ -25,11 +25,13 @@ Date   : Wed Dec 11 11:21:17 2024
     AOI222X1_RVT                    saed32rvt_tt1p05v25c
     AOI22X1_RVT                     saed32rvt_tt1p05v25c
     AOI22X2_RVT                     saed32rvt_tt1p05v25c
-    DFFARX2_RVT                     saed32rvt_tt1p05v25c
+    DFFARX1_RVT                     saed32rvt_tt1p05v25c
     DFFSSRX1_RVT                    saed32rvt_tt1p05v25c
+    DFFSSRX2_RVT                    saed32rvt_tt1p05v25c
     DFFX1_RVT                       saed32rvt_tt1p05v25c
     DFFX2_RVT                       saed32rvt_tt1p05v25c
     FADDX1_RVT                      saed32rvt_tt1p05v25c
+    FADDX2_RVT                      saed32rvt_tt1p05v25c
     HADDX1_RVT                      saed32rvt_tt1p05v25c
     HADDX2_RVT                      saed32rvt_tt1p05v25c
     IBUFFX16_RVT                    saed32rvt_tt1p05v25c
@@ -41,6 +43,7 @@ Date   : Wed Dec 11 11:21:17 2024
     INVX2_RVT                       saed32rvt_tt1p05v25c
     INVX4_RVT                       saed32rvt_tt1p05v25c
     MUX21X1_RVT                     saed32rvt_tt1p05v25c
+    MUX41X1_RVT                     saed32rvt_tt1p05v25c
     NAND2X0_RVT                     saed32rvt_tt1p05v25c
     NAND2X1_RVT                     saed32rvt_tt1p05v25c
     NAND2X2_RVT                     saed32rvt_tt1p05v25c
@@ -49,13 +52,16 @@ Date   : Wed Dec 11 11:21:17 2024
     NAND3X1_RVT                     saed32rvt_tt1p05v25c
     NAND3X2_RVT                     saed32rvt_tt1p05v25c
     NAND4X0_RVT                     saed32rvt_tt1p05v25c
+    NBUFFX16_RVT                    saed32rvt_tt1p05v25c
     NBUFFX2_RVT                     saed32rvt_tt1p05v25c
     NBUFFX4_RVT                     saed32rvt_tt1p05v25c
     NBUFFX8_RVT                     saed32rvt_tt1p05v25c
     NOR2X0_RVT                      saed32rvt_tt1p05v25c
+    NOR2X1_RVT                      saed32rvt_tt1p05v25c
     NOR2X2_RVT                      saed32rvt_tt1p05v25c
     NOR2X4_RVT                      saed32rvt_tt1p05v25c
     NOR3X0_RVT                      saed32rvt_tt1p05v25c
+    NOR4X0_RVT                      saed32rvt_tt1p05v25c
     NOR4X1_RVT                      saed32rvt_tt1p05v25c
     OA21X1_RVT                      saed32rvt_tt1p05v25c
     OA21X2_RVT                      saed32rvt_tt1p05v25c
@@ -69,10 +75,16 @@ Date   : Wed Dec 11 11:21:17 2024
     OAI21X2_RVT                     saed32rvt_tt1p05v25c
     OAI221X1_RVT                    saed32rvt_tt1p05v25c
     OAI222X1_RVT                    saed32rvt_tt1p05v25c
+    OAI222X2_RVT                    saed32rvt_tt1p05v25c
     OAI22X1_RVT                     saed32rvt_tt1p05v25c
+    OAI22X2_RVT                     saed32rvt_tt1p05v25c
     OR2X1_RVT                       saed32rvt_tt1p05v25c
+    OR2X2_RVT                       saed32rvt_tt1p05v25c
+    OR2X4_RVT                       saed32rvt_tt1p05v25c
     OR3X1_RVT                       saed32rvt_tt1p05v25c
     OR3X2_RVT                       saed32rvt_tt1p05v25c
+    OR4X1_RVT                       saed32rvt_tt1p05v25c
+    SDFFARX1_RVT                    saed32rvt_tt1p05v25c
     SDFFSSRX1_RVT                   saed32rvt_tt1p05v25c
     SDFFX1_RVT                      saed32rvt_tt1p05v25c
     XNOR2X1_RVT                     saed32rvt_tt1p05v25c
