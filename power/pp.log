@@ -1,3 +1,4 @@
+Error: Library Compiler executable path is not set. (PT-063)
 
                                  PrimeTime (R)
 
@@ -40,8 +41,8 @@ read_verilog "$NETLIST_FILE"
 1
 list_design
 Info: Library 'saed32rvt_tt1p05v25c' has compact CCS timing.
-Loading db file '/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
 Loading verilog file '/home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v'
+Loading db file '/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db'
 
 Design Registry:
  *  fft_N_rad2     /home/ksnl/eecs598/final-project/mimo-ofdm/syn/fft_N_rad2.mapped.v:fft_N_rad2
@@ -125,7 +126,7 @@ Report : Switching Activity
 	-list_not_annotated
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:18:56 2024
+Date   : Wed Dec 11 14:27:29 2024
 ****************************************
 
  Switching Activity Overview Statistics for "fft_N_rad2"
@@ -177,12 +178,12 @@ set_power_analysis_options
 #####################################################
 update_power
 Information: Running time_based power analysis... (PWR-601)
-Warning: Can not find power table for library cell 'NBUFFX8_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'NBUFFX16_RVT' in technology libraries.  (PLIB-153)
 Warning: Can not find power table for library cell 'IBUFFX8_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'NBUFFX8_RVT' in technology libraries.  (PLIB-153)
+Warning: Can not find power table for library cell 'IBUFFX4_RVT' in technology libraries.  (PLIB-153)
 Warning: Can not find power table for library cell 'IBUFFX16_RVT' in technology libraries.  (PLIB-153)
 Warning: Can not find power table for library cell 'NBUFFX4_RVT' in technology libraries.  (PLIB-153)
-Warning: Can not find power table for library cell 'NBUFFX16_RVT' in technology libraries.  (PLIB-153)
-Warning: Can not find power table for library cell 'IBUFFX4_RVT' in technology libraries.  (PLIB-153)
 Information: Reading vcd file '/home/ksnl/eecs598/final-project/mimo-ofdm/fft_N_rad2_tb.vcd'
 Information: The waveform options are:
 		File name:	primetime_px.fsdb
@@ -217,9 +218,9 @@ Information: Defining new variable 'power_model_preference'. (CMD-041)
 
 Timing updates: 1 (0 implicit, 1 explicit) (0 incremental, 1 full, 0 logical)
 Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
-Maximum memory usage for this session: 2773.59 MB
-CPU usage for this session: 11 seconds 
-Elapsed time for this session: 9 seconds
-Diagnostics summary: 8 warnings, 19 informationals
+Maximum memory usage for this session: 2773.73 MB
+CPU usage for this session: 12 seconds 
+Elapsed time for this session: 11 seconds
+Diagnostics summary: 1 error, 8 warnings, 19 informationals
 
 Thank you for using pt_shell!
