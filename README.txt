@@ -10,11 +10,17 @@ test: testbenches for individual modules
 unused: unused files (older files - not in use anymore)
 verilog: all of our verilog files
 
-To Run:
+To Run Simulation:
 -------
-FFT: make run_all_fft
+FFT: Set N in verilog/headers.svh and test/fft_N_rad2.sv, then make run_all_fft
 QR Decomposition: make run_all_qr
 Pre-calculation: make run_all_precalc
+
+To Run Synthesis, Post-Synthesis Simulation and Power Estimation:
+-------
+FFT: Set value of N in src/headers.svh, test/fft_N_rad2_syn_tb.sv and test/fft_N_rad2_pow_tb.sv
+     Post-Synthesis Simulation: make gate_sim_fft
+     Power Estimation: make power_analysis
 
 FFT Code:
 ---------

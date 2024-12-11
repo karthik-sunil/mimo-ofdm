@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1733946612.138904980, "rt":3.07, "ut":1.13, "st":0.38}}
+{"vcselab":{"timestamp_begin":1733946615.291157057, "rt":0.60, "ut":0.16, "st":0.07}}
+{"link":{"timestamp_begin":1733946615.937000121, "rt":0.91, "ut":0.23, "st":0.21}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1733946611.390131429}
+{"VCS_COMP_START_TIME": 1733946611.390131429}
+{"VCS_COMP_END_TIME": 1733946618.297487956}
+{"VCS_USER_OPTIONS": "-sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca -debug_access+all+reverse +define+ -timescale=1ns/1ps test/fft_N_rad2_syn_tb.sv verilog/fft_N_rad2.sv verilog/butterfly.sv verilog/delay_commutator.sv verilog/delay.sv verilog/deserializer.sv verilog/input_reorder.sv verilog/input_folding.sv verilog/twiddle_control_pointer.sv verilog/interleaver.sv -o simv"}
+{"vcs1": {"peak_mem": 558908}}
+{"vcselab": {"peak_mem": 263048}}

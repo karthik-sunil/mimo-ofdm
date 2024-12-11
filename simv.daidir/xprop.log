@@ -18,6 +18,6 @@ verilog/delay_commutator.sv:36 YES
 verilog/delay_commutator.sv:69 YES
 ==================================================
 X P R O P   S T A T I S T I C S
-instrumentable assignments:    148
-instrumented assignments:      148
+instrumentable assignments:    170
+instrumented assignments:      170
 instrumentation success rate:  100%

@@ -223,6 +223,7 @@ run_all_fft:
 	./simv | tee program.out
 
 gate_sim_fft:
+	@$(MAKE) nuke
 	@$(MAKE) syn
 	clear
 	@echo "Cleaning..."

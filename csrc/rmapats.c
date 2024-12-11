@@ -37,7 +37,7 @@ void  schedNewEvent (struct dummyq_struct * I1460, EBLK  * I1455, U  I627)
         sched_hsopt(pQ, I1455, I1744);
     }
 }
-void  rmaPropagate12 (UB  * pcode, scalar  val)
+void  rmaPropagate10 (UB  * pcode, scalar  val)
 {
     UB  * I1812;
     scalar  I1606;
@@ -185,13 +185,13 @@ void  rmaPropagate12 (UB  * pcode, scalar  val)
         }
     }
 }
-void  rmaPropagate12_t0 (UB  * pcode, UB  val)
+void  rmaPropagate10_t0 (UB  * pcode, UB  val)
 {
     val = *(pcode + 24 + 1U);
     *(pcode + 24 + 1U) = 24;
-    rmaPropagate12(pcode, val);
+    rmaPropagate10(pcode, val);
 }
-void  rmaPropagate23 (UB  * pcode, scalar  val)
+void  rmaPropagate21 (UB  * pcode, scalar  val)
 {
     UB  * I1812;
     scalar  I1606;
@@ -339,13 +339,13 @@ void  rmaPropagate23 (UB  * pcode, scalar  val)
         }
     }
 }
-void  rmaPropagate23_t0 (UB  * pcode, UB  val)
+void  rmaPropagate21_t0 (UB  * pcode, UB  val)
 {
     val = *(pcode + 24 + 1U);
     *(pcode + 24 + 1U) = 24;
-    rmaPropagate23(pcode, val);
+    rmaPropagate21(pcode, val);
 }
-void  rmaPropagate29 (UB  * pcode, scalar  val)
+void  rmaPropagate27 (UB  * pcode, scalar  val)
 {
     UB  * I1812;
     scalar  I1606;
@@ -514,11 +514,11 @@ void  rmaPropagate29 (UB  * pcode, scalar  val)
         }
     }
 }
-void  rmaPropagate29_t0 (UB  * pcode, UB  val)
+void  rmaPropagate27_t0 (UB  * pcode, UB  val)
 {
     val = *(pcode + 24 + 1U);
     *(pcode + 24 + 1U) = 24;
-    rmaPropagate29(pcode, val);
+    rmaPropagate27(pcode, val);
 }
 #ifdef __cplusplus
 extern "C" {

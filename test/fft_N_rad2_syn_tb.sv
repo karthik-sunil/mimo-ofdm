@@ -6,7 +6,7 @@ module fft_N_rad2_tb();
 parameter CLOCK_PERIOD = 10;
 
 parameter DEBUG_FLAG = 1;
-parameter N = 16;
+parameter N = 32;
 
 // code changes to incorporate for LUT based twiddle factors
 parameter NUM_STAGES = $clog2(N);

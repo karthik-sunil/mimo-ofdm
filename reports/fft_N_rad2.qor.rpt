@@ -3,20 +3,20 @@
 Report : qor
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:15:22 2024
+Date   : Wed Dec 11 14:50:05 2024
 ****************************************
 
 
   Timing Path Group 'REGIN'
   -----------------------------------
-  Levels of Logic:               4.00
-  Critical Path Length:         15.60
-  Critical Path Slack:           1.57
+  Levels of Logic:               3.00
+  Critical Path Length:         11.88
+  Critical Path Slack:           5.23
   Critical Path Clk Period:     18.00
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
-  Worst Hold Violation:         -0.04
-  Total Hold Violation:         -5.58
+  Worst Hold Violation:         -0.13
+  Total Hold Violation:         -3.09
   No. of Hold Violations:      128.00
   -----------------------------------
 
@@ -35,15 +35,15 @@ Date   : Wed Dec 11 14:15:22 2024
 
   Timing Path Group 'core_clk'
   -----------------------------------
-  Levels of Logic:              36.00
-  Critical Path Length:         19.03
-  Critical Path Slack:          -1.51
+  Levels of Logic:              39.00
+  Critical Path Length:         20.44
+  Critical Path Slack:          -2.91
   Critical Path Clk Period:     18.00
-  Total Negative Slack:       -106.53
-  No. of Violating Paths:      163.00
-  Worst Hold Violation:        -28.92
-  Total Hold Violation:      -4488.22
-  No. of Hold Violations:     5778.00
+  Total Negative Slack:      -1072.29
+  No. of Violating Paths:      689.00
+  Worst Hold Violation:       -324.88
+  Total Hold Violation:     -20302.30
+  No. of Hold Violations:    10687.00
   -----------------------------------
 
 
@@ -51,41 +51,41 @@ Date   : Wed Dec 11 14:15:22 2024
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:              23242
-  Buf/Inv Cell Count:            2667
-  Buf Cell Count:                 190
-  Inv Cell Count:                2477
+  Leaf Cell Count:              38031
+  Buf/Inv Cell Count:            3885
+  Buf Cell Count:                 359
+  Inv Cell Count:                3526
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:     16728
-  Sequential Cell Count:         6514
+  Combinational Cell Count:     26355
+  Sequential Cell Count:        11676
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:    40405.592558
-  Noncombinational Area: 43108.414969
-  Buf/Inv Area:           4317.398278
-  Total Buffer Area:           496.09
-  Total Inverter Area:        3821.31
+  Combinational Area:    63456.707847
+  Noncombinational Area: 77213.270171
+  Buf/Inv Area:           6604.948412
+  Total Buffer Area:           945.42
+  Total Inverter Area:        5659.53
   Macro/Black Box Area:      0.000000
-  Net Area:              37381.298214
+  Net Area:              82548.659531
   -----------------------------------
-  Cell Area:             83514.007528
-  Design Area:          120895.305742
+  Cell Area:            140669.978019
+  Design Area:          223218.637550
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:         24505
-  Nets With Violations:           663
-  Max Trans Violations:           663
+  Total Number of Nets:         39774
+  Nets With Violations:           875
+  Max Trans Violations:           875
   Max Cap Violations:               0
   -----------------------------------
 
 
-  Hostname: caen-vnc-mi10.engin.umich.edu
+  Hostname: caen-vnc-mi15.engin.umich.edu
 
   Compile CPU Statistics
   -----------------------------------------
@@ -93,15 +93,15 @@ Date   : Wed Dec 11 14:15:22 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:               39.52
-  Overall Compile Wall Clock Time:    22.34
+  Overall Compile Time:               64.29
+  Overall Compile Wall Clock Time:    36.60
 
   --------------------------------------------------------------------
 
-  Design  WNS: 1.51  TNS: 106.53  Number of Violating Paths: 163
+  Design  WNS: 2.91  TNS: 1072.29  Number of Violating Paths: 689
 
 
-  Design (Hold)  WNS: 28.92  TNS: 4493.80  Number of Violating Paths: 5906
+  Design (Hold)  WNS: 324.88  TNS: 20305.39  Number of Violating Paths: 10815
 
   --------------------------------------------------------------------
 

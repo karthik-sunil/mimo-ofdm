@@ -2,11 +2,11 @@ Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detec
 Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
 Chronologic VCS simulator copyright 1991-2023
 Contains Synopsys proprietary information.
-Compiler version V-2023.12-SP2-1_Full64; Runtime version V-2023.12-SP2-1_Full64;  Dec 11 14:17 2024
+Compiler version V-2023.12-SP2-1_Full64; Runtime version V-2023.12-SP2-1_Full64;  Dec 11 14:50 2024
 Doing SDF annotation ...... Done
 $finish called from file "test/fft_N_rad2_syn_tb.sv", line 118.
-$finish at simulation time              1700000
+$finish at simulation time              2020000
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 1700000 ps
-CPU Time:      0.280 seconds;       Data structure size:   0.0Mb
-Wed Dec 11 14:17:34 2024
+Time: 2020000 ps
+CPU Time:      0.290 seconds;       Data structure size:   0.1Mb
+Wed Dec 11 14:50:19 2024

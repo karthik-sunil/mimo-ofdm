@@ -7,7 +7,7 @@ Report : power
         -analysis_effort low
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:15:28 2024
+Date   : Wed Dec 11 14:50:10 2024
 ****************************************
 
 
@@ -21,7 +21,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-fft_N_rad2             140000            saed32rvt_tt1p05v25c
+fft_N_rad2             280000            saed32rvt_tt1p05v25c
 
 
 Global Operating Voltage = 1.05 
@@ -38,12 +38,12 @@ Attributes
 i - Including register clock pin internal power
 
 
-  Cell Internal Power  =   2.7477 mW   (98%)
-  Net Switching Power  =  54.7482 uW    (2%)
+  Cell Internal Power  =   4.8916 mW   (99%)
+  Net Switching Power  =  35.7300 uW    (1%)
                          ---------
-Total Dynamic Power    =   2.8025 mW  (100%)
+Total Dynamic Power    =   4.9273 mW  (100%)
 
-Cell Leakage Power     =   2.0711 mW
+Cell Leakage Power     =   3.4355 mW
 
 
                  Internal         Switching           Leakage            Total
@@ -52,10 +52,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network  2.7170e+03            0.0000            0.0000        2.7170e+03  (  55.75%)  i
-register           8.4734            9.9600        9.1785e+08          936.2774  (  19.21%)
+clock_network  4.8779e+03            0.0000            0.0000        4.8779e+03  (  58.33%)  i
+register           5.6724            6.0055        1.6445e+09        1.6562e+03  (  19.80%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational     22.1767           44.7881        1.1533e+09        1.2202e+03  (  25.04%)
+combinational      8.1747           29.7250        1.7911e+09        1.8289e+03  (  21.87%)
 --------------------------------------------------------------------------------------------------
-Total          2.7477e+03 uW        54.7481 uW     2.0711e+09 pW     4.8735e+03 uW
+Total          4.8918e+03 uW        35.7305 uW     3.4355e+09 pW     8.3630e+03 uW
 1
