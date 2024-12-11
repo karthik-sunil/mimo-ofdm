@@ -2,8 +2,15 @@
 % with all the intermediate outputs as well for debugging purposes.
 % It also takes in the input file just like our Verilog FFT and generates
 % the output to a file. This script is parameterizable in terms of which
-% value of N we choose for the N point FFT. This is changed by modufiying
+% value of N we choose for the N point FFT. This is changed by modifying
 % the chunk_size variable in this file
+
+% 1. Generates twiddle factors in both floating and fixed point
+% 2. Generates the output of each butterfly stage
+% 3. Generates the final output in both floating and fixed point
+
+% modify the chunk_size below based on what value FFT you want to compute for
+
 
 function fft_file_processor(input_file, output_file)
     % Reads input values in chunks of 8, computes FFT for each chunk, and writes results.
