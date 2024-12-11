@@ -1,0 +1,64 @@
+
+#BEGIN_XCHECK_LIBRARY
+
+Logic Library #1:
+    Library name              saed32rvt_tt1p05v25c
+    File name                 /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
+    Library type              pg_pin based db
+    Library Version           updated 6.FEB.2012
+    Tool Created              M-2016.12-SP3
+    Data Created              [2012 JAN 31]
+    Time unit                 1ns
+    Capacitance unit          1ff
+    Leakage power unit        1pW
+    Current unit              1uA
+check_library options         
+Version                       V-2023.12-SP5
+Check date and time           Wed Dec 11 11:15:56 2024
+
+
+#BEGIN_LIBSCREEN_UPF
+
+Library#1 (saed32rvt_tt1p05v25c):
+Power management cell checking passed.
+
+#END_LIBSCREEN_UPF
+
+
+#BEGIN_XCHECK_LOGICCELLS
+
+
+#BEGIN_LIBSCREEN_TEST_CELL
+
+Library#1 (saed32rvt_tt1p05v25c):
+
+#END_LIBSCREEN_TEST_CELL
+
+
+#END_XCHECK_LOGICCELLS
+
+#BEGIN_XCHECK_LOGICPINS
+
+
+
+#END_XCHECK_LOGICPINS
+
+#BEGIN_XCHECK_LOGICPGPINS
+
+Number of cells missing pg_pins in library 1:   0 (out of 294)
+
+#END_XCHECK_LOGICPGPINS
+
+#BEGIN_XCHECK_ARCS
+
+
+#END_XCHECK_ARCS
+
+
+#END_XCHECK_LIBRARY
+
+Memory usage for this session 48 Mbytes.
+CPU usage for this session 1 seconds ( 0.00 hours ).
+
+Thank you...
+1

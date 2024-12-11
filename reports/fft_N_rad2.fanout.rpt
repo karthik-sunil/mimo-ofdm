@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : net fanout
+        -high_fanout
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Dec 11 11:19:29 2024
+****************************************
+
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+fft_N_rad2             70000             saed32rvt_tt1p05v25c
+
+
+Attributes:
+   dr - drc disabled
+    c - annotated capacitance
+    d - dont_touch
+    i - ideal_net
+    I - ideal_network
+    p - includes pin load
+    r - annotated resistance
+    h - high fanout
+
+Net                 Fanout   Attributes   Capacitance   Driver
+--------------------------------------------------------------------------------
+clk                   3664   dr, h        1001024.19    clk
+1

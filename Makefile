@@ -165,8 +165,8 @@ syn:
 	-mkdir -p export
 	-cp -f memory/db/*_${MK_MEM_SUFFIX}_ccs.db export/ 2>>/dev/null
 
-dve_syn: $(SYN_HEADERS) $(SYNFILES) $(TESTBENCH)
-	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYNFILES) $(LIB) +define+SYNTH_TEST -o syn_simv -R 
+dve_syn: $(SYN_HEADERS) $(SYN_SIMFILES) $(TESTBENCH)
+	$(VCS) $(SYN_HEADERS) $(TESTBENCH) $(SYN_SIMFILES) $(LIB) +define+SYNTH_TEST  +sdfverbose +neg_tchk -o syn_simv -R  | tee syn_simv.log
 
 memgen:
 	cd memory; ./memgen.sh
@@ -254,3 +254,10 @@ run_all_qr:
 		SYNFILES="src/QR_decomp4.sv src/matmul.sv src/fp_add.sv src/fp_mul.sv src/givens_matrix.sv src/givens_rotation.sv src/transpose.sv src/inv_sqrt.sv src/delay_fp.sv"
 	@echo "Running QR simulation..."
 	./simv | tee program.out
+
+# for running power analysis
+power: 	
+	@$(MAKE) syn
+	@$(MAKE) dve_syn
+	cd power/
+	@$(MAKE) pp

@@ -1,0 +1,150 @@
+ 
+****************************************
+check_design summary:
+Version:     T-2022.03-SP3
+Date:        Wed Dec 11 11:16:02 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              35
+    Cells do not drive (LINT-1)                                     2
+    Connected to power or ground (LINT-32)                         32
+    Nets connected to multiple pins on same cell (LINT-33)          1
+
+Nets                                                               63
+    Unloaded nets (LINT-2)                                         63
+--------------------------------------------------------------------------------
+
+Warning: In design 'twiddle_control_pointer_N8_STEP1', cell 'B_1' does not drive any nets. (LINT-1)
+Warning: In design 'twiddle_control_pointer_N8_STEP2', cell 'B_1' does not drive any nets. (LINT-1)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2773' driven by pin 'engine[1].butterfly_inst/sub_91/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2772' driven by pin 'engine[1].butterfly_inst/sub_91/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2771' driven by pin 'engine[1].butterfly_inst/sub_91/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2770' driven by pin 'engine[1].butterfly_inst/sub_91/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2769' driven by pin 'engine[1].butterfly_inst/sub_91/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2768' driven by pin 'engine[1].butterfly_inst/sub_91/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2767' driven by pin 'engine[1].butterfly_inst/sub_91/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2766' driven by pin 'engine[1].butterfly_inst/sub_91/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2765' driven by pin 'engine[1].butterfly_inst/add_92/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2764' driven by pin 'engine[1].butterfly_inst/add_92/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2763' driven by pin 'engine[1].butterfly_inst/add_92/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2762' driven by pin 'engine[1].butterfly_inst/add_92/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2761' driven by pin 'engine[1].butterfly_inst/add_92/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2760' driven by pin 'engine[1].butterfly_inst/add_92/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2759' driven by pin 'engine[1].butterfly_inst/add_92/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].butterfly_inst/net2758' driven by pin 'engine[1].butterfly_inst/add_92/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5255' driven by pin 'butterfly_final/sub_91/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5254' driven by pin 'butterfly_final/sub_91/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5253' driven by pin 'butterfly_final/sub_91/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5252' driven by pin 'butterfly_final/sub_91/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5251' driven by pin 'butterfly_final/sub_91/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5250' driven by pin 'butterfly_final/sub_91/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5249' driven by pin 'butterfly_final/sub_91/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5248' driven by pin 'butterfly_final/sub_91/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5247' driven by pin 'butterfly_final/add_92/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5246' driven by pin 'butterfly_final/add_92/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5245' driven by pin 'butterfly_final/add_92/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5244' driven by pin 'butterfly_final/add_92/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5243' driven by pin 'butterfly_final/add_92/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5242' driven by pin 'butterfly_final/add_92/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5241' driven by pin 'butterfly_final/add_92/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'butterfly_final/net5240' driven by pin 'butterfly_final/add_92/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[0]' driven by pin 'engine[0].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[1]' driven by pin 'engine[1].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/x1_out_valid' driven by pin 'interleaver_inst/fold_x1/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/net250' driven by pin 'interleaver_inst/C191/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net282' driven by pin 'engine[0].butterfly_inst/sub_91/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net281' driven by pin 'engine[0].butterfly_inst/sub_91/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net280' driven by pin 'engine[0].butterfly_inst/sub_91/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net279' driven by pin 'engine[0].butterfly_inst/sub_91/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net278' driven by pin 'engine[0].butterfly_inst/sub_91/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net277' driven by pin 'engine[0].butterfly_inst/sub_91/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net276' driven by pin 'engine[0].butterfly_inst/sub_91/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net275' driven by pin 'engine[0].butterfly_inst/sub_91/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net274' driven by pin 'engine[0].butterfly_inst/add_92/Z_0' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net273' driven by pin 'engine[0].butterfly_inst/add_92/Z_1' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net272' driven by pin 'engine[0].butterfly_inst/add_92/Z_2' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net271' driven by pin 'engine[0].butterfly_inst/add_92/Z_3' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net270' driven by pin 'engine[0].butterfly_inst/add_92/Z_4' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net269' driven by pin 'engine[0].butterfly_inst/add_92/Z_5' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net268' driven by pin 'engine[0].butterfly_inst/add_92/Z_6' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].butterfly_inst/net267' driven by pin 'engine[0].butterfly_inst/add_92/Z_7' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/delay_y0/net7794' driven by pin 'engine[0].dc_2/delay_y0/C189/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/delay_y0/net7793' driven by pin 'engine[0].dc_2/delay_y0/C186/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/out_valid' driven by pin 'engine[0].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[1].dc_2/out_valid' driven by pin 'engine[1].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'deserializer_inst/net7721' driven by pin 'deserializer_inst/C1663/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/fold_x0/delay_inst/net7813' driven by pin 'interleaver_inst/fold_x0/delay_inst/C323/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/fold_x0/delay_inst/net7812' driven by pin 'interleaver_inst/fold_x0/delay_inst/C320/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/delay_x1/net7755' driven by pin 'interleaver_inst/delay_x1/C323/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'interleaver_inst/delay_x1/net7754' driven by pin 'interleaver_inst/delay_x1/C320/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/delay_x1/net7777' driven by pin 'engine[0].dc_2/delay_x1/C189/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/delay_x1/net7776' driven by pin 'engine[0].dc_2/delay_x1/C186/Z' has no loads. (LINT-2)
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[15]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[14]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[13]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[12]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[11]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[10]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[9]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[8]' is connected to logic 1. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[7]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[6]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[5]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[4]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[3]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[2]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[1]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_R[0]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[15]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[14]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[13]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[12]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[11]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[10]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[9]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[8]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[7]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[6]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[5]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[4]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[3]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[2]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[1]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'W_I[0]' is connected to logic 0. 
+Warning: In design 'fft_N_rad2', the same net is connected to more than one pin on submodule 'butterfly_final'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'W_R[15]', 'W_R[14]'', 'W_R[13]', 'W_R[12]', 'W_R[11]', 'W_R[10]', 'W_R[9]', 'W_R[7]', 'W_R[6]', 'W_R[5]', 'W_R[4]', 'W_R[3]', 'W_R[2]', 'W_R[1]', 'W_R[0]', 'W_I[15]', 'W_I[14]', 'W_I[13]', 'W_I[12]', 'W_I[11]', 'W_I[10]', 'W_I[9]', 'W_I[8]', 'W_I[7]', 'W_I[6]', 'W_I[5]', 'W_I[4]', 'W_I[3]', 'W_I[2]', 'W_I[1]', 'W_I[0]'.
+1

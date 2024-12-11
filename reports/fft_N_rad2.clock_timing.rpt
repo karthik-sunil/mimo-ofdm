@@ -1,0 +1,39 @@
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Dec 11 11:19:29 2024
+****************************************
+
+  Clock: core_clk
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.10      wr-+
+
+  Minimum setup capture latency:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.10      wr-+
+
+  Minimum hold launch latency:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.10      br-+
+
+  Maximum hold capture latency:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.10      br-+
+
+  Maximum active transition:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.08      wr-+
+
+  Minimum active transition:
+      interleaver_inst_delay_x1_delay_counter_reg_2_/CLK     0.08      wr-+
+
+  Maximum setup skew:
+      butterfly_final_W_R_ff_reg_8_/CLK                                wr-+
+      butterfly_final_X_ff_2_reg_i__0_/CLK                   0.00      wr-+
+
+  Maximum hold skew:
+      butterfly_final_W_R_ff_reg_8_/CLK                                br-+
+      butterfly_final_X_ff_2_reg_i__0_/CLK                   0.00      br-+
+----------------------------------------------------------------------------
+
+1

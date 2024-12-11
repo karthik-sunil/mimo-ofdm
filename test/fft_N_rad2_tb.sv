@@ -25,6 +25,7 @@ complex_product_t data_in_0;
 complex_product_t data_in_1;
 
 complex_product_t fft_out [N-1:0];
+logic [(N*64)-1:0] fft_out_net;
 logic out_valid;
 logic output_mode;
 
@@ -34,6 +35,10 @@ integer input_file_1, input_file_2;
 integer input_values[7:0][1:0];  // 8 pairs of values from the file - need to think of a beter way to do this
 integer input_index;
 
+// assign fft_out.r = fft_out_net[(N*32)-1:0];
+// assign fft_out.i = fft_out_net[(N*64)-1:(N*32)];
+
+
 fft_N_rad2 #(
     .N(N)
 ) dut (
@@ -42,7 +47,7 @@ fft_N_rad2 #(
     .enable(enable),
     .data_in_0(data_in_0),
     .data_in_1(data_in_1),
-    .fft_out(fft_out),
+    .fft_out(fft_out_net),
     .output_mode(output_mode),
     .out_valid(out_valid)
 );
@@ -73,6 +78,7 @@ end
 integer f_new = $fopen("out/fft_8_debug.txt");
 
 initial begin
+    $sdf_annotate("syn/fft_N_rad2.mapped.sdf", dut);
     $dumpfile("fft_N_rad2_tb.vcd");
     $dumpvars(0, fft_N_rad2_tb.dut);
 
