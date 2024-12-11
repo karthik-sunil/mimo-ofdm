@@ -1,0 +1,63 @@
+****************************************
+Report : Time Based Power
+	-verbose
+	-nosplit
+Design : fft_N_rad2
+Version: T-2022.03-SP3
+Date   : Wed Dec 11 11:21:17 2024
+****************************************
+
+Simulation Periods: 50 ns - 3e+06 ns
+
+Sampling Interval: 0.001 ns
+
+Library(s) Used:
+
+    saed32rvt_tt1p05v25c (File: /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db)
+
+
+Operating Conditions: tt1p05v25c   Library: saed32rvt_tt1p05v25c
+Wire Load Model Mode: enclosed
+
+Cell               Design       Wire_model  Library       Selection_type
+--------------------------------------------------------------------------------
+                   fft_N_rad2   70000       saed32rvt_tt1p05v25c automatic-by-area
+
+Power-specific unit information :
+    Voltage Units = 1 V
+    Capacitance Units = 0.001 pf
+    Time Units = 1 ns
+    Dynamic Power Units = 1 W
+    Leakage Power Units = 1 W
+
+
+
+  Attributes
+  ----------
+      i  -  Including register clock pin internal power
+      u  -  User defined power group
+
+                        Internal  Switching  Leakage    Total               Peak         Peak            Glitch    X-tran
+Power Group             Power     Power      Power      Power   (     %)    Power        Time            Power     Power    Attrs
+----------------------------------------------------------------------------------------------------------------------------------
+clock_network           1.493e-06    0.0000    0.0000 1.493e-06 ( 0.12%)      N/A         N/A             0.0000    0.0000  i
+register                8.658e-10    0.0000 5.367e-04 5.367e-04 (43.10%)      N/A         N/A             0.0000    0.0000  
+combinational           4.232e-10 1.680e-09 7.070e-04 7.070e-04 (56.78%)      N/A         N/A             0.0000    0.0000  
+sequential                 0.0000    0.0000    0.0000    0.0000 ( 0.00%)      N/A         N/A             0.0000    0.0000  
+memory                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)      N/A         N/A             0.0000    0.0000  
+io_pad                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)      N/A         N/A             0.0000    0.0000  
+black_box                  0.0000    0.0000    0.0000    0.0000 ( 0.00%)      N/A         N/A             0.0000    0.0000  
+
+  Net Switching Power  = 1.680e-09   ( 0.00%)
+  Cell Internal Power  = 1.495e-06   ( 0.12%)
+  Cell Leakage Power   = 1.244e-03   (99.88%)
+                         ---------
+Total Power            = 1.245e-03  (100.00%)
+
+X Transition Power     =    0.0000
+Glitching Power        =    0.0000
+
+Peak Power             =    0.4883
+Peak Time              =   655.000
+
+1
