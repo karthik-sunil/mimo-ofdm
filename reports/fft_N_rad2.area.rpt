@@ -3,28 +3,28 @@
 Report : area
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:50:06 2024
+Date   : Wed Dec 11 15:19:25 2024
 ****************************************
 
 Library(s) Used:
 
     saed32rvt_tt1p05v25c (File: /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db)
 
-Number of ports:                         2181
-Number of nets:                         39774
-Number of cells:                        38043
-Number of combinational cells:          26355
-Number of sequential cells:             11676
+Number of ports:                          645
+Number of nets:                         15267
+Number of cells:                        14149
+Number of combinational cells:           9898
+Number of sequential cells:              3664
 Number of macros/black boxes:               0
-Number of buf/inv:                       3885
-Number of references:                      94
+Number of buf/inv:                       2113
+Number of references:                      76
 
-Combinational area:              63456.707847
-Buf/Inv area:                     6604.948412
-Noncombinational area:           77213.270171
+Combinational area:              23588.883759
+Buf/Inv area:                     2935.109062
+Noncombinational area:           24521.084578
 Macro/Black Box area:                0.000000
-Net Interconnect area:           82548.659531
+Net Interconnect area:           16690.220021
 
-Total cell area:                140669.978019
-Total area:                     223218.637550
+Total cell area:                 48109.968337
+Total area:                      64800.188358
 1

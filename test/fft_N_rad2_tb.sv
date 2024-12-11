@@ -3,7 +3,7 @@
 
 module fft_N_rad2_tb();
 
-parameter N = 16;
+parameter N = 32;
 parameter CLOCK_PERIOD = 10;
 
 parameter DEBUG_FLAG = 1;

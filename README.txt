@@ -18,9 +18,9 @@ Pre-calculation: make run_all_precalc
 
 To Run Synthesis, Post-Synthesis Simulation and Power Estimation:
 -------
-FFT: Set value of N in src/headers.svh, test/fft_N_rad2_syn_tb.sv and test/fft_N_rad2_pow_tb.sv
+FFT: Set N in src/headers.svh, test/fft_N_rad2_syn_tb.sv and test/fft_N_rad2_pow_tb.sv
      Post-Synthesis Simulation: make gate_sim_fft
-     Power Estimation: make power_analysis
+     Power Estimation: after Post-Synthesis simulation, make power_analysis
 
 FFT Code:
 ---------

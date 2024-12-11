@@ -158,21 +158,6 @@ Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/standard.sld
   Loading link library 'saed32rvt_tt1p05v25c'
   Loading link library 'gtech'
 Running PRESTO HDLC
-Warning:  verilog/mem/twiddle_32_rad2.sv:2: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:3: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:4: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:5: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:6: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:7: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:8: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:9: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:10: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:11: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:12: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:13: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:14: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:15: unsigned to signed assignment occurs. (VER-318)
-Warning:  verilog/mem/twiddle_32_rad2.sv:16: unsigned to signed assignment occurs. (VER-318)
 
 Inferred memory devices in process
 	in routine fft_N_rad2 line 214 in file
@@ -182,35 +167,42 @@ Inferred memory devices in process
 ===============================================================================
 |  output_select_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  fft_N_rad2/125  |   4    |   32    |      2       |
+|  fft_N_rad2/125  |   4    |   32    |      2       |
+======================================================
 Presto compilation completed successfully. (fft_N_rad2)
 Elaborated 1 design.
 Current design is now 'fft_N_rad2'.
 Information: Building the design 'interleaver' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32". (HDL-193)
+	the parameters "N=8". (HDL-193)
 
 Inferred memory devices in process
-	in routine interleaver_N32 line 70 in file
+	in routine interleaver_N8 line 70 in file
 		'./src/interleaver.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
 |   switch_line_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-| select_counter_reg  | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+| select_counter_reg  | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
-Presto compilation completed successfully. (interleaver_N32)
+Presto compilation completed successfully. (interleaver_N8)
 Information: Building the design 'twiddle_control_pointer' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32,STEP=1". (HDL-193)
+	the parameters "N=8,STEP=1". (HDL-193)
 
 Inferred memory devices in process
-	in routine twiddle_control_pointer_N32_STEP1 line 17 in file
+	in routine twiddle_control_pointer_N8_STEP1 line 17 in file
 		'./src/twiddle_control_pointer.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
 |  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|     counter_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|     counter_reg     | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
-Presto compilation completed successfully. (twiddle_control_pointer_N32_STEP1)
+Presto compilation completed successfully. (twiddle_control_pointer_N8_STEP1)
 Information: Building the design 'butterfly'. (HDL-193)
 
 Inferred memory devices in process
@@ -252,78 +244,6 @@ Inferred memory devices in process
 =================================================================================
 Presto compilation completed successfully. (butterfly)
 Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
-	the parameters "DELAY=8". (HDL-193)
-
-Inferred memory devices in process
-	in routine delay_commutator_DELAY8 line 36 in file
-		'./src/delay_commutator.sv'.
-================================================================================
-|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-================================================================================
-| switch_enable_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|      x0_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-|      x1_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-================================================================================
-
-Inferred memory devices in process
-	in routine delay_commutator_DELAY8 line 69 in file
-		'./src/delay_commutator.sv'.
-=======================================================================================
-|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-=======================================================================================
-| commutator_out_valid_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-=======================================================================================
-Presto compilation completed successfully. (delay_commutator_DELAY8)
-Information: Building the design 'twiddle_control_pointer' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32,STEP=2". (HDL-193)
-
-Inferred memory devices in process
-	in routine twiddle_control_pointer_N32_STEP2 line 17 in file
-		'./src/twiddle_control_pointer.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|     counter_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-Presto compilation completed successfully. (twiddle_control_pointer_N32_STEP2)
-Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
-	the parameters "DELAY=4". (HDL-193)
-
-Inferred memory devices in process
-	in routine delay_commutator_DELAY4 line 36 in file
-		'./src/delay_commutator.sv'.
-================================================================================
-|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-================================================================================
-| switch_enable_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|      x0_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-|      x1_ff_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
-================================================================================
-
-Inferred memory devices in process
-	in routine delay_commutator_DELAY4 line 69 in file
-		'./src/delay_commutator.sv'.
-=======================================================================================
-|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-=======================================================================================
-| commutator_out_valid_ff_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-=======================================================================================
-Presto compilation completed successfully. (delay_commutator_DELAY4)
-Information: Building the design 'twiddle_control_pointer' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32,STEP=4". (HDL-193)
-
-Inferred memory devices in process
-	in routine twiddle_control_pointer_N32_STEP4 line 17 in file
-		'./src/twiddle_control_pointer.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|     counter_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-Presto compilation completed successfully. (twiddle_control_pointer_N32_STEP4)
-Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
 	the parameters "DELAY=2". (HDL-193)
 
 Inferred memory devices in process
@@ -347,18 +267,18 @@ Inferred memory devices in process
 =======================================================================================
 Presto compilation completed successfully. (delay_commutator_DELAY2)
 Information: Building the design 'twiddle_control_pointer' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32,STEP=8". (HDL-193)
+	the parameters "N=8,STEP=2". (HDL-193)
 
 Inferred memory devices in process
-	in routine twiddle_control_pointer_N32_STEP8 line 17 in file
+	in routine twiddle_control_pointer_N8_STEP2 line 17 in file
 		'./src/twiddle_control_pointer.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
 |  out_valid_ff_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
-|     counter_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+|     counter_reg     | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
-Presto compilation completed successfully. (twiddle_control_pointer_N32_STEP8)
+Presto compilation completed successfully. (twiddle_control_pointer_N8_STEP2)
 Information: Building the design 'delay_commutator' instantiated from design 'fft_N_rad2' with
 	the parameters "DELAY=1". (HDL-193)
 
@@ -383,76 +303,52 @@ Inferred memory devices in process
 =======================================================================================
 Presto compilation completed successfully. (delay_commutator_DELAY1)
 Information: Building the design 'deserializer' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32". (HDL-193)
+	the parameters "N=8". (HDL-193)
 Warning:  ./src/deserializer.sv:22: signed to unsigned assignment occurs. (VER-318)
 Warning:  ./src/deserializer.sv:35: signed to unsigned assignment occurs. (VER-318)
 
 Inferred memory devices in process
-	in routine deserializer_N32 line 20 in file
+	in routine deserializer_N8 line 20 in file
 		'./src/deserializer.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
-|     buffer_reg      | Flip-flop | 2048  |  Y  | N  | N  | N  | N  | N  | N  |
-|      w_ptr_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|     buffer_reg      | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
+|      w_ptr_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
 |  buffer_ready_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
-Presto compilation completed successfully. (deserializer_N32)
+Presto compilation completed successfully. (deserializer_N8)
 Information: Building the design 'input_reorder' instantiated from design 'fft_N_rad2' with
-	the parameters "N=32". (HDL-193)
+	the parameters "N=8". (HDL-193)
 
 Inferred memory devices in process
-	in routine input_reorder_N32 line 34 in file
+	in routine input_reorder_N8 line 34 in file
 		'./src/input_reorder.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
-|  output_array_reg   | Flip-flop | 2048  |  Y  | N  | N  | N  | N  | N  | N  |
+|  output_array_reg   | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
 |    out_valid_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
 Statistics for MUX_OPs
-==========================================================
-|   block name/line    | Inputs | Outputs | # sel inputs |
-==========================================================
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-| input_reorder_N32/29 |   32   |   64    |      5       |
-==========================================================
-Presto compilation completed successfully. (input_reorder_N32)
-Information: Building the design 'input_folding' instantiated from design 'interleaver_N32' with
-	the parameters "N=32". (HDL-193)
+=========================================================
+|  block name/line    | Inputs | Outputs | # sel inputs |
+=========================================================
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+| input_reorder_N8/29 |   8    |   64    |      3       |
+=========================================================
+Presto compilation completed successfully. (input_reorder_N8)
+Information: Building the design 'input_folding' instantiated from design 'interleaver_N8' with
+	the parameters "N=8". (HDL-193)
 
 Inferred memory devices in process
-	in routine input_folding_N32 line 35 in file
+	in routine input_folding_N8 line 35 in file
 		'./src/input_folding.sv'.
 ====================================================================================
 |      Register Name       |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -461,52 +357,8 @@ Inferred memory devices in process
 |  data_in_delayed_ff_reg  | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
 |      data_in_ff_reg      | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
 ====================================================================================
-Presto compilation completed successfully. (input_folding_N32)
-Information: Building the design 'delay' instantiated from design 'interleaver_N32' with
-	the parameters "DELAY=16". (HDL-193)
-
-Inferred memory devices in process
-	in routine delay_DELAY16 line 17 in file
-		'./src/delay.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|    delay_reg_reg    | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-
-Inferred memory devices in process
-	in routine delay_DELAY16 line 33 in file
-		'./src/delay.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-| switch_counter_reg  | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
-|  delay_counter_reg  | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-Presto compilation completed successfully. (delay_DELAY16)
-Information: Building the design 'delay' instantiated from design 'delay_commutator_DELAY8' with
-	the parameters "DELAY=8". (HDL-193)
-
-Inferred memory devices in process
-	in routine delay_DELAY8 line 17 in file
-		'./src/delay.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-|    delay_reg_reg    | Flip-flop |  512  |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-
-Inferred memory devices in process
-	in routine delay_DELAY8 line 33 in file
-		'./src/delay.sv'.
-===============================================================================
-|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
-===============================================================================
-| switch_counter_reg  | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
-|  delay_counter_reg  | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
-===============================================================================
-Presto compilation completed successfully. (delay_DELAY8)
-Information: Building the design 'delay' instantiated from design 'delay_commutator_DELAY4' with
+Presto compilation completed successfully. (input_folding_N8)
+Information: Building the design 'delay' instantiated from design 'interleaver_N8' with
 	the parameters "DELAY=4". (HDL-193)
 
 Inferred memory devices in process
@@ -578,46 +430,36 @@ check_design -multiple_designs
 ****************************************
 check_design summary:
 Version:     T-2022.03-SP3
-Date:        Wed Dec 11 14:40:07 2024
+Date:        Wed Dec 11 15:15:50 2024
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Cells                                                              47
-    Cells do not drive (LINT-1)                                    14
+Cells                                                              41
+    Cells do not drive (LINT-1)                                     8
     Connected to power or ground (LINT-32)                         32
     Nets connected to multiple pins on same cell (LINT-33)          1
 
-Designs                                                             7
-    Multiply instantiated designs (LINT-45)                         7
+Designs                                                             5
+    Multiply instantiated designs (LINT-45)                         5
 
-Nets                                                                9
-    Unloaded nets (LINT-2)                                          9
+Nets                                                                5
+    Unloaded nets (LINT-2)                                          5
 --------------------------------------------------------------------------------
 
-Warning: In design 'interleaver_N32', cell 'C197' does not drive any nets. (LINT-1)
-Warning: In design 'twiddle_control_pointer_N32_STEP1', cell 'B_1' does not drive any nets. (LINT-1)
-Warning: In design 'twiddle_control_pointer_N32_STEP2', cell 'B_1' does not drive any nets. (LINT-1)
-Warning: In design 'twiddle_control_pointer_N32_STEP4', cell 'B_1' does not drive any nets. (LINT-1)
-Warning: In design 'twiddle_control_pointer_N32_STEP8', cell 'B_1' does not drive any nets. (LINT-1)
-Warning: In design 'deserializer_N32', cell 'C6487' does not drive any nets. (LINT-1)
-Warning: In design 'delay_DELAY16', cell 'C1100' does not drive any nets. (LINT-1)
-Warning: In design 'delay_DELAY16', cell 'C1103' does not drive any nets. (LINT-1)
-Warning: In design 'delay_DELAY8', cell 'C582' does not drive any nets. (LINT-1)
-Warning: In design 'delay_DELAY8', cell 'C585' does not drive any nets. (LINT-1)
+Warning: In design 'interleaver_N8', cell 'C191' does not drive any nets. (LINT-1)
+Warning: In design 'twiddle_control_pointer_N8_STEP1', cell 'B_1' does not drive any nets. (LINT-1)
+Warning: In design 'twiddle_control_pointer_N8_STEP2', cell 'B_1' does not drive any nets. (LINT-1)
+Warning: In design 'deserializer_N8', cell 'C1663' does not drive any nets. (LINT-1)
 Warning: In design 'delay_DELAY4', cell 'C320' does not drive any nets. (LINT-1)
 Warning: In design 'delay_DELAY4', cell 'C323' does not drive any nets. (LINT-1)
 Warning: In design 'delay_DELAY2', cell 'C186' does not drive any nets. (LINT-1)
 Warning: In design 'delay_DELAY2', cell 'C189' does not drive any nets. (LINT-1)
 Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[0]' driven by pin 'engine[0].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
 Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[1]' driven by pin 'engine[1].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
-Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[2]' driven by pin 'engine[2].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
-Warning: In design 'fft_N_rad2', net 'twiddle_pointers_out_valid[3]' driven by pin 'engine[3].twiddle_control_pointer_inst/out_valid' has no loads. (LINT-2)
 Warning: In design 'fft_N_rad2', net 'interleaver_inst/x1_out_valid' driven by pin 'interleaver_inst/fold_x1/out_valid' has no loads. (LINT-2)
 Warning: In design 'fft_N_rad2', net 'engine[0].dc_2/out_valid' driven by pin 'engine[0].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
 Warning: In design 'fft_N_rad2', net 'engine[1].dc_2/out_valid' driven by pin 'engine[1].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
-Warning: In design 'fft_N_rad2', net 'engine[2].dc_2/out_valid' driven by pin 'engine[2].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
-Warning: In design 'fft_N_rad2', net 'engine[3].dc_2/out_valid' driven by pin 'engine[3].dc_2/delay_x1/out_valid' has no loads. (LINT-2)
 Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
    Pin 'W_R[15]' is connected to logic 0. 
 Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connected to logic 1 or logic 0. (LINT-32)
@@ -684,31 +526,23 @@ Warning: In design 'fft_N_rad2', a pin on submodule 'butterfly_final' is connect
    Pin 'W_I[0]' is connected to logic 0. 
 Warning: In design 'fft_N_rad2', the same net is connected to more than one pin on submodule 'butterfly_final'. (LINT-33)
    Net '*Logic0*' is connected to pins 'W_R[15]', 'W_R[14]'', 'W_R[13]', 'W_R[12]', 'W_R[11]', 'W_R[10]', 'W_R[9]', 'W_R[7]', 'W_R[6]', 'W_R[5]', 'W_R[4]', 'W_R[3]', 'W_R[2]', 'W_R[1]', 'W_R[0]', 'W_I[15]', 'W_I[14]', 'W_I[13]', 'W_I[12]', 'W_I[11]', 'W_I[10]', 'W_I[9]', 'W_I[8]', 'W_I[7]', 'W_I[6]', 'W_I[5]', 'W_I[4]', 'W_I[3]', 'W_I[2]', 'W_I[1]', 'W_I[0]'.
-Information: Design 'butterfly' is instantiated 5 times. (LINT-45)
+Information: Design 'butterfly' is instantiated 3 times. (LINT-45)
          Cell 'engine[0].butterfly_inst' in design 'fft_N_rad2' 
          Cell 'engine[1].butterfly_inst' in design 'fft_N_rad2' 
-         Cell 'engine[2].butterfly_inst' in design 'fft_N_rad2' 
-         Cell 'engine[3].butterfly_inst' in design 'fft_N_rad2' 
          Cell 'butterfly_final' in design 'fft_N_rad2' 
-Information: Design 'input_folding_N32' is instantiated 2 times. (LINT-45)
+Information: Design 'input_folding_N8' is instantiated 2 times. (LINT-45)
          Cell 'interleaver_inst/fold_x0' in design 'fft_N_rad2' 
          Cell 'interleaver_inst/fold_x1' in design 'fft_N_rad2' 
-Information: Design 'delay_DELAY16' is instantiated 3 times. (LINT-45)
+Information: Design 'delay_DELAY4' is instantiated 3 times. (LINT-45)
          Cell 'interleaver_inst/delay_x1' in design 'fft_N_rad2' 
          Cell 'interleaver_inst/fold_x0/delay_inst' in design 'fft_N_rad2' 
          Cell 'interleaver_inst/fold_x1/delay_inst' in design 'fft_N_rad2' 
-Information: Design 'delay_DELAY8' is instantiated 2 times. (LINT-45)
+Information: Design 'delay_DELAY2' is instantiated 2 times. (LINT-45)
          Cell 'engine[0].dc_2/delay_x1' in design 'fft_N_rad2' 
          Cell 'engine[0].dc_2/delay_y0' in design 'fft_N_rad2' 
-Information: Design 'delay_DELAY4' is instantiated 2 times. (LINT-45)
+Information: Design 'delay_DELAY1' is instantiated 2 times. (LINT-45)
          Cell 'engine[1].dc_2/delay_x1' in design 'fft_N_rad2' 
          Cell 'engine[1].dc_2/delay_y0' in design 'fft_N_rad2' 
-Information: Design 'delay_DELAY2' is instantiated 2 times. (LINT-45)
-         Cell 'engine[2].dc_2/delay_x1' in design 'fft_N_rad2' 
-         Cell 'engine[2].dc_2/delay_y0' in design 'fft_N_rad2' 
-Information: Design 'delay_DELAY1' is instantiated 2 times. (LINT-45)
-         Cell 'engine[3].dc_2/delay_x1' in design 'fft_N_rad2' 
-         Cell 'engine[3].dc_2/delay_y0' in design 'fft_N_rad2' 
 1
 current_design ${DESIGN_NAME}
 Current design is 'fft_N_rad2'.
@@ -718,7 +552,7 @@ link
   Linking design 'fft_N_rad2'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
-  * (19 designs)              /home/ksnl/eecs598/final-project/mimo-ofdm/fft_N_rad2.db, etc
+  * (13 designs)              /home/ksnl/eecs598/final-project/mimo-ofdm/fft_N_rad2.db, etc
   saed32rvt_tt1p05v25c (library)
                               /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/db_ccs/saed32rvt_tt1p05v25c.db
   dw_foundation.sldb (library)
@@ -782,41 +616,31 @@ set_false_path -from [get_ports -filter "direction == in" reset]
 1
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.check_timing.rpt {check_timing}
 Information: Checking out the license 'DesignWare'. (SEC-104)
-Information: Changed wire load model for 'input_reorder_N32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'deserializer_N32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'input_reorder_N8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'deserializer_N8' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_commutator_DELAY1' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'twiddle_control_pointer_N32_STEP8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'twiddle_control_pointer_N8_STEP2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_commutator_DELAY2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'twiddle_control_pointer_N32_STEP4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'twiddle_control_pointer_N8_STEP1' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'delay_DELAY4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'input_folding_N8' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY4' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'delay_DELAY4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_commutator_DELAY4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'twiddle_control_pointer_N32_STEP2' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_DELAY8' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_DELAY8' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_commutator_DELAY8' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'butterfly' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'twiddle_control_pointer_N32_STEP1' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_DELAY16' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'input_folding_N32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_DELAY16' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'delay_DELAY16' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'input_folding_N32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'interleaver_N32' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'input_folding_N8' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'interleaver_N8' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'alt1' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'apparch' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_UNS_OP_5_2_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_dec_width6' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_UNS_OP_5_1_6' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_sub_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_3_2_3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_dec_width4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*SUB_UNS_OP_3_1_4' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
@@ -857,8 +681,8 @@ Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'Fo
 Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_4_4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_add_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_2_2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
@@ -887,8 +711,10 @@ Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'Fo
 Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_3_4' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width2' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_2_1_2' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
@@ -897,74 +723,12 @@ Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'For
 Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
 Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_2_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW02_mult' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*MULT_TC_OP_32_16_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_sub_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*SUB_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_add_width32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_TC_OP_32_32_32' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_4_1_4' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for 'DW01_inc_width5' from '(none)' to 'ForQA'. (OPT-170)
-Information: Changed wire load model for '*ADD_UNS_OP_5_1_5' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for 'DW01_inc_width3' from '(none)' to 'ForQA'. (OPT-170)
+Information: Changed wire load model for '*ADD_UNS_OP_3_1_3' from '(none)' to 'ForQA'. (OPT-170)
 Information: Updating design information... (UID-85)
-Warning: Design 'fft_N_rad2' contains 27 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Warning: Design 'fft_N_rad2' contains 15 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
 
 Information: Checking generated_clocks...
 
@@ -1151,18 +915,18 @@ check_design -summary
 ****************************************
 check_design summary:
 Version:     T-2022.03-SP3
-Date:        Wed Dec 11 14:40:12 2024
+Date:        Wed Dec 11 15:15:52 2024
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Cells                                                              37
-    Cells do not drive (LINT-1)                                     4
+Cells                                                              35
+    Cells do not drive (LINT-1)                                     2
     Connected to power or ground (LINT-32)                         32
     Nets connected to multiple pins on same cell (LINT-33)          1
 
-Nets                                                              107
-    Unloaded nets (LINT-2)                                        107
+Nets                                                               63
+    Unloaded nets (LINT-2)                                         63
 --------------------------------------------------------------------------------
 
 Information: Use the 'check_design' command for 
@@ -1200,15 +964,15 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Design Information                                      | Value                                  |
 ====================================================================================================
 | Number of Scenarios                                     | 0                                      |
-| Leaf Cell Count                                         | 14575                                  |
+| Leaf Cell Count                                         | 4683                                   |
 | Number of User Hierarchies                              | 0                                      |
-| Sequential Cell Count                                   | 12384                                  |
+| Sequential Cell Count                                   | 4188                                   |
 | Macro Count                                             | 0                                      |
 | Number of Power Domains                                 | 0                                      |
 | Number of Path Groups                                   | 5                                      |
 | Number of VT Class                                      | 1                                      |
 | Number of Clocks                                        | 1                                      |
-| Number of Dont Touch Cells                              | 254                                    |
+| Number of Dont Touch Cells                              | 142                                    |
 | Number of Dont Touch Nets                               | 0                                      |
 | Number of Size Only Cells                               | 0                                      |
 | Design with UPF Data                                    | false                                  |
@@ -1219,35 +983,20 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ====================================================================================================
 Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
 
-Information: There are 116 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 70 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
   Simplifying Design 'fft_N_rad2'
-Information: The register 'engine[3].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
-Information: The register 'engine[3].twiddle_control_pointer_inst/out_valid_ff_reg' will be removed. (OPT-1207)
-Information: The register 'engine[2].dc_2/delay_y0/switch_counter_reg[1]' will be removed. (OPT-1207)
-Information: The register 'engine[2].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
-Information: The register 'engine[2].twiddle_control_pointer_inst/out_valid_ff_reg' will be removed. (OPT-1207)
-Information: The register 'engine[1].dc_2/delay_y0/switch_counter_reg[2]' will be removed. (OPT-1207)
-Information: The register 'engine[1].dc_2/delay_y0/switch_counter_reg[1]' will be removed. (OPT-1207)
 Information: The register 'engine[1].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
 Information: The register 'engine[1].twiddle_control_pointer_inst/out_valid_ff_reg' will be removed. (OPT-1207)
-Information: The register 'engine[0].dc_2/delay_y0/switch_counter_reg[3]' will be removed. (OPT-1207)
-Information: The register 'engine[0].dc_2/delay_y0/switch_counter_reg[2]' will be removed. (OPT-1207)
 Information: The register 'engine[0].dc_2/delay_y0/switch_counter_reg[1]' will be removed. (OPT-1207)
 Information: The register 'engine[0].dc_2/delay_y0/switch_counter_reg[0]' will be removed. (OPT-1207)
 Information: The register 'engine[0].twiddle_control_pointer_inst/out_valid_ff_reg' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/switch_counter_reg[4]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/switch_counter_reg[3]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x1/delay_inst/switch_counter_reg[2]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x1/delay_inst/switch_counter_reg[1]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x1/delay_inst/switch_counter_reg[0]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x0/delay_inst/switch_counter_reg[4]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x0/delay_inst/switch_counter_reg[3]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x0/delay_inst/switch_counter_reg[2]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x0/delay_inst/switch_counter_reg[1]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/fold_x0/delay_inst/switch_counter_reg[0]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/delay_x1/switch_counter_reg[4]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/delay_x1/switch_counter_reg[3]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/delay_x1/switch_counter_reg[2]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/delay_x1/switch_counter_reg[1]' will be removed. (OPT-1207)
 Information: The register 'interleaver_inst/delay_x1/switch_counter_reg[0]' will be removed. (OPT-1207)
@@ -1278,6 +1027,14 @@ Information: The register 'butterfly_final/W_I_ff_reg[3]' is a constant and will
 Information: The register 'butterfly_final/W_I_ff_reg[2]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_I_ff_reg[1]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_I_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[0].butterfly_inst/W_I_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[0].butterfly_inst/W_I_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[0].butterfly_inst/W_I_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[0].butterfly_inst/W_I_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[2]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_R_ff_reg[15]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_R_ff_reg[14]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_R_ff_reg[13]' is a constant and will be removed. (OPT-1206)
@@ -1294,6 +1051,9 @@ Information: The register 'butterfly_final/W_R_ff_reg[2]' is a constant and will
 Information: The register 'butterfly_final/W_R_ff_reg[1]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/W_R_ff_reg[0]' is a constant and will be removed. (OPT-1206)
  Implement Synthetic for 'fft_N_rad2'.
+Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[1]' will be removed. (OPT-1207)
+Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[0]' will be removed. (OPT-1207)
+Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[2]' will be removed. (OPT-1207)
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -1384,73 +1144,59 @@ Information: The register 'butterfly_final/Y_Wout_ir_ff_reg[3]' is a constant an
 Information: The register 'butterfly_final/Y_Wout_ir_ff_reg[2]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/Y_Wout_ir_ff_reg[1]' is a constant and will be removed. (OPT-1206)
 Information: The register 'butterfly_final/Y_Wout_ir_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_R_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[0]' is a constant and will be removed. (OPT-1206)
 Information: The register 'engine[1].twiddle_control_pointer_inst/counter_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[1].butterfly_inst/W_I_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].twiddle_control_pointer_inst/counter_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].butterfly_inst/W_I_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].twiddle_control_pointer_inst/counter_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].butterfly_inst/W_I_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].butterfly_inst/W_I_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[2].butterfly_inst/W_I_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].twiddle_control_pointer_inst/counter_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].twiddle_control_pointer_inst/counter_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].twiddle_control_pointer_inst/counter_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[15]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[14]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[13]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[12]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[11]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[10]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[9]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_R_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/W_I_ff_reg[0]' is a constant and will be removed. (OPT-1206)
 Information: The register 'deserializer_inst/w_ptr_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_rr_ff_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ri_ff_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ii_ff_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'engine[3].butterfly_inst/Y_Wout_ir_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_rr_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ri_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ii_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'engine[1].butterfly_inst/Y_Wout_ir_ff_reg[1]' is a constant and will be removed. (OPT-1206)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][r][31]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[r][31]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][r][30]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[r][30]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][r][29]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[r][29]'. (OPT-1215)
@@ -1515,12 +1261,22 @@ Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/dela
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][i][2]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[i][2]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][i][1]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[i][1]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x0/delay_inst/delay_reg_reg[0][i][0]' is removed because it is merged to 'interleaver_inst/fold_x0/data_in_ff_reg[i][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[0]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[6]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[3]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[1]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[7]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[5]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[4]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[15]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[14]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[13]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[12]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[11]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[9]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[6]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[3]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_R_ff_reg[1]' is removed because it is merged to 'engine[0].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[15]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[14]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[13]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
@@ -1528,14 +1284,6 @@ Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[11]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[9]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/W_I_ff_reg[8]' is removed because it is merged to 'engine[0].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[15]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[14]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[13]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[12]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[11]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[9]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[7]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[7]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[2]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[15]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[14]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[13]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
@@ -1543,32 +1291,8 @@ Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[11]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[9]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_I_ff_reg[8]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[15]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[14]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[13]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[12]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[11]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[9]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[7]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[6]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[1]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[3]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[1]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[15]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[14]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[13]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[12]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[11]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[9]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[8]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].twiddle_control_pointer_inst/counter_reg[3]' is removed because it is merged to 'engine[3].butterfly_inst/W_R_ff_reg[8]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[15]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[14]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[13]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[12]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[11]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[9]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/W_I_ff_reg[8]' is removed because it is merged to 'engine[3].butterfly_inst/W_I_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_y0/delay_counter_reg[0]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_counter_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/switch_enable_ff_reg' is removed because it is merged to 'engine[3].dc_2/delay_x1/switch_counter_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_y0/delay_counter_reg[0]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_counter_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/switch_enable_ff_reg' is removed because it is merged to 'engine[1].dc_2/delay_x1/switch_counter_reg[0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/out_valid_stage_1_reg' is removed because it is merged to 'butterfly_final/W_R_ff_reg[8]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x1/delay_inst/delay_reg_reg[0][r][31]' is removed because it is merged to 'interleaver_inst/fold_x1/data_in_ff_reg[r][31]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'interleaver_inst/fold_x1/delay_inst/delay_reg_reg[0][r][30]' is removed because it is merged to 'interleaver_inst/fold_x1/data_in_ff_reg[r][30]'. (OPT-1215)
@@ -1658,38 +1382,6 @@ Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[r][29]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[r][30]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[r][31]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][24]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][25]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][26]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][27]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][28]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][29]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][30]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][31]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][24]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][25]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][26]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][27]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][28]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][29]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][30]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[r][31]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][24]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][25]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][26]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][27]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][28]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][29]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][30]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_3_reg[i][31]' is removed because it is merged to 'engine[2].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][24]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][25]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][26]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][27]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][28]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][29]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][30]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[r][31]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][24]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][25]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][26]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
@@ -1698,14 +1390,14 @@ Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r]
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][29]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][30]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][31]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][24]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][25]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][26]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][27]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][28]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][29]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][30]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_3_reg[i][31]' is removed because it is merged to 'engine[3].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][24]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][25]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][26]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][27]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][28]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][29]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][30]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_3_reg[i][31]' is removed because it is merged to 'engine[1].butterfly_inst/Y_ff_3_reg[i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[i][24]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[i][25]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[i][26]' is removed because it is merged to 'butterfly_final/Y_ff_3_reg[i][23]'. (OPT-1215)
@@ -1720,11 +1412,6 @@ Threshold voltage group cell usage:
 
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
-Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[4]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[3]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[2]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[1]' will be removed. (OPT-1207)
-Information: The register 'interleaver_inst/fold_x1/delay_inst/delay_counter_reg[0]' will be removed. (OPT-1207)
 Information: Updating design information... (UID-85)
 Information: The register 'butterfly_final/Y_ff_1_reg[r][31]' will be removed. (OPT-1207)
 Information: The register 'butterfly_final/Y_ff_1_reg[r][30]' will be removed. (OPT-1207)
@@ -1742,39 +1429,30 @@ Information: The register 'butterfly_final/Y_ff_1_reg[i][27]' will be removed. (
 Information: The register 'butterfly_final/Y_ff_1_reg[i][26]' will be removed. (OPT-1207)
 Information: The register 'butterfly_final/Y_ff_1_reg[i][25]' will be removed. (OPT-1207)
 Information: The register 'butterfly_final/Y_ff_1_reg[i][24]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][31]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][30]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][29]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][28]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][27]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][26]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][25]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[r][24]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][31]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][30]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][29]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][28]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][27]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][26]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][25]' will be removed. (OPT-1207)
-Information: The register 'engine[3].butterfly_inst/Y_ff_1_reg[i][24]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][31]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][30]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][29]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][28]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][27]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][26]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][25]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[r][24]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][31]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][30]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][29]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][28]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][27]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][26]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][25]' will be removed. (OPT-1207)
+Information: The register 'engine[1].butterfly_inst/Y_ff_1_reg[i][24]' will be removed. (OPT-1207)
   Mapping Optimization (Phase 1)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/W_R_ff_reg[0]' is removed because it is merged to 'engine[1].butterfly_inst/W_I_ff_reg[3]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[4]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[5]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[2]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[3]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[1]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[6]' is removed because it is merged to 'engine[2].butterfly_inst/W_R_ff_reg[10]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_I_ff_reg[1]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/W_R_ff_reg[0]' is removed because it is merged to 'engine[2].butterfly_inst/W_I_ff_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[0].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].twiddle_control_pointer_inst/counter_reg[1]' is removed because it is merged to 'engine[1].butterfly_inst/W_R_ff_reg[8]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'engine[0].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[1].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/Y_Wout_ir_ff_reg[0]' is removed because it is merged to 'engine[0].butterfly_inst/Y_Wout_ii_ff_reg[0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[0].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].butterfly_inst/Y_Wout_rr_ff_reg[0]' is removed because it is merged to 'engine[0].butterfly_inst/Y_Wout_ri_ff_reg[0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'engine[1].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[2].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'engine[2].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_1_reg[i][0]' is removed because it is merged to 'engine[3].butterfly_inst/X_ff_1_reg[i][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[3].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].butterfly_inst/Y_ff_1_reg[r][0]' is removed because it is merged to 'engine[1].butterfly_inst/X_ff_1_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_1_reg[i][0]' is removed because it is merged to 'butterfly_final/X_ff_1_reg[i][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_1_reg[r][0]' is removed because it is merged to 'butterfly_final/X_ff_1_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
@@ -1809,55 +1487,21 @@ Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay
 Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][31]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][30]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][29]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][28]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][27]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][26]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][25]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][24]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][31]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][30]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][29]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][28]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][27]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][26]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][25]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][24]' is removed because it is merged to 'engine[3].dc_2/delay_x1/delay_reg_reg[0][r][23]'. (OPT-1215)
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:01:41  158796.5    721.72  149770.1   62768.1                           3633616128.0000
-    0:01:42  158098.4    180.29  120669.1   69692.9                           3615069184.0000
+    0:00:36   52337.4     16.95    9205.0    1867.1                           1257412480.0000
+    0:00:36   52264.5     16.95    9171.4    1867.1                           1255340032.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
 
   Beginning Constant Register Removal
   -----------------------------------
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_Wout_rr_ff_reg[0]' is removed because it is merged to 'engine[2].butterfly_inst/Y_Wout_ri_ff_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].butterfly_inst/Y_Wout_ir_ff_reg[0]' is removed because it is merged to 'engine[2].butterfly_inst/Y_Wout_ii_ff_reg[0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_Wout_rr_ff_reg[8]' is removed because it is merged to 'butterfly_final/X_ff_2_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_Wout_ir_ff_reg[8]' is removed because it is merged to 'butterfly_final/X_ff_2_reg[i][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_Wout_rr_ff_reg[8]' is removed because it is merged to 'butterfly_final/X_ff_2_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][31]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][30]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][29]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
@@ -1874,56 +1518,24 @@ Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][26]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][25]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][24]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][31]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][30]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][29]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][28]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][27]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][26]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][25]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][24]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][31]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][30]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][29]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][28]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][27]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][26]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][25]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][24]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][31]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][30]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][29]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][28]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][27]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][26]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][25]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][24]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][31]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][30]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][29]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][28]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][27]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][26]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][25]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][24]' is removed because it is merged to 'engine[2].dc_2/delay_x1/delay_reg_reg[1][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[3].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'engine[3].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-    0:01:44  159416.1    239.15  162845.6  116123.1                           3613070336.0000
-    0:01:46  159314.5    239.15  162808.0  116123.1                           3610223872.0000
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'engine[1].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+    0:00:37   52084.8     90.20   12696.1    5555.8                           1250791936.0000
+    0:00:37   52048.2     90.20   12685.2    5555.8                           1249767168.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
@@ -1975,92 +1587,59 @@ Threshold voltage group cell usage:
 
   Beginning Delay Optimization
   ----------------------------
-    0:02:09  137116.3    148.16   77289.8  114313.4                           3330834432.0000
-    0:02:23  138752.0     16.71   10442.2   94913.0                           3370030592.0000
-    0:02:23  138752.0     16.71   10442.2   94913.0                           3370030592.0000
-    0:02:25  138720.7     16.70   10428.1   95848.8                           3368738304.0000
+    0:00:43   48463.5     64.69   10464.7   30747.2                           1197415808.0000
+    0:00:55   51244.1      6.41    2461.3   18253.3                           1263784192.0000
+    0:00:55   51244.1      6.41    2461.3   18253.3                           1263784192.0000
+    0:00:57   50695.1      6.39    2473.0   19525.4                           1265153536.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
-    0:02:28  138539.2     16.70   10421.1   95670.1                           3365783040.0000
-    0:02:30  138533.6     16.70   10420.5   95671.2                           3365657600.0000
+    0:00:58   50647.6      6.39    2471.5   19727.4                           1264089344.0000
+    0:00:59   50647.6      6.39    2471.5   19727.4                           1264089344.0000
 
   Beginning WLM Backend Optimization
   --------------------------------------
-Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][0]' is removed because it is merged to 'butterfly_final/X_ff_3_reg[r][0]'. (OPT-1215)
 Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[i][0]' is removed because it is merged to 'butterfly_final/X_ff_3_reg[i][0]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][31]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][30]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][29]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][28]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][27]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][26]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][25]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][24]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][31]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][30]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][29]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][28]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][27]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][26]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][25]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][24]' is removed because it is merged to 'engine[0].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][31]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][30]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][29]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][28]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][27]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][26]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][25]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][24]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][31]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][30]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][29]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][28]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][27]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][26]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][25]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][24]' is removed because it is merged to 'engine[1].dc_2/delay_x1/delay_reg_reg[2][i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'engine[2].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
-    0:02:40  137606.5     16.67   10016.3   78306.8                           3346992640.0000
-    0:02:46  136125.9     16.67    7613.4   25969.0                           3309053184.0000
-    0:02:47  135941.4     16.67    7656.3   25560.1                           3304180992.0000
-    0:02:49  136086.2     16.20    7076.7   25670.2                           3306482432.0000
-    0:02:50  136086.2     16.20    7076.7   25670.2                           3306482432.0000
-    0:02:53  134432.3     16.20    7622.8   15246.7                           3291647488.0000
-    0:02:53  134432.3     16.20    7622.8   15246.7                           3291647488.0000
-    0:03:01  136480.4     14.30    6964.3   14628.9                           3341940224.0000
-    0:03:01  136480.4     14.30    6964.3   14628.9                           3341940224.0000
-    0:03:01  136491.9     14.10    6931.3   14595.5                           3342088448.0000
-    0:03:01  136491.9     14.10    6931.3   14595.5                           3342088448.0000
-    0:03:05  137450.5     13.60    6390.9   14774.8                           3364454912.0000
-    0:03:05  137450.5     13.60    6390.9   14774.8                           3364454912.0000
-    0:03:44  142902.9      7.93    3515.2   49764.9                           3478179584.0000
-    0:03:44  142902.9      7.93    3515.2   49764.9                           3478179584.0000
-    0:03:45  143057.2      7.92    3461.5   50437.6                           3482256896.0000
-    0:03:45  143057.2      7.92    3461.5   50437.6                           3482256896.0000
-    0:04:27  145948.8      5.92    2467.4   47335.9                           3545561600.0000
-    0:04:27  145948.8      5.92    2467.4   47335.9                           3545561600.0000
-    0:04:31  146857.9      5.87    2343.9   47886.2                           3570081536.0000
-    0:04:31  146857.9      5.87    2343.9   47886.2                           3570081536.0000
-    0:04:43  148259.7      3.94    1510.8   45255.0                           3601350912.0000
-    0:04:43  148259.7      3.94    1510.8   45255.0                           3601350912.0000
-    0:04:48  148752.8      3.86    1430.7   45070.4                           3613765120.0000
+Information: In design 'fft_N_rad2', the register 'butterfly_final/Y_ff_3_reg[r][0]' is removed because it is merged to 'butterfly_final/X_ff_3_reg[r][0]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][31]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][30]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][29]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][28]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][27]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][26]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][25]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[i][24]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[i][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][31]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][30]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][29]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][28]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][27]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][26]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][25]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+Information: In design 'fft_N_rad2', the register 'engine[0].dc_2/x1_ff_reg[r][24]' is removed because it is merged to 'engine[0].dc_2/x1_ff_reg[r][23]'. (OPT-1215)
+    0:01:03   49591.6      6.26    2278.6   13886.0                           1237084800.0000
+    0:01:03   49414.7      6.26    2234.5   13363.6                           1231372160.0000
+    0:01:04   49435.1      6.13    2132.2   16062.3                           1232050560.0000
+    0:01:04   49435.1      6.13    2132.2   16062.3                           1232050560.0000
+    0:01:06   47909.7     95.74   40708.1   91295.4                           1218847616.0000
+    0:01:06   47909.7     95.74   40708.1   91295.4                           1218847616.0000
+    0:01:17   50310.1      5.27    1799.3   13601.2                           1278264192.0000
+    0:01:17   50310.1      5.27    1799.3   13601.2                           1278264192.0000
+    0:01:17   50310.6      5.13    1795.6   13598.9                           1278264192.0000
+    0:01:17   50310.6      5.13    1795.6   13598.9                           1278264192.0000
+    0:01:27   52745.3      2.62     357.3   14284.1                           1337574144.0000
+    0:01:27   52745.3      2.62     357.3   14284.1                           1337574144.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
 
 
   Beginning Design Rule Fixing  (max_transition)
@@ -2070,16 +1649,14 @@ Information: In design 'fft_N_rad2', the register 'engine[2].dc_2/x1_ff_reg[r][2
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:04:48  148752.8      3.86    1430.7   45070.4                           3613765120.0000
+    0:01:34   53733.2      0.00       0.0   14022.6                           1357562368.0000
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
   Global Optimization (Phase 34)
-    0:05:03  149115.7      9.57    7954.9   55594.6 net146466                 3619665664.0000
-    0:05:17  149140.6      9.57    7940.1   52769.6 engine[1].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 3619714304.0000
-    0:05:23  149188.9      9.57    7868.0   52384.7 engine[2].butterfly_inst/Y_Wout_ir_ff_reg[25]/D 3620644352.0000
-    0:05:30  149250.1      9.57    7857.6   52346.9 engine[2].butterfly_inst/Y_Wout_rr_ff_reg[26]/D 3621679360.0000
-    0:05:49  149246.6      9.57    7866.1   51624.6                           3621548032.0000
-    0:05:52  149430.1      6.21    3756.1    6230.8                           3626067200.0000
+    0:01:36   54022.1      1.06       2.9    4391.1 engine[0].butterfly_inst/Y_ff_1_reg[r][31]/D 1362794112.0000
+    0:01:38   54039.7      3.31      42.6    1883.2 butterfly_final/X_ff_1_reg[r][31]/D 1362492544.0000
+    0:01:39   54066.3      2.32      23.2    1779.8                           1363003520.0000
+    0:01:40   54256.4      2.31      25.5    1809.4                           1367385344.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_svt 100.00%
@@ -2092,7 +1669,7 @@ Threshold voltage group cell usage:
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:05:52  149430.1      6.21    3756.1    6230.8                           3626067200.0000
+    0:01:40   54256.4      2.31      25.5    1809.4                           1367385344.0000
   Global Optimization (Phase 35)
   Global Optimization (Phase 36)
   Global Optimization (Phase 37)
@@ -2109,60 +1686,49 @@ Threshold voltage group cell usage:
   Global Optimization (Phase 48)
   Global Optimization (Phase 49)
   Global Optimization (Phase 50)
-    0:06:11  142254.6      9.14    2827.8   20688.1 engine[1].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 3448775680.0000
-    0:06:12  142267.0      9.34    2827.1   20688.0                           3449033216.0000
-    0:06:33  146353.9      5.88    2294.5   23313.5                           3549031680.0000
-    0:06:33  146353.9      5.88    2294.5   23313.5                           3549031680.0000
-    0:06:38  144547.2      5.87    2796.5   17112.0                           3526594048.0000
-    0:06:38  144547.2      5.87    2796.5   17112.0                           3526594048.0000
-    0:06:39  144646.1      5.86    2590.9   17230.9                           3528619776.0000
-    0:06:39  144646.1      5.86    2590.9   17230.9                           3528619776.0000
-    0:06:39  144638.9      5.68    2551.0   16720.7                           3528842496.0000
-    0:06:39  144638.9      5.68    2551.0   16720.7                           3528842496.0000
-    0:06:44  145227.8      5.60    2424.6   17290.2                           3543107072.0000
-    0:06:44  145227.8      5.60    2424.6   17290.2                           3543107072.0000
-    0:06:57  146869.6      3.87    1420.9   48746.9                           3573425152.0000
-    0:06:57  146869.6      3.87    1420.9   48746.9                           3573425152.0000
-    0:07:00  147428.9      3.82    1373.3   44623.4                           3587337472.0000
-    0:07:00  147428.9      3.82    1373.3   44623.4                           3587337472.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:13  148538.5      2.97    1060.7   33624.0                           3608489216.0000
-    0:07:14  148538.5      2.97    1060.7   33624.0                           3608489216.0000
+    0:01:48   49962.4      1.20      30.9    2387.9 engine[0].butterfly_inst/Y_Wout_ii_ff_reg[31]/D 1265811200.0000
+    0:01:48   49965.7      1.19      30.7    2387.9                           1265848320.0000
+    0:01:57   51805.2      0.12       0.6    3749.4                           1308896384.0000
+    0:01:57   51805.2      0.12       0.6    3749.4                           1308896384.0000
+    0:02:00   50688.3      0.33       5.8    9343.0                           1297473664.0000
+    0:02:00   50688.3      0.33       5.8    9343.0                           1297473664.0000
+    0:02:04   51330.7      0.05       0.1    9338.2                           1311759232.0000
+    0:02:04   51330.7      0.05       0.1    9338.2                           1311759232.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
+    0:02:04   51335.3      0.00       0.0    9339.9                           1311833472.0000
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:07:15  147890.7      2.96    1048.8   33512.1                           3594187008.0000
-    0:07:22  141574.5    193.47  119758.5   35500.1                           3465826304.0000
-    0:07:27  142132.6      7.00    3062.8   95906.8 engine[2].butterfly_inst/Y_Wout_rr_ff_reg[29]/D 3471964672.0000
-    0:07:29  142494.2      5.68    2351.9  100705.2                           3476939520.0000
-    0:07:29  142488.4      5.68    2351.9  100674.9                           3476777472.0000
-    0:07:30  142488.4      5.68    2351.9  100674.9                           3476777472.0000
-    0:07:33  142243.9      5.68    3894.4   71482.9                           3473847552.0000
-    0:07:37  141759.7      5.68    3775.8   39099.3                           3455911424.0000
-    0:07:40  141683.3      5.68    2198.7   22892.8 net156151                 3453558016.0000
-    0:07:42  142025.8      5.05    1823.2   23626.5 butterfly_final/X_ff_1_reg[i][31]/D 3458439424.0000
-    0:07:44  142313.3      4.57    1713.6   23822.9 engine[1].butterfly_inst/Y_Wout_ri_ff_reg[27]/D 3463004928.0000
-    0:07:45  142480.8      4.91    1710.5    6298.5 engine[1].butterfly_inst/Y_ff_1_reg[i][30]/D 3465918976.0000
-    0:07:47  142621.8      4.53    1675.1    5837.9 net141169                 3468319744.0000
-    0:07:48  142711.0      4.54    1677.0    2648.5                           3470422784.0000
-    0:07:55  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:56  143657.2      2.95    1238.3   14533.5                           3488080128.0000
-    0:07:59  143787.6      2.95    1212.0   14418.6                           3489266944.0000
-    0:07:59  143787.6      2.95    1212.0   14418.6                           3489266944.0000
-    0:07:59  143786.5      2.94    1212.2   14418.6                           3489266944.0000
-    0:08:06  143050.0      2.94    1210.8   10988.9                           3481740288.0000
+    0:02:05   50909.4      0.00       0.0    9356.1                           1302823552.0000
+    0:02:07   49560.9     40.49   26849.6    2974.4                           1268738048.0000
+    0:02:07   49637.4     26.03    9705.4    2968.2                           1270179840.0000
+    0:02:07   49637.4     26.03    9705.4    2968.2                           1270179840.0000
+    0:02:09   49423.6     26.03   10382.6    1556.1                           1266842112.0000
+    0:02:11   49390.1     26.03   10205.2     887.5 net66374                  1262649216.0000
+    0:02:13   49675.2      0.28       3.9    2450.3 engine[0].butterfly_inst/Y_Wout_ir_ff_reg[30]/D 1266315904.0000
+    0:02:15   49766.2      0.00       0.0     928.4 net66319                  1267367680.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:16   49781.2      0.00       0.0     903.3                           1267641856.0000
+    0:02:18   49351.0      0.00       0.0     866.1                           1263685248.0000
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -2171,7 +1737,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   Optimization Complete
   ---------------------
 Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'clk': 11676 load(s), 1 driver(s)
+     Net 'clk': 3664 load(s), 1 driver(s)
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 1
@@ -2198,8 +1764,8 @@ Information: The target library(s) contains cell(s), other than black boxes, tha
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:03  143050.0      2.94    1210.8   10988.9                           3481740288.0000
-    0:00:36  140670.0      2.91    1072.3    6960.5                           3435536640.0000
+    0:00:02   49351.0      0.00       0.0     866.1                           1263685248.0000
+    0:00:11   48110.0      0.00       0.0     839.1                           1243732736.0000
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -2208,7 +1774,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   Optimization Complete
   ---------------------
 Warning: Design 'fft_N_rad2' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'clk': 11676 load(s), 1 driver(s)
+     Net 'clk': 3664 load(s), 1 driver(s)
 1
 #################################################################################
 # Write Out Final Design and Reports
@@ -2273,7 +1839,7 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.units.rpt {report_units}
 Report : units
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:50:05 2024
+Date   : Wed Dec 11 15:19:25 2024
 
 ************************************
 Units
@@ -2292,7 +1858,7 @@ Report : net fanout
         -high_fanout
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:50:05 2024
+Date   : Wed Dec 11 15:19:25 2024
 ****************************************
 
 
@@ -2301,7 +1867,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-fft_N_rad2             280000            saed32rvt_tt1p05v25c
+fft_N_rad2             70000             saed32rvt_tt1p05v25c
 
 
 Attributes:
@@ -2316,7 +1882,7 @@ Attributes:
 
 Net                 Fanout   Attributes   Capacitance   Driver
 --------------------------------------------------------------------------------
-clk                  11676   dr, h        1001037.69    clk
+clk                   3664   dr, h        1001024.19    clk
 1
 redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
  
@@ -2324,28 +1890,28 @@ redirect -tee ${REPORTS_DIR}/${DESIGN_NAME}.qor.rpt {report_qor}
 Report : qor
 Design : fft_N_rad2
 Version: T-2022.03-SP3
-Date   : Wed Dec 11 14:50:05 2024
+Date   : Wed Dec 11 15:19:25 2024
 ****************************************
 
 
   Timing Path Group 'REGIN'
   -----------------------------------
   Levels of Logic:               3.00
-  Critical Path Length:         11.88
-  Critical Path Slack:           5.23
+  Critical Path Length:          9.30
+  Critical Path Slack:           7.82
   Critical Path Clk Period:     18.00
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
-  Worst Hold Violation:         -0.13
-  Total Hold Violation:         -3.09
-  No. of Hold Violations:      128.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
   -----------------------------------
 
   Timing Path Group 'REGOUT'
   -----------------------------------
   Levels of Logic:               0.00
-  Critical Path Length:          0.12
-  Critical Path Slack:          16.89
+  Critical Path Length:          0.11
+  Critical Path Slack:          16.90
   Critical Path Clk Period:     18.00
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
@@ -2356,15 +1922,15 @@ Date   : Wed Dec 11 14:50:05 2024
 
   Timing Path Group 'core_clk'
   -----------------------------------
-  Levels of Logic:              39.00
-  Critical Path Length:         20.44
-  Critical Path Slack:          -2.91
+  Levels of Logic:              29.00
+  Critical Path Length:         17.52
+  Critical Path Slack:           0.00
   Critical Path Clk Period:     18.00
-  Total Negative Slack:      -1072.29
-  No. of Violating Paths:      689.00
-  Worst Hold Violation:       -324.88
-  Total Hold Violation:     -20302.30
-  No. of Hold Violations:    10687.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:         -0.30
+  Total Hold Violation:       -483.23
+  No. of Hold Violations:     3003.00
   -----------------------------------
 
 
@@ -2372,36 +1938,36 @@ Date   : Wed Dec 11 14:50:05 2024
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:              38031
-  Buf/Inv Cell Count:            3885
-  Buf Cell Count:                 359
-  Inv Cell Count:                3526
+  Leaf Cell Count:              13562
+  Buf/Inv Cell Count:            2113
+  Buf Cell Count:                  54
+  Inv Cell Count:                2059
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:     26355
-  Sequential Cell Count:        11676
+  Combinational Cell Count:      9898
+  Sequential Cell Count:         3664
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:    63456.707847
-  Noncombinational Area: 77213.270171
-  Buf/Inv Area:           6604.948412
-  Total Buffer Area:           945.42
-  Total Inverter Area:        5659.53
+  Combinational Area:    23588.883759
+  Noncombinational Area: 24521.084578
+  Buf/Inv Area:           2935.109062
+  Total Buffer Area:           127.83
+  Total Inverter Area:        2807.27
   Macro/Black Box Area:      0.000000
-  Net Area:              82548.659531
+  Net Area:              16690.220021
   -----------------------------------
-  Cell Area:            140669.978019
-  Design Area:          223218.637550
+  Cell Area:             48109.968337
+  Design Area:           64800.188358
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:         39774
-  Nets With Violations:           875
-  Max Trans Violations:           875
+  Total Number of Nets:         15267
+  Nets With Violations:           381
+  Max Trans Violations:           381
   Max Cap Violations:               0
   -----------------------------------
 
@@ -2414,15 +1980,15 @@ Date   : Wed Dec 11 14:50:05 2024
   Logic Optimization:                  0.00
   Mapping Optimization:                0.00
   -----------------------------------------
-  Overall Compile Time:               64.29
-  Overall Compile Wall Clock Time:    36.60
+  Overall Compile Time:               19.52
+  Overall Compile Wall Clock Time:    11.36
 
   --------------------------------------------------------------------
 
-  Design  WNS: 2.91  TNS: 1072.29  Number of Violating Paths: 689
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
 
 
-  Design (Hold)  WNS: 324.88  TNS: 20305.39  Number of Violating Paths: 10815
+  Design (Hold)  WNS: 0.30  TNS: 483.23  Number of Violating Paths: 3003
 
   --------------------------------------------------------------------
 
@@ -2439,9 +2005,9 @@ puts "\[$COURSE_NAME\] Completed script [info script]\n"
 
 exit
 
-Memory usage for this session 458 Mbytes.
-Memory usage for this session including child processes 1030 Mbytes.
-CPU usage for this session 897 seconds ( 0.25 hours ).
-Elapsed time for this session 614 seconds ( 0.17 hours ).
+Memory usage for this session 303 Mbytes.
+Memory usage for this session including child processes 643 Mbytes.
+CPU usage for this session 302 seconds ( 0.08 hours ).
+Elapsed time for this session 224 seconds ( 0.06 hours ).
 
 Thank you...

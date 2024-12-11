@@ -1,4 +1,0 @@
-/afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/verilog/saed32nm.v
-src/headers.svh
-syn/fft_N_rad2.mapped.v
-test/fft_N_rad2_pow_tb.sv

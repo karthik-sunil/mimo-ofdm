@@ -1,6 +1,0 @@
-*design* DebussyLib (btIdent Verdi_V-2023.12-SP2-1)
-Command arguments:  -lib  /home/ksnl/eecs598/final-project/mimo-ofdm/syn_simv.daidir/work  -saveLevel  -elab  /home/ksnl/eecs598/final-project/mimo-ofdm/syn_simv.daidir/kdb  -simflow  -simdir  /home/ksnl/eecs598/final-project/mimo-ofdm/syn_simv.daidir/kdb_libs  -topfile  /home/ksnl/eecs598/final-project/mimo-ofdm/syn_simv.daidir/.elabcomTopFile  -ssv  -ssy  -Lf  work  +disable_message+C00380+C00381  +disable_message+C00388+C00389  -SNPS_ELABCOM  -saveElab 
-
-*Warning* Failed to find the specified instance parameter N in the master fft_N_rad2
-"test/fft_N_rad2_pow_tb.sv", 44: 
-Total	0 error(s),   1 warning(s)

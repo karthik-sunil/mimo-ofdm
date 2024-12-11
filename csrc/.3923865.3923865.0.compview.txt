@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1733946635.928880203, "rt":14.61, "ut":9.78, "st":1.15}}
-{"vcselab":{"timestamp_begin":1733946650.605365326, "rt":3.36, "ut":2.56, "st":0.19}}
-{"link":{"timestamp_begin":1733946654.011936370, "rt":2.04, "ut":0.44, "st":0.32}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1733946635.234060507}
-{"VCS_COMP_START_TIME": 1733946635.234060507}
-{"VCS_COMP_END_TIME": 1733946658.777625876}
-{"VCS_USER_OPTIONS": "-sverilog +vc -Mupdate -line -full64 -kdb -nc -xprop=tmerge -lca -debug_access+all+reverse +define+ -timescale=1ns/1ps src/headers.svh test/fft_N_rad2_pow_tb.sv syn/fft_N_rad2.mapped.v /afs/umich.edu/class/eecs598-002/SAED32/SAED32_EDK/lib/stdcell_rvt/verilog/saed32nm.v +define+SYNTH_TEST +sdfverbose +neg_tchk -o syn_simv -R"}
-{"vcs1": {"peak_mem": 586416}}
-{"vcselab": {"peak_mem": 330160}}

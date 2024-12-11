@@ -1,6 +1,0 @@
-test/fft_N_rad2_pow_tb.sv:60 YES
-==================================================
-X P R O P   S T A T I S T I C S
-instrumentable assignments:    3
-instrumented assignments:      3
-instrumentation success rate:  100%
