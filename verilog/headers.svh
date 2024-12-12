@@ -1,5 +1,5 @@
 // FFT Size
-parameter N=32;
+parameter N=8;
 
 parameter  COEFF_WIDTH = 16;
 parameter  COMPLEX_WIDTH = 8;
